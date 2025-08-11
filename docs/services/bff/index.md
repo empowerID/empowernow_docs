@@ -10,6 +10,8 @@ The EmpowerNow BFF is the session and security gateway for our SPAs:
 Start here:
 
 - Overview: what the BFF is and isn’t → `Explanations / BFF for SPAs — How It Works`
+- Executive overview: business value and visuals → `Explanations / BFF — Executive Overview`
+- Visual Guide: presentable diagrams of flows and routing → `Explanations / BFF Visual Guide`
 - SPA Golden Path: wire a React app to the BFF → `Tutorials / SPA Golden Path`
 - Traefik: how ForwardAuth integrates → `Reference / Traefik ForwardAuth`
 

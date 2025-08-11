@@ -67,8 +67,18 @@
 }
 
 /* Links and accents */
-a { color: var(--color-accent); }
-a:hover { color: #4df5ff; }
+/* Restrict accent link color to non-button anchors to avoid WCAG contrast issues on button variants */
+a:not(.button) { color: var(--color-accent); }
+a:not(.button):hover { color: #4df5ff; }
+
+/* Ensure secondary buttons have sufficient contrast against their light background */
+.button.button--secondary {
+  color: #0B1C3D !important; /* dark navy for strong contrast on light bg */
+}
+.button.button--secondary:hover,
+.button.button--secondary:focus {
+  color: #0B1C3D !important;
+}
 
 /* Home page */
 .hero--gradient {

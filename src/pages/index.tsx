@@ -20,6 +20,9 @@ export default function Home(): ReactNode {
             <Link className="button button--primary button--lg" to="/docs/services/bff/explanation/overview">
               Explore Docs
             </Link>
+            <Link className="button button--secondary button--lg" to="/docs/services/bff/explanation/executive-overview">
+              BFF Executive Overview
+            </Link>
             <Link className="button button--secondary button--lg" to="/docs/services/bff/tutorials/spa-golden-path">
               SPA Golden Path
             </Link>

@@ -76,6 +76,16 @@ const config: Config = {
           label: 'Docs',
         },
         {
+          to: '/docs/services/bff/explanation/executive-overview',
+          label: 'BFF Overview',
+          position: 'left',
+        },
+        {
+          to: '/docs/services/bff/explanation/bff-visual-guide',
+          label: 'BFF Visual Guide',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/empowernow',
           label: 'GitHub',
           position: 'right',
