@@ -69,10 +69,10 @@ flowchart LR
     FA[bff-forwardauth]
   end
   subgraph BFF
-    V[/auth/verify]
-    F[/auth/forward]
-    A[/auth/login|callback|logout]
-    API[/api/**]
+    V[/auth/verify/]
+    F[/auth/forward/]
+    A[/auth/login|callback|logout/]
+    API[/api/**/]
   end
   R1 --> FA --> V
   R2 --> A
