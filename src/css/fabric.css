@@ -1,0 +1,22 @@
+:root {
+  --purple: #6C4CFF;
+  --cyan: #00E7F6;
+  --navy: #0B1C3D;
+  --slate: #8891A5;
+  --white: #FFFFFF;
+  --error: #FF5F5F;
+  --success: #31D48D;
+  --neutral-900: var(--navy);
+  --neutral-700: rgba(11, 28, 61, 0.8);
+  --neutral-400: var(--slate);
+  --gradient-primary: linear-gradient(135deg, var(--cyan) 0%, #2FE7F6 100%);
+  --gradient-accent: linear-gradient(135deg, var(--cyan) 0%, var(--purple) 100%);
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+} 

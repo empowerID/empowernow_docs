@@ -1,0 +1,71 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* Import brand tokens first */
+@import './tokens.css';
+
+/* Override Infima variables using Neon Flux tokens */
+:root {
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --ifm-color-primary: var(--color-primary);
+  --ifm-color-primary-dark: #5f3df5;
+  --ifm-color-primary-darker: #5637e6;
+  --ifm-color-primary-darkest: #452cc0;
+  --ifm-color-primary-light: #7b5cff;
+  --ifm-color-primary-lighter: #8a6cff;
+  --ifm-color-primary-lightest: #a493ff;
+
+  --ifm-background-color: var(--deep-space-blue);
+  --ifm-background-surface-color: rgba(11, 28, 61, 0.85);
+  --ifm-navbar-background-color: rgba(11, 28, 61, 0.8);
+  --ifm-footer-background-color: #0B1C3D;
+
+  --ifm-color-content: var(--on-bg);
+  --ifm-heading-color: var(--on-bg);
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 231, 246, 0.08);
+}
+
+/* EmpowerNow theme base variables */
+@import './fabric.css';
+@import './quantum.css';
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: var(--color-primary);
+  --ifm-background-color: var(--color-bg);
+  --ifm-navbar-background-color: rgba(11, 28, 61, 0.8);
+  --ifm-background-surface-color: rgba(11, 28, 61, 0.85);
+  --ifm-color-content: var(--on-bg);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 231, 246, 0.10);
+}
+
+/* Glass header and card patterns */
+.navbar.navbar--fixed-top {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 231, 246, 0.2);
+}
+
+.menu__list-item > .menu__link {
+  color: var(--on-bg);
+}
+
+.card,
+.theme-doc-markdown .admonition,
+.tabs-container {
+  background: rgba(11, 28, 61, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Links and accents */
+a { color: var(--color-accent); }
+a:hover { color: #4df5ff; }

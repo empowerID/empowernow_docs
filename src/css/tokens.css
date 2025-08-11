@@ -1,0 +1,48 @@
+/* Neon Flux brand tokens (copied from @empowernow/ui) */
+:root {
+  --color-bg: #0E0E10;
+  --color-primary: #6C4CFF;
+  --color-secondary: #B326FF;
+  --color-accent: #00E7F6;
+  --color-success: #B6FF3C;
+  --color-warning: #FFC266;
+  --color-surface: rgba(255,255,255,0.06);
+  --color-gray-700: #44464A;
+
+  /* on-colour tokens */
+  --on-bg: #EDEDED;
+  --on-primary: #FFFFFF;
+  --on-secondary: #FFFFFF;
+  --on-accent: #002628;
+  --on-surface: #FFFFFF;
+
+  /* aliases */
+  --void-black: var(--color-bg);
+  --quantum-violet: var(--color-primary);
+  --ultraviolet-magenta: var(--color-secondary);
+  --pulse-cyan: var(--color-accent);
+  --ion-lime: var(--color-success);
+  --signal-amber: var(--color-warning);
+  --glass-frost: var(--color-surface);
+}
+
+:root {
+  --deep-space-blue: #0B1C3D;
+  --ease-snap: cubic-bezier(.4,0,.2,1);
+  --ease-glide: cubic-bezier(.25,.8,.25,1);
+  --dur-fast: 150ms;
+  --dur-medium: 300ms;
+  --dur-slow: 600ms;
+  --spacing-1: 8px;
+  --radius-sm: 4px;
+  --radius-card: 8px;
+  --radius-modal: 12px;
+}
+
+/* Accessibility: focus outline */
+:where(:focus-visible) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  transition: outline-offset var(--dur-fast) var(--ease-snap);
+}
+
