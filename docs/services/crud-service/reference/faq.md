@@ -41,4 +41,10 @@ For the full migration steps and troubleshooting, see the Migration Guide:
 
 - [How‑to: Migration Guide — YAML Workflows to Visual Workflow Designer](../how-to/migration-guide-visual-designer)
 
+## BFF fails at startup with DCR errors — what do I do?
+
+Issue a fresh DCR Initial Access Token (IAT), add it to the BFF environment in compose, and restart the BFF. A ready‑to‑use Postman request is in the CRUD Service repo. Full steps:
+
+- Follow: [How‑to: BFF startup — DCR IAT](../how-to/bff-startup-dcr-iat)
+
 

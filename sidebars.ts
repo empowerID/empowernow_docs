@@ -30,6 +30,7 @@ const sidebars: SidebarsConfig = {
               label: 'How‑to',
               items: [
                 'services/crud-service/how-to/migration-guide-visual-designer',
+                'services/crud-service/how-to/bff-startup-dcr-iat',
               ],
             },
             {
