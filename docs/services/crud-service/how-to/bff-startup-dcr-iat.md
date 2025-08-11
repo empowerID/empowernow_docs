@@ -59,4 +59,10 @@ Expect to see successful client registration and the service staying healthy. If
 - After initial bootstrap, credentials are cached; subsequent restarts should not require a new IAT unless you force replace.
 - See also: BFF docs → How‑to → DCR Bootstrap for deeper context.
 
+### Related guides
+
+- BFF + IdP OAuth (end‑to‑end): `services/bff/reference/bff-idp-oauth-e2e`
+- Register BFF with private_key_jwt (DCR): `services/bff/how-to/register-bff-private-key-jwt`
+- Switch auth methods: `services/bff/how-to/switch-auth-methods`
+
 
