@@ -20,11 +20,21 @@ sequenceDiagram
   participant IdP
   Note over SPA: Session-based (cookie)
   SPA->>Traefik: GET /api/** (same-origin)
-  Traefik->>BFF: /auth/verify
-  BFF-->>Traefik: 200/401 + headers
-  Note over SPA: 401 → navigate to /auth/login
-  ...
-  Note over IdP: login → callback → session in Redis
+  Traefik->>BFF: GET /auth/verify
+  alt Not authenticated
+    BFF-->>Traefik: 401
+    Traefik-->>SPA: 401
+    SPA->>BFF: GET /auth/login
+    BFF-->>SPA: 302 → IdP /authorize (PKCE/PAR)
+    SPA->>IdP: GET /authorize
+    IdP-->>BFF: 302 → /auth/callback?code=...
+    BFF->>IdP: POST /token
+    IdP-->>BFF: access/refresh tokens
+    BFF-->>SPA: Set-Cookie bff_session
+  else Authenticated
+    BFF-->>Traefik: 200 + headers
+    Traefik-->>SPA: 200 JSON
+  end
   
   Note over BFF: Bearer token path
   SPA->>BFF: GET /api/** Authorization: Bearer <jwt>
@@ -42,6 +52,28 @@ Key behaviors
 
 - Session path: tokens never reach the browser; Traefik calls `/auth/verify` (alias `/auth/forward`) to gate requests; BFF sets/clears `bff_session` and issues CSRF token for state‑changing calls.
 - Bearer path: `HTTPBearer` extracts the token; we do unverified decode to read `iss`, then introspection with Basic auth using IdP client credentials; we normalize roles/permissions via claims mapping.
+
+CSRF in SPAs (contract)
+
+- Header: `X-CSRF-Token` (or query param `csrf` for GET logout flow)
+- Cookie name: `_eid_csrf_v1` (readable by JS; HttpOnly=false)
+- Required for: POST, PUT, DELETE, PATCH to BFF paths (safe methods like GET/HEAD/OPTIONS skip validation)
+- Example fetch usage:
+  ```ts
+  await apiClient.post('/api/crud/execute', body, {
+    headers: { 'X-CSRF-Token': getCookie('_eid_csrf_v1') }
+  });
+  ```
+
+Cookies
+
+- Session cookie name: `bff_session` (HttpOnly, Secure, SameSite=Lax, domain per env)
+- CSRF cookie name: `_eid_csrf_v1` (readable by JS, SameSite=Strict/Lax per config)
+- Domain guidance: set `BFF_COOKIE_DOMAIN` to your apex (e.g., `.ocg.labs.empowernow.ai`) to enable SSO across SPAs
+
+Callback origins
+
+- Dynamic callback can echo the request origin when `BFF_DYNAMIC_CALLBACK=true`; otherwise `BFF_CALLBACK_URL` is used. In dev, set `VITE_BFF_BASE_URL` and use same‑origin where possible.
 
 Security notes
 

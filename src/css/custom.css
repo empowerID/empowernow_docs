@@ -69,3 +69,21 @@
 /* Links and accents */
 a { color: var(--color-accent); }
 a:hover { color: #4df5ff; }
+
+/* Home page */
+.hero--gradient {
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(0, 231, 246, 0.08), transparent),
+              radial-gradient(1200px 600px at 80% 0%, rgba(108, 76, 255, 0.12), transparent),
+              linear-gradient(180deg, rgba(11,28,61,0.92), rgba(11,28,61,0.85));
+  border-bottom: 1px solid rgba(0, 231, 246, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.home-hero { padding: 5rem 1rem; text-align: center; }
+.home-logo { width: 160px; opacity: 0.95; margin-bottom: 1rem; }
+.home-cta { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1.25rem; flex-wrap: wrap; }
+
+.home-main { padding: 2.5rem 1rem; }
+.home-quicklinks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.ql-card { background: rgba(11, 28, 61, 0.85); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem 1.25rem; }
+.ql-card h3 { margin-top: 0; }

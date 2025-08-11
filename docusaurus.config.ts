@@ -62,7 +62,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/empowernow-logo.svg',
     navbar: {
-      title: 'EmpowerNow',
+      title: '',
       logo: {
         alt: 'EmpowerNow Logo',
         src: 'img/en-logo-light.png',

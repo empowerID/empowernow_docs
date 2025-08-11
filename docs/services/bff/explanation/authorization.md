@@ -40,4 +40,29 @@ Caching
 - Allow and deny decisions are cached with separate TTLs from `pdp.yaml` (`cache.ttl_allow`, `cache.ttl_deny`).
 - Keys include subject, subject type, resource type/ID, and action; special characters are base64‑encoded.
 
+Examples (mapping snippets)
+
+```yaml
+endpoint_map:
+  /api/crud/workflow/start:
+    POST:
+      resource: workflow
+      action: execute
+      props:
+        workflow_name: "$.workflow_name"
+
+  /api/crud/workflow/status/{execution_id}:
+    GET:
+      resource: workflow_execution
+      id_from: "{execution_id}"
+      action: read
+```
+
+Quick validate
+
+```bash
+curl -I --cookie "_eid_sid=..." https://.../api/crud/workflow/status/abc-123
+# Expect 200/403 depending on PDP decision; see How‑to → endpoint-map-validation
+```
+
 

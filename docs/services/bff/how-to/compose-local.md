@@ -66,16 +66,17 @@ flowchart LR
   subgraph Traefik
     R1[api.ocg... /api/**]
     R2[automate.ocg... /auth/**]
-    FA[bff-forwardauth (file)]
+    FA[bff-forwardauth]
   end
   subgraph BFF
-    V[/auth/verify or /auth/forward/]
-    A[/auth/login|callback|logout/]
-    API[/api/**/]
+    V[/auth/verify]
+    F[/auth/forward]
+    A[/auth/login|callback|logout]
+    API[/api/**]
   end
   R1 --> FA --> V
   R2 --> A
-  FA --> API
+  V --> API
 ```
 
 ## Bring-up checklist

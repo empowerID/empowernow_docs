@@ -74,7 +74,7 @@ python -m pytest tests/e2e/test_real_user_workflows.py::test_real_user_workflow_
 
 Expected outcomes
 
-- ForwardAuth integration: PASS (<500ms typical)
+- ForwardAuth integration: PASS (&lt;500ms typical)
 - Middleware chain: PASS
 - Real user workflows (all 3 SPAs): PASS
 
