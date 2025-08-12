@@ -51,6 +51,13 @@ Tips:
 - Requires: BFF PEM mounted (`BFF_JWT_SIGNING_KEY`), IdP client with JWKS and `private_key_jwt`
 - Failure signature if misaligned: 401 `invalid_client` with messages like “client_assertion_type must be jwt-bearer” or signature/JWK mismatch
 
+Short operational guidance
+
+- Perform a one-time DCR with a fresh IAT to register the client (PKJWT + JWKS/JWKS URI).
+- After success, stop providing `DCR_IAT` in the BFF environment; startup remains idempotent.
+- Set the client’s `jwks_uri` to the BFF JWKS endpoint: `https://<your-bff-host>/.well-known/jwks.json`.
+- Rotate the BFF signing key and publish both old and new keys in JWKS briefly; the IdP will re-fetch via `jwks_uri`. No DCR re-registration needed.
+
 ### client_secret_post/basic (simpler; not FAPI)
 - BFF uses a shared secret via form body or Authorization header
 - Requires: IdP client with `client_secret` or `client_secret_hash` and matching `token_endpoint_auth_method`
@@ -95,6 +102,7 @@ Detailed steps: `services/bff/how-to/switch-auth-methods`.
 2) Set BFF env for DCR and auth method in compose; ensure PEM mounted
 3) Restart BFF only; confirm DCR 201 and healthy service
 4) Attempt SPA login; verify token exchange and session
+5) Remove `DCR_IAT` from the environment once registration is confirmed
 
 ## Visuals
 
@@ -127,6 +135,7 @@ See also: `services/bff/explanation/bff-visual-guide` for detailed architecture.
 - FAPI features: `services/bff/reference/fapi-support`
 - DCR bootstrap: `services/bff/how-to/dcr-bootstrap`, `services/crud-service/how-to/bff-startup-dcr-iat`
 - IdP policy and clients: `ServiceConfigs/IdP/config/dcr_config.yaml`, `ServiceConfigs/IdP/config/clients.yaml`
+
 
 
 

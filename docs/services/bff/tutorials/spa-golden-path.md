@@ -65,6 +65,22 @@ sequenceDiagram
   BFF-->>UI: 200
 ```
 
+### Mental model: `/api` is the BFF
+
+- Calls that look “local” like `/api/<app>/...` always go to the BFF first.
+- The BFF uses `routes.yaml` to translate them into real backend requests and enforces session/CSRF/PDP.
+
+Concrete example
+
+```text
+GET /api/myapp/items/123  →  BFF  →  GET http://my-service:8080/items/123
+```
+
+Dev vs Prod base URL
+
+- Dev (separate origins): set `VITE_BFF_BASE_URL` to the BFF origin (for example `http://localhost:8000/api`) and ensure CORS allows your UI origin.
+- Prod (same origin): serve the SPA via Traefik with the BFF and set `VITE_BFF_BASE_URL` to `/api`.
+
 Common pitfalls
 
 - Double `/api` prefix (client path should start with `/api/...`, wrapper strips leading `/api` once)
@@ -79,5 +95,21 @@ Checklist
 - [ ] Route exists in `routes.yaml`
 - [ ] PDP mapping exists in `pdp.yaml` for your route; action allowed (403 otherwise)
 - [ ] Unauthenticated call returns JSON + CORS headers in dev (verifies error‑path CORS)
+
+### Automation Studio (Visual Designer) checklist
+
+- [ ] SPA calls same-origin endpoints only
+  - [ ] CRUD + SSE: `/api/crud/...`
+  - [ ] PDP (AuthZEN): `/access/v1/evaluation` and `/access/v1/evaluations` (preserved path)
+- [ ] `ServiceConfigs/BFF/config/routes.yaml` entries exist
+  - [ ] CRUD entries target `crud_service`
+  - [ ] PDP entries target `pdp_service` with `preserve_path: true`
+- [ ] Credentials included from the browser
+  - [ ] fetch: `credentials: 'include'`
+  - [ ] axios: `{ withCredentials: true }`
+  - [ ] SSE: same-origin works by default; cross-origin dev uses `{ withCredentials: true }`
+- [ ] Dev vs Prod base URL
+  - [ ] Dev: `VITE_BFF_BASE_URL` = BFF origin (CORS allows UI origin)
+  - [ ] Prod: `VITE_BFF_BASE_URL` = `/api`
 
 

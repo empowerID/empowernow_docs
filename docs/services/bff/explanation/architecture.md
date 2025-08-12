@@ -28,6 +28,21 @@ Key configuration
 - Traefik dynamic config: `CRUDService/traefik/dynamic.yml`
 - BFF routes/config: `ServiceConfigs/BFF/config/routes.yaml`, `pdp.yaml`, `idps.yaml`
 
+## How `/api/**` is routed
+
+- Edge: Traefik router matches `PathPrefix(/api/*)` for SPA hosts and forwards to the BFF (ForwardAuth is disabled for these; the BFF handles auth and returns JSON 401/403 when needed).
+- BFF: consults `routes.yaml` where `path` is the client path and `upstream_path` is the backend path (templated with `{path}` for wildcards).
+
+Example
+
+```text
+Client: GET /api/myapp/items/42
+BFF → routes.yaml: 
+  path "/api/myapp/items/*" → target_service "my_service" (base_url http://my-service:8080)
+  upstream_path "/items/{path}"
+BFF → calls GET http://my-service:8080/items/42 (adds auth/context headers) → returns JSON
+```
+
 Headers contract (edge and downstream)
 
 - ForwardAuth request → BFF: includes `Cookie` (session), may include `X-Forwarded-*` headers

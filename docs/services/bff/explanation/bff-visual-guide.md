@@ -57,6 +57,45 @@ sequenceDiagram
   BFF-->>SPA: 200 JSON
 ```
 
+## How SPA-local "/api" calls reach the BFF
+
+- SPA calls same-origin paths like `/api/<app>/...`.
+- Traefik matches `PathPrefix(/api/*)` and routes to the BFF service.
+- The BFF looks up the request in `routes.yaml` (`path` = client path, `upstream_path` = backend path) and proxies to the target service, injecting auth/context headers.
+
+Example
+
+```text
+Client → GET /api/myapp/items/123
+Traefik → forwards to BFF (rule: PathPrefix(/api/))
+BFF → routes.yaml: path "/api/myapp/items/*" → target_service "my_service", upstream_path "/items/{path}"
+BFF → calls GET http://my-service:8080/items/123 (+ Authorization, X-Correlation-ID)
+BFF → returns JSON to SPA
+```
+
+Mini routing diagram
+
+```mermaid
+flowchart LR
+  UI[SPA] -->|GET /api/myapp/items/123 (cookie)| TR[Traefik]
+  TR --> BFF
+  subgraph BFF
+    R[(routes.yaml)]
+  end
+  BFF -->|GET /items/123 + Authorization + X-Correlation-ID| SVC[my_service]
+  SVC --> BFF --> UI
+```
+
+See also: `Reference / YAML proxy (routes.yaml)` and `Reference / Traefik ForwardAuth`.
+
+### Automation Studio (Visual Designer) path examples
+
+- CRUD and SSE: SPA calls `/api/crud/...` → Traefik → BFF → `crud_service`
+- PDP (AuthZEN): SPA calls `/access/v1/evaluation` and `/access/v1/evaluations` → Traefik → BFF → `pdp_service` (path preserved)
+- Cookies/credentials: fetch `credentials: 'include'`, axios `withCredentials: true`; EventSource sends cookies (use `{ withCredentials: true }` for cross-origin dev)
+
+See also: `Reference / SPA PDP usage` for a per‑SPA inventory of PDP calls and payloads.
+
 ## Routing layers (where ForwardAuth applies)
 
 ```mermaid

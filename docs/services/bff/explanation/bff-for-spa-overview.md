@@ -47,6 +47,32 @@ sequenceDiagram
   end
 ```
 
+### How SPA-local paths route
+
+- Think of `/api` as the BFF’s front door. The SPA never talks directly to backend services.
+- Traefik routes `/api/**` to the BFF. The BFF reads `routes.yaml` and translates the client path to a backend path.
+
+Example translation
+
+```text
+GET /api/crud/forms/123  →  BFF → GET http://crud_service/forms/123
+```
+
+In dev, `VITE_BFF_BASE_URL` can be an absolute BFF origin; in prod, it’s usually same‑origin `/api`.
+
+Automation Studio (Visual Designer) specifics
+
+- Front end for CRUDService.
+- SPA calls:
+  - `/api/crud/...` (CRUD + SSE)
+  - `/access/v1/evaluation` and `/access/v1/evaluations` (PDP, preserved path to `pdp_service`)
+- Traefik forwards to the BFF; BFF proxies per `routes.yaml`.
+- Include cookies: fetch `credentials: 'include'`, axios `withCredentials: true`.
+
+See also
+
+- Reference → `SPA PDP usage` for which SPAs call the PDP, where, and with what payloads.
+
 Where things are configured
 
 - App API surface: `ServiceConfigs/BFF/config/routes.yaml`

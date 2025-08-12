@@ -28,6 +28,7 @@ Rotate BFF signing key (JWKS)
 
 - Code paths: `ms_bff_spike/ms_bff/src/routes/jwks.py`, `ms_bff_spike/ms_bff/src/crypto/jwks_manager.py`, `ms_bff_spike/ms_bff/scripts/rotate_keys.py`.
 - By default, the BFF ensures a key exists under `BFF_KEYS_DIR` and serves JWKS at `/.well-known/jwks.json`.
+- Recommended: configure the IdP client to use `jwks_uri: https://<your-bff-host>/.well-known/jwks.json` so the IdP fetches keys automatically.
 
 Manual rotation procedure
 
@@ -37,10 +38,8 @@ export BFF_KEYS_DIR=/app/keys
 export AUTO_KEY_ROTATION=1
 python -m ms_bff.scripts.rotate_keys
 
-# Optional: notify IdP DCR to re-read JWKS
-export IDP_DCR_URL="http://idp-app:8002/api/clients/bff-server/jwks"
-export DCR_ACCESS_TOKEN="<token with dcr.admin>"
-python -m ms_bff.scripts.rotate_keys
+# In most setups no DCR call is required when using jwks_uri; the IdP will fetch new keys.
+# If your IdP does not poll jwks_uri, consult IdP docs for a cache-bust endpoint.
 ```
 
 Zero‑downtime tips
@@ -48,6 +47,13 @@ Zero‑downtime tips
 - Serve both old and new keys in JWKS during the grace window (jwks_manager preserves previous entries when you write the new JWKS).
 - Keep old client credentials valid at IdP until all pods/instances are rolled.
 - Stagger restarts; validate `/auth/login`, `/auth/callback`, and bearer calls.
+
+FAQ
+
+- Why not rotate `client_secret` automatically?
+  - Shared secrets are weaker and harder to distribute/rotate safely. Prefer `private_key_jwt` with `jwks_uri` so rotation is done by updating JWKS.
+- Can I update `client_secret` via DCR PATCH?
+  - Not via the public endpoint in our IdP. Use an admin/out-of-band update if absolutely necessary.
 
 Rotate salts and CSRF/state secrets
 

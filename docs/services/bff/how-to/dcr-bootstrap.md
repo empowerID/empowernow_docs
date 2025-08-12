@@ -15,6 +15,13 @@ What DCR does (in our stack)
 - Caches `client_id` and the `registration_access_token` (RAT) on disk
 - Pushes a status metric to Prometheus Pushgateway when configured
 
+Short answer (operational policy)
+
+- Auto-register once with a fresh IAT, then stop sending IATs.
+- Use `private_key_jwt` with `jwks_uri` pointing at the BFF’s JWKS endpoint: `https://<your-bff-host>/.well-known/jwks.json`.
+- Let the BFF auto-refresh access tokens (already implemented; no action).
+- Rotate keys by updating the BFF JWKS; the IdP will fetch via `jwks_uri`. No DCR re-register is needed.
+
 High‑level flow (bootstrap)
 
 ```mermaid
@@ -42,6 +49,19 @@ sequenceDiagram
     DCR-->>BFF: Save creds, write new PEM
   end
 ```
+
+How to set it up
+
+- One-time bootstrap
+  - `DCR_ENABLED: "true"`
+  - `SKIP_DCR_BOOTSTRAP: "false"`
+  - `DCR_FORCE_REPLACE: "false"`
+  - `DCR_IAT: "<fresh IAT>"`
+  - Ensure the DCR payload includes `token_endpoint_auth_method: private_key_jwt` and `jwks_uri: https://<your-bff-host>/.well-known/jwks.json`
+- After success (and from then on)
+  - Remove `DCR_IAT` from environment/config
+  - Keep: `DCR_ENABLED: "true"`, `SKIP_DCR_BOOTSTRAP: "false"`, `DCR_FORCE_REPLACE: "false"`
+  - Result: on every start the bootstrap is a no-op (client exists). It may PATCH client metadata when needed, but does not consume an IAT.
 
 Prerequisites (IdP side)
 
@@ -88,6 +108,7 @@ python /app/ms_bff_spike/ms_bff/src/bootstrap/dcr_bootstrap.py
 - IdP: `GET /api/oidc/register/{client_id}` shows the BFF with the advertised `kid`
 - BFF: creds JSON exists at `BFF_CLIENT_CRED_PATH` with `client_id` (+ RAT when applicable)
 - Metrics: optionally, `bff_dcr_status{status="success"}=1` is pushed to Pushgateway
+- JWKS: BFF serves `/.well-known/jwks.json` and the client’s `jwks_uri` in IdP points to that URL
 
 Operational notes (from code)
 
@@ -95,11 +116,26 @@ Operational notes (from code)
 - JWKS rotation is additive and capped to 3 keys; very old keys are dropped based on `BFF_JWK_RETIRE_AFTER_DAYS`.
 - The helper is idempotent and can be run on every start; it only writes the PEM after a successful JWKS update/registration.
 
+Auto-renew vs auto-rotate
+
+- Access tokens: already auto-refreshed by the BFF’s background token refresh. Nothing to change.
+- Registration/secret:
+  - Don’t use `client_secret` rotation for security; prefer `private_key_jwt` + `jwks_uri`.
+  - To “auto-rotate,” rotate the BFF’s signing key and update the JWKS served at `/.well-known/jwks.json`.
+  - Best practice: publish both old and new keys in JWKS for a grace period, then drop the old key. The IdP will re-fetch via `jwks_uri` automatically.
+  - This achieves continuous key rotation without using DCR again.
+
 Troubleshooting
 
 - Missing IAT → bootstrap fails fast with a clear admin action message
 - 401/403 from IdP → reissue RAT or set `DCR_FORCE_REPLACE=true` to re‑register
 - Logs include truncated error bodies and friendly messages from the helper
+
+If you must rotate a shared `client_secret` (not recommended)
+
+- The public DCR PATCH endpoint does not support updating `client_secret`.
+- Use an admin path or out-of-band update in the IdP instead.
+- Prefer `private_key_jwt` with `jwks_uri` to avoid shared secret distribution.
 
 See also
 

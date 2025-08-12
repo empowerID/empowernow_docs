@@ -15,6 +15,18 @@ Structure
   - streaming: boolean (SSE)
   - preserve_path: boolean
 
+Mental model
+
+- `path` is the SPA’s client path (what your app calls under `/api/...`).
+- `upstream_path` is the backend path the BFF will call; `{path}` captures the wildcard portion.
+
+Example translation
+
+```text
+Client: GET /api/crud/forms/123
+Route:  path "/api/crud/forms/*"  →  upstream_path "/forms/{path}" (target_service: crud_service)
+BFF:    GET http://crud_service/forms/123
+```
 Auth semantics
 
 - session: cookie‑based session check, headers injected to backend
@@ -24,6 +36,6 @@ Auth semantics
 Canonical prefixes
 
 - CRUD APIs are exposed under `/api/crud/**`
-- AuthZEN preserved path `/access/v1/evaluation`
+- AuthZEN preserved paths are proxied as-is: `/access/v1/evaluation` and `/access/v1/evaluations` (paths preserved to PDP)
 
 

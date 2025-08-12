@@ -80,6 +80,52 @@ Snippet from configuration
   auth: "session"
 ```
 
+Routing diagram (at a glance)
+
+```mermaid
+flowchart LR
+  UI[SPA] -->|GET /api/myapp/items/123 (cookie)| Traefik
+  Traefik --> BFF
+  subgraph BFF
+    R[(routes.yaml: path→upstream_path)]
+  end
+  BFF -->|GET /items/123 + Authorization + X-Correlation-ID| SVC[my_service]
+  SVC --> BFF --> UI
+```
+
+Mental model
+
+- `/api` is the BFF entrypoint. The SPA calls `/api/<app>/...`, and the BFF translates that to the real backend path per `routes.yaml`.
+
+Automation Studio (Visual Designer) specifics
+
+- App: React SPA front end for CRUDService.
+- Paths it calls (same origin):
+  - CRUD and SSE: `/api/crud/...` (EventSource updated to use same-origin base)
+  - PDP (AuthZEN): `/access/v1/evaluation` and `/access/v1/evaluations` (preserved path)
+- Traefik routes those requests to the BFF; the BFF proxies per `ServiceConfigs/BFF/config/routes.yaml`:
+  - CRUD via `crud_service`
+  - PDP via `pdp_service` with `preserve_path: true`
+- Cookies/credentials: ensure they are included
+  - fetch: `credentials: 'include'`
+  - axios: `{ withCredentials: true }`
+  - EventSource (dev cross-origin): `new EventSource(url, { withCredentials: true })` (same-origin sends cookies automatically)
+
+Examples
+
+```ts
+// fetch (same-origin or cross-origin dev)
+await fetch('/api/crud/items', { method: 'GET', credentials: 'include' });
+
+// axios
+await axios.post('/access/v1/evaluation', body, { withCredentials: true });
+
+// SSE
+const es = new EventSource('/api/crud/sse/stream'); // same-origin
+// cross-origin dev
+const esDev = new EventSource('http://localhost:8000/api/crud/sse/stream', { withCredentials: true });
+```
+
 Add your app’s API surface
 
 1) Add a backend service under `services` with `base_url`.
@@ -114,5 +160,21 @@ Troubleshooting
 - 401/redirect loops: confirm `AuthProvider` is wrapping `<App />` and baseUrl is correct
 - 403: PDP denied; verify your account roles/permissions and the route’s `auth: session`
 - Network errors: ensure your route exists in `routes.yaml` and upstream service is reachable
+
+Automation Studio (Visual Designer) checklist
+
+- [ ] SPA uses same-origin endpoints only
+  - [ ] CRUD + SSE: `/api/crud/...`
+  - [ ] PDP (AuthZEN): `/access/v1/evaluation` and `/access/v1/evaluations`
+- [ ] `routes.yaml` contains required entries
+  - [ ] CRUD routes → `crud_service`
+  - [ ] PDP routes → `pdp_service` with `preserve_path: true`
+- [ ] Browser credentials included
+  - [ ] fetch: `credentials: 'include'`
+  - [ ] axios: `{ withCredentials: true }`
+  - [ ] SSE cross-origin dev: `{ withCredentials: true }`
+- [ ] Dev vs Prod base URL
+  - [ ] Dev: `VITE_BFF_BASE_URL` points at BFF origin; CORS allows UI
+  - [ ] Prod: `VITE_BFF_BASE_URL` = `/api`
 
 

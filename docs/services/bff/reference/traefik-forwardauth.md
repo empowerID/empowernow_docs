@@ -121,6 +121,11 @@ Behavior
 - Where ForwardAuth is enabled (e.g., PDP and dashboard), Traefik calls `/auth/forward`; BFF validates session and returns 200 with headers (including `Authorization`) or 401.
 - For SPA same-origin `/api/**` routes, ForwardAuth is intentionally disabled and BFF performs auth, returning CORS-enabled 401 JSON when unauthenticated.
 
+SPA PDP calls (AuthZEN) via preserved paths
+
+- On SPA hosts, PDP calls use preserved paths (`/access/v1/evaluation(s)`) and still route to the BFF (ForwardAuth disabled on SPA hosts). The BFF proxies to `pdp_service` with `preserve_path: true` per `routes.yaml`.
+- The `pdp-protected` router with ForwardAuth is for direct access to the PDP host (e.g., non-SPA clients), not for SPA same-origin calls.
+
 Where it’s configured (source of truth)
 
 - `CRUDService/traefik/dynamic.yml`: defines `middlewares.bff-forwardauth.forwardAuth.address` and sets `authResponseHeaders`/`authRequestHeaders`. Routers like `pdp-protected` and `traefik-dashboard` attach this middleware.
