@@ -10,6 +10,10 @@ sidebar_label: Session → service token bridging
 - **Session-to-service token bridging in the BFF**.
 - The BFF validates the SPA’s session cookie, then proxies the request to a backend `target_service` using a service‑scoped access token (audience‑bound to that service). It maps tokens per service name and attaches the correct `Authorization` header on the upstream hop.
 
+What this is not
+
+- The service token is not the user’s identity. The user identity comes from `id_token.sub` stored in the BFF session. Service tokens often have `sub = client_id` (e.g., `bff-server`), which is expected.
+
 ## Why it’s needed
 
 - **Backends require OAuth access tokens** and will not accept your browser cookie (e.g., Analytics, CRUD, PDP).

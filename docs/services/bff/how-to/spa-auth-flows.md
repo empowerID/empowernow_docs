@@ -2,6 +2,11 @@
 title: SPA Auth Flows with the BFF
 ---
 
+Right mental model
+
+- The SPA delegates OAuth/OIDC to the BFF. The BFF extracts identity from `id_token.sub` and creates a session; the SPA only uses the session cookie.
+- Backend service tokens used by the BFF (client-credential or token-exchange) are never exposed to the browser and are not the user identity.
+
 Verified behavior in current SPAs
 
 - Auth provider: apps wrap `<App />` with `AuthProvider` from `@empowernow/bff-auth-react` and call `setBaseUrl(VITE_BFF_BASE_URL || '/api')`.

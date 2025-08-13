@@ -4,6 +4,12 @@ title: Backend-for-Frontend (BFF) + IdP OAuth – End‑to‑End Configuration a
 sidebar_label: BFF + IdP OAuth (E2E)
 ---
 
+Mental model refresher
+
+- End-user identity: comes from the OIDC ID token (or UserInfo) after the BFF exchanges the authorization code; the BFF stores `user_id = id_token.sub` in the session.
+- Backend tokens: obtained and held by the BFF for upstream calls (client-credential or token-exchange). Their `sub` is usually the OAuth client (e.g., `bff-server`) and is not the end-user.
+- No browser token exposure: only cookies are visible to the SPA.
+
 Use this as the single source for setup, onboarding, and troubleshooting. It explains how the BFF, IdP, and SPAs fit together for OAuth 2.0/OIDC with DCR, PKCE, PAR, JARM, DPoP, and how to safely switch token endpoint authentication methods.
 
 ## System overview

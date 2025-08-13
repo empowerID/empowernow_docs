@@ -3,6 +3,13 @@ title: Authentication Options and Flow
 sidebar_position: 2
 ---
 
+## The right mental model: BFF-auth with OAuth 2.1/OIDC
+
+- Identity source: the end-user’s identity comes from the OIDC ID token (or, when configured, the UserInfo endpoint). The `id_token.sub` represents the human subject and is what the BFF stores in the session as `user_id`.
+- Service tokens are not identity: tokens used by the BFF to call backend services (CRUD/PDP/etc.) can be client-credential or token-exchange tokens. Their `sub` is often the OAuth client (for example, `bff-server`). That is OK and expected—they are not the user identity.
+- No browser token exposure: these service tokens live only server-side in the BFF; the browser never sees them and must not interpret them.
+- Session flow: the browser authenticates at the IdP; the BFF receives the authorization code, exchanges it server-side, obtains an `id_token` (and optionally a user-bound access token), then creates a session cookie and stores `user_id = id_token.sub` (or `userinfo.sub`). When the SPA calls `/api/...`, the BFF uses its server-held service tokens to call backends.
+
 What we support (verified)
 
 - Browser SPAs use a secure session with a single HttpOnly cookie (`bff_session`).

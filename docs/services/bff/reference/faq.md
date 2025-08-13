@@ -2,6 +2,12 @@
 title: BFF FAQ (for SPA Developers)
 ---
 
+Q: Where does the user identity come from?
+A: From the OIDC ID token (or UserInfo). The BFF stores `user_id = id_token.sub` in the session.
+
+Q: Are backend service tokens the user identity?
+A: No. They’re held server-side by the BFF (often `sub = client_id` like `bff-server`) and must never be exposed to the browser.
+
 Q: Do I need to attach Authorization headers?
 A: No. The BFF uses httpOnly cookies. Use `apiClient`/`fetchWithAuth`; it sends credentials automatically.
 

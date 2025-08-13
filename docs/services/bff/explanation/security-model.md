@@ -2,6 +2,12 @@
 title: Security Model
 ---
 
+Identity and tokens
+
+- End-user identity is established from the OIDC ID token (or UserInfo) at login; the BFF stores `user_id = id_token.sub` in the session.
+- Backend service access tokens used by the BFF are not user identity and remain server-side. Their `sub` commonly equals the OAuth client (e.g., `bff-server`).
+- The browser never receives or interprets backend tokens.
+
 Trust boundaries
 
 - Edge (Traefik) ↔ BFF: session gating via ForwardAuth (`/auth/verify`)

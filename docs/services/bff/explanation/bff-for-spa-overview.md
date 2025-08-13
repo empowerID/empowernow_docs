@@ -3,6 +3,11 @@ title: BFF for React SPAs — How It Works
 sidebar_position: 2
 ---
 
+## The right mental model
+
+- The SPA never handles OAuth tokens. The BFF terminates OAuth/OIDC, derives the user identity from `id_token.sub`, creates a secure session cookie, and proxies `/api/...` requests using server-held service tokens.
+- Service tokens (client-credential or token-exchange) identify the BFF as a client to backends; they are not the user identity and are never exposed to the browser.
+
 Who this is for
 
 - React SPA developers new to the Backend‑for‑Frontend (BFF) model.
