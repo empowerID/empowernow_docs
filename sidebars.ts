@@ -22,6 +22,12 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'category',
+          label: 'Identity Fabric',
+          link: { type: 'doc', id: 'services/identity-fabric/index' },
+          items: [],
+        },
+        {
+          type: 'category',
           label: 'CRUD Service',
           link: { type: 'doc', id: 'services/crud-service/index' },
           items: [
