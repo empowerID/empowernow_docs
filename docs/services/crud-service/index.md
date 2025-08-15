@@ -17,4 +17,8 @@ The CRUD Service powers workflow execution and API operations for the platform. 
   - [Checkpointing](./explanation/checkpointing.md)
   - [Security considerations](./explanation/security.md)
 
+## How‑to guides
+
+- [Connect to on‑prem LDAP via Azure Relay Bridge](./how-to/connect-to-onprem-ldap-via-azrelay.md)
+
 
