@@ -4,6 +4,8 @@ title: Enable Dynamic Client Registration (DCR) for the BFF
 
 This guide documents the BFF’s built‑in Dynamic Client Registration support and how to enable it in environments. It is based on:
 
+See also IdP guide: `services/idp/how-to/mint-iat-and-dcr` for minting the Initial Access Token (IAT) and performing DCR.
+
 - IdP DCR guide: `IdP/docs/DCR_Guide.md`
 - Bootstrap helper: `ms_bff_spike/ms_bff/src/bootstrap/dcr_bootstrap.py`
 - Compose wiring: `CRUDService/docker-compose-authzen4.yml` (bff service env)
