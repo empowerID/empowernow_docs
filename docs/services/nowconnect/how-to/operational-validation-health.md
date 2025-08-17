@@ -188,4 +188,9 @@ PY"
 
 This gives you a reliable, self‑service “ping‑pong” and metrics‑based validation for NowConnect at any time.
 
+See also:
+
+- `services/nowconnect/explanation/metrics-and-reliability`
+- `services/crud-service/explanation/ldap-connector-idempotency`
+
 
