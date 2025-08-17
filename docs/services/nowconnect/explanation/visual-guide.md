@@ -6,24 +6,20 @@ This page gives a visual overview of how NowConnect works, from tunnel setup to 
 
 ```mermaid
 flowchart LR
-  subgraph Cloud
-    CH[Cloud Hub (FastAPI)]
-    L[(TCP listeners per connector)]
-    MET[(Prometheus metrics)]
-    PDP[(PDP optional)]
-    IDP[(IdP JWKS)]
-  end
+  CH[Cloud Hub]
+  L[Connector listeners]
+  MET[Prometheus metrics]
+  PDP[PDP optional]
+  IDP[IdP JWKS]
+  AG[Premise Agent]
+  TGT[On-prem targets]
+  CLI[Client]
 
-  subgraph Premise
-    AG[Premise Agent]
-    TGT[(On-prem targets: LDAP/DB/SSH)]
-  end
-
-  CLI[Client] -->|TCP ports| L
+  CLI -->|TCP ports| L
   L --> CH
-  AG -- wss:// /tunnel --> CH
+  AG -- wss tunnel --> CH
   CH -->|JWT verify| IDP
-  CH -->|optional authorize| PDP
+  CH -->|authorize?| PDP
   CH --> MET
   AG -->|TCP| TGT
 ```
