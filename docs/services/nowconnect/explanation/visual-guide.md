@@ -6,24 +6,23 @@ This page gives a visual overview of how NowConnect works, from tunnel setup to 
 
 ```mermaid
 flowchart LR
-  subgraph Cloud[Cloud]
+  subgraph Cloud
     CH[Cloud Hub (FastAPI)]
-    L[(TCP Listeners per connector)]
-    MET[(Prometheus /metrics)]
-    PDP[(PDP — optional)]
-    IDP[(IdP — JWKS)]
+    L[(TCP listeners per connector)]
+    MET[(Prometheus metrics)]
+    PDP[(PDP optional)]
+    IDP[(IdP JWKS)]
   end
 
-  subgraph Premise[Premise]
+  subgraph Premise
     AG[Premise Agent]
-    TGT[(On‑prem targets: LDAP/DB/SSH...)]
+    TGT[(On-prem targets: LDAP/DB/SSH)]
   end
 
-  CLI[Client (LDAP/DB/SSH)] -->|TCP 389/636/22/...| L
+  CLI[Client] -->|TCP ports| L
   L --> CH
-
-  AG == wss:// /tunnel ==> CH
-  CH -->|JWT verify (JWKS)| IDP
+  AG -- wss:// /tunnel --> CH
+  CH -->|JWT verify| IDP
   CH -->|optional authorize| PDP
   CH --> MET
   AG -->|TCP| TGT
@@ -37,18 +36,14 @@ sequenceDiagram
   participant CH as Cloud Hub
   participant IDP as IdP (JWKS)
 
-  AG->>CH: WS upgrade (Authorization: Bearer <JWT>)
+  AG->>CH: WS upgrade (Authorization: Bearer JWT)
   CH-->>IDP: Fetch JWKS (cached)
   IDP-->>CH: JWKS keys
   CH->>CH: Validate JWT (aud, signature)
-  alt invalid token
-    CH-->>AG: 401 Unauthorized (upgrade rejected)
-  else valid
-    CH-->>AG: 101 Switching Protocols
-    AG->>CH: HELLO { agent_id, connectors, ver }
-    CH->>CH: Reconcile agent_id with JWT claim
-    CH-->>AG: HELLO_ACK
-  end
+  CH-->>AG: 101 Switching Protocols
+  AG->>CH: HELLO {agent_id, connectors, ver}
+  CH->>CH: Reconcile agent_id with JWT claim
+  CH-->>AG: HELLO_ACK
 ```
 
 ### Handling a New TCP Connection (Multiplexed stream)
@@ -58,18 +53,19 @@ sequenceDiagram
   participant CLI as Client
   participant CH as Cloud Hub
   participant AG as Agent
-  participant TGT as Target (on‑prem)
+  participant TGT as Target (on-prem)
 
   CLI->>CH: TCP connect to listener (e.g., 389)
-  CH->>AG: OPEN { cid, connector }
+  CH->>AG: OPEN {cid, connector}
   AG->>TGT: TCP connect host:port (from connector map)
   alt connect ok
-    CH<->>AG: DATA {cid, seq, b64}
-    CH<->>CLI: bytes
-    opt Half‑close
+    CH->>AG: DATA {cid, seq}
+    AG->>CH: DATA {cid, seq}
+    CH->>CLI: bytes
+    opt Half-close
       CLI-->>CH: EOF
       CH->>AG: FIN {cid, dir=c2a}
-      AG-->>TGT: write EOF (if supported)
+      AG-->>TGT: write EOF
     end
     opt Target EOF
       TGT-->>AG: EOF

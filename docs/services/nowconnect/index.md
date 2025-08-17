@@ -14,25 +14,20 @@ NowConnect is a secure TCP tunneling service that lets cloud apps reach specific
 
 ```mermaid
 flowchart LR
-  subgraph Cloud[Cloud]
-    CH[Cloud Hub (FastAPI)]
-    L[(TCP Listeners per connector)]
-    MET[(Prometheus /metrics)]
-    PDP[(PDP — optional)]
-    IDP[(IdP — JWKS)]
-  end
+  CH[Cloud Hub]
+  L[Connector listeners]
+  MET[Prometheus metrics]
+  PDP[PDP optional]
+  IDP[IdP JWKS]
+  AG[Premise Agent]
+  TGT[On-prem targets]
+  CLI[Client]
 
-  subgraph Premise[Premise]
-    AG[Premise Agent]
-    TGT[(On‑prem targets: LDAP/DB/SSH...)]
-  end
-
-  CLI[Client (LDAP/DB/SSH)] -->|TCP 389/636/22/...| L
+  CLI -->|TCP ports| L
   L --> CH
-
-  AG == wss:// /tunnel ==> CH
-  CH -->|JWT verify (JWKS)| IDP
-  CH -->|optional authorize| PDP
+  AG -- wss tunnel --> CH
+  CH -->|JWT verify| IDP
+  CH -->|authorize?| PDP
   CH --> MET
   AG -->|TCP| TGT
 ```
@@ -47,30 +42,31 @@ sequenceDiagram
   participant CLI as Client
   participant TGT as Target
 
-  AG->>CH: WS upgrade (Authorization: Bearer <JWT>)
+  AG->>CH: WS upgrade (Authorization: Bearer JWT)
   CH-->>IDP: Fetch JWKS (cached)
   IDP-->>CH: JWKS keys
   CH->>CH: Validate JWT (aud, signature)
   CH-->>AG: 101 Switching Protocols
-  AG->>CH: HELLO { agent_id, connectors, ver }
+  AG->>CH: HELLO {agent_id, connectors, ver}
   CH->>CH: Reconcile agent_id with JWT claim
   CH-->>AG: HELLO_ACK
 
   CLI->>CH: TCP connect to listener (e.g., 389)
-  CH->>AG: OPEN { cid, connector }
+  CH->>AG: OPEN {cid, connector}
   AG->>TGT: TCP connect host:port
-  CH<->>AG: DATA {cid, seq, b64}
-  AG<->>TGT: bytes
-  opt Half‑close
+  CH->>AG: DATA {cid, seq}
+  AG->>CH: DATA {cid, seq}
+  AG->>TGT: bytes
+  TGT->>AG: bytes
+  opt Half-close
     CLI-->>CH: EOF
     CH->>AG: FIN {cid, dir=c2a}
-    AG-->>TGT: write EOF
   end
   opt Target EOF
     TGT-->>AG: EOF
     AG->>CH: FIN {cid, dir=a2c}
   end
-  CH->>CH: Close when both FINs observed
+  CH->>CH: Close after both FINs
 ```
 
 ### Key docs
