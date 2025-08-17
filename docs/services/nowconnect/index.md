@@ -1,3 +1,13 @@
+---
+id: index
+title: NowConnect
+description: Tunneling for hybrid connectivity between cloud services and on‑premises systems.
+---
+
+NowConnect enables outbound‑only, agent‑mediated connectivity from on‑premises networks to cloud services, used here to access systems like LDAP without opening inbound firewall ports.
+
+See How‑to for operational validation and health guidance.
+
 ## NowConnect
 
 NowConnect is a secure TCP tunneling service that lets cloud apps reach specific on‑prem systems without opening inbound firewall ports. A lightweight agent on‑prem makes a single outbound WebSocket to the Cloud Hub; the hub exposes TCP listeners (e.g., 389/636/22/1433) and relays bytes over that tunnel. TLS for end‑protocols (LDAPS/HTTPS/TCPS) remains end‑to‑end.
