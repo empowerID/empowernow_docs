@@ -71,6 +71,9 @@ const config: Config = {
         srcDark: 'img/en-logo-dark.png',
       },
       items: [
+        { to: '/', label: 'Home', position: 'left' },
+        { to: '/solutions', label: 'Solutions', position: 'left' },
+        { to: '/pricing', label: 'Pricing', position: 'left' },
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
@@ -101,6 +104,14 @@ const config: Config = {
           title: 'Docs',
           items: [
             { label: 'Getting Started', to: '/docs/intro' },
+          ],
+        },
+        {
+          title: 'Marketing',
+          items: [
+            { label: 'Home', to: '/' },
+            { label: 'Solutions', to: '/solutions' },
+            { label: 'Pricing', to: '/pricing' },
           ],
         },
         {
