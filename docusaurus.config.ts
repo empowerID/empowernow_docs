@@ -15,14 +15,16 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://empowernow.github.io',
+  // GitHub Pages project site URL (will switch to custom domain if provided)
+  url: 'https://empowerid.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  // For project pages, baseUrl should be '/<projectName>/'
+  baseUrl: '/empowernow_docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'empowernow',
+  organizationName: 'empowerID',
   projectName: 'empowernow_docs',
 
   onBrokenLinks: 'warn',
