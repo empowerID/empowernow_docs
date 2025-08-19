@@ -127,8 +127,10 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Personas',
       items: [
+        'personas/faq',
         'personas/sales',
         'personas/admins',
+        'personas/security/intro',
         'personas/devops',
         'personas/frontend',
         'personas/backend',
