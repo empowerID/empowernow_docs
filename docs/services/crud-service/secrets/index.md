@@ -69,6 +69,7 @@ Key links
 - Auditing & logging: ./12-auditing-logging.md
 - Automation & workflows: ./13-automation-execute-workflows-agents.md
 - Rotation: ./14-rotation.md
+- DevOps guide (Docker/K8s/GitHub Actions): ./SECRETS_DEVOPS_GUIDE.md
 
 ---
 
