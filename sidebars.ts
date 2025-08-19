@@ -37,6 +37,7 @@ const sidebars: SidebarsConfig = {
               items: [
                 'services/crud-service/how-to/migration-guide-visual-designer',
                 'services/crud-service/how-to/bff-startup-dcr-iat',
+                'services/crud-service/how-to/enable-mtls',
               ],
             },
             {
