@@ -23,6 +23,9 @@ export default function Home(): ReactNode {
             <Link className="button button--secondary button--lg" to="/docs/services/bff/explanation/executive-overview">
               BFF Executive Overview
             </Link>
+            <Link className="button button--secondary button--lg" to="/docs/services/crud-service/explanation/secrets-executive-overview">
+              Secrets Executive Overview
+            </Link>
             <Link className="button button--secondary button--lg" to="/docs/services/bff/tutorials/spa-golden-path">
               SPA Golden Path
             </Link>
@@ -49,6 +52,7 @@ export default function Home(): ReactNode {
               <li><Link to="/docs/services/bff/reference/traefik-forwardauth">Traefik ForwardAuth</Link></li>
               <li><Link to="/docs/services/bff/how-to/qa-test-execution">QA Test Execution</Link></li>
               <li><Link to="/docs/services/bff/reference/qa-advanced">QA Appendix</Link></li>
+              <li><Link to="/docs/services/identity-fabric/index">Identity Fabric</Link></li>
             </ul>
           </article>
           <article className="ql-card">
@@ -57,6 +61,8 @@ export default function Home(): ReactNode {
               <li><Link to="/docs/services/bff/reference/fips-140-3">FIPS 140‑3</Link></li>
               <li><Link to="/docs/services/bff/reference/session-binding-csrf">Session & CSRF</Link></li>
               <li><Link to="/docs/services/bff/reference/frontend-errors">Frontend Errors</Link></li>
+              <li><Link to="/docs/services/crud-service/how-to/secrets-api-openbao">Secrets API & OpenBao</Link></li>
+              <li><Link to="/docs/services/crud-service/how-to/secrets-canonical-uris">Canonical Secret URIs</Link></li>
             </ul>
           </article>
         </section>

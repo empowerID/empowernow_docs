@@ -19,4 +19,35 @@ Explore how EmpowerNow solves identity, policy, CRUD/workflow, analytics, and ob
   <Link className="button button--primary" to="/docs/intro">Read the docs</Link>
 </div>
 
+## Secrets Platform
+
+Short‑lived, sender‑bound grants ("use, not read"), strict canonical URIs, OpenBao/Vault parity, and non‑leaky audits.
+
+<div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:'16px',alignItems:'start',marginTop:'8px'}}>
+  <div>
+    <p style={{marginTop:0}}>Central PEP in <code>VaultService</code> authorizes with PDP, fetches from configured providers, and returns redacted secret slots to callers.</p>
+    <div style={{marginTop:'12px'}}>
+      <Link className="button button--secondary" to="/docs/services/crud-service/explanation/secrets-executive-overview">Secrets Executive Overview</Link>
+      <span style={{display:'inline-block', width:'8px'}}></span>
+      <Link className="button button--outline" to="/docs/services/crud-service/how-to/secrets-api-openbao">OpenBao/Vault Integration</Link>
+      <span style={{display:'inline-block', width:'8px'}}></span>
+      <Link className="button button--outline" to="/docs/services/crud-service/how-to/secrets-canonical-uris">Canonical URIs</Link>
+    </div>
+  </div>
+  <div>
+```mermaid
+%%{init: {'theme':'base','themeVariables':{'lineColor':'#9ccfff','textColor':'#e6f1ff'}}}%%
+flowchart LR
+  Client["Client"] --> CRUD["CRUDService"]
+  CRUD --> PEP["VaultService (PEP)"]
+  PEP --> PDP["SecretPolicyService"]
+  PEP --> PROV{"Providers"}
+  PROV --> OB["OpenBao KVv2"]
+  PROV --> HV["HashiCorp KVv2"]
+  PROV --> YAML["YAML (dev)"]
+  PEP --> AUD["Kafka Audits"]
+```
+  </div>
+</div>
+
 

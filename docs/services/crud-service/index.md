@@ -21,4 +21,13 @@ The CRUD Service powers workflow execution and API operations for the platform. 
 
 - [Connect to on‑prem LDAP via Azure Relay Bridge](./how-to/connect-to-onprem-ldap-via-azrelay.md)
 
+## Secrets enforcement (PEP/PDP)
+
+- Executive overview: ./explanation/secrets-executive-overview.md
+- Canonical URIs and guards: ./how-to/secrets-canonical-uris.md
+- Audits and metrics: ./how-to/audits-and-metrics.md
+- YAML Vault Provider (dev‑only): ./how-to/yaml-vault-provider.md
+- Secrets API hardening & OpenBao provider: ./how-to/secrets-api-openbao.md
+- Secrets usage guide (URIs, providers, API): ./how-to/secrets-usage-guide.md
+
 

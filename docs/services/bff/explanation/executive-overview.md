@@ -44,24 +44,25 @@ The BFF is a safe, simple front door for our web apps: SPAs talk to one origin, 
 ## At a glance (visual)
 
 ```mermaid
+%%{init: {'theme':'base','themeVariables':{'lineColor':'#9ccfff','textColor':'#e6f1ff'}}}%%
 flowchart LR
-  subgraph Client
-    SPA[Browser / SPA]
+  subgraph Client["Client"]
+    SPA["Browser / SPA"]
   end
-  subgraph Edge[Traefik]
+  subgraph Edge["Traefik"]
     TR["Routers + security headers<br/>(ForwardAuth optional)"]
   end
-  subgraph BFF
+  subgraph BFF["BFF"]
     AUTH["/auth/* (login, callback, verify/forward, csrf, logout)"]
     API["/api/** (proxy, composition)"]
   end
-  subgraph Control
-    IDP[IdP (OIDC)]
-    PDP[PDP (AuthZ)]
-    REDIS[(Redis: sessions + PDP cache)]
+  subgraph Control["Control"]
+    IDP["IdP (OIDC)"]
+    PDP["PDP (AuthZ)"]
+    REDIS["Redis: sessions + PDP cache"]
   end
-  subgraph Backends
-    SVC[Backend Services & EmpowerID]
+  subgraph Backends["Backends"]
+    SVC["Backend Services & EmpowerID"]
   end
   SPA --> TR --> AUTH
   TR --> API

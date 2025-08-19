@@ -81,6 +81,11 @@ const config: Config = {
           label: 'Docs',
         },
         {
+          to: '/docs/services/crud-service/explanation/secrets-executive-overview',
+          label: 'Secrets Overview',
+          position: 'left',
+        },
+        {
           to: '/docs/services/bff/explanation/executive-overview',
           label: 'BFF Overview',
           position: 'left',

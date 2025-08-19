@@ -13,6 +13,13 @@ What to read next:
 - Observe decisions and health: `/docs/services/pdp/how-to/observability`
 - Runbooks (403s, degraded, error spikes): `/docs/services/pdp/how-to/runbooks`
 
+Secrets enforcement (PEP inside CRUDService):
+
+- Executive overview: `/docs/services/crud-service/explanation/secrets-executive-overview`
+- Canonical URIs and guards: `/docs/services/crud-service/how-to/secrets-canonical-uris`
+- Audits and metrics: `/docs/services/crud-service/how-to/audits-and-metrics`
+- YAML Vault Provider (dev‑only): `/docs/services/crud-service/how-to/yaml-vault-provider`
+
 Related BFF topics:
 
 - Map API routes to PDP resources/actions (pdp.yaml): `/docs/services/bff/reference/pdp-mapping`
