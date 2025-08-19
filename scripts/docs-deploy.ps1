@@ -2,7 +2,9 @@ Param(
     [Parameter(Mandatory=$true)]
     [ValidateSet('commit','build','publish','setup-actions')]
     [string]$Action,
-    [string]$Message = "docs: update"
+    [string]$Message = "docs: update",
+    [string]$Remote = "github",
+    [switch]$PushMain
 )
 
 function Invoke-Commit {
@@ -18,7 +20,16 @@ function Invoke-Build {
 
 function Invoke-Publish {
     if (-not (Test-Path "build")) { Invoke-Build }
-    npx --yes gh-pages -d build -b gh-pages -f
+    $repoUrl = ""
+    try { $repoUrl = git remote get-url $Remote } catch {}
+    if (-not $repoUrl) {
+        Write-Error "Could not resolve remote '$Remote'. Use -Remote to specify (e.g., 'github' or 'origin')."
+        exit 1
+    }
+    if ($PushMain) {
+        git push $Remote main
+    }
+    npx --yes gh-pages -d build -b gh-pages -f -r $repoUrl
 }
 
 function Invoke-SetupActions {
