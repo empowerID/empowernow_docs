@@ -67,6 +67,7 @@ Key links
 - API reference: ../reference/secrets-api.md
 - Authorization model (PDP): ./11-authorization-model-authzen.md
 - Auditing & logging: ./12-auditing-logging.md
+- Automation & workflows: ./13-automation-execute-workflows-agents.md
 
 ---
 
