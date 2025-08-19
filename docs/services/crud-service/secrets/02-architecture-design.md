@@ -30,16 +30,16 @@ sequenceDiagram
 Trust boundaries
 
 ```mermaid
-graph LR
-  subgraph App Boundary
-    A[Caller]
-    V[VaultService]
+flowchart LR
+  subgraph "App Boundary"
+    A["Caller"]
+    V["VaultService"]
   end
-  A -->|DPoP/mTLS (preferred)| V
-  V -->|least‑privilege scopes| P[SecretPolicyService]
-  V -->|provider creds| S[(Providers)]
-  S --> OB[OpenBao]
-  S --> HV[HashiCorp]
+  A -- "DPoP/mTLS (preferred)" --> V
+  V -- "least-privilege scopes" --> P["SecretPolicyService"]
+  V -- "provider creds" --> S[(Providers)]
+  S --> OB["OpenBao"]
+  S --> HV["HashiCorp"]
   classDef ctrl fill:#eef,stroke:#99f,stroke-width:1px;
   class V,P ctrl;
 ```
