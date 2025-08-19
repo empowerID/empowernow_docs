@@ -106,11 +106,11 @@ Lifecycle at a glance
 
 ```mermaid
 flowchart LR
-  C[Create/Rotate] --> U[Use with grant]
-  U --> A[Audit + Metrics]
-  U --> V[Versioned retention]
-  V --> UD[Undelete]
-  V --> D[Destroy versions (approved)]
+  C["Create/Rotate"] --> U["Use with grant"]
+  U --> A["Audit + Metrics"]
+  U --> V["Versioned retention"]
+  V --> UD["Undelete"]
+  V --> D["Destroy versions - approved"]
 ```
 
 
