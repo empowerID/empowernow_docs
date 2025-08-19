@@ -104,6 +104,7 @@ Passing subject/tenant/context:
 - Canonical URIs and policy model: `./03-canonical-uris-and-policy.md`
 - Security model details: `./05-security-model.md`
 - API reference and scopes/purposes: `../reference/secrets-api.md`
+- PDP enrichment details (exact fields sent to PDP): `./SECRETS_PDP_ENRICHMENT.md`
 
 ---
 

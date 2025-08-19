@@ -114,4 +114,8 @@ Notes:
 - YAML provider writes/deletes are blocked when `ENVIRONMENT` is not dev/test.
  - On first KVv2 write/rotate, the API/plugin best‑effort stamps custom metadata: `created_by` (immutable), `created_at` (ISO UTC), and `owner` (mutable; defaults to subject when available). Providers expose `custom_metadata` via metadata detail.
 
+See also:
+
+- PDP enrichment (subject/resource/purpose/context fields): `./SECRETS_PDP_ENRICHMENT.md`
+
 
