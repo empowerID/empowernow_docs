@@ -26,7 +26,7 @@ flowchart LR
 ## What it isn’t
 
 - Not a full PAM suite (no mature session brokering/recording, endpoint privilege elevation, broad JIT for human admins)
-- Not a general “citizen automation” tool (fewer prebuilt connectors; we secure secrets for automations rather than being the automation marketplace)
+- Secrets is a built‑in capability of the CRUD Service. CRUD provides a full workflow/orchestration engine (graph workflows, `/execute`, plugins, connectors). We compete with n8n/Make/Zapier on workflow automation; our differentiator is policy‑first execution with PDP/PEP‑enforced secrets and enterprise observability.
 
 ## Where we’re strong
 
@@ -47,11 +47,12 @@ flowchart LR
 - Positioning: complement for programmatic/API/workflow secrets; not displacing their session control
 - Lose‑fast flags: RFP mandates session recording, endpoint elevation, or PAM consolidation
 
-### Workflow tools (n8n, Make, Zapier)
+### Workflow automation platforms (n8n, Make, Zapier)
 
-- Strengths: connectors, low‑code UX, speed to automate
-- Limits (for secrets): connector‑scoped creds, uneven policy enforcement per use, limited lifecycle/versioning and centralized audit
-- Positioning: we provide the enterprise secrets backbone; they focus on orchestration UX
+- Strengths: massive connector catalogs and marketplaces, citizen low‑code builders, templates, very fast time‑to‑first‑flow
+- How EmpowerNow (CRUD Service) competes: full workflow/orchestration engine (graph YAML, `/execute`, plugin functions), first‑class secrets with PDP/PEP on each use, canonical URIs across providers, KVv2 lifecycle (rotate/undelete/destroy), uniform Kafka audits → Analytics, strong observability and governance
+- Where they may still fit better: if the primary requirement is 500+ prebuilt connectors and a marketplace‑style citizen‑developer UX, their breadth is hard to match
+- Positioning: lead with governance and security at execution time, provider‑agnostic secrets, and enterprise ops (audits, traces, metrics); we can also front their automations as the secure secrets backbone when needed
 
 ### Cloud/dev secrets (AWS/GCP/Azure managers, Vault, Doppler, Bitwarden SM)
 
@@ -66,7 +67,7 @@ flowchart LR
 | Session brokering/endpoint elevation | ❌ | ✅ | ❌ | ❌ |
 | Versioned lifecycle (soft/undelete/destroy) | ✅ (KVv2) | ⚠️ | ⚠️ | ✅ (per provider) |
 | Uniform auditing for programmatic use | ✅ (Kafka→Analytics) | ✅ (session events) | ⚠️ (per connector) | ⚠️ (per cloud) |
-| Workflow/API integration | ✅ (/execute, bulk, search, versions) | ⚠️ | ✅ | ⚠️ |
+| Workflow/API integration | ✅ (graph workflows, `/execute`, plugins) | ⚠️ | ✅ | ⚠️ |
 
 ## Discovery checklist (qualify and tailor)
 
