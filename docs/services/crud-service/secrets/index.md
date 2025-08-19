@@ -70,6 +70,7 @@ Key links
 - Automation & workflows: ./13-automation-execute-workflows-agents.md
 - Rotation: ./14-rotation.md
 - DevOps guide (Docker/K8s/GitHub Actions): ./SECRETS_DEVOPS_GUIDE.md
+- OpenBao HA (production): ./SECRETS_HA_OPENBAO.md
 
 ---
 
