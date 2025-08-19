@@ -1,19 +1,65 @@
 ---
-title: "CRUD Service API mTLS (Design and Guide)"
-description: "Inbound mutual TLS at the edge with sender-binding enforcement and certificate identity mapping for CRUD Service APIs."
+id: mtls
+title: "mTLS (Design & Guide)"
+description: "Production-grade inbound mTLS for CRUD Service: design, configuration, and end-to-end flow with optional PoP (sender-binding)."
 sidebar_label: "mTLS (Design & Guide)"
 keywords:
   - mTLS
   - PoP
   - sender-binding
+  - TLS
   - Traefik
   - Nginx
-  - certificate auth
   - CRUD Service
-  - EmpowerNow
 ---
 
-# mTLS Implementation Guide
+## Quick links
+
+- How‑to: Enable mTLS → [Enable mTLS for CRUD Service APIs](../how-to/enable-mtls.md)
+- Jump to: [Flow: mode and PoP enforcement](#flow-mode-and-pop-enforcement)
+
+### Mode selection (quick visual)
+
+```mermaid
+flowchart LR
+  S[Start] --> MODE{INBOUND_AUTH_MODE}
+  MODE -->|bearer| B[Accept JWT only]
+  MODE -->|mtls| M[Cert only → map to canonical ARN]
+  MODE -->|bearer_plus_mtls_optional| O[Use JWT; attach cert thumbprint if present]
+  MODE -->|bearer_plus_mtls_required| R[Require JWT + Cert]
+  R --> POP{JWT.cnf.x5t == cert x5t?}
+  POP -->|yes| OK[Proceed]
+  POP -->|no| E[401 sender_binding_mismatch]
+```
+
+## At a glance
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant Client
+  participant Proxy as Traefik/Nginx
+  participant App as CRUD Service
+  participant MW as ClientCert Middleware
+  participant AuthN as AuthN Service
+
+  Client->>Proxy: TLS handshake (present client cert)
+  Proxy->>Proxy: Verify cert (CA/OCSP/CRL)
+  Proxy->>App: HTTP + forwarded cert header (PEM)
+  App->>MW: Parse PEM → x5t#S256, SANs, DNs
+  MW-->>App: request.state.mtls_thumbprint + metadata
+  App->>AuthN: authenticate_request(mode)
+  alt PoP required
+    AuthN->>AuthN: Check JWT.cnf.x5t == cert x5t
+    AuthN-->>App: allow/401 sender_binding_mismatch
+  else PoP optional/mtls-only
+    AuthN-->>App: allow
+  end
+```
+
+---
+
+## mTLS Implementation Guide
 
 This guide explains what we built, how it works end-to-end, how to configure it (Docker/Kubernetes), and how to use and verify it.
 
