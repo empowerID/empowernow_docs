@@ -68,6 +68,7 @@ Key links
 - Authorization model (PDP): ./11-authorization-model-authzen.md
 - Auditing & logging: ./12-auditing-logging.md
 - Automation & workflows: ./13-automation-execute-workflows-agents.md
+- Rotation: ./14-rotation.md
 
 ---
 
