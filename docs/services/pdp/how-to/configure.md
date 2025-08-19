@@ -15,3 +15,4 @@ description: How to deploy/configure PDP and connect it to BFF and services.
   - `/docs/services/pdp/how-to/observability`
 
 
+

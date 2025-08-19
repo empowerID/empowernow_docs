@@ -27,17 +27,51 @@ description: Endpoints, auth/scopes, provider behaviors, auditing, and compose e
   - OpenBao/HashiCorp KVv2: requires engine `kv2`; resolves provider via strategies; writes map, or `{fragment: value}` if `#fragment` present.
 - GET `/api/secrets?uri=...`
   - YAML only (dev tooling): returns map or fragment value; non‑YAML returns 501 (use VaultService for reads).
+- GET `/api/secrets/value?uri=...[&version=N]`
+  - Provider‑backed read through `VaultService` (PEP). Supports KVv2 version pin query.
 - DELETE `/api/secrets?uri=...&destroy=[true|false]`
   - YAML (dev/test only): removes fragment or node.
   - OpenBao/HashiCorp KVv2: soft delete or hard destroy via provider.
 - POST `/api/secrets/rotate`
   - YAML: update semantics.
   - KVv2: uses `RotationController` to upsert new value (payload as `{fragment: value}` or full map).
-- GET `/api/secrets/metadata` and `/api/secrets/keys`
+- GET `/api/secrets/metadata?prefix=...` and `/api/secrets/keys?uri=...`
   - YAML only (dev tooling) for metadata listing and key enumeration.
+- GET `/api/secrets/metadata/detail?uri=...`
+  - KVv2 provider metadata (versions and custom metadata) for a given path.
+- GET `/api/secrets/versions?uri=...`
+  - KVv2 versions listing for a given path.
+- GET `/api/secrets/search?q=...&prefix=...`
+  - YAML search by path/fragment. KVv2 shallow traversal when provider supports `list_keys`.
+- POST `/api/secrets/undelete`
+  - KVv2 undelete specific versions.
+- POST `/api/secrets/destroy-versions`
+  - KVv2 hard‑destroy specific versions (irreversible).
+- POST `/api/secrets/bulk`
+  - Batch set|delete|destroy|undelete|rotate operations with per‑op PDP/scope enforcement.
+- POST `/api/secrets/copy` and `/api/secrets/move`
+  - Copy/move secrets between URIs. PDP: read on source, write on destination. `overwrite` guard.
+- GET `/api/secrets/events` (SSE)
+  - Server‑sent events stream for local dev tooling (reads/updates/deletes).
+- GET `/api/secrets/audit`
+  - In‑memory audit buffer (local/dev); filterable and paginated.
 
 ## Auditing
-- Kafka events on read/update/delete (includes `resource_ref` HMAC when `TENANT_SALT` is set). Provider strategies emit provider‑specific audit events (e.g., KVv2 delete/destroy).
+- Kafka events on read/update/delete (includes `resource_ref` HMAC when `TENANT_SALT` is set). Provider strategies emit provider‑specific audit events (e.g., KVv2 delete/destroy). Local dev also exposes SSE `/events` and an in‑memory `/audit` buffer.
+
+## Endpoint → scopes and PDP purposes
+- POST `/api/secrets` → scope `secrets.write` (optional) | PDP purpose `write`
+- GET `/api/secrets` (YAML only) → scope `secrets.read` (optional)
+- GET `/api/secrets/value` → scope `secrets.read` (optional) | PDP via `VaultService`
+- DELETE `/api/secrets` → scopes `secrets.delete` or `secrets.destroy` | PDP purpose `delete`
+- POST `/api/secrets/rotate` → scope `secrets.rotate` | PDP purpose `rotate`
+- GET `/api/secrets/metadata`, `/keys` → scope `secrets.read_metadata` | PDP purpose `read_metadata`
+- GET `/api/secrets/metadata/detail`, `/versions` → scope `secrets.read_metadata` | PDP purpose `read_metadata`
+- POST `/api/secrets/undelete` → scope `secrets.delete` | PDP purpose `undelete`
+- POST `/api/secrets/destroy-versions` → scope `secrets.destroy` | PDP purpose `destroy_versions`
+- POST `/api/secrets/bulk` → per‑op scopes and PDP purposes as above
+- POST `/api/secrets/copy` → scopes `secrets.read` + `secrets.write` | PDP read on source, write on destination
+- POST `/api/secrets/move` → same as copy, then delete source (soft)
 
 ## How Vault providers integrate
 - YAML provider (dev‑only):
@@ -80,10 +114,47 @@ Read YAML
 GET /api/secrets?uri=yaml://secret/crud#CREDENTIAL_ENCRYPTION_KEY
 ```
 
+Read KVv2 via PEP
+```bash
+GET /api/secrets/value?uri=openbao+kv2://secret/app/test#value&version=2
+```
+
 Delete KVv2
 ```bash
 DELETE /api/secrets?uri=openbao+kv2://secret/app/test#value
 # destroy=true for hard delete
+```
+
+Undelete versions (KVv2)
+```bash
+POST /api/secrets/undelete
+{ "uri": "openbao+kv2://secret/app/test", "versions": [3,4] }
+```
+
+Destroy versions (KVv2)
+```bash
+POST /api/secrets/destroy-versions
+{ "uri": "openbao+kv2://secret/app/test", "versions": [1,2] }
+```
+
+Bulk operations
+```bash
+POST /api/secrets/bulk
+{ "operations": [
+  { "op": "set", "uri": "yaml://secret/env#NEW", "value": "abc" },
+  { "op": "delete", "uri": "openbao+kv2://secret/app/test#value" }
+]}
+```
+
+Copy
+```bash
+POST /api/secrets/copy
+{ "fromUri": "yaml://secret/env#FROM", "toUri": "yaml://secret/env#TO", "overwrite": false }
+```
+
+Search
+```bash
+GET /api/secrets/search?q=token&prefix=yaml://secret/env/
 ```
 
 Notes

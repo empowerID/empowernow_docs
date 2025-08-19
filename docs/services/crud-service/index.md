@@ -29,5 +29,6 @@ The CRUD Service powers workflow execution and API operations for the platform. 
 - YAML Vault Provider (dev‑only): ./how-to/yaml-vault-provider.md
 - Secrets API hardening & OpenBao provider: ./how-to/secrets-api-openbao.md
 - Secrets usage guide (URIs, providers, API): ./how-to/secrets-usage-guide.md
+- API reference: ./reference/secrets-api.md
 
 
