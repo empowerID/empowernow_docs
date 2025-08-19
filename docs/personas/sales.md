@@ -3,6 +3,18 @@ id: sales
 title: EmpowerNow Secrets — Sales Field Guide
 ---
 
+## Market primer (why this space exists)
+
+Organizations run apps, workflows, and services across clouds. Secrets (API keys, DB creds, tokens) sprawl and are hard to rotate and audit consistently. Classic PAM platforms focus on human admin sessions; workflow tools optimize orchestration UX; cloud/dev secrets services are provider‑centric. EmpowerNow focuses on secure, per‑use authorization for programmatic secrets across providers with uniform lifecycle and audits.
+
+```mermaid
+flowchart LR
+  Caller["App / Workflow / Agent"] --> PEP["VaultService (PEP)"]
+  PEP --> PDP["SecretPolicyService (PDP)"]
+  PEP --> Providers{{"Providers: OpenBao / HashiCorp / YAML"}}
+  PEP --> Aud["Kafka audits → Analytics → ClickHouse → UI"]
+```
+
 ## What it is
 
 - Policy‑enforced secrets platform for apps, workflows, and agents:
@@ -46,6 +58,16 @@ title: EmpowerNow Secrets — Sales Field Guide
 - Strengths: deep cloud integration or dev UX
 - Positioning: we add per‑use policy, tenant/mount guards, cross‑provider uniformity, versioned lifecycle, Kafka/Analytics pipeline; fit multi‑service workflows
 
+### Quick matrix
+
+| Capability | EmpowerNow | PAM suites | Workflow tools | Cloud/dev secrets |
+| --- | --- | --- | --- | --- |
+| Per‑use PDP authorization for secrets | ✅ | ⚠️ (focus on human sessions) | ⚠️ (varies per connector) | ⚠️ (policy per cloud) |
+| Session brokering/endpoint elevation | ❌ | ✅ | ❌ | ❌ |
+| Versioned lifecycle (soft/undelete/destroy) | ✅ (KVv2) | ⚠️ | ⚠️ | ✅ (per provider) |
+| Uniform auditing for programmatic use | ✅ (Kafka→Analytics) | ✅ (session events) | ⚠️ (per connector) | ⚠️ (per cloud) |
+| Workflow/API integration | ✅ (/execute, bulk, search, versions) | ⚠️ | ✅ | ⚠️ |
+
 ## Discovery checklist (qualify and tailor)
 
 - Workload mix: secrets used by apps/services/workflows (yes) vs. human admin sessions (PAM)
@@ -73,6 +95,11 @@ title: EmpowerNow Secrets — Sales Field Guide
 - Workflow platforms: per run/task/operation; connector packs
 - Position EmpowerNow by value drivers: number of managed secrets/URIs, API/workflow volume, providers integrated, audit/analytics needs; offer Tiered (Starter/Team/Enterprise) with clear caps/entitlements. Avoid competitor price quoting; tie ROI to risk reduction and developer velocity.
 
+Sizing cheat (talking points)
+
+- Drivers: count of Canonical URIs/secrets, monthly API calls to `/api/secrets/*` and SDK, number of providers, audit retention needs
+- Tiers: Starter (dev/YAML), Team (single provider, capped calls), Enterprise (multi‑provider, audit streams, SSO)
+
 ## Talk tracks
 
 - “Policy at the point of use” beats “can reach the vault”: subject + purpose + obligations each call
@@ -91,6 +118,24 @@ title: EmpowerNow Secrets — Sales Field Guide
 - Show PDP decision with permit/deny branches; rotate and version‑pin read; undelete/destroy
 - Display Kafka audit → Analytics table; click through an API/trace correlation
 - Workflow call to /api/secrets/value and a bulk maintenance sample
+
+## Persona → pains / wins / proof
+
+| Persona | Pains | Wins with EmpowerNow | Proof |
+| --- | --- | --- | --- |
+| CISO/Sec | Audit gaps; token sprawl; long‑lived creds | Per‑use PDP decisions; non‑leaky audits; rotation lifecycle | Kafka event → Analytics table with resource_ref |
+| Platform/DevOps | Cross‑provider drift; rotation ops | Canonical URIs; KVv2 lifecycle; bulk ops; HA OpenBao | Rotate + versions + undelete; OpenBao HA guide |
+| App Dev Lead | Env drift; complex auth to providers | Simple `/value` reads; version‑pin; same URIs across envs | Dev guide quick start; `/value?version=N` demo |
+| SecOps/Audit | Incident evidence trails | Correlated logs/traces/audits; HMAC ref | Trace + audit correlation click‑through |
+
+## CTAs and deep links
+
+- Executive overview: `../services/crud-service/secrets/01-executive-overview.md`
+- Authorization model: `../services/crud-service/secrets/11-authorization-model-authzen.md`
+- Rotation: `../services/crud-service/secrets/14-rotation.md`
+- Developer guide: `../services/crud-service/secrets/08-developer-guide.md`
+- DevOps guide: `../services/crud-service/secrets/SECRETS_DEVOPS_GUIDE.md`
+- OpenBao HA: `../services/crud-service/secrets/SECRETS_HA_OPENBAO.md`
 
 ## Land and expand
 
