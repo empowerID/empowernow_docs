@@ -47,6 +47,12 @@ Each endpoint uses Canonical Secret URIs (e.g., `openbao+kv2://secret/app/api#to
   - Scopes: `secrets.delete`, `secrets.destroy`
   - Body: `{ "uri": "<canonicalPathNoFragment>", "versions": [N,...] }`
 
+- Update owner metadata (KVv2) — POST `/api/secrets/metadata/owner`
+  - Purpose: `owner_update`
+  - Scope: `secrets.set_owner`
+  - Body: `{ "uri": "<canonicalPathNoFragment>", "owner": "<subjectOrGroup>" }`
+  - Preserves `created_by` and `created_at`; updates `owner`
+
 - Bulk operations — POST `/api/secrets/bulk`
   - Purpose: per operation (`set|delete|undelete|destroy|rotate`)
   - Scope: per operation (as above)
@@ -89,6 +95,7 @@ Endpoint auth is off by default for local development. In higher environments en
 Expected OAuth scopes (configure in your IdP):
 
 - `secrets.read`, `secrets.write`, `secrets.delete`, `secrets.destroy`, `secrets.rotate`, `secrets.read_metadata`
+- `secrets.set_owner` (for POST `/api/secrets/metadata/owner`)
 
 IdP/client configuration (example):
 
@@ -99,10 +106,12 @@ IdP/client configuration (example):
 PDP purposes (enforced by PEP/PDP):
 
 - `write`, `read`, `delete`, `rotate`, `read_metadata`, `undelete`, `destroy_versions`
+- `owner_update` (for POST `/api/secrets/metadata/owner`)
 
 Notes:
 
 - Provider‑backed reads invoked by application code use `VaultService.get_credentials(...)`; the PEP calls the PDP and enforces decisions and obligations.
 - YAML provider writes/deletes are blocked when `ENVIRONMENT` is not dev/test.
+ - On first KVv2 write/rotate, the API/plugin best‑effort stamps custom metadata: `created_by` (immutable), `created_at` (ISO UTC), and `owner` (mutable; defaults to subject when available). Providers expose `custom_metadata` via metadata detail.
 
 
