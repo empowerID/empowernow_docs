@@ -111,16 +111,16 @@ Passing subject/tenant/context:
 
 ```mermaid
 flowchart TD
-  A[Request with canonical URI] --> B{Tenant/mount guard}
-  B -- fail --> E1[400 Bad Request]
-  B -- ok --> C[Authorize with PDP (subject, tenant, resource, purpose)]
-  C --> D{Decision}
-  D -- Deny --> E2[403 Forbidden]
-  D -- Permit --> F[Enforce obligations (ttl, max_uses) & binding]
-  F --> G[Call provider]
-  G --> H[Return value/metadata]
-  H --> I[Emit audit + metrics]
-  I --> J[200 Response]
+  A["Request with canonical URI"] --> B{"Tenant/mount guard"}
+  B -- "fail" --> E1["400 Bad Request"]
+  B -- "ok" --> C["Authorize with PDP (subject, tenant, resource, purpose)"]
+  C --> D{"Decision"}
+  D -- "Deny" --> E2["403 Forbidden"]
+  D -- "Permit" --> F["Enforce obligations (ttl, max_uses) and binding"]
+  F --> G["Call provider"]
+  G --> H["Return value/metadata"]
+  H --> I["Emit audit + metrics"]
+  I --> J["200 Response"]
 ```
 
 ## Grant lifecycle (conceptual)
