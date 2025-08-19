@@ -32,12 +32,36 @@ Trust boundaries
 ```mermaid
 graph LR
   subgraph App Boundary
-    A[Caller] --> V[VaultService]
+    A[Caller]
+    V[VaultService]
   end
-  V --> P[SecretPolicyService]
-  V --> S[(Providers)]
+  A -->|DPoP/mTLS (preferred)| V
+  V -->|least‑privilege scopes| P[SecretPolicyService]
+  V -->|provider creds| S[(Providers)]
   S --> OB[OpenBao]
   S --> HV[HashiCorp]
+  classDef ctrl fill:#eef,stroke:#99f,stroke-width:1px;
+  class V,P ctrl;
 ```
+
+Data in transit/at rest
+
+- TLS between components; provider credentials stored securely
+- Audits emitted to Kafka; logs redacted; resource_ref HMAC masks URIs
+
+Failure modes
+
+- Policy deny → fail closed with 403
+- Provider down → 502 with retries/backoff; no cache of plaintext
+- Binding failure (DPoP/mTLS) → 401/403
+
+Scale and HA
+
+- VaultService stateless (horizontal scale); PDP caches decisions with TTL
+- Backpressure: queue limits on provider calls; circuit breaking recommended
+
+Configuration surface
+
+- Timeouts, retries, max concurrency documented in Admin how‑to; default sane limits
 
 

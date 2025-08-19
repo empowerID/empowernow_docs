@@ -52,7 +52,7 @@ export default function Home(): ReactNode {
               <li><Link to="/docs/services/bff/reference/traefik-forwardauth">Traefik ForwardAuth</Link></li>
               <li><Link to="/docs/services/bff/how-to/qa-test-execution">QA Test Execution</Link></li>
               <li><Link to="/docs/services/bff/reference/qa-advanced">QA Appendix</Link></li>
-              <li><Link to="/docs/services/identity-fabric/index">Identity Fabric</Link></li>
+              <li><Link to="/docs/services/identity-fabric/">Identity Fabric</Link></li>
             </ul>
           </article>
           <article className="ql-card">

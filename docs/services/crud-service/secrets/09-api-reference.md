@@ -15,4 +15,18 @@ Key endpoints
 
 Scopes (optional) and PDP purposes are listed per endpoint in the reference page.
 
+Compliance signals (CISO)
+
+- Audit fields: `subject`, `purpose`, `effect`, `resource_ref`, `decision_id`
+
+Operational limits (Admin)
+
+- Timeouts/retries per provider operation; 429/503 semantics on overload
+- Pagination defaults: listing/search limit 100 (configurable)
+- Concurrency caps documented in Admin how‑to
+
+QA edge cases to exercise
+
+- Undelete/destroy with empty versions, version pin reads, prefix search traversal
+
 

@@ -9,16 +9,31 @@ Setup
 - Enable PDP: `ENABLE_AUTHORIZATION=true` with policy backend
 - Set tenant guards: `TENANT_ID`, `TENANT_ALLOWED_MOUNTS`
 
-Rotate
+Procedures
 
-- Use `/api/secrets/rotate` or bulk `rotate` op; for KVv2 preferred via RotationController
+- Initial setup
+  1. Set provider env vars and create KVv2 mount/policy
+  2. Set TENANT_* and enable PDP/scopes
+  3. Deploy and verify health/metrics
+  4. Create sample secret and read via Canonical URI
+- Rotation playbook
+  1. Approve change (ticket) → execute `/api/secrets/rotate` or bulk `rotate`
+  2. Verify provider version increment, app reads new value, audits emitted
+  3. Rollback: rotate back to prior version
+- Backup/restore (KVv2)
+  - Use provider snapshots or export metadata; test restore to staging
+- Disaster recovery
+  - Promote standby provider; re-point VAULT_URL; verify policies and mounts
+- Access control setup
+  - Least-privilege policies per mount and app; rotate provider creds regularly
 
-Backup/restore
+Verification
 
-- KVv2 providers handle versions; YAML dev file can be backed up via config path
+- Health endpoints OK, metrics present, audit events seen in Kafka
+- Sample cURL reads/writes succeed and match policy
 
 Version lifecycle
 
-- Soft delete → undelete → destroy versions when needed; prefer non‑destructive operations
+- Soft delete → undelete; destroy versions only with approval and evidence capture
 
 
