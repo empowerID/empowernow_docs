@@ -226,3 +226,109 @@ export function useBatchAuthorization(requests) {
 - BFF → Configure PDP: ../bff/how-to/configure-pdp.md
 - BFF → PDP cache tuning: ../bff/how-to/pdp-cache-tuning.md
 - BFF → Security model: ../bff/explanation/security-model.md
+
+## Appendix: Policy examples (illustrative)
+
+These examples show common policy patterns the PDP can implement using the attributes provided in Experience requests. They are illustrative and not tied to a specific policy language.
+
+### 1) Pages: readers can view by tag; owners can always view
+
+Intent:
+- Allow `pages:view` when the page `properties.tags` intersects the caller's `subject.tags` (e.g., department or project).
+- Always allow when the caller is the `owner`.
+
+Evaluation request shape (from Page Runner):
+
+```json
+{
+  "resource": {
+    "type": "pages",
+    "id": "123",
+    "properties": { "title": "HR Handbook", "name": "hr_handbook", "tags": ["hr", "internal"], "owner": "user:42" }
+  },
+  "action": { "name": "view" },
+  "context": { "ui": { "app": "experience", "module": "pages", "pageId": "123" } }
+}
+```
+
+Illustrative policy logic:
+
+```text
+permit if action == "view" and resource.type == "pages" and (
+  subject.id == resource.properties.owner or
+  intersect(subject.tags, resource.properties.tags).size > 0
+)
+```
+
+### 2) Page widgets: restrict actions to approvers
+
+Intent:
+- Allow `page.widget:view` for action widgets only if the caller has role `approver` for the page's domain.
+
+Evaluation request (from PreviewMode):
+
+```json
+{
+  "resource": {
+    "type": "page.widget",
+    "id": "123:action:approve_user",
+    "properties": { "widgetType": "action", "actionId": "approve_user", "label": "Approve" }
+  },
+  "action": { "name": "view" },
+  "context": { "ui": { "app": "experience", "module": "pages", "pageId": "123", "widgetId": "action:approve_user" } }
+}
+```
+
+Illustrative policy logic:
+
+```text
+permit if action == "view" and resource.type == "page.widget" and
+  resource.properties.widgetType == "action" and
+  "approver" in subject.roles
+```
+
+### 3) Plugins: per‑plugin route and widget gates
+
+Intent:
+- Only allow `plugin.route:view` and `plugin.widget:view` for plugins assigned to the tenant and enabled for the user.
+
+Batch evaluation example (from Dashboard for widgets):
+
+```json
+{
+  "evaluations": [
+    {
+      "key": "hello:HelloWidget",
+      "resource": { "type": "plugin.widget", "id": "hello:HelloWidget" },
+      "action": { "name": "view" },
+      "context": { "ui": { "app": "experience", "module": "dashboard" } }
+    }
+  ]
+}
+```
+
+Illustrative policy logic:
+
+```text
+permit if resource.type startsWith "plugin." and
+  resource.id in tenant.assigned_plugins and
+  (subject.id in plugin.allowed_users or any(subject.groups in plugin.allowed_groups))
+```
+
+### 4) Workflows (coarse nav)
+
+Intent:
+- Show Workflows nav and pages to users with a coarse `workflows:view_all` right.
+
+Evaluation request (from nav guard):
+
+```json
+{ "resource": { "type": "workflows" }, "action": { "name": "view_all" } }
+```
+
+Illustrative policy logic:
+
+```text
+permit if action == "view_all" and resource.type == "workflows" and
+  ("workflow.viewer" in subject.roles or "workflow.admin" in subject.roles)
+```
