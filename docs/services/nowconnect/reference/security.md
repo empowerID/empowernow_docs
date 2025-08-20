@@ -14,3 +14,6 @@
 - `NOWCONNECT_FAPI_MODE`: 0 = off (default), 2 = enable DPoP verification when implemented
 - PDP checks on `OPEN(connector)` can be enabled via `NOWCONNECT_PDP_URL` and related settings
 
+### Northbound HTTP endpoints
+- Keep TLS for all admin endpoints (e.g., `/metrics`, `/readyz`, `/healthz`). If any are exposed beyond the cluster or trusted network, optionally enforce client mTLS at ingress for those routes.
+

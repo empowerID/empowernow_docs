@@ -60,6 +60,19 @@ const config: Config = {
   },
   themes: ['@docusaurus/theme-mermaid'],
 
+  plugins: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        indexDocs: true,
+        indexPages: true,
+        docsRouteBasePath: '/docs',
+        language: ['en'],
+      },
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/empowernow-logo.svg',
@@ -100,6 +113,7 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
+        { type: 'search', position: 'right' },
       ],
     },
     footer: {

@@ -133,10 +133,10 @@ import '@empowernow/ui/dist/index.css';
 - Avoid bespoke styling; extend via component tokens/props.
 
 See also:
-- [Design System (tokens, patterns, Monaco)](../../client_sdk/empowernow-packages/packages/empowernow-ui/docs/DESIGN_SYSTEM.md)
-- [Design System Compliance Checklist](../../client_sdk/empowernow-packages/packages/empowernow-ui/docs/DESIGN_SYSTEM_CHECKLIST.md)
-- [Vibe Coding Strategy](../../client_sdk/empowernow-packages/packages/empowernow-ui/docs/vibe-coding-strategy.md)
-- [UI Quick Start](../../client_sdk/empowernow-packages/packages/empowernow-ui/docs/QUICK_START.md)
+- [Design System (tokens, patterns, Monaco)](https://github.com/empowernow/client_sdk/blob/main/empowernow-packages/packages/empowernow-ui/docs/DESIGN_SYSTEM.md)
+- [Design System Compliance Checklist](https://github.com/empowernow/client_sdk/blob/main/empowernow-packages/packages/empowernow-ui/docs/DESIGN_SYSTEM_CHECKLIST.md)
+- [Vibe Coding Strategy](https://github.com/empowernow/client_sdk/blob/main/empowernow-packages/packages/empowernow-ui/docs/vibe-coding-strategy.md)
+- [UI Quick Start](https://github.com/empowernow/client_sdk/blob/main/empowernow-packages/packages/empowernow-ui/docs/QUICK_START.md)
 
 ### Critical UI Pattern: Tile Grid (Do/Don't)
 Use the standardized tile grid and glass card patterns. Do NOT use Ant Design List for card grids.
@@ -227,8 +227,8 @@ Multi‑stage builds
 - Configure VITE_* envs; validate `/api/auth/session` flow early.
 
 Helpful references:
-- [UI Quick Start](../../client_sdk/empowernow-packages/packages/empowernow-ui/docs/QUICK_START.md)
-- [Vibe Coding Strategy](../../client_sdk/empowernow-packages/packages/empowernow-ui/docs/vibe-coding-strategy.md)
+- [UI Quick Start](https://github.com/empowernow/client_sdk/blob/main/empowernow-packages/packages/empowernow-ui/docs/QUICK_START.md)
+- [Vibe Coding Strategy](https://github.com/empowernow/client_sdk/blob/main/empowernow-packages/packages/empowernow-ui/docs/vibe-coding-strategy.md)
 
 ### EmpowerNow Experience App (End‑User Interface)
 The Experience app is the end‑user portal for the EmpowerNow Identity Fabric Suite. It must support customers running any subset of services (IdP, PDP, Workflow, CRUD, etc.). The UI enables or disables modules dynamically and calls all backends strictly through the BFF.

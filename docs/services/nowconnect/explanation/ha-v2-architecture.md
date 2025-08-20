@@ -331,6 +331,28 @@ Alerts (Prometheus rules examples)
 - Rotate certificates per policy; restart the hub processes or containers to pick up new files (hot reload is not supported)
 - JWT for agent tunnels issued by your IdP or configured signing service; rotate per your security policy; short token TTL recommended
 
+Additional guidance:
+
+- Ensure hub certificates include Subject Alternative Names (SANs) that match the hostnames used in `ha.mesh.peers`. Modern TLS clients ignore CN; SANs are required.
+- Add expiry monitoring and alerts for hub client/server certs:
+  - Option A (network): Prometheus blackbox_exporter probing the `/mesh` HTTPS endpoint with client certs; alert when `(probe_ssl_earliest_cert_expiry - time()) < 30*24*3600`.
+  - Option B (file): x509 exporter scraping cert files on disk; alert on days-to-expiry threshold.
+- Add TLS error/reconnect alerts to catch cert or trust issues:
+
+```yaml
+- alert: NowConnectMeshCertExpirySoon
+  expr: (probe_ssl_earliest_cert_expiry - time()) < 30*24*3600
+  for: 10m
+  labels: { severity: warning }
+  annotations: { summary: "Mesh cert expires within 30 days" }
+
+- alert: NowConnectMeshTLSIssues
+  expr: rate(nowconnect_mesh_link_errors_total[5m]) > 0 or rate(nowconnect_mesh_link_reconnects_total[5m]) > 3
+  for: 10m
+  labels: { severity: warning }
+  annotations: { summary: "Mesh TLS errors or frequent reconnects" }
+```
+
 ## Validation and evidence
 
 - Runner: `CRUDService/tools/perf_nowconnect_ldap.py`

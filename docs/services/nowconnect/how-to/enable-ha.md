@@ -35,6 +35,66 @@ ha:
 
 Set `NC_CONFIG=/app/config/cloud.yaml` for the container.
 
+### Ingress mTLS for `/mesh`
+
+When `ha.mesh.require_mtls: true`, enforce client mTLS at the edge for the `/mesh` route so only verified hubs can connect. The app expects TLS-terminated traffic at ingress.
+
+Traefik (Docker, using a dynamic TLS options file):
+
+```yaml
+# nowconnect-cloud service labels (add alongside existing /tunnel labels)
+labels:
+  - "traefik.http.routers.nowconnect-mesh.rule=Host(`cloud-a.example.com`) && Path(`/mesh`)"
+  - "traefik.http.routers.nowconnect-mesh.entrypoints=websecure"
+  - "traefik.http.routers.nowconnect-mesh.tls=true"
+  - "traefik.http.routers.nowconnect-mesh.tls.options=mtls@file"
+  - "traefik.http.services.nowconnect-mesh.loadbalancer.server.port=8765"
+```
+
+Traefik dynamic options (mounted into the Traefik container):
+
+```yaml
+# traefik_dynamic.yml
+tls:
+  options:
+    mtls:
+      clientAuth:
+        clientAuthType: RequireAndVerifyClientCert
+        caFiles:
+          - /etc/traefik/mesh/mesh_ca.pem
+```
+
+Nginx (reverse proxy in front of the Cloud Hub):
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name cloud-a.example.com;
+
+    ssl_certificate     /etc/nginx/tls/fullchain.pem;
+    ssl_certificate_key /etc/nginx/tls/privkey.pem;
+
+    # Require and verify client certs for /mesh only
+    location = /mesh {
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+
+        ssl_verify_client on;
+        ssl_client_certificate /etc/nginx/mesh/mesh_ca.pem;
+
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+        proxy_pass http://nowconnect-cloud:8765/mesh;
+    }
+}
+```
+
+Notes:
+- The peer hub’s client certificate must chain to `mesh_ca.pem` and include a SAN matching the peer hostname in `ha.mesh.peers`.
+- Keep `/tunnel` as TLS (no client cert). Authentication is via JWT on WebSocket upgrade.
+
 ## Validate
 
 - `/readyz` returns `ready` in shadow; `degraded` in active if mesh/registry unhealthy

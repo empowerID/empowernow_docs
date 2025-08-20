@@ -27,6 +27,7 @@ This page summarizes authentication, authorization, secrets, logging, transport 
 - Tunnel: `wss://` from premise to cloud (TLS). Corporate proxies supported with `NC_TRUST_ENV=true` on the agent; system proxy envs are honored.
 - CA bundle: agent can trust corporate CA via `NC_CA_BUNDLE` SSL context.
 - Protocol payloads: raw TCP; application TLS (e.g., LDAPS/HTTPS) remains end‑to‑end.
+- Agent↔Cloud mTLS: optional and off by default; baseline is TLS (WSS) + JWT. If required, enforce client mTLS at ingress; the app continues to validate JWT.
 
 ### Health and Observability
 - Agent: TCP health on `NC_HEALTH_HOST:NC_HEALTH_PORT` responds `OK` pre‑ACK, `READY` after `HELLO_ACK`.
