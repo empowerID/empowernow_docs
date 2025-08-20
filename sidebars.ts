@@ -154,6 +154,7 @@ const sidebars: SidebarsConfig = {
         'marketing/index',
         'marketing/positioning',
         'marketing/identity-fabric-standards',
+        'marketing/experience-app',
         'marketing/go-to-market',
         'marketing/packaging-pricing',
         'marketing/personas',
