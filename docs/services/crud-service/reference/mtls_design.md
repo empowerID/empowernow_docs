@@ -808,3 +808,8 @@ curl -sS https://crud.local/workflow/start \
 - Blocking a compromised cert quickly
   - Prefer the dedicated blocklist: set `CERT_THUMBPRINT_BLOCKLIST=/app/config/blocked_thumbs.txt` and list x5t#S256 values (one per line). The middleware returns `401 certificate_blocklisted` for matches.
   - You can also remove entries from `thumbprint_map` or tighten `allowed_issuers`/`allowed_email_domains`.
+
+Related
+
+- Reference → mTLS (Design & Guide)
+- BFF → Upstream TLS/mTLS to CRUD: ../../bff/how-to/enable-upstream-tls-to-crud.md

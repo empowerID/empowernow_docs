@@ -90,5 +90,6 @@ See also
 
 - How‑to → Configure IdPs, Configure PDP, OpenTelemetry, Secret Rotation
 - Reference → Settings Reference, Observability (Metrics, Tracing, Health)
+- How‑to → Upstream TLS/mTLS to CRUD: ../how-to/enable-upstream-tls-to-crud.md
 
 
