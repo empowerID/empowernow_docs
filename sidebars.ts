@@ -188,6 +188,13 @@ const sidebars: SidebarsConfig = {
         'marketing/naming-service',
       ],
     },
+    {
+      type: 'category',
+      label: 'Enablement',
+      items: [
+        'enablement/product-review-study-guide',
+      ],
+    },
   ],
 
   // But you can create a sidebar manually
