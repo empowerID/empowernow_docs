@@ -57,3 +57,5 @@ Competitive position:
 
 Proof points (source): see `experience/docs/empowernow_react_app.md` and `experience/docs/experience_plugins.md`.
 
+Canonical plugin reference for architecture and operations: `../../services/experience/experience_plugins`
+

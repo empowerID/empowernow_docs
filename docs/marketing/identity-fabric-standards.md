@@ -283,4 +283,6 @@ flowchart TB
   NCC --- AnySys
 ```
 
+See also: Canonical plugin reference `../services/experience/experience_plugins`
+
 

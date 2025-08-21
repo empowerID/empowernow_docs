@@ -5,6 +5,20 @@ sidebar_label: Plugins
 
 This page distills and formalizes the Experience plugin content into a production‑ready reference.
 
+## Background & context
+
+Most enterprise portals bolt on extensions with iframes or cross‑origin script tags. That breaks CSP, complicates zero‑trust headers, and circumvents centralized authorization. The Experience plugin system takes a stricter path:
+
+- Same‑origin, BFF‑proxied bundle import keeps CSP `script‑src 'self'`
+- BFF enforces per‑plugin method/path allow‑lists and SSE channels, stamping `X‑Plugin‑Id` for every request
+- The SPA pre‑gates routes/widgets with OpenID AuthZEN batch evaluations so unauthorized contributions never render
+
+Compared to market leaders:
+
+- SSO launchers (Okta/ForgeRock) expose tiles; they don’t ship a PDP‑aware extension model for actions and widgets
+- ITSM portals allow UI widgets but often rely on cross‑origin scripts; Experience maintains strict CSP and centralized policy
+- We emphasize observability (telemetry endpoint, OTEL) and governance (allow‑lists, rate limits), not just DX
+
 ## Goals
 
 - Secure, extensible end‑user pages/widgets integrated into Experience SPA
@@ -52,6 +66,38 @@ sequenceDiagram
 - Require `X‑Plugin‑Id`; attach tenant/context; rate‑limit per plugin
 - SSE: only declared channels; close unauthorized streams
 
+### Allow‑list templates (updated)
+
+- Rules are templated by method + path with optional param shapes; paths are normalized and compiled to regex
+- Examples:
+
+```yaml
+permissions:
+  api:
+    - method: GET
+      path: /api/plugins/secure-echo
+    - method: POST
+      path: /api/crud/tasks/{uuid}
+    - method: GET
+      path: /api/workflow/status/{id}
+  sse:
+    - /api/events/tasks/summary
+```
+
+- Violations return 403 with header `X-Allowlist-Violation: 1`
+
+### Quarantine (kill switch)
+
+- Immediate ops control to disable a plugin without redeploy
+- Endpoints:
+  - `POST /api/plugins/quarantine/{plugin_id}`
+  - `POST /api/plugins/unquarantine/{plugin_id}`
+- When quarantined, bundle and API/SSE calls are blocked with `X-Plugin-Quarantined: 1`
+
+### Response hygiene
+
+- `Vary: Cookie, X-Plugin-Id` on `/api/plugins/manifests` and `/api/plugins/bundle`
+
 ```mermaid
 flowchart TD
   A[Request from plugin] --> H[Has X-Plugin-Id?]
@@ -65,11 +111,13 @@ flowchart TD
 
 - CSP remains strict: only same‑origin scripts via BFF bundle proxy
 - Traefik SPA router excludes `/api/`, `/auth/`, `/events/`, `/configs/stream`, `/stream/`
+ - SSE prefixes are normalized; API routing is template‑aware for precise matching
 
 ## DX
 
 - Simple SDK; clear errors; telemetry hooks
 - Dev mode (optional): allow localhost plugin URLs only in development
+ - Import maps groundwork: peer deps (react, react-dom, @empowernow/ui) can be pinned and served same‑origin under `/vendor/*` (externals planned)
 
 ## Testing
 
@@ -81,6 +129,22 @@ flowchart TD
 - Performance caching in loader, telemetry example, health endpoints, migration helper, plugin harness checks
 
 See also: Experience React App — Overview & Spec, BFF routes and middleware.
+
+## Visual: end‑to‑end governance
+
+```mermaid
+flowchart TD
+  M[Manifest] --> L[Loader]
+  L --> B[Import via BFF bundle proxy]
+  B --> P[Plugin code]
+  P -->|X-Plugin-Id| API[API request]
+  API --> E[Allow-list check]
+  E -->|deny| F[403 + audit]
+  E -->|allow| U[Upstream service]
+  L --> G{PDP batch allow?}
+  G -->|no| H[Do not render]
+  G -->|yes| R[Render route/widget]
+```
 
 ## Reference snippets (ready to drop in)
 

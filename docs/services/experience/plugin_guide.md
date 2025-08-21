@@ -5,7 +5,11 @@ description: Author, configure, deploy, and verify an Experience plugin end-to-e
 ---
 
 ### Overview
-This is a copy‑paste‑ready guide to write, deploy, and test a plugin in the Experience app, covering config, BFF, SPA wiring, PDP gating, and E2E tests.
+This is a copy‑paste‑ready guide to write, deploy, and test a plugin in the Experience app, covering config, BFF, SPA wiring, PDP gating, and E2E tests. It assumes the reader understands why a CSP‑safe, same‑origin plugin model is needed:
+
+- Many vendor "extension" models require cross‑origin scripts or iframes which weaken CSP and make per‑plugin governance hard
+- UI‑only extensions often bypass centralized authorization; we pre‑gate via AuthZEN decisions before mounting
+- Experience enforces per‑plugin allow‑lists and rate limits in the BFF and stamps `X‑Plugin‑Id` for auditability
 
 ```mermaid
 flowchart LR
@@ -38,6 +42,7 @@ export default { routes, widgets };
 Notes:
 - The loader imports same-origin via `/api/plugins/bundle?entry={id}&id={id}` to preserve CSP `script-src 'self'`.
 - Bundle should not fetch external dependencies during import.
+- Keep code size small and avoid heavy peer deps; the host supplies `window.React`.
 
 ### 2) Declare the plugin in ServiceConfigs
 Create/update `ServiceConfigs/BFF/config/plugins.yaml`:
@@ -88,6 +93,11 @@ Touch points:
 
 No changes needed for new plugins; BFF reads from `plugins.yaml`.
 
+Security notes:
+
+- Per‑plugin allow‑lists cover API and SSE routes; violations return 403 and are logged
+- Optional integrity hash (`sha256`) ensures tamper‑evident bundles in production
+
 ### 4) SPA integration (already wired)
 Touch points:
 - `experience/frontend/src/plugins/loader.ts`
@@ -96,6 +106,7 @@ Touch points:
 - `experience/frontend/src/plugins/DynamicRoutes.tsx`
   - Discovers manifests → batch PDP pre-gates via `/access/v1/evaluations` → mounts allowed routes.
   - Wraps plugin routes in `PluginErrorBoundary`.
+  - Denied routes are not mounted; widgets hidden
 
 - `experience/frontend/src/pages/Dashboard.tsx`
   - Loads plugin widgets → batch PDP pre-gates → renders allowed widgets.
@@ -128,6 +139,11 @@ BFF environment:
   - Serve from BFF filesystem or dynamically from a registry but always via `/api/plugins/bundle`.
 - Update `plugins.yaml`, then call:
   - `POST /api/plugins/refresh` to reload at runtime.
+
+Operational guidance:
+
+- Monitor plugin errors via telemetry endpoint; set per‑plugin rate limits conservatively at first
+- Keep a runbook entry for quickly disabling a plugin by id in `plugins.yaml`
 
 ### 7) Verify
 - GET `https://experience.ocg.labs.empowernow.ai/api/plugins/manifests` returns the `hello` manifest (requires correct Host).

@@ -130,6 +130,22 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
+        {
+          type: 'category',
+          label: 'Experience',
+          link: { type: 'doc', id: 'services/experience/index' },
+          items: [
+            'services/experience/experience_plugins',
+            'services/experience/quickstart',
+            'services/experience/plugins-storage-deployment',
+            'services/experience/plugin_guide',
+            'services/experience/ops-runbook',
+            'services/experience/security-reference',
+            'services/experience/api-reference',
+            'services/experience/versioning-compatibility',
+            'services/experience/authorization-authzen',
+          ],
+        },
       ],
     },
     {
