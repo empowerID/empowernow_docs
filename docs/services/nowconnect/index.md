@@ -88,8 +88,19 @@ sequenceDiagram
 - Reference: Security model: [reference/security](reference/security.md)
 - Reference: IdP support and auth: [reference/idp-and-auth](reference/idp-and-auth.md)
 - Reference: Security overview: [reference/security-overview](reference/security-overview.md)
+- Reference: Compliance mapping: [reference/compliance-mapping](reference/compliance-mapping.md)
+- Reference: Logging & retention: [reference/logging-and-retention](reference/logging-and-retention.md)
+- Reference: PKI guidance: [reference/pki-guidance](reference/pki-guidance.md)
+- Reference: Ports & protocols: [reference/ports-and-protocols](reference/ports-and-protocols.md)
 - Explanation: Architecture & design: [explanation/architecture](explanation/architecture.md)
 - Explanation: Visual guide: [explanation/visual-guide](explanation/visual-guide.md)
 - How-to: Connect common protocols: [how-to/connect-common-protocols](how-to/connect-common-protocols.md)
 - How-to: LDAPS with multiple backends: [how-to/ldaps-multi-backend](how-to/ldaps-multi-backend.md)
+
+### Role-based guide
+
+- CISO: Start with [Security overview](reference/security-overview.md), [Compliance mapping](reference/compliance-mapping.md), and [Logging & retention](reference/logging-and-retention.md).
+- IT Security Architect: See [PKI guidance](reference/pki-guidance.md), [Ports & protocols](reference/ports-and-protocols.md), and [IdP support](reference/idp-and-auth.md).
+- DevOps/SRE: See [Cloud Hub deploy](how-to/cloud-hub-deploy.md), [Enable HA](how-to/enable-ha.md), and [Metrics](reference/metrics.md). For k8s and rollout, see Kubernetes and upgrade guides.
+- QA/Testing: See [HA architecture](explanation/ha-v2-architecture.md) test section and upcoming testing guide.
 

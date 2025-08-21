@@ -77,4 +77,5 @@ services:
 - Validate WS upgrade with JWT (audience `nowconnect`); reconcile `HELLO` claims.
 - Enforce optional CIDR allowlists on TCP listeners.
 - Export Prometheus metrics at `/metrics`; instrument dashboards and alerts.
+- See also: [Ports and Protocols](../reference/ports-and-protocols.md).
 

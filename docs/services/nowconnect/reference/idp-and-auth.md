@@ -35,9 +35,25 @@
   - On `HELLO`, agent registers its `connectors`; Cloud does not enforce per-connector authorization against token claims or PDP.
 - How to add (recommended pattern):
   - Enforce connector scopes in the JWT (behind `NOWCONNECT_REQUIRE_CONNECTOR_SCOPES`) and reconcile in `nowconnect_cloud/hub.py` on `HELLO`.
-  - On each `OPEN(connector)`, call your Authzen PDP to authorize subject (from JWT) to `connect` to `connector`. Deny fast on policy failure.
+  - On each `OPEN(connector)`, call your PDP to authorize `subject=agent_id`, `action=connect`, `resource={type:"connector", id:<name>}`. Deny fast on policy failure.
   - Cache allow decisions briefly to limit PDP load.
-- If you want this now, wire an optional PDP check behind an env flag and document the claim schema.
+
+#### PDP request/response schema (example)
+
+```json
+{
+  "subject": { "agent_id": "agent-foo-01" },
+  "action": "connect",
+  "resource": { "type": "connector", "id": "ldap" },
+  "context": { "replica_id": "hub-a", "aud": "nowconnect" }
+}
+```
+
+```json
+{ "allow": true, "ttl_sec": 5 }
+```
+
+Failure/timeout behavior (recommended): default deny on explicit deny; default deny on PDP timeout unless `pdp.fail_open=true` is explicitly set for non-critical environments.
 
 ### Summary answers
 - **IdP**: Yes, any OIDC/OAuth2 IdP with JWKS and JWTs; configure via `NOWCONNECT_JWKS_URL`/`NOWCONNECT_AUDIENCE` or YAML security settings.
