@@ -11,6 +11,43 @@ Quick links:
 
 > Canonical reference for the plugin architecture: `./experience_plugins`
 
+## Executive overview
+
+- 30‑second pitch: A unified, policy‑aware end‑user portal that turns the Identity Fabric into a live product surface — zero tokens in the browser, strict CSP, and instant governance of tenant‑specific features via plugins.
+- Business impact: faster delivery (days, not quarters), zero‑downtime customization per tenant, safer upgrades (quarantine/semver guard), centralized auditability and lower TCO.
+- What’s distinct: same‑origin ESM plugins, PDP pre‑gating and BFF enforcement, not iframes or cross‑origin scripts.
+
+How it works at a glance:
+
+```mermaid
+flowchart LR
+  UI[Experience SPA] -->|cookie| BFF[BFF]
+  BFF --> PDP[PDP]
+  BFF --> SVC[Fabric Services]
+  BFF --> IDP[IdP]
+```
+
+What to see in a demo:
+
+- Tasks/approvals and workflow launch with live updates (SSE)
+- PDP‑gated nav/routes/widgets and row‑level actions
+- Plugin enable/disable per tenant; instant quarantine rollback
+- Observability (events/metrics) and security headers baseline
+
+Key links:
+
+- Executive overview: `./executive-overview`
+- Canonical plugin reference: `./experience_plugins`
+- Quickstart: `./quickstart`
+- Security reference: `./security-reference`
+- Ops runbook: `./ops-runbook`
+## What’s new
+
+- Template‑based allow‑lists (method + path with param shapes); violations return `X-Allowlist-Violation: 1`
+- Plugin quarantine endpoints; blocked responses include `X-Plugin-Quarantined: 1`
+- Optional bundle integrity (`bundle.integrity: sha256:<hex>`); mismatch `X-Integrity-Error: 1`
+- Import‑maps groundwork to externalize React/ReactDOM/@empowernow/ui peers
+- CI: CycloneDX SBOM (`npm run sbom`) for the Experience SPA
 
 ## What is it?
 

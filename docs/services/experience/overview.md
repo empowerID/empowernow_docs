@@ -14,10 +14,10 @@ This page consolidates the EmpowerNow React App specifications for the Experienc
 
 ```mermaid
 flowchart LR
-  UI[Experience SPA] -->|/api/** cookie| BFF[BFF]
-  UI -->|/auth/*| BFF
-  BFF -->|/access/v1/*| PDP[PDP]
-  BFF -->|Bearer (server)| SVC[Services]
+  UI[Experience SPA] -->|/api (cookie)| BFF[BFF]
+  UI -->|/auth| BFF
+  BFF -->|/access/v1| PDP[PDP]
+  BFF -->|Bearer server| SVC[Services]
   BFF -->|/oidc| IDP[IdP]
 ```
 

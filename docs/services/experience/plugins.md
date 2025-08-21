@@ -1,9 +1,9 @@
 ---
-title: Experience Plugin System
-sidebar_label: Plugins
+title: Experience Plugin System (Primer)
+sidebar_label: Plugins (Primer)
 ---
 
-This page distills and formalizes the Experience plugin content into a production‑ready reference.
+This is a concise primer. For the full canonical architecture and operations, see `./experience_plugins`. Development steps are in `./quickstart` and the full ops/security/API/versioning references are linked from the Experience index.
 
 ## Background & context
 
@@ -59,6 +59,10 @@ sequenceDiagram
 - SDK (per plugin)
   - `api.fetch`, `api.useQuery`, `sse.subscribe`, `authz.evaluate`, `logger`, `telemetry`
   - Stamps `X-Plugin-Id` on every request
+
+> Subject normalization: When showing PDP examples, use the canonical subject
+> `{ "type": "account", "id": "auth:account:{provider}:{user_id}" }`. Older
+> `{ "type": "user" }` forms are deprecated in the SPA.
 
 ## BFF enforcement (required)
 
@@ -128,7 +132,7 @@ flowchart TD
 
 - Performance caching in loader, telemetry example, health endpoints, migration helper, plugin harness checks
 
-See also: Experience React App — Overview & Spec, BFF routes and middleware.
+See also: Canonical reference `./experience_plugins`, Quickstart `./quickstart`, React App Overview `./overview`, BFF routes & middleware `../bff/devops/experience_routing`.
 
 ## Visual: end‑to‑end governance
 
@@ -274,7 +278,7 @@ export function createPluginSdk(pluginId: string, qc: QueryClient) {
 ```mermaid
 flowchart TD
   M[Manifest loaded] --> R[Routes/widgets resolved]
-  R --> G{Authorized? (PDP)}
+  R --> G{Authorized via PDP}
   G -->|no| H[Hide route/widget]
   G -->|yes| S[Show in SPA]
   S --> C[Calls carry X-Plugin-Id]
