@@ -14,6 +14,9 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
+  // Avoid GitHub Pages redirect quirks and SEO issues
+  trailingSlash: false,
+
   // Set the production url of your site here
   // GitHub Pages project site URL (will switch to custom domain if provided)
   url: 'https://empowerid.github.io',
