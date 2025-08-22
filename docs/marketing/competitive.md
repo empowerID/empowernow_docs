@@ -83,6 +83,45 @@ Automation (Zapier/Make/n8n):
 - Where we win:
   - Identity Fabric that unifies IdP+BFF+PDP+Automation/Inventory with built‑in eventing/analytics and UI runtime
 
+## Automation competitors (no‑code/low‑code workflows)
+
+### Zapier (SaaS app automations)
+
+- What they say/do: Popular no‑code automation between SaaS apps with very broad integration catalog and simple linear “Zaps”. Source: [massivegrid comparison](https://www.massivegrid.com/blog/n8n-vs-zapier-vs-make-which-workflow-automation-platform-is-right-for-you/).
+- Strengths:
+  - Extremely easy to start; very large app marketplace and templates
+  - Great for non‑technical teams to automate across SaaS tools quickly
+- Risks/constraints vs our Fabric:
+  - Cloud‑only execution; secrets and data processed by vendor; limited policy/approvals context
+  - Task‑metered pricing can spike at scale; limited deep on‑prem reach
+- Where we win:
+  - PDP‑gated nodes with DPoP and CAEP audit, hybrid connectivity (Azure Relay), and zero‑token SPA control surface
+  - First‑class observability (OTEL/Prometheus/Loki/Jaeger) and governance hooks
+
+### Make (formerly Integromat; visual automation)
+
+- What they say/do: Visual drag‑and‑drop builder with advanced branching and transformations, wide app catalog. Source: [massivegrid comparison](https://www.massivegrid.com/blog/n8n-vs-zapier-vs-make-which-workflow-automation-platform-is-right-for-you/).
+- Strengths:
+  - Powerful visual scenarios with richer logic than basic zaps
+  - Good coverage of SaaS integrations
+- Risks/constraints vs our Fabric:
+  - Primarily vendor‑hosted; enterprise policy/approvals and audit depth vary by app
+  - On‑prem and private connectivity require additional components
+- Where we win:
+  - Standardized AuthZEN enforcement per node, end‑to‑end events/metrics, and on‑prem connectors as a first‑class runtime
+
+### n8n (open‑source, self‑hostable)
+
+- What they say/do: OSS automation with self‑hosting and high customizability; also offers a hosted cloud. Sources: [n8n blog](https://blog.n8n.io/free-zapier-alternatives/), [agixtech overview](https://agixtech.com/custom-ai-workflows-zapier-make-n8n/).
+- Strengths:
+  - Self‑hosting for data control; custom nodes; developer‑friendly
+  - Flexible for complex, non‑linear workflows
+- Risks/constraints vs our Fabric:
+  - No native AuthZEN PDP gate, DPoP, or CAEP out of the box; security posture depends on assembly
+  - Requires teams to curate observability, approvals, and governance patterns
+- Where we win:
+  - Opinionated enterprise guardrails (policy‑gated nodes, CAEP, OTEL) and unified BFF/Studios surface for safe execution at scale
+
 ---
 
 Notes
