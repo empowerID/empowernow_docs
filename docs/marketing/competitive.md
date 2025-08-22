@@ -160,6 +160,29 @@ Automation (Zapier/Make/n8n):
 
 ---
 
+## Identity Fabric vs traditional IGA (SailPoint, Saviynt)
+
+- Analyst view: Identity Fabrics integrate IGA, Access Management, PAM, and more into a cohesive, standards‑driven, API‑first layer that spans cloud/on‑prem, supports all identity types, and emphasizes orchestration and adaptability. Source: [KuppingerCole Identity Fabrics](https://www.kuppingercole.com/research/lc80893/identity-fabrics).
+
+- What traditional IGA excels at (SailPoint, Saviynt):
+  - Lifecycle governance, certifications, SoD, and access reviews at enterprise scale
+  - Mature connectors and compliance reporting for auditors
+  - Saviynt’s cloud delivery modernizes deployment for IGA use cases
+  - Sources: [SailPoint overview](https://www.sailpoint.com/), [Saviynt overview](https://saviynt.com/)
+
+- Where traditional IGA struggles vs an Identity Fabric:
+  - Assembly & complexity: silos and heavy customization to stitch governance with runtime policy enforcement and modern app patterns. Sources: [Common Clarity](https://www.common-clarity.org/blog/the-proven-vs-the-emerging/)
+  - Real‑time and runtime: slower feedback loops; limited real‑time CAEP‑style eventing and PDP decisions at the application edge
+  - Hybrid execution: deeper on‑prem connectivity and low‑latency runtime policy often require additional platforms
+  - Cloud posture: even with “cloud IGA,” broader fabric needs (BFF, PDP/AuthZEN, observability, automation) are outside core IGA scope
+
+- Our Identity Fabric differentiation:
+  - Standards‑first PDP/AuthZEN at the BFF on every call, with zero‑token SPAs and Shared‑Signals/CAEP‑style events
+  - Built‑in Automation/Inventory guarded by policy, hybrid connectivity via Azure Relay patterns, and first‑class observability (OTEL/Prom/Graf/Loki/Jaeger)
+  - Composable with any IdP/IGA: treat SailPoint/Saviynt as governance sources of truth while the fabric enforces runtime policy and provides evidence (events/metrics/traces)
+
+---
+
 Notes
 
 - We should expect continued consolidation and convergence on OpenID AuthZEN semantics and discovery. Competitors in PDP will strengthen interop stories rapidly; our advantage is a provable end‑to‑end fabric with BFF‑mediated zero‑token SPAs, Studios, and CAEP/observability baked in.
