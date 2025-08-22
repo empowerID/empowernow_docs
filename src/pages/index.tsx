@@ -17,20 +17,20 @@ export default function Home(): ReactNode {
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className="home-cta">
-            <Link className="button button--primary button--lg" to="/docs/services/bff/explanation/overview">
-              Explore Docs
+            <Link className="button button--primary button--lg" to="/docs/marketing/index">
+              Marketing Overview
             </Link>
-            <Link className="button button--secondary button--lg" to="/docs/services/bff/explanation/executive-overview">
-              BFF Executive Overview
+            <Link className="button button--secondary button--lg" to="/docs/marketing/positioning">
+              Positioning & Narrative
             </Link>
-            <Link className="button button--secondary button--lg" to="/docs/services/crud-service/explanation/secrets-executive-overview">
-              Secrets Executive Overview
+            <Link className="button button--secondary button--lg" to="/docs/marketing/experience-app">
+              Experience App
             </Link>
-            <Link className="button button--secondary button--lg" to="/docs/services/bff/tutorials/spa-golden-path">
-              SPA Golden Path
+            <Link className="button button--secondary button--lg" to="/docs/marketing/packaging-pricing">
+              Packaging & Pricing
             </Link>
-            <Link className="button button--outline button--lg" to="/docs/services/bff/reference/amazing-faq">
-              FAQ
+            <Link className="button button--outline button--lg" to="/docs/marketing/go-to-market">
+              Go‑to‑Market
             </Link>
           </div>
         </div>
@@ -39,30 +39,28 @@ export default function Home(): ReactNode {
       <main className="home-main container">
         <section className="home-quicklinks">
           <article className="ql-card">
-            <h3>BFF</h3>
+            <h3>Marketing</h3>
             <ul>
-              <li><Link to="/docs/services/bff/explanation/overview">Overview</Link></li>
-              <li><Link to="/docs/services/bff/how-to/spa-with-bff">React SPA Integration</Link></li>
-              <li><Link to="/docs/services/bff/reference/fapi-support">FAPI & DPoP</Link></li>
+              <li><Link to="/docs/marketing/positioning">Positioning</Link></li>
+              <li><Link to="/docs/marketing/identity-fabric-standards">Standards</Link></li>
+              <li><Link to="/docs/marketing/competitive">Competitive</Link></li>
             </ul>
           </article>
           <article className="ql-card">
-            <h3>Operations</h3>
+            <h3>Studios</h3>
             <ul>
-              <li><Link to="/docs/services/bff/reference/traefik-forwardauth">Traefik ForwardAuth</Link></li>
-              <li><Link to="/docs/services/bff/how-to/qa-test-execution">QA Test Execution</Link></li>
-              <li><Link to="/docs/services/bff/reference/qa-advanced">QA Appendix</Link></li>
+              <li><Link to="/docs/marketing/studio-backend-mapping">Studios ↔ Backends</Link></li>
+              <li><Link to="/docs/marketing/experience-app">Experience App</Link></li>
               <li><Link to="/docs/services/identity-fabric/">Identity Fabric</Link></li>
             </ul>
           </article>
           <article className="ql-card">
-            <h3>Security</h3>
+            <h3>Pricing & GTM</h3>
             <ul>
-              <li><Link to="/docs/services/bff/reference/fips-140-3">FIPS 140‑3</Link></li>
-              <li><Link to="/docs/services/bff/reference/session-binding-csrf">Session & CSRF</Link></li>
-              <li><Link to="/docs/services/bff/reference/frontend-errors">Frontend Errors</Link></li>
-              <li><Link to="/docs/services/crud-service/how-to/secrets-api-openbao">Secrets API & OpenBao</Link></li>
-              <li><Link to="/docs/services/crud-service/how-to/secrets-canonical-uris">Canonical Secret URIs</Link></li>
+              <li><Link to="/docs/marketing/packaging-pricing">Packaging & Pricing</Link></li>
+              <li><Link to="/docs/marketing/go-to-market">Go‑to‑Market</Link></li>
+              <li><Link to="/docs/marketing/personas">Personas</Link></li>
+              <li><Link to="/docs/marketing/naming-service">Naming Service</Link></li>
             </ul>
           </article>
         </section>

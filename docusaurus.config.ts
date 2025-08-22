@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'EmpowerNow Docs',
-  tagline: 'Product, platform, and operations documentation for EmpowerNow',
+  tagline: 'Standards‑driven Identity Fabric for zero‑token SPAs, AuthZEN decisions, and policy‑guarded automation.',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
