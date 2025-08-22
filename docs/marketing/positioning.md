@@ -40,9 +40,9 @@ Primary messages by Studio:
 
 ```mermaid
 flowchart LR
-  A[Zero‑token SPAs (BFF)] --> B[AuthZEN PDP <20 ms]
-  B --> C[Policy‑guarded automation]
-  C --> D[Event‑native analytics]
+  A[Zero-token SPAs (BFF)] --> B[AuthZEN PDP &lt; 20 ms]
+  B --> C[Policy-guarded automation]
+  C --> D[Event-native analytics]
   D --> E[Hybrid connectivity]
   E --> A
 ```
