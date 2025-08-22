@@ -83,6 +83,42 @@ Automation (Zapier/Make/n8n):
 - Where we win:
   - Identity Fabric that unifies IdP+BFF+PDP+Automation/Inventory with built‑in eventing/analytics and UI runtime
 
+### Okta (Workforce/Customer Identity Cloud)
+
+- What they say/do: Cloud‑native IdP with SSO, Adaptive MFA, Lifecycle, API Access Management; very large integration network. Sources: [Frontegg guide](https://frontegg.com/guides/ping-identity-vs-okta), [TechRepublic](https://www.techrepublic.com/article/okta-vs-ping/).
+- Strengths:
+  - Mature SaaS IdP with extensive app integrations and adaptive authentication
+  - Strong admin UX and ecosystem; fast time‑to‑value for SaaS SSO/MFA
+- Risks/constraints vs our Fabric:
+  - No standardized OpenID AuthZEN decision API; app‑level authorization often baked into apps or via proprietary policy layers
+  - Limited zero‑token SPA story (browser tokens) without a BFF; CAEP/Shared‑Signals‑style eventing not first‑class across services
+- Where we win:
+  - Standards‑first PDP (AuthZEN) enforced at the BFF on every call, zero‑token SPAs, and event‑native analytics; composable with any IdP
+
+### Ping Identity (PingFederate/PingAuthorize)
+
+- What they say/do: Enterprise IdP with on‑prem/cloud flexibility; PingAuthorize provides fine‑grained policy (PDP); AI via PingIntelligence for anomaly detection. Sources: [Ping Identity (Wikipedia)](https://en.wikipedia.org/wiki/Ping_Identity), [TechRepublic](https://www.techrepublic.com/article/okta-vs-ping/), [Ping blog: Entra external auth methods](https://www.pingidentity.com/en/resources/blog/post/microsoft-entra-id-external-authentication-methods.html).
+- Strengths:
+  - Strong in hybrid and regulated environments; explicit PDP (PingAuthorize) and broad protocol support
+  - AI‑assisted threat detection (PingIntelligence)
+- Risks/constraints vs our Fabric:
+  - PDP is product‑specific; no explicit OpenID AuthZEN decision API standard surfaced end‑to‑end
+  - Not a full fabric with BFF session termination and runtime UI/plugin model
+- Where we win:
+  - AuthZEN decision API across the stack, BFF‑enforced policy at every hop, CAEP‑style events, and Studios for rapid, policy‑guarded delivery
+
+### Microsoft Entra ID (formerly Azure AD)
+
+- What they say/do: IdP with SSO, MFA, Conditional Access, PIM; deep Microsoft 365 integration. Sources: [PeerSpot comparison](https://www.peerspot.com/products/comparisons/microsoft-entra-id_vs_okta-workforce-identity_vs_ping-identity-platform), [SelectHub](https://www.selecthub.com/identity-access-management-software/entra-id-vs-ping-identity/).
+- Strengths:
+  - Ubiquitous enterprise footprint; Conditional Access and Identity Protection provide risk‑adaptive authN
+  - Tight integration with Microsoft ecosystem, good admin and compliance tooling
+- Risks/constraints vs our Fabric:
+  - Conditional Access is IdP‑tier policy; no standardized PDP for application/service decisions (AuthZEN) out of the box
+  - Requires customer assembly for CAEP‑style events across non‑Microsoft services and for BFF zero‑token SPA pattern
+- Where we win:
+  - Vendor‑agnostic fabric with standardized PDP/AuthZEN, BFF session termination, CAEP‑style events, and automation/inventory guarded by policy
+
 ## Automation competitors (no‑code/low‑code workflows)
 
 ### Zapier (SaaS app automations)
