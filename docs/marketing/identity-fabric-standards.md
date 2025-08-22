@@ -92,13 +92,13 @@ Related persona guide: ../personas/security/intro.md
 
 ```mermaid
 flowchart TB
-  A[User login] --> B[BFF exchanges code (PKCE/PAR/JARM)]
+  A[User login] --> B[BFF exchanges code (PKCE / PAR / JARM)]
   B --> C[Store session: user_id = id_token.sub]
   C --> D[SPA uses /api via cookie]
-  D --> E[BFF mints/uses per‑service tokens (audience‑bound)]
+  D --> E[BFF mints/uses per-service tokens (audience-bound)]
   E --> F[Background refresh before expiry]
-  F --> G[Rotation: switch token auth method / rotate keys]
-  G --> H[Revocation/logout ends session]
+  F --> G[Rotation: switch token auth method and rotate keys]
+  G --> H[Revocation or logout ends session]
 
   click B href "../services/bff/reference/bff-idp-oauth-e2e.md"
   click E href "../services/bff/how-to/session-to-service-token-bridging.md"
