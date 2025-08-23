@@ -18,4 +18,18 @@ ARIA Shield is a new service in the EmpowerNow Identity Fabric. This placeholder
 - Services overview: /docs/services/index
 - Marketing overview: /docs/marketing/index
 
+## Guides & specs
+
+- Patent portfolio: [ARIA Patent Portfolio – Attorney Brief](./________newdesign_patents)
+- PM overview (no‑code): [ARIA — Agent Risk & Identity Authorization](./________newdesign9_pm_guide1)
+- PM exec overview: [ARIA – Product Management Overview](./________newdesign9_pm_guide1b)
+- Seven controls (plain language): [ARIA’s Seven Controls](./________newdesign9_pm_guide2)
+- Deep dives:
+  - [Tool Schema Attestation](./________newdesign9_pm_guide4)
+  - [Privacy‑Preserving Capability Proofs](./________newdesign9_pm_guide5)
+  - [Behavioral DNA (BDNA) Monitoring](./________newdesign9_pm_guide6)
+  - [Receipt Chains (Immutable Audit)](./________newdesign9_pm_guide7)
+- Architecture & profile: [ARIA – Intro & Architecture](./________newdesign9)
+- Placeholder (TBD): [Guide 3](./________newdesign9_pm_guide3)
+
 
