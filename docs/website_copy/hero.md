@@ -24,3 +24,32 @@ Launch Free Studio
 Talk to an Expert
 
 
+## Why EmpowerNow
+
+- Zero‑token SPAs: No tokens in the browser. All policy at the edge through the BFF.
+- AuthZEN PDP: Standards‑based decisions at every call. Interoperable and explainable.
+- Secure automation: PDP‑gated no‑code with DPoP proofs and CAEP audit events.
+- Hybrid connectivity: NowConnect patterns for on‑prem without inbound ports.
+- Evidence‑first: OTEL/Prometheus/Loki/Jaeger + Kafka→ClickHouse analytics.
+
+See also:
+
+- Positioning & Narrative: /docs/marketing/positioning
+- Standards & Assurance: /docs/marketing/identity-fabric-standards
+- Experience App (portal): /docs/marketing/experience-app
+- Automation comparison: /docs/marketing/automation-vs-zapier-make-n8n
+
+## Proof & evidence
+
+- AuthZEN PDP centerpiece: /docs/marketing/authzen-pdp
+- Fabric + IGA (complement SailPoint/Saviynt): /docs/marketing/fabric-plus-iga
+- Competitive landscape: /docs/marketing/competitive
+
+## Quick links
+
+- Solutions: /docs/website_copy/solutions
+- Products: /docs/website_copy/products
+- Pricing: /docs/website_copy/pricing
+- Trust: /docs/website_copy/trust
+- Resources: /docs/website_copy/resources
+
