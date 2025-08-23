@@ -20,16 +20,16 @@ ARIA Shield is a new service in the EmpowerNow Identity Fabric. This placeholder
 
 ## Guides & specs
 
-- Patent portfolio: [ARIA Patent Portfolio – Attorney Brief](./________newdesign_patents)
-- PM overview (no‑code): [ARIA — Agent Risk & Identity Authorization](./________newdesign9_pm_guide1)
-- PM exec overview: [ARIA – Product Management Overview](./________newdesign9_pm_guide1b)
-- Seven controls (plain language): [ARIA’s Seven Controls](./________newdesign9_pm_guide2)
+- Patent portfolio: [ARIA Patent Portfolio – Attorney Brief](./patent-portfolio)
+- PM overview (no‑code): [ARIA — Agent Risk & Identity Authorization](./pm-overview)
+- PM exec overview: [ARIA – Product Management Overview](./pm-executive-overview)
+- Seven controls (plain language): [ARIA’s Seven Controls](./seven-controls-overview)
 - Deep dives:
-  - [Tool Schema Attestation](./________newdesign9_pm_guide4)
-  - [Privacy‑Preserving Capability Proofs](./________newdesign9_pm_guide5)
-  - [Behavioral DNA (BDNA) Monitoring](./________newdesign9_pm_guide6)
-  - [Receipt Chains (Immutable Audit)](./________newdesign9_pm_guide7)
-- Architecture & profile: [ARIA – Intro & Architecture](./________newdesign9)
-- Placeholder (TBD): [Guide 3](./________newdesign9_pm_guide3)
+  - [Tool Schema Attestation](./tool-schema-attestation)
+  - [Privacy‑Preserving Capability Proofs](./capability-proofs)
+  - [Behavioral DNA (BDNA) Monitoring](./bdna-monitoring)
+  - [Receipt Chains (Immutable Audit)](./receipt-chains)
+- Architecture & profile: [ARIA – Intro & Architecture](./intro-architecture)
+- Placeholder (TBD): [Guide 3](./pm-guide3-tbd)
 
 
