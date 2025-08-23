@@ -186,6 +186,9 @@ const sidebars: SidebarsConfig = {
         'marketing/competitive',
         'marketing/studio-backend-mapping',
         'marketing/naming-service',
+        'marketing/authzen-pdp',
+        'marketing/automation-vs-zapier-make-n8n',
+        'marketing/fabric-plus-iga',
       ],
     },
     {
