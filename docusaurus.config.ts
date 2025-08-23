@@ -88,8 +88,12 @@ const config: Config = {
       },
       items: [
         { to: '/', label: 'Home', position: 'left' },
-        { to: '/solutions', label: 'Solutions', position: 'left' },
-        { to: '/pricing', label: 'Pricing', position: 'left' },
+        { to: '/docs/website_copy/solutions', label: 'Solutions', position: 'left' },
+        { to: '/docs/website_copy/products', label: 'Products', position: 'left' },
+        { to: '/docs/website_copy/pricing', label: 'Pricing', position: 'left' },
+        { to: '/docs/website_copy/trust', label: 'Trust', position: 'left' },
+        { to: '/docs/website_copy/resources', label: 'Resources', position: 'left' },
+        { to: '/docs/website_copy/company', label: 'Company', position: 'left' },
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
@@ -132,8 +136,12 @@ const config: Config = {
           title: 'Marketing',
           items: [
             { label: 'Home', to: '/' },
-            { label: 'Solutions', to: '/solutions' },
-            { label: 'Pricing', to: '/pricing' },
+            { label: 'Solutions', to: '/docs/website_copy/solutions' },
+            { label: 'Pricing', to: '/docs/website_copy/pricing' },
+            { label: 'Products', to: '/docs/website_copy/products' },
+            { label: 'Trust', to: '/docs/website_copy/trust' },
+            { label: 'Resources', to: '/docs/website_copy/resources' },
+            { label: 'Company', to: '/docs/website_copy/company' },
           ],
         },
         {
