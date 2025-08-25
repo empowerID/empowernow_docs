@@ -90,6 +90,21 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'PDP',
+          link: { type: 'doc', id: 'services/pdp/index' },
+          items: [
+            {
+              type: 'category',
+              label: 'Explanations',
+              items: [
+                'services/pdp/explanation/admin-guide',
+                'services/pdp/explanation/rest_api_contract',
+              ],
+            },
+          ],
+        },
+        {
+          type: 'category',
           label: 'Experience',
           link: { type: 'doc', id: 'services/experience/index' },
           items: [
