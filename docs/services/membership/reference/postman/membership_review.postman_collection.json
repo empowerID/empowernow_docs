@@ -1,0 +1,123 @@
+{
+  "info": {
+    "name": "Membership Review",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "PIP - Capabilities",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/pip/membership/capabilities?user_id={{userId}}&agent_id={{agentId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","pip","membership","capabilities"],
+          "query": [
+            {"key": "user_id", "value": "{{userId}}"},
+            {"key": "agent_id", "value": "{{agentId}}"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "PIP - Data Scope",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/pip/membership/data-scope?subject_id={{userId}}&resource_type=record",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","pip","membership","data-scope"],
+          "query": [
+            {"key": "subject_id", "value": "{{userId}}"},
+            {"key": "resource_type", "value": "record"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Search - Identity",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/identity_nodes/search?node_type=Person&search=John&system=active_directory&limit=10&skip=0",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","identity_nodes","search"],
+          "query": [
+            {"key": "node_type", "value": "Person"},
+            {"key": "search", "value": "John"},
+            {"key": "system", "value": "active_directory"},
+            {"key": "limit", "value": "10"},
+            {"key": "skip", "value": "0"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Agent - Control (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/agent/agents/{{agentId}}/control",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","agent","agents","{{agentId}}","control"]
+        },
+        "body": {"mode": "raw", "raw": "{\n  \"controller_id\": \"user:demo1\"\n}"}
+      }
+    },
+    {
+      "name": "Agent - Controllers (GET)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/agent/agents/{{agentId}}/controllers",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","agent","agents","{{agentId}}","controllers"]
+        }
+      }
+    },
+    {
+      "name": "Resource - Set Owner (POST)",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/resources/resource:demo/owners",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","resources","resource:demo","owners"]
+        },
+        "body": {"mode": "raw", "raw": "{\n  \"owner_identity_id\": \"user:demo1\",\n  \"level\": \"primary\"\n}"}
+      }
+    },
+    {
+      "name": "Resource - List Owners (GET)",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/resources/resource:demo/owners",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","resources","resource:demo","owners"]
+        }
+      }
+    },
+    {
+      "name": "RTR - Assign (POST)",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/rtrs/assign",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","v1","rtrs","assign"]
+        },
+        "body": {"mode": "raw", "raw": "{\n  \"actor_label\": \"Identity\",\n  \"actor_id\": \"user:demo1\",\n  \"resource_id\": \"resource:demo\",\n  \"rtr\": \"MailboxEditor\"\n}"}
+      }
+    }
+  ],
+  "variable": [
+    {"key": "baseUrl", "value": "https://membership.ocg.labs.empowernow.ai"},
+    {"key": "userId", "value": "user:demo1"},
+    {"key": "agentId", "value": "agent:svc-123:for:demo1"}
+  ]
+}
+
