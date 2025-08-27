@@ -3,16 +3,21 @@ title: Company
 description: About, press, and careers.
 ---
 
+# Company
+
 ## About
+EmpowerNow builds the Identity Fabric and Self‑Driving Workflows platform for AI agents. Our mission is to make AI agents safe, affordable, orchestrated, and auditable.
 
-EmpowerNow delivers a standards‑driven Identity Fabric. We unify authentication, authorization, automation, and analytics with a zero‑token BFF pattern and an AuthZEN‑compliant PDP enforced at every call.
+## Leadership
+- Leadership bios available upon request.
 
-## Press & media
+## Press & Newsroom
+- Press inquiries: press@empowernow.com
+- Media kit and brand assets: available on request
 
-For media inquiries, email press@empowernow.com. Brand assets: logo, product screenshots, and executive bios available on request.
-
-## Careers (optional)
-
-We’re hiring across product, security, and developer relations. Remote‑first with hubs near customers and partners.
+## Contact
+- General: hello@empowernow.com
+- Security: security@empowernow.com
+- Sales: sales@empowernow.com
 
 

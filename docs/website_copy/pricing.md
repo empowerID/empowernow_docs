@@ -5,33 +5,45 @@ description: Tiers, meters, FAQs, and self‑managed entitlements.
 
 See `marketing/packaging-pricing` for full tiers and meters.
 
-## Tiers (summary)
+## Tiers
 
-- Free: Starter caps for DUs, Runs, Connectors; community support
-- Pro: Increased caps + SLA & chat support
-- Business: Higher caps, SSO/SCIM, 99.9% SLA
-- Enterprise: Dedicated tenancy/VPC, FIPS mode, 24/7
+Community
+- ARIA Gateway (MCP PEP)
+- Tool Registry (read endpoints)
+- PDP client integration (AuthZEN)
+- Quickstart and sample workflows
 
-Overages/add‑ons: DUs per 1k, Runs per 1k, MAUs per unit, Connector Packs; Dedicated tenancy and FIPS as add‑ons. Details in `marketing/packaging-pricing`.
+Team
+- Everything in Community
+- Receipt Vault (signed receipts)
+- Membership PIP integration (data_scope, step_up, identity_chain)
+- BFF spending control (stream caps, budget/402)
+- Email support
 
-## Meters & definitions (for buyers)
+Enterprise
+- Everything in Team
+- Identity chaining (IdP) under PDP policy
+- Optional receipt anchoring (KMS)
+- Multi‑region support and advanced observability
+- Priority support and SLAs
 
-- Decision Unit (DU): One authorization decision evaluated by the PDP after cache policy. Billable DUs are decisions evaluated by the PDP service. Caching reduces billable DUs.
-- Workflow Run: One end‑to‑end execution of a workflow; retried nodes within a run are not new runs.
-- Connector: A configured logical connection to an external system (Inventory/Automation). Pack pricing applies to groups of connectors.
-- MAU: Monthly Active User authenticated via the IdP/BFF during the billing period.
+## FAQs
 
-## Self‑managed
+What’s included in Community?
+- Core runtime enforcement (Gateway), Registry read path, PDP client, and the quickstart so you can evaluate ARIA locally.
 
-- Annual licensing per Studio or Suite; equivalent caps to Pro with enterprise add‑ons available (HA/DR validation, hardened FIPS images, priority support).
+Can we bring our own PDP?
+- Yes. ARIA consumes AuthZEN‑profiled decisions and works with compatible PDPs.
 
-## Pricing FAQ
+Do you support signed receipts?
+- Yes in Team and Enterprise via the Receipt Vault.
 
-- What is a Decision Unit (DU)? One PDP evaluation after cache policy.
-- How are Workflow Runs billed? Per run; retries within a run are included.
-- How are Connectors counted? Per configured connector; packs increase limits.
-- Do you offer self‑managed licensing? Yes; annual per‑Studio or Suite with enterprise add‑ons.
+Do you support identity chaining?
+- Yes in Enterprise. It’s feature‑flagged at the IdP and gated by PDP constraints.
 
-Contact us for custom needs (dedicated tenancy, FIPS mode, private networking, SLAs).
+How do we get started?
+- Try the quickstart, then book a demo for a guided pilot.
+
+CTAs: Talk to sales · Try the quickstart
 
 
