@@ -37,7 +37,7 @@ graph TB
   BFF -->|call models| Tools
 ```
 
-**Why this separation exists:** Membership is the **graph of relationships** (delegations, groupings, ownership, location, etc.). PDP merges Membership facts with authored policy and request context to return **constraints + obligations**. This mirrors the **ABAC–ReBAC split** and **unified identity model** described in your June white paper (see the “ABAC‑ReBAC Hybrid Architecture” and “Unified Identity Model” sections and diagram), which our v1 implements directly.&#x20;
+**Why this separation exists:** Membership is the **graph of relationships** (delegations, groupings, ownership, location, etc.). PDP merges Membership facts with authored policy and request context to return **constraints + obligations**. This mirrors the **ABAC–ReBAC split** and **unified identity model** described in your June white paper (see the “ABAC‑ReBAC Hybrid Architecture” and “Unified Identity Model” sections and diagram), which our v1 implements directly. 
 
 ---
 
@@ -55,6 +55,9 @@ graph TB
 * **RTR** *(entitlements/permissions bundle)*
 * **Tool**
 * **Policy**
+* **MCPResource**
+* **MCPPrompt**
+* **MCPPolicyBinding** (reference data for PDP; not enforced locally)
 
 > **Proposed v1.1 additions** (for identity chaining & data scope):
 > **Tenant**, **SaaSApp** — used to compute data scopes and chain‑eligibility (see §4.3).
@@ -63,9 +66,11 @@ graph TB
 
 * `Identity`: `id`, `kind` (person|service|agent|account), `display_name`, `state`
 * `AIAgent`: `id`, `owner_id` *(ref)*, `trust_score?`, `version?`
-* `Service|MCPService`: `id`, `service_type`, `display_name`
+* `Service|MCPService`: `id`, `service_type`, `display_name`, `supported_protocols[]`, `preferred_protocol?`, `websocket_url?`, `sse_url?`
 * `Tool`: `id`, `name`, `version`, `service_id`
 * `Resource`: `id`, `type`, `owner_id?`, `sensitivity?`
+* `MCPResource`: `id`, `name`, `uri`, `mime_type`, `size?`, `etag?`, `last_modified?`, `annotations{}`, `schema_hash?`, `last_discovered_at?`, `discovered_by?`, `origin_hash?`
+* `MCPPrompt`: `id`, `name`, `description?`, `version`, `arguments[]`, `content`, `schema_hash?`, `last_discovered_at?`, `discovered_by?`, `origin_hash?`
 * `Policy`: `id`, `rev`, `uri`
 * `Tenant`: `id`, `name`
 * `SaaSApp`: `id`, `audience`, `scopes[]`
@@ -81,6 +86,8 @@ graph TB
 * `(any) -[:POLICY_REF {rev?}]-> (:Policy)` *(normalized)*
 * `(:Identity:Service) -[:PROVIDES]-> (:Tool)`
 * `(:AIAgent) -[:HAS_CAPABILITY]-> (:Tool)`
+* `(:MCPService) -[:PROVIDES_RESOURCE {version?, discovered_at?, discovered_by?, origin_hash?}]-> (:MCPResource)`
+* `(:MCPService) -[:OFFERS_PROMPT {version?, discovered_at?, discovered_by?, origin_hash?}]-> (:MCPPrompt)`
 
 > **Recommended additions**
 > `(:AIAgent) -[:CONTROLLED_BY]-> (:Person|:Service)`
@@ -126,6 +133,28 @@ FOR (t:Tool) ON (t.service_id, t.version, t.name);
 CREATE CONSTRAINT mcp_service_id_unique IF NOT EXISTS
 FOR (s:MCPService) REQUIRE s.id IS UNIQUE;
 
+// MCP Resources
+CREATE CONSTRAINT mcp_resource_id_unique IF NOT EXISTS
+FOR (r:MCPResource) REQUIRE r.id IS UNIQUE;
+CREATE INDEX mcp_resource_name_idx IF NOT EXISTS
+FOR (r:MCPResource) ON (r.name);
+CREATE INDEX mcp_resource_uri_idx IF NOT EXISTS
+FOR (r:MCPResource) ON (r.uri);
+CREATE INDEX mcp_resource_mime_idx IF NOT EXISTS
+FOR (r:MCPResource) ON (r.mime_type);
+
+// MCP Prompts
+CREATE CONSTRAINT mcp_prompt_id_unique IF NOT EXISTS
+FOR (p:MCPPrompt) REQUIRE p.id IS UNIQUE;
+CREATE INDEX mcp_prompt_name_idx IF NOT EXISTS
+FOR (p:MCPPrompt) ON (p.name);
+CREATE INDEX mcp_prompt_version_idx IF NOT EXISTS
+FOR (p:MCPPrompt) ON (p.version);
+
+// MCP Policy Binding (reference data for PDP)
+CREATE CONSTRAINT mcp_policy_binding_id_unique IF NOT EXISTS
+FOR (b:MCPPolicyBinding) REQUIRE b.id IS UNIQUE;
+
 CREATE CONSTRAINT tenant_id_unique IF NOT EXISTS
 FOR (t:Tenant) REQUIRE t.id IS UNIQUE;
 
@@ -138,13 +167,13 @@ FOR (a:SaaSApp) REQUIRE a.id IS UNIQUE;
 ## 2) Business logic (what the service does)
 
 * **Assignments:** single/bulk create, update, delete with source/target validation.
-* **Delegations:** create/update DELEGATES\_TO edges with `status`, `capabilities[]`, and optional constraint pointers.
+* **Delegations:** create/update DELEGATES_TO edges with `status`, `capabilities[]`, and optional constraint pointers.
 * **Policy pointers:** attach/detach `POLICY_REF` with safe `rev` handling.
 * **RBAC utilities:** read `HAS_RTR`, `HAS_RTR_AT` and `GRANTS_ACCESS` via Resource/Location scopes.
 * **Search & reports:** full‑text identity search, counts, orphan detection, path probes.
 * **Agent & MCP catalog:** register MCP services + tools; list capabilities by agent/service.
 
-> This implements the **graph‑native relationship layer** your white paper calls for, keeping policy logic outside the database for speed and auditability.&#x20;
+> This implements the **graph‑native relationship layer** your white paper calls for, keeping policy logic outside the database for speed and auditability. 
 
 ---
 
@@ -184,7 +213,17 @@ FOR (a:SaaSApp) REQUIRE a.id IS UNIQUE;
 
 * **Agent & MCP**
   Agent: list/create service principals, delegations, trust score, capabilities
-  MCP: register MCP services/tools; list tools by service
+  MCP (base: `/api/v1/mcp`):
+  - `POST /services` → register MCP service (supports transport fields: `supported_protocols[]`, `preferred_protocol`, `websocket_url`, `sse_url`)
+  - `GET /services/{service_id}` / `GET /services/by-name/{name}`
+  - `GET /services` (filters: `service_type`, `provider`, `is_backend`, `search`, pagination)
+  - `DELETE /services/{service_id}`
+  - `POST /services/{service_id}/tools` → register tool (discovery fields: `schema_hash`, `last_discovered_at`, `discovered_by`, `origin_hash`)
+  - `GET /services/{service_id}/tools`
+  - `GET /tools/{tool_id}` / `GET /tools/by-name/{tool_name}`
+  - `DELETE /tools/{tool_id}`
+  - `POST /services/{service_id}/resources` → register MCPResource (stores node plus `PROVIDES_RESOURCE` rel with discovery metadata)
+  - `POST /services/{service_id}/prompts` → register MCPPrompt (stores node plus `OFFERS_PROMPT` rel with discovery metadata)
 
 * **Admin / Utilities**
   Health check, label/rel counts, shortest paths, related nodes, cleanup
@@ -235,11 +274,11 @@ sequenceDiagram
 * **Agent capabilities:** `Tool` nodes, `PROVIDES`, and `HAS_CAPABILITY` are modeled; `MCPService` exists.
 * **Policy pointers:** `POLICY_REF` normalized; attach/detach avoids null revisions.
 
-These align directly with **ARIA’s unified identity model** and the **constraints vs. obligations split** your white paper advocates.&#x20;
+These align directly with **ARIA’s unified identity model** and the **constraints vs. obligations split** your white paper advocates. 
 
 ### 4.2 Known gaps (actionable)
 
-1. **CONTROLLED\_BY edge (Agent → Person/Service)**
+1. **CONTROLLED_BY edge (Agent → Person/Service)**
    *Status:* Partial via ownership fields; not consistently created or queried.
    *Action:* Add CRUD; enforce 1..N ownership; expose in PIP as `agent_controller_ids`.
 
@@ -271,7 +310,7 @@ graph LR
   Agent -. ACTS_IN_TENANT .-> Tenant[(Tenant)]
 ```
 
-PIP computes chain‑eligibility by walking `Agent → Tool → SaaSApp` and returning `{audience, scopes[]}`; PDP converts that into `constraints.identity_chain.*` (used later by IdP/Gateway feature‑flagged chaining). This directly supports the “identity chaining” backlog in ARIA v1.&#x20;
+PIP computes chain‑eligibility by walking `Agent → Tool → SaaSApp` and returning `{audience, scopes[]}`; PDP converts that into `constraints.identity_chain.*` (used later by IdP/Gateway feature‑flagged chaining). This directly supports the “identity chaining” backlog in ARIA v1. 
 
 ---
 
@@ -324,7 +363,7 @@ RETURN collect({audience: app.audience, scopes: app.scopes}) AS elig
 * **General:** identities, locations, roles/membership, BRL, groups, policies, reports, MCP/Agent, admin utilities — **unchanged** routes as in your current service.
 * **PIP:** capabilities, delegations, data‑scope, step‑up, chain‑eligibility — **stable** and used by PDP today.
 
-> These PIP calls power PDP’s constraint construction and match the “fast graph + flexible policy” architecture outlined in the white paper (graph lookups for relationships; policy engine for constraint logic).&#x20;
+> These PIP calls power PDP’s constraint construction and match the “fast graph + flexible policy” architecture outlined in the white paper (graph lookups for relationships; policy engine for constraint logic). 
 
 ---
 
@@ -353,6 +392,6 @@ RETURN collect({audience: app.audience, scopes: app.scopes}) AS elig
 * **Membership** = **ground truth of relationships**.
 * **PDP** pulls from Membership to compute **constraints** (tokens, egress, params, data scope) and **obligations**, per ARIA v1.
 * **Tool Registry** remains separate (schema pins, endpoints).
-* Add **CONTROLLED\_BY**, **OWNERSHIP**, and **Tenant/SaaSApp** now to unlock identity chaining and richer scopes—fully consistent with your June vision and the final ARIA v1 shape.&#x20;
+* Add **CONTROLLED\_BY**, **OWNERSHIP**, and **Tenant/SaaSApp** now to unlock identity chaining and richer scopes—fully consistent with your June vision and the final ARIA v1 shape. 
 
 ---

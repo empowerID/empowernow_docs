@@ -32,6 +32,13 @@ This guide helps evaluators trial the EmpowerNow Membership Service with a focus
   - Exercise the PIP endpoints with the sample IDs (see examples below) via curl/Postman.
   - Compare PDP constraints output with your enforcement layer to validate fit.
 
+### MCP catalog & discovery (new)
+
+Membership now models MCP assets and discovery metadata:
+- Nodes: `MCPService`, `MCPResource`, `MCPPrompt`, reference `MCPPolicyBinding`
+- Edges: `PROVIDES_RESOURCE`, `OFFERS_PROMPT`
+- Endpoints (base `/api/v1/mcp`): register/list services and tools, and register discovered resources/prompts
+
 ARIA at a glance (where it shows up):
 - PDP: returns ARIA v1 rich context under `context.constraints` and `context.obligations` (AuthZEN request semantics).
 - Membership: PIP supplies the graph truth PDP needs (capabilities, data_scope, step_up, chain_eligibility).

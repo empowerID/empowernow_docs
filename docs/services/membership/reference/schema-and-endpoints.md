@@ -33,8 +33,8 @@ graph TB
 
 ## Graph model (essentials)
 
-- Nodes: `Identity` (Person, Account, AIAgent, Service, MCPService), `Group`, `BusinessRole`, `Location`, `Resource`, `RTR`, `Tool`, `Policy`, `Tenant`, `SaaSApp`
-- Edges: `BELONGS_TO`, `MEMBER_OF`, `DELEGATES_TO`, `GRANTS_ACCESS`, `HAS_RTR`, `HAS_RTR_AT`, `LOCATED_IN`, `POLICY_REF`, `PROVIDES`, `HAS_CAPABILITY`, plus recommended `CONTROLLED_BY`, `OWNS_RESOURCE`, `USES_TENANT`, `REQUIRES`
+- Nodes: `Identity` (Person, Account, AIAgent, Service, MCPService), `Group`, `BusinessRole`, `Location`, `Resource`, `RTR`, `Tool`, `Policy`, `Tenant`, `SaaSApp`, plus MCP nodes: `MCPResource`, `MCPPrompt`, `MCPPolicyBinding`
+- Edges: `BELONGS_TO`, `MEMBER_OF`, `DELEGATES_TO`, `GRANTS_ACCESS`, `HAS_RTR`, `HAS_RTR_AT`, `LOCATED_IN`, `POLICY_REF`, `PROVIDES`, `HAS_CAPABILITY`, plus MCP: `PROVIDES_RESOURCE`, `OFFERS_PROMPT`; recommended: `CONTROLLED_BY`, `OWNS_RESOURCE`, `USES_TENANT`, `REQUIRES`
 
 ### Neo4j DDL (selected)
 
@@ -43,6 +43,21 @@ CREATE CONSTRAINT unique_identity_id IF NOT EXISTS FOR (n:Identity) REQUIRE n.id
 CREATE CONSTRAINT unique_delegation_id IF NOT EXISTS FOR ()-[d:DELEGATES_TO]-() REQUIRE d.id IS UNIQUE;
 CREATE CONSTRAINT tool_id_unique IF NOT EXISTS FOR (t:Tool) REQUIRE t.id IS UNIQUE;
 CREATE CONSTRAINT mcp_service_id_unique IF NOT EXISTS FOR (s:MCPService) REQUIRE s.id IS UNIQUE;
+
+// MCP Resources
+CREATE CONSTRAINT mcp_resource_id_unique IF NOT EXISTS FOR (r:MCPResource) REQUIRE r.id IS UNIQUE;
+CREATE INDEX mcp_resource_name_idx IF NOT EXISTS FOR (r:MCPResource) ON (r.name);
+CREATE INDEX mcp_resource_uri_idx IF NOT EXISTS FOR (r:MCPResource) ON (r.uri);
+CREATE INDEX mcp_resource_mime_idx IF NOT EXISTS FOR (r:MCPResource) ON (r.mime_type);
+
+// MCP Prompts
+CREATE CONSTRAINT mcp_prompt_id_unique IF NOT EXISTS FOR (p:MCPPrompt) REQUIRE p.id IS UNIQUE;
+CREATE INDEX mcp_prompt_name_idx IF NOT EXISTS FOR (p:MCPPrompt) ON (p.name);
+CREATE INDEX mcp_prompt_version_idx IF NOT EXISTS FOR (p:MCPPrompt) ON (p.version);
+
+// MCP Policy Binding (reference data for PDP)
+CREATE CONSTRAINT mcp_policy_binding_id_unique IF NOT EXISTS FOR (b:MCPPolicyBinding) REQUIRE b.id IS UNIQUE;
+
 CREATE CONSTRAINT tenant_id_unique IF NOT EXISTS FOR (t:Tenant) REQUIRE t.id IS UNIQUE;
 CREATE CONSTRAINT saasapp_id_unique IF NOT EXISTS FOR (a:SaaSApp) REQUIRE a.id IS UNIQUE;
 ```
@@ -95,6 +110,13 @@ MATCH (u:Identity {id:$user_id})-[:DELEGATES_TO {status:'active'}]->(:AIAgent {i
 MATCH (tool)-[:REQUIRES]->(app:SaaSApp)
 RETURN collect({audience: app.audience, scopes: app.scopes}) AS elig;
 ```
+
+## MCP HTTP endpoints (summary)
+
+Base: `/api/v1/mcp`
+- `POST /services` · `GET /services/{service_id}` · `GET /services/by-name/{name}` · `GET /services` · `DELETE /services/{service_id}`
+- `POST /services/{service_id}/tools` · `GET /services/{service_id}/tools` · `GET /tools/{tool_id}` · `GET /tools/by-name/{tool_name}` · `DELETE /tools/{tool_id}`
+- `POST /services/{service_id}/resources` · `POST /services/{service_id}/prompts`
 
 ## Health & diagnostics
 
