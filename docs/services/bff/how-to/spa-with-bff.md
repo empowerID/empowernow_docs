@@ -13,6 +13,10 @@ What you’ll do
 - Call canonical `/api/...` routes that the BFF maps to backend services
 - Align the Neon Flux UI using `@empowernow/ui`
 
+Important conventions
+- No `@bff/...` alias: use `@empowernow/bff-auth-react` and set the base URL.
+- Avoid double `/api`: either call `apiClient.get('/crud/...')` with baseUrl set to `/api`, or call `fetch('/api/crud/...')` directly. Do not combine both (which leads to `/api/api/...`).
+
 Environment variables
 
 - `VITE_BFF_BASE_URL`: e.g., `https://bff.ocg.labs.empowernow.ai` or `/api` for same-origin. Both `idp_ui` and `pdp_ui` set this and default to `/api`.
@@ -47,11 +51,12 @@ Calling APIs (verified)
 ```ts title="lib/api/base.ts"
 import { apiClient } from '@empowernow/bff-auth-react'
 
-// GET
+// Option A: apiClient with baseUrl '/api'
 apiClient.get('/crud/forms')
-
-// POST
 apiClient.post('/crud/workflows', payload)
+
+// Option B: native fetch with explicit '/api' prefix
+await fetch('/api/crud/forms', { credentials: 'include' })
 ```
 
 UI theming (verified)

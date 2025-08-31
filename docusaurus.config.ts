@@ -116,7 +116,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/empowernow',
+          href: 'https://github.com/empowerID/empowernow_docs',
           label: 'GitHub',
           position: 'right',
         },
@@ -147,7 +147,7 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            { label: 'GitHub', href: 'https://github.com/empowernow' },
+            { label: 'GitHub', href: 'https://github.com/empowerID/empowernow_docs' },
           ],
         },
       ],

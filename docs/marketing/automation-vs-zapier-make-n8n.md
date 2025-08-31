@@ -1,6 +1,6 @@
 ---
 title: Automation Studio vs Zapier, Make, and n8n
-description: Honest comparison for no‑code automation: security, hybrid, observability, and when to choose which.
+description: "Honest comparison for no‑code automation: security, hybrid, observability, and when to choose which."
 ---
 
 ## TL;DR

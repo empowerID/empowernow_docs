@@ -223,7 +223,7 @@ The method of claim 1, wherein domain separation includes tenant isolation.
 
 ### Enablement Details
 - Proof size: ~32 bytes × log₂(n) vs n × average_capability_length
-- Supports 1M+ capabilities with <20 hash proof
+- Supports 1M+ capabilities with &lt; 20 hash proof
 - Compatible with any hash function (SHA-256, BLAKE3)
 - Proof generation cacheable for 1 hour
 

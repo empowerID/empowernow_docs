@@ -27,9 +27,9 @@ Resources
 Docs
 - Quickstart
 - API — PDP (/access/v1/evaluation)
-- API — MCP Gateway (/mcp/{tool})
+- API — MCP Gateway (/mcp/`{tool}`)
 - API — BFF (/chat/completions)
-- API — Tool Registry (/tools/{id})
+- API — Tool Registry (/tools/`{id}`)
 - API — Receipt Vault
 - IdP Identity Chaining
 

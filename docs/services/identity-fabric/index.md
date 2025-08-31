@@ -143,5 +143,5 @@ See service‑specific sections for deep dives, configuration, and runbooks.
 
 Some deployments require cloud/containerized services to communicate with on‑premises services (for example, enterprise LDAP/Active Directory or SAP LDAP) without opening inbound firewall ports. The recommended approach is to use Azure Relay with the Azure Relay Bridge (azbridge) to create secure outbound tunnels from the on‑premises network.
 
-- See: [Azure Relay Bridge (azbridge)](./azure-relay-bridge) for architecture, Docker Compose examples, connection patterns (LDAP/LDAPS), security notes, and troubleshooting.
+- See: [Azure Relay Bridge (azbridge)](/docs/services/identity-fabric/azure-relay-bridge) for architecture, Docker Compose examples, connection patterns (LDAP/LDAPS), security notes, and troubleshooting.
 - Example consumers: `crud-service` (workflows needing LDAP), `idp` (directory lookups), or any service on the same Docker network as the bridge containers.

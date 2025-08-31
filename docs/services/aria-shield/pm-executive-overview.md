@@ -381,20 +381,20 @@ Think of it like this:
 ### Product Metrics
 - Agent calls secured per day
 - Breaches prevented
-- False positive rate (<0.1%)
-- Latency impact (<50ms)
+- False positive rate (&lt; 0.1%)
+- Latency impact (&lt; 50ms)
 
 ### Business Metrics
 - ARR growth rate
-- Net revenue retention (>120%)
+- Net revenue retention (&gt; 120%)
 - Customer acquisition cost
-- Lifetime value/CAC ratio (>3)
+- Lifetime value/CAC ratio (&gt; 3)
 
 ### Customer Success Metrics
-- Time to first value (<30 days)
+- Time to first value (&lt; 30 days)
 - Monthly active agents per customer
 - Support ticket resolution time
-- NPS score (>50)
+- NPS score (&gt; 50)
 
 ---
 

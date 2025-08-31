@@ -70,14 +70,16 @@ Flow
 
 ```mermaid
 flowchart LR
-  SPA[SPA / API Client] -->|/api/v1/proxy/{service}/{path}| BFF
+  SPA[SPA / API Client] -->|"/api/v1/proxy/[service]/[path]"| BFF
   subgraph BFF
     CB[Circuit breaker]
     RC[Response cache]
     LP[Legacy Proxy]
   end
   BFF --> CB --> RC --> LP --> SVC
-  SVC[(Legacy Service base_url + /{path})] --> RC --> BFF --> SPA
+  SVC["Legacy Service base_url + /[path]"] --> RC
+  RC --> BFF
+  BFF --> SPA
 ```
 
 Test it

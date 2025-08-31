@@ -62,7 +62,7 @@ Planned/not implemented (keep as future work):
 ### 🔧 **Why `pdp_application`?**
 
 **Problem with `application`**: Generic field names can collide with user metadata
-```json
+````json
 // ❌ COLLISION PROBLEM - Which "application" field is for policy resolution?
 {
   "resource": {
@@ -72,7 +72,7 @@ Planned/not implemented (keep as future work):
     }
   }
 }
-```
+````
 
 **Solution with `pdp_application`**: Clear namespace separation
 ```json
@@ -1422,7 +1422,7 @@ python scripts/lint_policies.py --verbose || exit 1
 **Goal**: Quick setup for new applications
 
 **New File: `scripts/new_app.py`**
-```python
+````python
 #!/usr/bin/env python3
 """Create new application with scaffolding."""
 
@@ -1518,7 +1518,7 @@ Use this request format to test policies:
   }}
 }}
 ```
-"""
+<!-- removed stray triple quote causing MDX parse errors -->
     
     readme_file = policy_dir / "README.md"
     with open(readme_file, 'w') as f:
@@ -1551,7 +1551,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+````
 
 **Usage:**
 ```bash

@@ -75,7 +75,7 @@ I read the ARIA v1 design docs in `source_content` (Gateway/PEP, PDP, BFF, Tool 
   - docker-compose up
   - Postman collection or `curl` scripts for each step
   - Receipts viewer (simple UI) to show hash chain and policy snapshot
-  - Metrics dashboard: mcp.requests_total, denies_total{reason}, receipt.emit_ms
+  - Metrics dashboard: `mcp.requests_total`, `denies_total{reason}`, `receipt.emit_ms`
 
 ### Website and content updates
 - Create `ARIA` landing: “Make AI agents safe, affordable, and auditable”

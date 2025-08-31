@@ -20,16 +20,16 @@ ARIA Shield is a new service in the EmpowerNow Identity Fabric. This placeholder
 
 ## Guides & specs
 
-- Patent portfolio: [ARIA Patent Portfolio – Attorney Brief](./patent-portfolio)
-- PM overview (no‑code): [ARIA — Agent Risk & Identity Authorization](./pm-overview)
-- PM exec overview: [ARIA – Product Management Overview](./pm-executive-overview)
-- Seven controls (plain language): [ARIA’s Seven Controls](./seven-controls-overview)
+- Patent portfolio: [ARIA Patent Portfolio – Attorney Brief](/docs/services/aria-shield/patent-portfolio)
+- PM overview (no‑code): [ARIA — Agent Risk & Identity Authorization](/docs/services/aria-shield/pm-overview)
+- PM exec overview: [ARIA – Product Management Overview](/docs/services/aria-shield/pm-executive-overview)
+- Seven controls (plain language): [ARIA’s Seven Controls](/docs/services/aria-shield/seven-controls-overview)
 - Deep dives:
-  - [Tool Schema Attestation](./tool-schema-attestation)
-  - [Privacy‑Preserving Capability Proofs](./capability-proofs)
-  - [Behavioral DNA (BDNA) Monitoring](./bdna-monitoring)
-  - [Receipt Chains (Immutable Audit)](./receipt-chains)
-- Architecture & profile: [ARIA – Intro & Architecture](./intro-architecture)
-- Placeholder (TBD): [Guide 3](./pm-guide3-tbd)
+  - [Tool Schema Attestation](/docs/services/aria-shield/tool-schema-attestation)
+  - [Privacy‑Preserving Capability Proofs](/docs/services/aria-shield/capability-proofs)
+  - [Behavioral DNA (BDNA) Monitoring](/docs/services/aria-shield/bdna-monitoring)
+  - [Receipt Chains (Immutable Audit)](/docs/services/aria-shield/receipt-chains)
+- Architecture & profile: [ARIA – Intro & Architecture](/docs/services/aria-shield/intro-architecture)
+- Placeholder (TBD): [Guide 3](/docs/services/aria-shield/pm-guide3-tbd)
 
 
