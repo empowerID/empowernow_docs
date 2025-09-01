@@ -31,6 +31,13 @@ Expected shape:
 {"jsonrpc":"2.0","id":"1","result":{"tools":[{"name":"system.health","description":"...","inputSchema":{...},"source":"system","metadata":{...}}]}}
 ```
 
+View‑scoped discovery (for clients that cap visible tools):
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":"11","method":"tools/list","params":{"limit":50}}' \
+  https://<bff-host>/api/crud/mcp/entra/jsonrpc | jq
+```
+
 ### 2) Health check (invoke)
 ```bash
 curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
@@ -51,6 +58,16 @@ curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
     "params":{"name":"entra.cont.account.get_by_id","arguments":{"SystemIdentifier":"'"$USER_ID"'"}}
   }' \
   https://<bff-host>/api/crud/mcp/jsonrpc | jq -r '.result.content[0].text' | jq
+```
+
+Invoke within a view:
+```bash
+curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc":"2.0","id":"3a","method":"tools/call",
+    "params":{"name":"entra.cont.account.get_by_id","arguments":{"SystemIdentifier":"'"$USER_ID"'"}}
+  }' \
+  https://<bff-host>/api/crud/mcp/entra/jsonrpc | jq -r '.result.content[0].text' | jq
 ```
 
 ### 4) Invoke a workflow tool
@@ -89,5 +106,6 @@ In Cursor, enable `crud-mcp`, then run: “List tools from crud-mcp.”
 - Empty list → verify ServiceConfigs are mounted and readable
 - No direct workflow start → set `MCP_LOOPBACK_WORKFLOW_DIRECT_INVOKE=true`
 - CSRF errors → ensure you use the BFF MCP proxy URL
+- Client catalogue caps (~50–60 tools) → use virtual views: `/api/crud/mcp/{view}/jsonrpc` with `limit`/`cursor`
 
 

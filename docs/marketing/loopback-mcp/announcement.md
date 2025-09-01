@@ -7,6 +7,7 @@ Today we’re introducing Loopback MCP—a built‑in Model Context Protocol ser
 - Secure operations: scope‑gated discovery/invoke, PDP/BFF compatible
 - Agent & UI ready: JSON‑RPC 2.0, Visual Designer Tool Picker, merged catalogue
 - Deterministic at scale: namespaced identities, caps, collision safety
+ - New: Virtual MCP Servers for scoped catalogs (solve client limits ~50–60 tools)
 
 ### What you can do
 - Discover tools via REST or JSON‑RPC and invoke them from Cursor or your own agents

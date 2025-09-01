@@ -18,10 +18,14 @@ flowchart LR
   Cat --> API[/tools/list\n/tools/search/]
 ```
 
-### Routing
+### Routing & Virtual servers
 Expose Loopback MCP through the BFF for secure access from UIs and agents:
 - GET `/api/crud/mcp/tools/list` → CRUD `/mcp/tools/list`
 - POST `/api/crud/mcp/jsonrpc` → CRUD `/mcp/jsonrpc`
+
+For clients that cap catalog size, use view‑scoped endpoints:
+- GET `/api/crud/mcp/{view}/tools/list` → CRUD `/mcp/{view}/tools/list`
+- POST `/api/crud/mcp/{view}/jsonrpc` → CRUD `/mcp/{view}/jsonrpc`
 
 ### Stability and observability
 - Structured logs with correlation IDs and durations for list/invoke
@@ -31,5 +35,6 @@ Expose Loopback MCP through the BFF for secure access from UIs and agents:
 - Deterministic catalogues remove UI jitter and client instability
 - Namespaced tools reflect real system boundaries cleanly
 - A single source of truth keeps engineering focused and reduces errors
+ - Virtual servers fit client limits while preserving full catalog breadth
 
 

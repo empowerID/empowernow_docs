@@ -14,8 +14,8 @@ Loopback MCP makes your CRUDService a first‑class Model Context Protocol serve
 flowchart LR
   A[ServiceConfigs<br/>systems + workflows] --> G[Loopback Tool Generator]
   G -->|deterministic catalogue| CRUD[(CRUDService)]
-  CRUD -->|GET /mcp/tools/list| D[[REST]]
-  CRUD -->|POST /mcp/jsonrpc| R[[JSON-RPC 2.0]]
+  CRUD -->|GET /mcp/tools/list\nGET /mcp/{view}/tools/list| D[[REST]]
+  CRUD -->|POST /mcp/jsonrpc\nPOST /mcp/{view}/jsonrpc| R[[JSON-RPC 2.0]]
   BFF[EmpowerNow BFF] -->|/api/crud/mcp/* proxy| CRUD
   UI[Visual Designer / SDK] -->|/api/crud/tools/* (merged catalogue)| BFF
   AG[External MCP Clients] -->|/api/crud/mcp/jsonrpc| BFF
@@ -42,7 +42,9 @@ flowchart LR
 
 ### Supported endpoints (CRUDService)
 - GET `/mcp/tools/list` – returns `{ tools: [...] }`
+- GET `/mcp/{view}/tools/list` – view‑scoped discovery with pagination (`limit`, `cursor`)
 - POST `/mcp/jsonrpc` – JSON‑RPC 2.0 (`tools/list`, `tools/invoke|tools/call`)
+- POST `/mcp/{view}/jsonrpc` – JSON‑RPC constrained to a virtual view
 
 ### Supported BFF proxy routes
 - GET `/api/crud/mcp/tools/list` → CRUD `/mcp/tools/list`
@@ -56,5 +58,6 @@ flowchart LR
 - Tool name length constraints; deterministic collision handling
 - Publication caps via `MCP_MAX_TOOLS`
 - Duplicate policy via `MCP_DUPLICATE_POLICY` (fail‑fast recommended)
+- Virtual server config via `MCP_VIRTUAL_SERVERS_FILE`; use views to fit client catalog caps (~50–60)
 
 
