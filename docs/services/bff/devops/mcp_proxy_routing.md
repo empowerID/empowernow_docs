@@ -19,6 +19,12 @@ POST /api/crud/mcp/jsonrpc      ->  CRUD /mcp/jsonrpc
 GET|POST /api/crud/mcp/*        ->  CRUD /mcp/{path}
 ```
 
+Virtual servers (views):
+```
+GET  /api/crud/mcp/{view}/tools/list -> CRUD /mcp/{view}/tools/list
+POST /api/crud/mcp/{view}/jsonrpc    -> CRUD /mcp/{view}/jsonrpc
+```
+
 Keep existing `/api/crud/tools/*` (ToolCatalogue) endpoints for merged catalogue access from Visual Designer.
 
 ### Security model
@@ -33,11 +39,13 @@ Keep existing `/api/crud/tools/*` (ToolCatalogue) endpoints for merged catalogue
 - `OTEL_DISABLED=true` – disable OpenTelemetry locally/tests
 - `MCP_MAX_TOOLS` – cap number of published tools
 - `MCP_DUPLICATE_POLICY=fail` – fail fast on naming collisions
+- `MCP_VIRTUAL_SERVERS_FILE` – override path to `mcp_virtual_servers.yaml`
+- `MCP_TOOL_NAME_CAP` – cap tool names to satisfy client UI limits
 
 ### Validation checklist
 1. Deploy BFF with the routes above
 2. Verify `GET /api/crud/mcp/tools/list` returns tools with a scoped token
-3. Verify `POST /api/crud/mcp/jsonrpc` handles `tools/list` and `tools/call`
+3. Verify `POST /api/crud/mcp/jsonrpc` and `/api/crud/mcp/{view}/jsonrpc` handle `tools/list` and `tools/call`
 4. From Visual Designer, confirm `/api/crud/tools/*` works (merged catalogue)
 5. Check structured logs for `mcp_*` events and correlation IDs end‑to‑end
 

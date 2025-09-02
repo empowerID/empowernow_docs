@@ -27,6 +27,9 @@ flowchart LR
 - Better UX: consistent input schemas and titles for large catalogues
 - Future‑proof: namespaced identity across providers and instances
 
+### New: Virtual MCP Servers (fit client catalog limits)
+Some MCP clients only display ~50–60 tools per server. Virtual MCP Servers let you publish scoped catalogs on separate paths (e.g., `/mcp/entra`, `/mcp/workflows`) with pagination—so agents and UIs stay fast without losing breadth.
+
 ### Get started
 - Quickstart: `../../services/crud-service/how-to/mcp-quickstart.md`
 - API Reference: `../../services/crud-service/reference/mcp_api_reference.md`

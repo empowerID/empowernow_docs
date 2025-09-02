@@ -1,15 +1,13 @@
 ## Loopback MCP in CRUDService – Release Notes and Deep Dive
 
-Note: A versioned release notes page is now available. See `releases/loopback_mcp_1_0.md` for the current canonical record. This page remains for historical context and deep‑dive details.
-
 ### What’s done
 
 - **Loopback MCP server in CRUDService**
   - Endpoints: `GET /mcp/tools/list` and `POST /mcp/jsonrpc` (tools/list, tools/invoke).
-  - Virtual servers: `GET /mcp/{view}/tools/list` and `POST /mcp/{view}/jsonrpc` with pagination (`limit`, `cursor`).
   - Auth scopes enforced: `mcp.tools.discovery`, `mcp.tools.invoke` with 403 on missing scopes.
   - Structured logging with durations and correlation IDs.
   - CSRF and OriginValidation exemptions for `/mcp/*`.
+  - Virtual views: filtered catalogs under `/mcp/{view}/tools/list` and `/mcp/{view}/jsonrpc`.
 
 - **Tool generation and catalogue**
   - `LoopbackToolGenerator` builds tools from systems and workflows (resilient to partial YAML).
@@ -18,7 +16,8 @@ Note: A versioned release notes page is now available. See `releases/loopback_mc
   - Deterministic naming + identity:
     - Default strategy: namespaced `provider.instance.base` (e.g., `entra.cont.account.get_by_id`, `auth0.core.account.get_by_id`, `ldap.av.account.get_by_dn`).
     - Per-system identity via `mcpInstance` in system YAML: `{ provider, instance, instance_label, env }`.
-    - 50-char cap with stable hash; pre-cap and final name collision checks (fail-fast with owners).
+    - 50-char cap by default with stable hash; configurable via `MCP_TOOL_NAME_CAP`. Pre-cap and final name collision checks (fail-fast with owners).
+  - Duplicate handling policy configurable with `MCP_DUPLICATE_POLICY=fail|keep_first|keep_last|drop` (deterministic resolution).
     - Optional Router surface (off by default) publishes short names with `oneOf` schema per provider.
 
 - **BFF routing**
@@ -34,6 +33,7 @@ Note: A versioned release notes page is now available. See `releases/loopback_mc
 
 - **Stability and tests**
   - Tests passing for: MCP list/invoke (unit + integration), ToolCatalogue merge, tool routes, and agent suites.
+  - Dynamic view reload covered: unknown-view access triggers view index reload and `ConfigLoader` cache invalidation ensuring `mcpInstance` updates are visible immediately.
   - Safer imports (plugin fallback), OTEL off in tests, FIPS bypass knob for test env.
 
 - **Docs**
@@ -45,9 +45,7 @@ Note: A versioned release notes page is now available. See `releases/loopback_mc
 
 - **Discover tools**
   - Via CRUDService: `GET /mcp/tools/list`
-  - Via CRUDService (virtual): `GET /mcp/{view}/tools/list?limit=50&cursor=<t>`
   - Via BFF: `GET /api/crud/mcp/tools/list`
-  - Via BFF (virtual): `GET /api/crud/mcp/{view}/tools/list`
   - Via ToolCatalogue: `GET /tools/list`, `GET /tools/search` (returns built-ins + loopback MCP).
 
 - **Invoke tools**
@@ -148,10 +146,11 @@ Direct start (enable): set `MCP_LOOPBACK_WORKFLOW_DIRECT_INVOKE=true` on CRUDSer
 
 - If Cursor (or any MCP-capable client) supports HTTP JSON-RPC endpoints, it can:
   - Call `tools/list` and `tools/invoke` via `https://<bff-host>/api/crud/mcp/jsonrpc`.
-  - Use view‑scoped endpoints when catalog caps apply: `https://<bff-host>/api/crud/mcp/{view}/jsonrpc`.
+  - Or directly `https://<crud-service-host>:8000/mcp/jsonrpc` inside the cluster.
 - Requirements:
   - The client must include `Authorization: Bearer <token>` with scopes: `mcp.tools.discovery` for list, `mcp.tools.invoke` for invoke.
   - JSON-RPC 2.0 payloads as shown above.
+  - Note: Some clients warn when the displayed server label + tool name exceed a UI cap (e.g., ~60). If needed, shorten the client label or set `MCP_TOOL_NAME_CAP` to a lower value.
 
 If Cursor requires WebSocket transport for MCP, use the BFF proxy when WS-to-HTTP translation is available; otherwise, HTTP JSON-RPC mode is supported today.
 

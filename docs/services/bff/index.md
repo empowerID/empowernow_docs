@@ -9,6 +9,7 @@ The EmpowerNow BFF is the session and security gateway for our SPAs:
 
 Start here:
 
+- BFF Design Pattern: problem, how it works, when to use → `Explanations / Backend‑for‑Frontend (BFF) Design Pattern`
 - Overview: what the BFF is and isn’t → `Explanations / BFF for SPAs — How It Works`
 - Executive overview: business value and visuals → `Explanations / BFF — Executive Overview`
 - Visual Guide: presentable diagrams of flows and routing → `Explanations / BFF Visual Guide`
