@@ -1,3 +1,16 @@
+## Budgets
+
+```yaml
+- id: "authzen-effective-budgets"
+  path: "/access/v1/budgets/effective"
+  target_service: "pdp_service"
+  upstream_path: "/access/v1/budgets/effective"
+  methods: ["GET", "OPTIONS"]
+  auth: "session"
+  preserve_path: true
+  authz: "none"
+```
+
 ---
 title: routes.yaml Reference
 ---

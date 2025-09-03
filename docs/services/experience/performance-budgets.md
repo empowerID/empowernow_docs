@@ -24,3 +24,26 @@ description: Size targets and practical guidance for keeping plugins fast.
 
 See also: Quickstart `./quickstart`, Error & Loading Patterns `./error-loading-patterns`.
 
+## AI Spend – Effective Budgets (UI integration)
+
+- Fetch counters from Analytics first; when `limit_usd` is null, call the PDP Effective Budgets endpoint via the BFF to render the policy‑derived effective limit and remaining.
+
+```mermaid
+sequenceDiagram
+  participant UI as SPA
+  participant B as BFF
+  participant P as PDP
+  participant A as Analytics
+  UI->>A: GET /api/v1/analytics/budgets/state
+  alt limit_usd null
+    UI->>B: GET /access/v1/budgets/effective
+    B->>P: GET /access/v1/budgets/effective
+    P->>A: GET budgets/state
+    A-->>P: counters + overrides
+    P-->>B: snapshot (effective)
+    B-->>UI: 200 JSON
+  end
+```
+
+See also: `services/pdp/reference/effective-budgets.md`.
+

@@ -30,6 +30,9 @@ flowchart LR
 ### New: Virtual MCP Servers (fit client catalog limits)
 Some MCP clients only display ~50–60 tools per server. Virtual MCP Servers let you publish scoped catalogs on separate paths (e.g., `/mcp/entra`, `/mcp/workflows`) with pagination—so agents and UIs stay fast without losing breadth.
 
+### New: AI Spend – Effective Budgets
+Show users a budget even when overrides aren’t configured. PDP now merges Analytics counters with policy defaults and serves an Effective Budgets snapshot via `/access/v1/budgets/effective` (proxied by the BFF). UIs get consistent “limit” and “remaining” with a single call.
+
 ### Get started
 - Quickstart: `../../services/crud-service/how-to/mcp-quickstart.md`
 - API Reference: `../../services/crud-service/reference/mcp_api_reference.md`
