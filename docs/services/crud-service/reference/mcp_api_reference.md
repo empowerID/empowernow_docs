@@ -35,7 +35,7 @@ Response (shape)
 
 ---
 
-### REST: GET /mcp/{view}/tools/list
+### REST: GET `/mcp/{view}/tools/list`
 Lists tools filtered by a virtual view (e.g., `entra`, `workflows`). Health tools are always included for connectivity checks.
 
 Request
@@ -58,7 +58,7 @@ Response (shape)
 
 ---
 
-### JSON‑RPC 2.0: POST /mcp/jsonrpc
+### JSON‑RPC 2.0: POST `/mcp/jsonrpc`
 ```
 POST /mcp/jsonrpc
 Authorization: Bearer <token>
@@ -102,7 +102,7 @@ tools/invoke example (workflow)
 
 ---
 
-### JSON‑RPC 2.0: POST /mcp/{view}/jsonrpc
+### JSON‑RPC 2.0: POST `/mcp/{view}/jsonrpc`
 Same methods and payloads as `/mcp/jsonrpc`, but constrained to the specified virtual view. Invoking a tool outside the view returns JSON‑RPC `-32601` (not found).
 
 Request
