@@ -177,4 +177,4 @@ allowed, reason = PDPService.authorize(
 
 ---
 
-*Prepared for legal & technical review – {{ "now" }}*
+*Prepared for legal & technical review – now*

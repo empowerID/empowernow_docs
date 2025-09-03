@@ -102,4 +102,4 @@ Gateway logs will show lines like:
 
 ---
 
-_Last updated: {{ "now" }}_ 
+_Last updated: now_

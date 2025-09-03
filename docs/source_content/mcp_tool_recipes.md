@@ -154,7 +154,7 @@ curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
 In Cursor, once `crud-mcp` is configured, you can say:
 - “List tools from crud-mcp.”
 - “Run the CRUD MCP health check with verbose true.”
-- “Given user <id>, fetch their groups and manager.”
+- “Given user `<id>`, fetch their groups and manager.”
 
 Cursor will chain calls via `tools/list` and `tools/call` using the same endpoints above.
 
