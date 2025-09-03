@@ -37,4 +37,8 @@ Quick links to commonly used specialized APIs exposed by the BFF (source on GitH
 
 ## AI chat completions through the BFF
 
+- Explanation: [Dynamic AI Model Routing — How It Works](/docs/services/bff/explanation/llm-dynamic-model-routing)
+- Tutorial: [LLM Routing Quickstart](/docs/services/bff/tutorials/llm-routing-quickstart)
+- How‑to: [Enable Routing](/docs/services/bff/how-to/llm-routing-enable), [Override Pricing](/docs/services/bff/how-to/llm-routing-pricing), [Budgets & Receipts](/docs/services/bff/how-to/llm-routing-budgets), [Observability](/docs/services/bff/how-to/llm-routing-observability)
+- Reference: [LLM Routing Config](/docs/services/bff/reference/llm-routing-config), [LLM Routing PDP](/docs/services/bff/reference/llm-routing-pdp)
 - Reference: [AI Chat Completions (PDP Enforcement)](/docs/services/bff/reference/bff-llm-pdp-enforcement)
