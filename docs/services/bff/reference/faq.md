@@ -36,13 +36,13 @@ Q: Can I call services directly?
 A: In production, no. All calls go via the BFF to prevent token exposure and centralize authorization.
 
 Q: How should I register the BFF client with the IdP?
-A: Do a one-time Dynamic Client Registration using a fresh Initial Access Token (IAT), with `token_endpoint_auth_method: private_key_jwt` and `jwks_uri` pointing at the BFF JWKS (`https://<your-bff-host>/.well-known/jwks.json`). After success, remove `DCR_IAT` from the environment; the bootstrap remains idempotent.
+A: Use the DCR bootstrap runbook. For inline JWKS rotation (no IdP refetch), enable the bootstrapper with `DCR_ENABLED=true`, set `DCR_SIGNING_KEY` and `BFF_KID`, and provide a one-time `DCR_IAT` for first registration. For safe rotations, set `DCR_ROTATION_SAFE=true` and choose a `DCR_REDIRECT_UPDATE_MODE`.
 
 Q: How do access tokens get renewed?
 A: The BFF auto-refreshes access tokens in the background and on demand before expiry. No SPA changes are required.
 
 Q: How do we rotate credentials safely?
-A: Prefer `private_key_jwt` with `jwks_uri`. Rotate the BFF signing key and serve both the old and new keys in JWKS for a grace period; the IdP will re-fetch via `jwks_uri`. No DCR re-register is needed.
+A: With inline JWKS mode, the bootstrapper performs non-destructive rotations: it adds a new key (up to `BFF_JWK_MAX_KEYS`), retires old keys after `BFF_JWK_RETIRE_AFTER_DAYS`, and only persists PEM after a successful PATCH. Redirect URIs are merged when `DCR_ROTATION_SAFE=true` to avoid churn.
 
 Q: Can I rotate or set `client_secret` via public DCR PATCH?
 A: Not supported in our IdP’s public DCR endpoint. Use an admin/out-of-band path if absolutely required; otherwise stick to `private_key_jwt` + `jwks_uri`.

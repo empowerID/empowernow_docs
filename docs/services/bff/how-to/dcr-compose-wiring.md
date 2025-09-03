@@ -22,8 +22,10 @@ bff:
     DCR_CLIENT_ID: bff-server
     DCR_CLIENT_PROFILE: code-flow-pkjwt
     DCR_REDIRECT_URIS: https://automate.ocg.labs.empowernow.ai/auth/callback,https://authn.ocg.labs.empowernow.ai/auth/callback,https://authz.ocg.labs.empowernow.ai/auth/callback
-    BFF_JWT_SIGNING_KEY: /app/keys/bff-sig-001.pem
+    DCR_SIGNING_KEY: /app/keys/bff-sig-001.pem
     BFF_KID: bff-sig-001
+    DCR_ROTATION_SAFE: "true"
+    DCR_REDIRECT_UPDATE_MODE: auto
   # ...
 ```
 
@@ -53,7 +55,9 @@ Notes
 - `DCR_CLIENT_ID` (bff-server): desired client identifier; leave unset to let IdP assign.
 - `DCR_CLIENT_PROFILE` (code-flow-pkjwt): IdP template controlling defaults (grant types, auth method).
 - `DCR_REDIRECT_URIS`: required for auth code flow; must exactly match SPA callback URLs.
-- `BFF_JWT_SIGNING_KEY`, `BFF_KID`: private key and key id for `private_key_jwt`; IdP validates via `jwks_uri`.
+- `DCR_SIGNING_KEY`, `BFF_KID`: private key and key id for `private_key_jwt`; IdP validates inline `jwks` during PATCH.
+- `BFF_JWK_ROTATE_AFTER_DAYS`, `BFF_JWK_RETIRE_AFTER_DAYS`, `BFF_JWK_MAX_KEYS`: tune safe key rotation overlap.
+- `DCR_ROTATION_SAFE`, `DCR_REDIRECT_UPDATE_MODE`: enable non-destructive redirect updates.
 
 ## Next steps
 
