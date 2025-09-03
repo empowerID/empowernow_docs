@@ -15,12 +15,12 @@ Purpose: stable façade to legacy C# microservices with circuit breaker, caching
   - `response_cache.enabled`, `default_ttl`, `max_size`
   - `request_limits.max_body_size`
 
-Auth: BFF session required. BFF injects downstream bearer and headers.
+Auth: BFF session or bearer token. The legacy route accepts either an authenticated BFF session (cookie) or a caller-supplied EmpowerID bearer token. BFF injects downstream bearer and headers.
 
 Authentication model
-- Front-door: requires a valid BFF session (cookie). Requests are rejected before proxying otherwise.
-- Downstream: the proxy injects `Authorization: Bearer ...` when a user token is available in request state; services relying on EmpowerID API key receive `X-EmpowerID-Api-Key` if configured.
-- Identity propagation: when an ARN is available, `X-Original-User` is added for auditing/attribution.
+- Front-door: the legacy route is protected by `Depends(get_current_user)`; callers can authenticate with either a valid BFF session (cookie) or by sending `Authorization: Bearer <access_token>` from EmpowerID.
+- Downstream: the proxy forwards the caller's token unchanged in `Authorization: Bearer ...` when `request.state.token` exists; for `service=empowerid`, it also injects `X-EmpowerID-Api-Key` if configured.
+- Identity propagation: when a validated user ARN is available, `X-Original-User` is added for auditing/attribution.
 
 Endpoints
 - Any method `/api/v1/proxy/{service}/{path}`
@@ -29,8 +29,28 @@ Endpoints
 Headers injected
 - `X-Correlation-ID` when available
 - `X-Original-User` when ARN present
-- `Authorization: Bearer ...` from BFF state when available
+- `Authorization: Bearer ...` from BFF state when available (caller token pass-through)
 - For `service=empowerid`, `X-EmpowerID-Api-Key` if configured
+
+How SPA, BFF, and EmpowerID work together (legacy route)
+
+- SPA login (EmpowerID IdP)
+  - Use OIDC Authorization Code + PKCE to authenticate against EmpowerID.
+  - After login, you have two options to call the BFF:
+    - Bearer mode: SPA sends `Authorization: Bearer <access_token_from_EmpowerID>` to the BFF.
+    - Session mode (recommended for SPAs): BFF does the code exchange server-side and issues an HttpOnly secure session cookie; SPA calls the BFF without storing tokens.
+
+- Auth to the BFF
+  - The legacy route requires `Depends(get_current_user)`; the BFF accepts either the user's bearer token or an authenticated session.
+  - The BFF then exposes the user info as `TokenPayload` and sets `request.state.token` (when available).
+
+- Calling EmpowerID through the legacy route
+  - SPA calls the BFF at `/{service_name}/{path}` with `service_name = empowerid` (e.g., `/api/v1/proxy/empowerid/v1/users/me`).
+  - The BFF's proxy behavior:
+    - Forwards the caller's token unchanged in `Authorization: Bearer <token>` if `request.state.token` exists.
+    - Injects `X-EmpowerID-Api-Key` when `service_name == 'empowerid'` and `settings.empowerid_api_key` is set.
+    - Adds `X-Original-User` with the validated user ARN for audit.
+  - There is no token exchange; it is pass-through of the user's EmpowerID token plus an API key.
 
 Examples
 ```bash
@@ -41,6 +61,22 @@ curl -X POST "https://.../api/v1/proxy/res-admin/services/v1/resadmin/resources/
   -H "Content-Type: application/json" \
   --cookie "_eid_sid=..." \
   -d '{"FirstName":"Ada","LastName":"Lovelace","Email":"ada@example.com","UserName":"ada"}'
+```
+
+Minimal SPA example (legacy EmpowerID via BFF)
+
+```javascript
+// After OIDC login with EmpowerID (Auth Code + PKCE)
+// Bearer mode
+const res = await fetch('/api/v1/proxy/empowerid/v1/users/me', {
+  method: 'GET',
+  headers: { Authorization: `Bearer ${accessToken}` }
+});
+
+// Session mode: omit Authorization, include cookies
+const resSession = await fetch('/api/v1/proxy/empowerid/v1/users/me', {
+  credentials: 'include'
+});
 ```
 
 Mermaid
@@ -98,7 +134,7 @@ For SPA developers
   ```
 
 - Cross-origin dev: set `VITE_BFF_BASE_URL` to the BFF origin and ensure your client uses `credentials: 'include'` so cookies flow. See Dev vs Prod setup.
-- Do not add Authorization headers in the browser; the BFF injects downstream credentials.
+- If using session mode, do not add Authorization headers in the browser; the BFF injects downstream credentials. If using bearer mode, include your EmpowerID access token in the `Authorization` header.
 - Prefer YAML-driven canonical routes under `/api/...` when available; the legacy proxy is a compatibility bridge.
 
 Common errors and UX
