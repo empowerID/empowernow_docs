@@ -13,15 +13,14 @@ The ARIA Gateway is a policy enforcement point (PEP) at the agent→tool boundar
 - Params allowlists: regex by key per tool
 - Egress allowlists: host[:port] allow‑listed; redirects denied unless configured and target still allow‑listed
 - Plan‑step checks: verify plan tool and params fingerprint match signed plan JWS (when present)
-- Budget gating: idempotent debit per `call_id`; 402 if insufficient budget
+- Budget enforcement: handled by the BFF (LLM proxy). The MCP Gateway enforces plan/egress/params and never returns 402.
 - Inbound shaping: optional redaction, rails injection, token/byte caps, data_scope tagging
 
-## Plan + budget (enforcement lifecycle)
+## Plan (enforcement lifecycle)
 1) Read plan contract (JWS) from Passport; check current step matches `{tool, params_fingerprint}`
-2) Debit budget idempotently using `call_id`; on retry, subsequent debits are 0
-3) Evaluate with PDP; on deny, stop before tool execution
-4) Enforce inbound caps/allowlists and egress pinning; forward sanitized request to tool
-5) On success, advance plan step; emit signed receipt (hash‑chained)
+2) Evaluate with PDP; on deny, stop before tool execution
+3) Enforce inbound caps/allowlists and egress pinning; forward sanitized request to tool
+4) On success, advance plan step; emit signed receipt (hash‑chained)
 
 ## Example ingress (shape)
 Request:
@@ -32,7 +31,7 @@ Request:
   "sql": null
 }
 ```
-Response (tool’s JSON, sanitized) on permit; on deny, standard HTTP error with reason code (e.g., `egress_denied`, `plan_step_violation`, `budget_exceeded`).
+Response (tool’s JSON, sanitized) on permit; on deny, standard HTTP error with reason code (e.g., `egress_denied`, `plan_step_violation`).
 
 ## Obligations and receipts
 - On permit, emit a signed, hash‑chained receipt: includes policy snapshot (constraints), schema hash, params hash, and linkage to the previous receipt
@@ -43,4 +42,4 @@ Response (tool’s JSON, sanitized) on permit; on deny, standard HTTP error with
 - Consumes Tool Registry metadata (ETag‑friendly) for schema pins and rollout
 - Emits receipts to the Receipt Vault service for signing/anchoring
 
-CTAs: See MCP request → View guards (schema/params/egress) → Read plan/budget enforcement
+CTAs: See MCP request → View guards (schema/params/egress) → Read plan enforcement

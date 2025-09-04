@@ -90,7 +90,7 @@ curl -sS -X POST "$BFF/api/chat/completions" \
 Validate
 
 - Response headers include `x-aria-model-selected` and `x-aria-model-rerouted: true|false`.
-- 402 indicates budget denial (no affordable allowed model). 403 indicates policy denial.
+- 402 indicates budget denial (no affordable allowed model) on the BFF path. MCP Gateway does not return 402.
 
 ### How‑to tasks
 
@@ -135,7 +135,7 @@ rules:
 #### Troubleshoot
 
 - 403 with `deny`: verify PDP allowlist (`constraints.model.allow`) and egress pins.  
-- 402: pricing or budgets make all candidates unaffordable; lower `max_tokens` or adjust pricing/budget.  
+- 402: pricing or budgets make all candidates unaffordable; lower `max_tokens` or adjust pricing/budget (BFF).  
 - No reroute header: requested model was allowed within budget; no routing occurred.
 
 ### Reference cheat sheet
@@ -410,7 +410,7 @@ Given request `model=M0`, messages, and optional `max_tokens`:
   - For each `m ∈ C`:
     - Evaluate PDP with `{provider=openai, model=m, estimated_cents}`.
     - If allow: re-run preflight with `m`; re-check egress; attempt budget hold; proceed.
-  - If none allow: return 402 (budget) or 403 (policy) as appropriate.
+  - If none allow: return 402 (budget, BFF) or 403 (policy) as appropriate.
 
 ### Test coverage
 

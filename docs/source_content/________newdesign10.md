@@ -1,6 +1,6 @@
 Below is a **developer‑to‑developer, end‑to‑end ARIA v1 design** that folds in the lean “market wedge” delta and removes the low‑value/deferred features from the older draft. It includes **mermaid diagrams**, **clearly defined data models**, and **complete, runnable code stubs** (FastAPI + httpx + Redis) for the **IdP extension**, **PDP (AuthZEN profile)**, **ARIA Gateway (MCP‑aware PEP)**, **Tool Registry**, **BFF (LLM proxy with stream‑time enforcement)**, and **Receipt Vault**.
 
-> **Scope (v1):** user‑bound agent identities, AuthZEN PDP with constraints, plan contracts + hard budgets, MCP‑aware PEP (schema pins, param allowlists, egress), BFF stream‑time enforcement, signed hash‑chained receipts (+ optional KMS anchor).
+> **Scope (v1):** user‑bound agent identities, AuthZEN PDP with constraints, plan contracts, MCP‑aware PEP (schema pins, param allowlists, egress), BFF stream‑time enforcement + hard budgets, signed hash‑chained receipts (+ optional KMS anchor).
 > **Deferred:** vendor‑signed schema attestations (use schema pins), Merkle capability proofs (use RAR + policy), context‑root/DPoP binding, BDNA gating (telemetry only if instrumented), OAuth chaining (feature‑flagged add‑on).
 
 ---
@@ -68,7 +68,7 @@ sequenceDiagram
   AR->>AR: check schema pin + rollout window
   AR->>PR: /access/v1/evaluation (subject, resource, context)
   PR-->>AR: {decision, context: {constraints, obligations, decision_id, ...}}
-  AR->>AR: enforce plan step + budget debit (idempotent)
+  AR->>AR: enforce plan step (no budget)
   AR->>AR: enforce constraints (egress, params, data_scope)
   AR->>TL: forward request (shaped)
   TL-->>AR: response
