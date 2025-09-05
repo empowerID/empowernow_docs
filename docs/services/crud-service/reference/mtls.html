@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-services/crud-service/reference/mtls" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">mTLS (Design &amp; Guide) | EmpowerNow Docs</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://empowerid.github.io/empowernow_docs/img/empowernow-logo.svg"><meta data-rh="true" name="twitter:image" content="https://empowerid.github.io/empowernow_docs/img/empowernow-logo.svg"><meta data-rh="true" property="og:url" content="https://empowerid.github.io/empowernow_docs/docs/services/crud-service/reference/mtls"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="mTLS (Design &amp; Guide) | EmpowerNow Docs"><meta data-rh="true" name="description" content="Production-grade inbound mTLS for CRUD Service: design, configuration, and end-to-end flow with optional PoP (sender-binding)."><meta data-rh="true" property="og:description" content="Production-grade inbound mTLS for CRUD Service: design, configuration, and end-to-end flow with optional PoP (sender-binding)."><meta data-rh="true" name="keywords" content="mTLS,PoP,sender-binding,TLS,Traefik,Nginx,CRUD Service"><link data-rh="true" rel="icon" href="/empowernow_docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://empowerid.github.io/empowernow_docs/docs/services/crud-service/reference/mtls"><link data-rh="true" rel="alternate" href="https://empowerid.github.io/empowernow_docs/docs/services/crud-service/reference/mtls" hreflang="en"><link data-rh="true" rel="alternate" href="https://empowerid.github.io/empowernow_docs/docs/services/crud-service/reference/mtls" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CRUD Service","item":"https://empowerid.github.io/empowernow_docs/docs/services/crud-service/"},{"@type":"ListItem","position":2,"name":"Reference","item":"https://empowerid.github.io/empowernow_docs/docs/category/reference"},{"@type":"ListItem","position":3,"name":"mTLS (Design & Guide)","item":"https://empowerid.github.io/empowernow_docs/docs/services/crud-service/reference/mtls"}]}</script><link rel="stylesheet" href="/empowernow_docs/assets/css/styles.b212d4ba.css">
+<script src="/empowernow_docs/assets/js/runtime~main.b7e4b38b.js" defer="defer"></script>
+<script src="/empowernow_docs/assets/js/main.288af713.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="dark";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/empowernow_docs/img/en-logo-light.png"><link rel="preload" as="image" href="/empowernow_docs/img/en-logo-dark.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/empowernow_docs/"><div class="navbar__logo"><img src="/empowernow_docs/img/en-logo-light.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/empowernow_docs/img/en-logo-dark.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/empowernow_docs/">Home</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/solutions">Solutions</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/products">Products</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/pricing">Pricing</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/trust">Trust</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/resources">Resources</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/company">Company</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/empowernow_docs/docs/intro">Docs</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/services/crud-service/explanation/secrets-executive-overview">Secrets Overview</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/services/bff/explanation/executive-overview">BFF Overview</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/services/bff/explanation/bff-visual-guide">BFF Visual Guide</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/empowernow_docs/docs/intro">Overview</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/empowernow_docs/docs/services/identity-fabric">Services</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/identity-fabric">Identity Fabric</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/empowernow_docs/docs/services/crud-service">CRUD Service</a><button aria-label="Collapse sidebar category &#x27;CRUD Service&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/empowernow_docs/docs/services/crud-service/how-to/migration-guide-visual-designer">How‑to</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/empowernow_docs/docs/services/crud-service/secrets">Secrets Platform</a><button aria-label="Expand sidebar category &#x27;Secrets Platform&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/empowernow_docs/docs/services/crud-service/explanation/checkpointing">Explanations</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" tabindex="0" href="/empowernow_docs/docs/category/reference">Reference</a><button aria-label="Collapse sidebar category &#x27;Reference&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/connectors/azure-connector-guide">Connectors</a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/connectors/azure-connector-guide">Azure connector guide</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/connectors/azure-connector-overview">Azure connector overview</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/connectors/entra-admin-coverage">Entra ID admin commands</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-5 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/connectors/entra-graph-batch-examples">Graph $batch examples</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/faq">CRUD Service — FAQ</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/kafka-events">Kafka events</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/kpis_metrics">kpis_metrics</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/loopback_mcp_persona_guide">loopback_mcp_persona_guide</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/loopback_mcp_release_notes">loopback_mcp_release_notes</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/mcp_api_reference">mcp_api_reference</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/mcp_faq">mcp_faq</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/mcp_loopback_howto">mcp_loopback_howto</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/mcp_opt_in_annotations">mcp_opt_in_annotations</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/mcp_security_governance">mcp_security_governance</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/mcp_tool_recipes">mcp_tool_recipes</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/mtls">mTLS (Design &amp; Guide)</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/overview">CRUD Service Reference Overview</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-4 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/releases/loopback_mcp_1_0">releases</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/empowernow_docs/docs/services/crud-service/reference/secrets-api">Secrets API reference</a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/empowernow_docs/docs/services/bff">BFF</a><button aria-label="Expand sidebar category &#x27;BFF&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/empowernow_docs/docs/services/pdp">PDP</a><button aria-label="Expand sidebar category &#x27;PDP&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/empowernow_docs/docs/services/experience">Experience</a><button aria-label="Expand sidebar category &#x27;Experience&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/empowernow_docs/docs/services/aria-shield">ARIA Shield</a><button aria-label="Expand sidebar category &#x27;ARIA Shield&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/empowernow_docs/docs/services/nowconnect">NowConnect</a><button aria-label="Expand sidebar category &#x27;NowConnect&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/empowernow_docs/docs/services/idp">IdP</a><button aria-label="Expand sidebar category &#x27;IdP&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/empowernow_docs/docs/personas/faq">Personas</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/empowernow_docs/docs/marketing">Marketing</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/empowernow_docs/docs/enablement/product-review-study-guide">Enablement</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/empowernow_docs/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Services</span></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/empowernow_docs/docs/services/crud-service"><span>CRUD Service</span></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/empowernow_docs/docs/category/reference"><span>Reference</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">mTLS (Design &amp; Guide)</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>mTLS (Design &amp; Guide)</h1></header><h2 class="anchor anchorWithStickyNavbar_LWe7" id="quick-links">Quick links<a href="#quick-links" class="hash-link" aria-label="Direct link to Quick links" title="Direct link to Quick links">​</a></h2>
+<ul>
+<li>How‑to: Enable mTLS → <a href="/empowernow_docs/docs/services/crud-service/how-to/enable-mtls">Enable mTLS for CRUD Service APIs</a></li>
+<li>Jump to: <a href="#flow-mode-and-pop-enforcement">Flow: mode and PoP enforcement</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mode-selection-quick-visual">Mode selection (quick visual)<a href="#mode-selection-quick-visual" class="hash-link" aria-label="Direct link to Mode selection (quick visual)" title="Direct link to Mode selection (quick visual)">​</a></h3>
+<!-- -->
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="at-a-glance">At a glance<a href="#at-a-glance" class="hash-link" aria-label="Direct link to At a glance" title="Direct link to At a glance">​</a></h2>
+<!-- -->
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="mtls-implementation-guide">mTLS Implementation Guide<a href="#mtls-implementation-guide" class="hash-link" aria-label="Direct link to mTLS Implementation Guide" title="Direct link to mTLS Implementation Guide">​</a></h2>
+<p>This guide explains what we built, how it works end-to-end, how to configure it (Docker/Kubernetes), and how to use and verify it.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="what-we-built">What we built<a href="#what-we-built" class="hash-link" aria-label="Direct link to What we built" title="Direct link to What we built">​</a></h3>
+<ul>
+<li>Inbound mutual TLS (mTLS) at the edge (Traefik/Nginx) with the verified client certificate forwarded to the app via a trusted header.</li>
+<li>FastAPI middleware parses the forwarded certificate, computes x5t#S256, and attaches identity details to <code>request.state</code>.</li>
+<li>Authentication service supports modes: <code>bearer</code>, <code>mtls</code>, <code>bearer_plus_mtls_optional</code>, <code>bearer_plus_mtls_required</code> with PoP (sender-binding) enforcement using <code>cnf.x5t#S256</code>.</li>
+<li>Identity mapping produces canonical ARNs like <code>auth:account:x509:sha256:{thumb}</code> or email SAN-based ARNs under policy.</li>
+<li>Identity mapping produces canonical ARNs like <code>auth:account:x509:sha256:{thumb}</code> or email SAN-based ARNs under policy. For JWT-derived identities, the provider segment in ARNs prefers the IdP <code>provider</code> alias (falls back to entry <code>name</code>) so identities remain stable across audiences of the same issuer.</li>
+<li>Vault secrets path enforces sender-binding and drift detection.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-it-works-at-a-glance">How it works (at a glance)<a href="#how-it-works-at-a-glance" class="hash-link" aria-label="Direct link to How it works (at a glance)" title="Direct link to How it works (at a glance)">​</a></h3>
+<ul>
+<li>Edge terminator verifies client cert (CA/OCSP/CRL) and forwards the PEM to the app.</li>
+<li>Middleware trusts only configured proxy CIDRs, parses PEM, computes thumbprint, and sets <code>request.state.mtls_thumbprint</code> and other metadata.</li>
+<li>AuthN enforces mode and PoP: compares <code>JWT.cnf.x5t#S256</code> to <code>mtls_thumbprint</code> when required.</li>
+<li>VaultService binds secrets to the thumbprint (or <code>cnf_jkt</code>) and detects drift across requests.</li>
+</ul>
+<p>Key diagrams are further below in this document (sequence and flow).</p>
+<hr>
+<p>Here’s a production-grade design to add inbound mTLS and certificate-based authentication, integrated cleanly with your existing auth flow and policies.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="current-state-deep-assessment">Current state (deep assessment)<a href="#current-state-deep-assessment" class="hash-link" aria-label="Direct link to Current state (deep assessment)" title="Direct link to Current state (deep assessment)">​</a></h3>
+<ul>
+<li><code>authenticate_user</code> in <code>src/services/authn_service.py</code> accepts only Bearer tokens; no client cert parsing or sender-binding checks.</li>
+<li><code>workflow_routes.py</code> and <code>execute_routes.py</code> rely on <code>Depends(authorize_user)</code> → still Bearer-only.</li>
+<li><code>main.py</code> can run HTTPS but does not support client auth (no CA, no verify_mode).</li>
+<li>No middleware parses <code>X-Forwarded-Client-Cert</code>/XFCC or attaches cert-derived identity. Only <code>PrincipalHeadersMiddleware</code> exists.</li>
+<li><code>VaultService</code> already anticipates <code>request.state.mtls_thumbprint</code>/<code>cnf_jkt</code> for secret policy binding, but nothing sets these today.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="goals">Goals<a href="#goals" class="hash-link" aria-label="Direct link to Goals" title="Direct link to Goals">​</a></h3>
+<ul>
+<li>Robust inbound mTLS for service-to-service/API-clients.</li>
+<li>Cert-based identity and optional PoP binding to JWT (<code>cnf.x5t#S256</code>).</li>
+<li>Zero-trust header handling (only trust proxy-provided cert headers).</li>
+<li>FIPS-appropriate TLS policy and revocation handling.</li>
+<li>Clear modes: bearer-only, mtls-only, or strict “bearer + mtls binding required”.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="trust-boundaries-and-deployment-options">Trust boundaries and deployment options<a href="#trust-boundaries-and-deployment-options" class="hash-link" aria-label="Direct link to Trust boundaries and deployment options" title="Direct link to Trust boundaries and deployment options">​</a></h3>
+<ul>
+<li>Edge-terminated mTLS at Traefik/Nginx and forward a trusted client-cert header to the app.</li>
+<li>Optional direct mTLS at the app (Uvicorn with client cert verification), but prefer proxy termination for standardization and revocation checks.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="target-architecture">Target architecture<a href="#target-architecture" class="hash-link" aria-label="Direct link to Target architecture" title="Direct link to Target architecture">​</a></h3>
+<ul>
+<li>
+<p>Reverse proxy (Traefik) enforces mTLS:</p>
+<ul>
+<li>Require client certificate (RequireAndVerify).</li>
+<li>Validate against trusted CA bundle (config-managed).</li>
+<li>Enable <code>passTLSClientCert</code> to forward the peer cert via <code>X-Forwarded-Tls-Client-Cert</code> (PEM) and optionally a SHA-256 thumbprint header.</li>
+<li>Enforce TLS1.2+ (prefer TLS1.3 when available) and FIPS-approved ciphers.</li>
+</ul>
+</li>
+<li>
+<p>App (CRUDService) adds:</p>
+<ul>
+<li><code>ClientCertExtractionMiddleware</code>:<!-- -->
+<ul>
+<li>Trusts cert headers only from known internal proxies.</li>
+<li>Parses forwarded PEM cert, computes SHA-256 thumbprint (DER), extracts subject DN, SANs, issuer, validity, policy OIDs.</li>
+<li>Stores on <code>request.state</code>:<!-- -->
+<ul>
+<li><code>mtls_thumbprint</code> (base64url x5t#S256),</li>
+<li><code>client_cert_subject_dn</code>, <code>client_cert_sans</code>, <code>client_cert_issuer_dn</code>,</li>
+<li><code>client_cert_not_before</code>, <code>client_cert_not_after</code>,</li>
+<li><code>client_cert_policy_oids</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>authn_service.authenticate_request</code>:<!-- -->
+<ul>
+<li>New <code>INBOUND_AUTH_MODE</code> options: <code>bearer</code>, <code>mtls</code>, <code>bearer_plus_mtls_optional</code>, <code>bearer_plus_mtls_required</code>.</li>
+<li>If <code>mtls</code> or <code>bearer_plus_mtls_*</code>, build a canonical identity from cert (see “Identity mapping”).</li>
+<li>If <code>bearer_plus_mtls_required</code>, enforce <code>token.cnf.x5t#S256 == mtls_thumbprint</code>.</li>
+<li>Set <code>request.state.mtls_thumbprint</code>, <code>request.state.client_id</code>, and <code>request.state.subject</code> so <code>VaultService</code> and downstream components can apply sender-binding.</li>
+</ul>
+</li>
+<li><code>authorize_user</code> continues to work; it will see a <code>unique_id</code> derived from cert when JWT is absent or both identities are present (config determines which wins).</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="identity-mapping-canonical-and-policy-driven">Identity mapping (canonical and policy-driven)<a href="#identity-mapping-canonical-and-policy-driven" class="hash-link" aria-label="Direct link to Identity mapping (canonical and policy-driven)" title="Direct link to Identity mapping (canonical and policy-driven)">​</a></h3>
+<ul>
+<li>Canonical ARNs: use standard <code>auth:account:{provider}:{subject}</code>.</li>
+<li>Certificate identities:<!-- -->
+<ul>
+<li>Default provider: <code>x509</code>.</li>
+<li>Subject resolution strategies (configurable):<!-- -->
+<ul>
+<li>Thumbprint-based: <code>auth:account:x509:sha256:{x5t#S256}</code> (strongest/unique).</li>
+<li>SAN e-mail: <code>auth:account:x509:email:{addr}</code> when email SAN present and allowed.</li>
+<li>SAN URI / DNS / UPN mapping rules.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mapping policy file (config-managed, mounted at <code>/app/config/cert_identity_mappings.yaml</code>):<!-- -->
+<ul>
+<li>Static allowlist: specific thumbprints → principal ARNs.</li>
+<li>CA constraints: which CAs are allowed per endpoint group.</li>
+<li>Policy OIDs required (e.g., for device or hardware-token client certs).</li>
+<li>SAN/domain constraints (e.g., <code>email SAN must end with @corp.tld</code>).</li>
+<li>Endpoint-level mode: which endpoints accept <code>mtls</code>, require <code>bearer+mtls</code>, or are <code>bearer</code> only.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="sender-binding-and-pop-enforcement">Sender-binding and PoP enforcement<a href="#sender-binding-and-pop-enforcement" class="hash-link" aria-label="Direct link to Sender-binding and PoP enforcement" title="Direct link to Sender-binding and PoP enforcement">​</a></h3>
+<ul>
+<li>If mTLS and JWT present:<!-- -->
+<ul>
+<li>Verify <code>JWT.cnf.x5t#S256 == request.state.mtls_thumbprint</code>; otherwise 401 with explicit error.</li>
+</ul>
+</li>
+<li>If DPoP is used instead of mTLS in some flows, keep your existing DPoP path. Prefer one PoP mechanism per client profile to reduce complexity.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="revocation-checks-and-cert-validation">Revocation checks and cert validation<a href="#revocation-checks-and-cert-validation" class="hash-link" aria-label="Direct link to Revocation checks and cert validation" title="Direct link to Revocation checks and cert validation">​</a></h3>
+<ul>
+<li>Primary: enforce mTLS at Traefik with CRL/OCSP.<!-- -->
+<ul>
+<li>Configure OCSP stapling and revocation at the proxy (preferred for performance and consistency).</li>
+</ul>
+</li>
+<li>Secondary (defense-in-depth): app validates certificate fields from header against mappings (expiry, policy OIDs, SAN restrictions).</li>
+<li>Optionally implement light OCSP/CRL verification in app for high-risk endpoints (cache responses, short TTLs) if the proxy cannot enforce revocation.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="configuration-centralized-docker-compose-driven">Configuration (centralized, docker-compose-driven)<a href="#configuration-centralized-docker-compose-driven" class="hash-link" aria-label="Direct link to Configuration (centralized, docker-compose-driven)" title="Direct link to Configuration (centralized, docker-compose-driven)">​</a></h3>
+<ul>
+<li>New security section (single source of truth in mounted config):<!-- -->
+<ul>
+<li>Trusted proxies/CIDRs.</li>
+<li>Expected forwarded cert header names.</li>
+<li>Mode per endpoint group: <code>bearer</code>, <code>mtls</code>, <code>bearer_plus_mtls_optional</code>, <code>bearer_plus_mtls_required</code>.</li>
+<li>Allowed CAs (hashes or filenames), policy OIDs required, SAN constraints.</li>
+<li>Enable/disable PoP binding enforcement.</li>
+</ul>
+</li>
+<li>Traefik dynamic config:<!-- -->
+<ul>
+<li>TLS client auth (CA bundle path).</li>
+<li><code>passTLSClientCert</code> with <code>pem: true</code> and <code>info.notAfter/notBefore/subject/issuer/sans</code> enabled as needed.</li>
+<li>Strict TLS versions and FIPS-compliant ciphers.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="app-changes-concrete">App changes (concrete)<a href="#app-changes-concrete" class="hash-link" aria-label="Direct link to App changes (concrete)" title="Direct link to App changes (concrete)">​</a></h3>
+<ul>
+<li>Add <code>src/middleware/client_cert.py</code>:<!-- -->
+<ul>
+<li>Verify caller is a trusted proxy (<code>remote_addr</code> in CIDRs or a shared internal mTLS), otherwise ignore/strip client-cert headers.</li>
+<li>Read <code>X-Forwarded-Tls-Client-Cert</code> (PEM), parse via <code>cryptography</code>, compute x5t#S256 (base64url of SHA-256 DER), extract SANs/DNs, set <code>request.state.*</code>.</li>
+</ul>
+</li>
+<li>Wire it in <code>main.py</code> before <code>PrincipalHeadersMiddleware</code>.</li>
+<li>Extend <code>src/services/authn_service.py</code>:<!-- -->
+<ul>
+<li>Load auth mode and mapping policies from config loader.</li>
+<li>Build identity from cert when configured; verify PoP binding when required.</li>
+<li>If cert-only mode: bypass JWT introspection; set <code>unique_identity</code> from cert mapping.</li>
+<li>If bearer+mtls: keep JWT introspection, then enforce binding.</li>
+</ul>
+</li>
+<li>Extend error responses with clear troubleshooting (e.g., missing cert, untrusted CA, expired cert, PoP mismatch).</li>
+<li>Kafka audit:<!-- -->
+<ul>
+<li>On cert-auth success/failure publish security event with minimal non-sensitive details: <code>cert_thumbprint</code>, <code>issuer_hash</code>, <code>policy_oids</code>, endpoint, correlation_id.</li>
+</ul>
+</li>
+<li>Metrics:<!-- -->
+<ul>
+<li>Counters for <code>mtls_auth_success</code>, <code>mtls_auth_failure_{reason}</code>, <code>mtls_pop_mismatch</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="security-hardening">Security hardening<a href="#security-hardening" class="hash-link" aria-label="Direct link to Security hardening" title="Direct link to Security hardening">​</a></h3>
+<ul>
+<li>Strip any client-cert header from untrusted sources (defense-in-depth).</li>
+<li>Enforce strict header names; reject multi-value tricks.</li>
+<li>Rate-limit cert-auth failures.</li>
+<li>Rotate CA bundles via mounted config; reload on SIGHUP or periodic watch.</li>
+<li>TLS policy: TLSv1.2+ (prefer TLSv1.3); FIPS-approved ciphers only.</li>
+<li>No silent fallback between modes. If <code>bearer_plus_mtls_required</code>, return 401 when cert missing or binding fails.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rollout-plan">Rollout plan<a href="#rollout-plan" class="hash-link" aria-label="Direct link to Rollout plan" title="Direct link to Rollout plan">​</a></h3>
+<ul>
+<li>Phase 1 (observe): Deploy proxy mTLS termination and pass cert headers; add middleware in passive mode to parse/attach, but keep <code>bearer</code> mode. Monitor.</li>
+<li>Phase 2 (optional binding): Switch to <code>bearer_plus_mtls_optional</code> and log binding success/failure; alert on mismatches.</li>
+<li>Phase 3 (enforce): Flip endpoints to <code>bearer_plus_mtls_required</code> or <code>mtls</code> as needed.</li>
+<li>Add runbooks for CA rotation and incident response (revocation, blocklists).</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="optional-direct-app-mtls-only-if-needed">Optional: direct app mTLS (only if needed)<a href="#optional-direct-app-mtls-only-if-needed" class="hash-link" aria-label="Direct link to Optional: direct app mTLS (only if needed)" title="Direct link to Optional: direct app mTLS (only if needed)">​</a></h3>
+<ul>
+<li>Build <code>ssl.SSLContext</code> with <code>ssl.Purpose.CLIENT_AUTH</code>, <code>verify_mode=CERT_REQUIRED</code>, <code>load_verify_locations(ca)</code>, <code>minimum_version=TLSv1_2</code> (or TLSv1_3), FIPS ciphers.</li>
+<li>Pass <code>ssl=ctx</code> to uvicorn programmatically (instead of env-only run).</li>
+<li>Still keep proxy as preferred termination for simplicity and revocation.</li>
+</ul>
+<p>If you want, I can implement:</p>
+<ul>
+<li>
+<p><code>ClientCertExtractionMiddleware</code>.</p>
+</li>
+<li>
+<p>Config schema changes (security section, mapping file).</p>
+</li>
+<li>
+<p><code>authenticate_request</code> updates with modes and PoP binding checks.</p>
+</li>
+<li>
+<p>Traefik dynamic config snippet to enable mTLS and pass client cert safely.</p>
+</li>
+<li>
+<p>Implementing this will also populate <code>request.state.mtls_thumbprint</code>, unlocking the sender-binding already recognized by <code>VaultService</code>.</p>
+</li>
+<li>
+<p>This design aligns with your canonical ARN format, avoids unsafe fallbacks, and keeps configuration centralized via the mounted config directory.</p>
+</li>
+<li>
+<p>Summary</p>
+</li>
+<li>
+<p>Inbound mTLS terminated at Traefik with strict TLS and revocation; cert forwarded via trusted header.</p>
+</li>
+<li>
+<p>New FastAPI middleware parses cert, computes x5t#S256, and attaches identity details.</p>
+</li>
+<li>
+<p><code>authenticate_request</code> gains configurable modes (bearer, mtls, bearer+mtls with PoP binding).</p>
+</li>
+<li>
+<p>Identity mapping from cert to canonical ARNs via policy file; strict enforcement, no silent fallback.</p>
+</li>
+<li>
+<p>Full auditing and metrics; FIPS-appropriate TLS posture.</p>
+</li>
+</ul>
+<p>Yes. The design fits your current split: Docker + Traefik in dev, Kubernetes + ingress (Traefik or Nginx) in prod. Here’s exactly how it maps to your <code>docker-compose-authzen4.yml</code> and what to do in K8s.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="dev-docker--traefik--concrete-changes">Dev (Docker + Traefik) – concrete changes<a href="#dev-docker--traefik--concrete-changes" class="hash-link" aria-label="Direct link to Dev (Docker + Traefik) – concrete changes" title="Direct link to Dev (Docker + Traefik) – concrete changes">​</a></h3>
+<ul>
+<li>Traefik already fronts all services in <code>docker-compose-authzen4.yml</code>. Add mTLS and forward the client cert to the app.</li>
+<li>Use Traefik dynamic config (<code>CRUDService/traefik/dynamic.yml</code>) and the existing certs mount (<code>../IdP/certs → /certs</code>).</li>
+</ul>
+<p>Minimal dynamic config additions:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token comment" style="color:rgb(98, 114, 164)"># traefik/dynamic.yml</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">tls</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">options</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">mtls</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">minVersion</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> VersionTLS12</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">cipherSuites</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">clientAuth</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">clientAuthType</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> RequireAndVerifyClientCert</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">caFiles</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> /certs/ca.crt</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">http</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">middlewares</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">mtls-passcert</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">passTLSClientCert</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">pem</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">info</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">subject</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">issuer</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">notBefore</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">notAfter</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">sans</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><br></span></code></pre></div></div>
+<p>Attach to your CRUD router (labels) so the cert is required and forwarded:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token comment" style="color:rgb(98, 114, 164)"># in crud-service.labels (add/keep existing)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;traefik.http.routers.crud.tls=true&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;traefik.http.routers.crud.tls.options=mtls@file&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;traefik.http.routers.crud.middlewares=mtls-passcert@file,security-headers@file,rate-limit@file&quot;</span><br></span></code></pre></div></div>
+<p>App-side settings (env or config file under <code>/app/config</code>):</p>
+<ul>
+<li><code>INBOUND_AUTH_MODE=bearer_plus_mtls_required</code> (or <code>mtls</code>/<code>bearer_plus_mtls_optional</code> per endpoint policy)</li>
+<li><code>FORWARDED_CLIENT_CERT_HEADER=X-Forwarded-Tls-Client-Cert</code></li>
+<li><code>TRUSTED_PROXY_CIDRS=172.16.0.0/12,10.0.0.0/8</code> (Docker bridge)</li>
+<li><code>CERT_IDENTITY_MAPPINGS=/app/config/cert_identity_mappings.yaml</code></li>
+</ul>
+<p>The new <code>ClientCertExtractionMiddleware</code> will:</p>
+<ul>
+<li>Trust only Traefik (by <code>TRUSTED_PROXY_CIDRS</code>).</li>
+<li>Parse <code>X-Forwarded-Tls-Client-Cert</code> (PEM), compute x5t#S256, set <code>request.state.mtls_thumbprint</code>, SANs, DNs, validity.</li>
+<li><code>authenticate_request</code> will enforce PoP binding if configured and populate canonical identity. This automatically unlocks sender-binding in <code>VaultService</code> (it already reads <code>mtls_thumbprint</code>).</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="prod-kubernetes">Prod (Kubernetes)<a href="#prod-kubernetes" class="hash-link" aria-label="Direct link to Prod (Kubernetes)" title="Direct link to Prod (Kubernetes)">​</a></h3>
+<p>You can run either Traefik or Nginx. The app’s middleware stays identical; only ingress config differs.</p>
+<p>Option A: Traefik (CRDs)</p>
+<ul>
+<li>In your <code>IngressRoute</code>:<!-- -->
+<ul>
+<li>reference a <code>tls.options: mtls@file</code> with <code>clientAuth</code> (mounted CA secret)</li>
+<li>apply the same <code>passTLSClientCert</code> middleware</li>
+</ul>
+</li>
+</ul>
+<p>Example fragment:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">apiVersion</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> traefik.containo.us/v1alpha1</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">kind</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> IngressRoute</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">spec</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">entryPoints</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token plain"> websecure </span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">routes</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">match</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Host(`crud.prod.example.com`)</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">kind</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> Rule</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">services</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> crud</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">service</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">port</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token number">8000</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">middlewares</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> mtls</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">passcert</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">tls</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">options</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> mtls</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">namespace</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> traefik</span><br></span></code></pre></div></div>
+<p>Option B: Nginx Ingress</p>
+<ul>
+<li>Enable mTLS and forward the cert to upstream:</li>
+</ul>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">metadata</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">annotations</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">nginx.ingress.kubernetes.io/auth-tls-verify-client</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;on&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">nginx.ingress.kubernetes.io/auth-tls-secret</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;default/mtls-ca&quot;</span><span class="token plain">   </span><span class="token comment" style="color:rgb(98, 114, 164)"># CA bundle</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;true&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">nginx.ingress.kubernetes.io/proxy-ssl-name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;crud.prod.example.com&quot;</span><br></span></code></pre></div></div>
+<ul>
+<li>Configure the app to accept the Nginx header (e.g., <code>ssl-client-cert</code>); set <code>FORWARDED_CLIENT_CERT_HEADER=ssl-client-cert</code>.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="config-policy-and-ca-management">Config, policy, and CA management<a href="#config-policy-and-ca-management" class="hash-link" aria-label="Direct link to Config, policy, and CA management" title="Direct link to Config, policy, and CA management">​</a></h3>
+<ul>
+<li>Keep all app settings in <code>ServiceConfigs/CRUDService/config</code> (mounted at <code>/app/config</code>) per your standard.</li>
+<li>Store CA bundles/secrets in:<!-- -->
+<ul>
+<li>dev: <code>../IdP/certs</code> (already mounted to Traefik as <code>/certs</code>)</li>
+<li>prod: K8s <code>Secret</code> referenced by Ingress (Traefik/Nginx)</li>
+</ul>
+</li>
+<li>Identity mapping file: <code>ServiceConfigs/CRUDService/config/cert_identity_mappings.yaml</code> to constrain SAN/issuers/policy OIDs and map certs to canonical ARNs.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="what-this-gives-you">What this gives you<a href="#what-this-gives-you" class="hash-link" aria-label="Direct link to What this gives you" title="Direct link to What this gives you">​</a></h3>
+<ul>
+<li>
+<p>Dev and prod use the same application behavior; only the edge differs.</p>
+</li>
+<li>
+<p>Traefik/Nginx terminate mTLS and forward the client cert. The app enforces PoP binding and builds cert-based identity. <code>VaultService</code> sender-binding starts working immediately via <code>request.state.mtls_thumbprint</code>.</p>
+</li>
+<li>
+<p>I can proceed to:</p>
+<ul>
+<li>add <code>ClientCertExtractionMiddleware</code>,</li>
+<li>extend <code>authenticate_request</code> with the modes and PoP-binding,</li>
+<li>introduce new config keys and a sample <code>cert_identity_mappings.yaml</code>,</li>
+<li>and leave Traefik dynamic config snippets ready in <code>CRUDService/traefik/dynamic.yml</code>.</li>
+</ul>
+</li>
+<li>
+<p>The docker-compose and K8s specifics above ensure the design is fully aligned with your current architecture.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="implementation-to-do-detailed">Implementation To-Do (detailed)<a href="#implementation-to-do-detailed" class="hash-link" aria-label="Direct link to Implementation To-Do (detailed)" title="Direct link to Implementation To-Do (detailed)">​</a></h3>
+<ul>
+<li>
+<p>Prerequisites and decisions</p>
+<ul>
+<li>Define trusted proxy CIDRs for dev/prod (Docker bridge, cluster CIDRs) and the exact forwarded cert header name per ingress:<!-- -->
+<ul>
+<li>Dev (Traefik): <code>X-Forwarded-Tls-Client-Cert</code> (PEM)</li>
+<li>Nginx Ingress: <code>ssl-client-cert</code> (PEM)</li>
+</ul>
+</li>
+<li>Prepare CA bundle(s) for client auth:<!-- -->
+<ul>
+<li>Dev: place CA at <code>../IdP/certs/ca.crt</code> (already mounted to Traefik as <code>/certs</code>)</li>
+<li>Prod: create K8s Secret (e.g., <code>default/mtls-ca</code>) with CA chain</li>
+</ul>
+</li>
+<li>Decide inbound auth mode per endpoint group: <code>bearer</code>, <code>mtls</code>, <code>bearer_plus_mtls_optional</code>, <code>bearer_plus_mtls_required</code></li>
+<li>Author identity mapping rules and constraints (SAN, issuer, policy OIDs) in <code>ServiceConfigs/CRUDService/config/cert_identity_mappings.yaml</code></li>
+</ul>
+</li>
+<li>
+<p>Reverse proxy (Dev – Traefik)</p>
+<ul>
+<li>Update <code>CRUDService/traefik/dynamic.yml</code>:<!-- -->
+<ul>
+<li>Add <code>tls.options.mtls</code> with <code>clientAuth.RequireAndVerifyClientCert</code> and <code>caFiles: [/certs/ca.crt]</code></li>
+<li>Add middleware <code>mtls-passcert</code> with <code>passTLSClientCert</code> (<code>pem: true</code>, include subject/issuer/notBefore/notAfter/sans)</li>
+</ul>
+</li>
+<li>Update <code>crud-service</code> labels in <code>docker-compose-authzen4.yml</code>:<!-- -->
+<ul>
+<li>Attach <code>traefik.http.routers.crud.tls.options=mtls@file</code></li>
+<li>Append <code>mtls-passcert@file</code> to the router <code>middlewares</code></li>
+</ul>
+</li>
+<li>Reload Traefik (compose restart) and verify dashboard shows TLS client auth enabled for <code>crud</code> router</li>
+</ul>
+</li>
+<li>
+<p>Reverse proxy (Prod – Ingress)</p>
+<ul>
+<li>If Traefik: create <code>IngressRoute</code> referencing <code>tls.options mtls</code> and apply <code>passTLSClientCert</code> middleware; mount CA secret in Traefik</li>
+<li>If Nginx Ingress: set annotations<!-- -->
+<ul>
+<li><code>nginx.ingress.kubernetes.io/auth-tls-verify-client: &quot;on&quot;</code></li>
+<li><code>nginx.ingress.kubernetes.io/auth-tls-secret: &quot;&lt;ns&gt;/mtls-ca&quot;</code></li>
+<li><code>nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream: &quot;true&quot;</code></li>
+</ul>
+</li>
+<li>Document header name for app (<code>FORWARDED_CLIENT_CERT_HEADER</code>) and ensure it matches ingress behavior</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="per-path-binding-enforcement">Per-path binding enforcement<a href="#per-path-binding-enforcement" class="hash-link" aria-label="Direct link to Per-path binding enforcement" title="Direct link to Per-path binding enforcement">​</a></h3>
+<ul>
+<li>Set global mode to <code>bearer_plus_mtls_optional</code> and list paths that require PoP binding via <code>BINDING_REQUIRED_PATHS</code>:</li>
+</ul>
+<div class="language-env codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-env codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">INBOUND_AUTH_MODE=bearer_plus_mtls_optional</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">BINDING_REQUIRED_PATHS=/workflow/start,/workflow/resume,/execute</span><br></span></code></pre></div></div>
+<ul>
+<li>Behavior:<!-- -->
+<ul>
+<li>Requests to listed paths must include a client cert (forwarded) and the JWT must contain <code>cnf.x5t#S256</code> matching the cert thumbprint. Otherwise 401.</li>
+<li>Non-listed paths in optional mode accept bearer-only and will not enforce PoP.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="kubernetes-ingress-snippets-and-ca-rotation">Kubernetes ingress snippets and CA rotation<a href="#kubernetes-ingress-snippets-and-ca-rotation" class="hash-link" aria-label="Direct link to Kubernetes ingress snippets and CA rotation" title="Direct link to Kubernetes ingress snippets and CA rotation">​</a></h3>
+<ul>
+<li>Traefik (CRDs) – mTLS options and passTLSClientCert middleware. Rotate CA by updating the Secret referenced in Traefik and reloading.</li>
+<li>Nginx Ingress – <code>auth-tls-verify-client: on</code> and <code>auth-tls-secret: &lt;ns&gt;/mtls-ca</code>. Rotate CA by updating the Secret; upstream header is <code>ssl-client-cert</code>.</li>
+</ul>
+<p>Runbook (rotation):</p>
+<ul>
+<li>Prepare new CA bundle Secret (ensure old + new overlap if needed).</li>
+<li>Update Traefik/Nginx to reference new Secret; apply rollout.</li>
+<li>Verify with a canary client cert; then remove old CA from bundle.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="curl-examples">Curl examples<a href="#curl-examples" class="hash-link" aria-label="Direct link to Curl examples" title="Direct link to Curl examples">​</a></h3>
+<ul>
+<li>Dev (Traefik mTLS):</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-sS</span><span class="token plain"> https://crud.local/workflow/start </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">--cert</span><span class="token plain"> client.pem </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">--key</span><span class="token plain"> client.key </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Authorization: Bearer </span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$JWT</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-d</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;{&quot;workflow_name&quot;:&quot;demo&quot;,&quot;data&quot;:{}}&#x27;</span><br></span></code></pre></div></div>
+<ul>
+<li>PoP mismatch troubleshooting: check that <code>cnf.x5t#S256</code> in the JWT equals the SHA-256 DER thumbprint of the client cert; otherwise server returns 401.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="config-validation">Config validation<a href="#config-validation" class="hash-link" aria-label="Direct link to Config validation" title="Direct link to Config validation">​</a></h3>
+<ul>
+<li>
+<p>On startup we warn (non-blocking) when:</p>
+<ul>
+<li><code>INBOUND_AUTH_MODE</code> is unknown</li>
+<li><code>BINDING_REQUIRED_PATHS</code> contains malformed entries</li>
+<li><code>CERT_IDENTITY_MAPPINGS</code> points to a non-existent file</li>
+</ul>
+</li>
+<li>
+<p>App config (centralized under <code>/app/config</code> with env overrides)</p>
+<ul>
+<li>Extend <code>pdp.yaml</code> <code>security</code> section or add <code>security.mtls</code> with:<!-- -->
+<ul>
+<li><code>inbound_auth_mode</code> (default for endpoints), <code>binding_required_paths</code> (optional per-path overrides)</li>
+<li><code>forwarded_client_cert_header</code>, <code>trusted_proxy_cidrs</code>, <code>identity_mappings_path</code></li>
+</ul>
+</li>
+<li>Provide environment overrides in <code>docker-compose-authzen4.yml</code> for dev:<!-- -->
+<ul>
+<li><code>INBOUND_AUTH_MODE=bearer_plus_mtls_optional</code> (Phase 2), later <code>bearer_plus_mtls_required</code></li>
+<li><code>FORWARDED_CLIENT_CERT_HEADER=X-Forwarded-Tls-Client-Cert</code></li>
+<li><code>TRUSTED_PROXY_CIDRS=172.16.0.0/12,10.0.0.0/8</code></li>
+<li><code>CERT_IDENTITY_MAPPINGS=/app/config/cert_identity_mappings.yaml</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Middleware: <code>src/middleware/client_cert.py</code></p>
+<ul>
+<li>Implement <code>ClientCertExtractionMiddleware</code>:<!-- -->
+<ul>
+<li>If <code>remote_addr</code> not in <code>TRUSTED_PROXY_CIDRS</code>, ignore/strip any client-cert headers</li>
+<li>Read PEM from <code>FORWARDED_CLIENT_CERT_HEADER</code>, parse via <code>cryptography</code></li>
+<li>Compute x5t#S256 (SHA-256 of DER, base64url, no padding)</li>
+<li>Extract: subject DN, issuer DN, SANs (DNS, URI, RFC822), notBefore/notAfter, policy OIDs</li>
+<li>Set on <code>scope[&#x27;state&#x27;]</code> and <code>request.state</code>: <code>mtls_thumbprint</code>, <code>client_cert_*</code></li>
+</ul>
+</li>
+<li>Defensive parsing: handle multi-line headers, large PEMs, malformed input; cap size</li>
+</ul>
+</li>
+<li>
+<p>Wire middleware in <code>src/main.py</code></p>
+<ul>
+<li>Add before <code>PrincipalHeadersMiddleware</code> to ensure state is available to authn/authz:<!-- -->
+<ul>
+<li><code>app.add_middleware(ClientCertExtractionMiddleware, ...)</code></li>
+</ul>
+</li>
+<li>Ensure order: iterator adapter outermost, then security headers/origin/cert extraction, then principal headers</li>
+</ul>
+</li>
+<li>
+<p>Identity mapping module: <code>src/utils/cert_identity_mapper.py</code></p>
+<ul>
+<li>Load <code>cert_identity_mappings.yaml</code> (fail-closed if <code>mtls</code>/<code>binding_required</code> mode and no mapping allows)</li>
+<li>Produce canonical ARN: default <code>auth:account:x509:sha256:{x5t}</code>; allow SAN/issuer policy-based mappings</li>
+<li>Validate constraints: allowed issuers/roots, SAN domain allowlist, policy OIDs, validity window</li>
+</ul>
+</li>
+<li>
+<p>AuthN changes: <code>src/services/authn_service.py</code></p>
+<ul>
+<li>Read <code>inbound_auth_mode</code> and per-path overrides from config</li>
+<li>If mode is <code>mtls</code> and cert present:<!-- -->
+<ul>
+<li>Build <code>UniqueIdentity</code> from cert mapping; skip JWT introspection</li>
+</ul>
+</li>
+<li>If mode is <code>bearer_plus_mtls_optional</code> and both present:<!-- -->
+<ul>
+<li>Prefer JWT identity but set <code>request.state.mtls_thumbprint</code> for sender-binding</li>
+<li>If <code>binding_required_paths</code> match, enforce PoP (<code>token.cnf.x5t#S256 == mtls_thumbprint</code>)</li>
+</ul>
+</li>
+<li>If mode is <code>bearer_plus_mtls_required</code>:<!-- -->
+<ul>
+<li>Require both JWT and cert; enforce PoP, else <code>401 invalid_token</code> with troubleshooting</li>
+</ul>
+</li>
+<li>Populate: <code>request.state.subject</code>, <code>request.state.client_id</code>, <code>request.state.unique_identity</code> consistently for downstream</li>
+</ul>
+</li>
+<li>
+<p>AuthZ: <code>src/services/authz_service.py</code> (validate context only)</p>
+<ul>
+<li>No core changes; ensure normalized identity is used (cert ARN or JWT unique_id)</li>
+<li>Log principal ARN, mtls thumbprint presence, and enforcement outcome for audit</li>
+</ul>
+</li>
+<li>
+<p>Secrets sender-binding: <code>src/services/vault_service.py</code></p>
+<ul>
+<li>Confirm <code>cnf_binding = mtls_thumbprint or cnf_jkt</code> path works</li>
+<li>Add tests to ensure <code>grant.cnf_binding</code> drift is detected when <code>mtls_thumbprint</code> changes within TTL</li>
+</ul>
+</li>
+<li>
+<p>Observability and audit</p>
+<ul>
+<li>Metrics: add counters/histograms<!-- -->
+<ul>
+<li><code>mtls_auth_success_total</code>, <code>mtls_auth_failure_total{reason}</code>, <code>mtls_pop_mismatch_total</code></li>
+<li>Latency histograms for middleware parse and auth pipeline</li>
+</ul>
+</li>
+<li>Kafka: publish security events on success/failure (mask sensitive fields, include thumbprint only)</li>
+<li>Structured logs: include <code>correlation_id</code>, <code>mtls_thumbprint_present</code>, <code>binding_enforced</code></li>
+</ul>
+</li>
+<li>
+<p>Tests</p>
+<ul>
+<li>Unit<!-- -->
+<ul>
+<li>Middleware: parse valid PEM, invalid PEM, no header, untrusted proxy, large header</li>
+<li>Identity mapper: mapping precedence, constraint failures (issuer/SAN/policy/expiry)</li>
+<li>AuthN modes: each mode with and without cert/JWT; PoP pass/fail</li>
+</ul>
+</li>
+<li>Integration (dev via Traefik)<!-- -->
+<ul>
+<li>Compose with mtls enabled; hit CRUD endpoints using client cert; verify 200 vs 401 on PoP mismatch</li>
+</ul>
+</li>
+<li>E2E<!-- -->
+<ul>
+<li>Critical flows on <code>/workflow/*</code> and <code>/execute</code> with mode permutations</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Runbook and rollout</p>
+<ul>
+<li>Phase toggles via env/config; start with <code>bearer</code> → <code>bearer_plus_mtls_optional</code> (observe) → <code>bearer_plus_mtls_required</code></li>
+<li>CA rotation procedure (Traefik/Nginx + app policy reload)</li>
+<li>Incident steps for revocation, thumbprint blocklisting (temporary deny-list in mappings)</li>
+</ul>
+</li>
+<li>
+<p>Security hardening</p>
+<ul>
+<li>Strip client-cert headers from untrusted sources (always)</li>
+<li>Enforce TLSv1.2+ (prefer TLSv1.3) and FIPS ciphers at proxy</li>
+<li>Rate-limit cert-auth failures; alert on spikes</li>
+<li>Validate that cert clock-skew handling is sane; apply small leeway only if required</li>
+</ul>
+</li>
+<li>
+<p>Documentation updates</p>
+<ul>
+<li>Add <code>ServiceConfigs/CRUDService/config/cert_identity_mappings.yaml</code> example with comments</li>
+<li>Update <code>traefik/dynamic.yml</code> example and K8s ingress examples</li>
+<li>Provide <code>curl</code> examples for mTLS (dev) and PoP-mismatch troubleshooting</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="role-based-quick-guides-and-faqs">Role-based quick guides and FAQs<a href="#role-based-quick-guides-and-faqs" class="hash-link" aria-label="Direct link to Role-based quick guides and FAQs" title="Direct link to Role-based quick guides and FAQs">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="for-product-managers-non-technical">For Product Managers (non-technical)<a href="#for-product-managers-non-technical" class="hash-link" aria-label="Direct link to For Product Managers (non-technical)" title="Direct link to For Product Managers (non-technical)">​</a></h4>
+<ul>
+<li>What is being added? Inbound mutual TLS (mTLS) so API clients present a client certificate. We can optionally require their JWT to be bound to that certificate for stronger proof-of-possession (PoP).</li>
+<li>Why it matters: Prevents token replay and enforces that only devices with approved certificates can access sensitive endpoints.</li>
+<li>Modes and impact:<!-- -->
+<ul>
+<li>bearer: current behavior, no change to clients.</li>
+<li>mtls: cert-only clients; no JWT needed. Good for service accounts.</li>
+<li>bearer_plus_mtls_optional: JWT still works; certain paths can require PoP.</li>
+<li>bearer_plus_mtls_required: strongest; clients must send both JWT and cert and they must match.</li>
+</ul>
+</li>
+<li>Rollout safety: adopt optional mode first, monitor, then enforce on high-risk endpoints only.</li>
+<li>SLA impact: negligible under normal load; cert parsing and PoP check are microseconds compared to network I/O.</li>
+</ul>
+<p>Common PM questions</p>
+<ul>
+<li>How do we identify clients? Certificate → canonical ARN (e.g., <code>auth:account:x509:sha256:{thumbprint}</code> or email SAN when allowed).</li>
+<li>Can we block a compromised cert quickly? Yes: remove it from mappings or rotate CA at the proxy; app also enforces SAN/issuer/policy constraints.</li>
+<li>What changes for UIs? None directly. This feature targets API/service clients.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="for-devops-enableoperate">For DevOps (enable/operate)<a href="#for-devops-enableoperate" class="hash-link" aria-label="Direct link to For DevOps (enable/operate)" title="Direct link to For DevOps (enable/operate)">​</a></h4>
+<ul>
+<li>Dev (Docker + Traefik):<!-- -->
+<ul>
+<li>
+<p>Enable mTLS in <code>traefik/dynamic.yml</code> with <code>tls.options.mtls</code> and <code>passTLSClientCert</code> middleware.</p>
+</li>
+<li>
+<p>Ensure CRUD router labels include <code>...tls.options=mtls@file</code> and <code>...middlewares=mtls-passcert@file,...</code>.</p>
+</li>
+<li>
+<p>App env: set <code>FORWARDED_CLIENT_CERT_HEADER=X-Forwarded-Tls-Client-Cert</code>, trusted CIDRs for the bridge, and <code>INBOUND_AUTH_MODE</code>.</p>
+</li>
+<li>
+<p>Optional: set <code>FORWARDED_CLIENT_CERT_HMAC_SECRET</code> and <code>FORWARDED_CLIENT_CERT_SIGNATURE_HEADER</code> to require a signed forwarded cert header.</p>
+</li>
+<li>
+<p>Safer default for teams: mTLS is disabled by default in dev; opt in when ready</p>
+<ul>
+<li>Default compose now routes without mTLS to avoid blocking teammates without a CA.</li>
+<li>To enable mTLS locally, run with the override:<!-- -->
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token function" style="color:rgb(80, 250, 123)">docker</span><span class="token plain"> compose </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-f</span><span class="token plain"> docker-compose-authzen4.yml </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-f</span><span class="token plain"> docker-compose.dev-mtls.yml up </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-d</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">--build</span><br></span></code></pre></div></div>
+</li>
+<li>To revert to non-mTLS quickly, stop and start without the override file.</li>
+</ul>
+</li>
+<li>
+<p>Traefik: strip and re-add client-cert headers (order matters)</p>
+<p>In <code>traefik/dynamic.yml</code> add a headers middleware to remove any client-cert-like headers from inbound requests, then apply <code>passTLSClientCert</code> to attach the verified cert after TLS client auth:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">http</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">middlewares</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">strip-external-client-cert</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">headers</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">removeRequestHeaders</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> X</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Forwarded</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Tls</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Client</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Cert</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> X</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Forwarded</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Client</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Cert</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> X</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Forwarded</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Client</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Cert</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Chain</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> X</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Forwarded</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Tls</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Client</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Cert</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">Signature</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> XFCC</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">mtls-passcert</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">passTLSClientCert</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">pem</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">info</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">subject</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">issuer</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">notBefore</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">notAfter</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">sans</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">tls</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">options</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">mtls</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">minVersion</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> VersionTLS12</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">clientAuth</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">clientAuthType</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> RequireAndVerifyClientCert</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">caFiles</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> /certs/ca.crt</span><br></span></code></pre></div></div>
+<p>Update the CRUD router to ensure middleware order is: strip → passcert → security/rate-limit:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;traefik.http.routers.crud.tls.options=mtls@file&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;traefik.http.routers.crud.middlewares=strip-external-client-cert@file,mtls-passcert@file,security-headers@file,rate-limit@file&quot;</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p>CA setup (dev): ensure <code>/certs/ca.crt</code> exists in Traefik</p>
+<p>Traefik mounts <code>../IdP/certs</code> as <code>/certs</code>. Create a dev CA and client cert, and place the CA at <code>../IdP/certs/ca.crt</code>:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token comment" style="color:rgb(98, 114, 164)"># 1) Dev CA</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">openssl req </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-x509</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-newkey</span><span class="token plain"> rsa:2048 </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-keyout</span><span class="token plain"> ca.key </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-out</span><span class="token plain"> ca.crt </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-days</span><span class="token plain"> </span><span class="token number">3650</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-nodes</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-subj</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;/CN=EmpowerNow Dev CA&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)"># 2) Client key &amp; CSR</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">openssl req </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-newkey</span><span class="token plain"> rsa:2048 </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-keyout</span><span class="token plain"> client.key </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-out</span><span class="token plain"> client.csr </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-nodes</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-subj</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;/CN=dev-client&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)"># 3) Sign client cert with CA</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">openssl x509 </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-req</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-in</span><span class="token plain"> client.csr </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-CA</span><span class="token plain"> ca.crt </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-CAkey</span><span class="token plain"> ca.key </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-CAcreateserial</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-out</span><span class="token plain"> client.pem </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-days</span><span class="token plain"> </span><span class="token number">365</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-sha256</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)"># 4) Place CA where Traefik reads it</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token function" style="color:rgb(80, 250, 123)">mkdir</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-p</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">..</span><span class="token plain">/IdP/certs</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token function" style="color:rgb(80, 250, 123)">cp</span><span class="token plain"> ca.crt </span><span class="token punctuation" style="color:rgb(248, 248, 242)">..</span><span class="token plain">/IdP/certs/ca.crt</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)"># 5) Test a request (requires client cert)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-k</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">--resolve</span><span class="token plain"> crud.ocg.labs.empowernow.ai:443:127.0.0.1 </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">--cert</span><span class="token plain"> client.pem </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">--key</span><span class="token plain"> client.key </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  https://crud.ocg.labs.empowernow.ai/health</span><br></span></code></pre></div></div>
+<p>Team-friendly option: commit a public dev CA certificate (no private key) at <code>IdP/certs/ca.crt</code>, and provide a small script to generate per‑developer client certs.</p>
+</li>
+</ul>
+</li>
+<li>Prod (K8s):<!-- -->
+<ul>
+<li>
+<p>Traefik: reference <code>tls.options mtls</code> and apply passTLSClientCert middleware; CA via Secret.</p>
+</li>
+<li>
+<p>Nginx: use <code>auth-tls-verify-client: &quot;on&quot;</code> and <code>auth-tls-pass-certificate-to-upstream: &quot;true&quot;</code>; set app header to <code>ssl-client-cert</code>.</p>
+</li>
+<li>
+<p>CA setup (prod): create a Secret with your CA bundle and reference it from the ingress controller</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token comment" style="color:rgb(98, 114, 164)"># Create a secret with your CA chain (no private keys)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">kubectl create secret generic mtls-ca </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  --from-file</span><span class="token operator">=</span><span class="token plain">ca.crt</span><span class="token operator">=</span><span class="token plain">./prod-ca.crt </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-n</span><span class="token plain"> traefik</span><br></span></code></pre></div></div>
+<ul>
+<li>Traefik (CRD) snippet:</li>
+</ul>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">apiVersion</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> traefik.containo.us/v1alpha1</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">kind</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> TLSOption</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">metadata</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> mtls</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">namespace</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> traefik</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">spec</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">minVersion</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> VersionTLS12</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">clientAuth</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">secretNames</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> mtls</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">ca</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">clientAuthType</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> RequireAndVerifyClientCert</span><br></span></code></pre></div></div>
+<ul>
+<li>Nginx Ingress annotations:</li>
+</ul>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">metadata</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">annotations</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">nginx.ingress.kubernetes.io/auth-tls-verify-client</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;on&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">nginx.ingress.kubernetes.io/auth-tls-secret</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;&lt;ns&gt;/mtls-ca&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">nginx.ingress.kubernetes.io/auth-tls-pass-certificate-to-upstream</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;true&quot;</span><br></span></code></pre></div></div>
+<p>CA rotation: replace the Secret, roll the ingress controller, canary test, then remove old CA from the bundle.</p>
+</li>
+</ul>
+</li>
+<li>CA rotation runbook: update Secret, reload ingress, canary test, then remove old CA.</li>
+<li>Observability:<!-- -->
+<ul>
+<li>Metrics counters: mTLS auth successes/failures, PoP mismatches (see MetricsCollector usage).</li>
+<li>Kafka audit (best-effort): success/failure events with minimal data (thumbprint, reason).</li>
+</ul>
+</li>
+<li>FIPS posture: enforce TLS1.2+/1.3 and AES-GCM at the edge; ensure OpenSSL FIPS mode on ingress layer as required.</li>
+</ul>
+<p>DevOps FAQ</p>
+<ul>
+<li>How to verify header forwarding? Inspect Traefik dashboard router/middleware, and in app logs look for <code>mtls_thumbprint_present=true</code> on requests. 401 with <code>sender_binding_mismatch</code> indicates PoP mismatch is working.</li>
+<li>How to simulate client cert in dev? Use curl with <code>--cert/--key</code> or a test client behind the proxy.</li>
+<li>What breaks clients? Only when switching to <code>bearer_plus_mtls_required</code> or <code>mtls</code> for their endpoints without provisioning certs and JWT PoP.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="for-qa-verifyaccept">For QA (verify/accept)<a href="#for-qa-verifyaccept" class="hash-link" aria-label="Direct link to For QA (verify/accept)" title="Direct link to For QA (verify/accept)">​</a></h4>
+<ul>
+<li>Acceptance criteria<!-- -->
+<ul>
+<li>Optional mode: listed paths in <code>BINDING_REQUIRED_PATHS</code> enforce PoP; non-listed paths accept bearer-only.</li>
+<li>Required mode: missing cert → 401; PoP mismatch → 401; matching PoP → 200.</li>
+<li>mtls mode: no JWT required; identity derived from cert mapping.</li>
+<li>Sender-binding drift (secrets): second request with different thumbprint for same subject/resource is rejected.</li>
+</ul>
+</li>
+<li>Test matrix (examples)</li>
+</ul>
+<table><thead><tr><th>Mode</th><th>Path listed</th><th>JWT</th><th>Cert</th><th>PoP match</th><th>Expected</th></tr></thead><tbody><tr><td>optional</td><td>yes</td><td>yes</td><td>yes</td><td>yes</td><td>200</td></tr><tr><td>optional</td><td>yes</td><td>yes</td><td>yes</td><td>no</td><td>401</td></tr><tr><td>optional</td><td>no</td><td>yes</td><td>no</td><td>n/a</td><td>200</td></tr><tr><td>required</td><td>n/a</td><td>yes</td><td>no</td><td>n/a</td><td>401</td></tr><tr><td>required</td><td>n/a</td><td>yes</td><td>yes</td><td>no</td><td>401</td></tr><tr><td>required</td><td>n/a</td><td>yes</td><td>yes</td><td>yes</td><td>200</td></tr><tr><td>mtls</td><td>n/a</td><td>no</td><td>yes</td><td>n/a</td><td>200</td></tr></tbody></table>
+<p>QA tips</p>
+<ul>
+<li>Use curl examples below to simulate; validate <code>WWW-Authenticate</code> error details on failures.</li>
+<li>Confirm sender-binding drift by requesting a secret twice with two different certs for the same subject.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="sequence-request-flow">Sequence: request flow<a href="#sequence-request-flow" class="hash-link" aria-label="Direct link to Sequence: request flow" title="Direct link to Sequence: request flow">​</a></h3>
+<!-- -->
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="flow-mode-and-pop-enforcement">Flow: mode and PoP enforcement<a href="#flow-mode-and-pop-enforcement" class="hash-link" aria-label="Direct link to Flow: mode and PoP enforcement" title="Direct link to Flow: mode and PoP enforcement">​</a></h3>
+<!-- -->
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="faqs-and-troubleshooting">FAQs and troubleshooting<a href="#faqs-and-troubleshooting" class="hash-link" aria-label="Direct link to FAQs and troubleshooting" title="Direct link to FAQs and troubleshooting">​</a></h3>
+<ul>
+<li>How do I generate a test client certificate?</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">openssl req </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-x509</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-newkey</span><span class="token plain"> rsa:2048 </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-keyout</span><span class="token plain"> client.key </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-out</span><span class="token plain"> client.pem </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-days</span><span class="token plain"> </span><span class="token number">365</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-nodes</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-subj</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;/CN=test-client&quot;</span><br></span></code></pre></div></div>
+<ul>
+<li>Curl examples<!-- -->
+<ul>
+<li>mTLS + bearer:</li>
+</ul>
+</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-sS</span><span class="token plain"> https://crud.local/workflow/start </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">--cert</span><span class="token plain"> client.pem </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">--key</span><span class="token plain"> client.key </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Authorization: Bearer </span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$JWT</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-d</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;{&quot;workflow_name&quot;:&quot;demo&quot;,&quot;data&quot;:{}}&#x27;</span><br></span></code></pre></div></div>
+<ul>
+<li>PoP mismatch (expect 401): issue a JWT with different <code>cnf.x5t#S256</code> than the client cert x5t.</li>
+<li>Common errors<!-- -->
+<ul>
+<li>401 invalid_token, reason=certificate_missing: proxy not forwarding cert or untrusted proxy.</li>
+<li>401 sender_binding_mismatch: JWT <code>cnf.x5t#S256</code> doesn’t match cert thumbprint.</li>
+<li>403 binding_drift (secrets): thumbprint changed for same subject/resource.</li>
+<li>400 on PEM parse: header malformed or exceeds <code>MAX_CLIENT_CERT_SIZE</code> (default 32KB). Duplicate header → 400. Missing/bad signature → 400 when HMAC is enabled.</li>
+</ul>
+</li>
+<li>Verifying the forwarded header exists<!-- -->
+<ul>
+<li>Check proxy config and app logs; ensure <code>FORWARDED_CLIENT_CERT_HEADER</code> matches ingress header name.</li>
+</ul>
+</li>
+<li>Kafka audit not visible?<!-- -->
+<ul>
+<li>Ensure broker reachable (inside Docker use <code>kafka:9092</code>, from host use <code>localhost:9093</code>). Audits are best-effort and won’t block requests.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="trust-boundary-hardening-recommended">Trust boundary hardening (recommended)<a href="#trust-boundary-hardening-recommended" class="hash-link" aria-label="Direct link to Trust boundary hardening (recommended)" title="Direct link to Trust boundary hardening (recommended)">​</a></h3>
+<ul>
+<li>At the proxy:<!-- -->
+<ul>
+<li>Strip any inbound client-cert/XFCC headers from external requests before mTLS verification.</li>
+<li>After successful client cert verification, re-add only the canonical forwarded header with the verified PEM.</li>
+<li>Optionally sign the forwarded header (HMAC) using a shared secret; validate signature in the app.</li>
+<li>Prefer TLS 1.3; for TLS 1.2 restrict to AES-GCM suites and strong curves (P-256/P-384). Disable renegotiation.</li>
+</ul>
+</li>
+<li>Between proxy → app:<!-- -->
+<ul>
+<li>Prefer mTLS on the internal hop, or use signed forwarded headers to prevent tampering.</li>
+</ul>
+</li>
+<li>In the app middleware:<!-- -->
+<ul>
+<li>Enforce single-value header (reject duplicates). Cap size (default 32KB). Normalize percent-encoding and <code>\n</code>.</li>
+<li>Fail closed with clear 4xx when header is duplicated, oversized, or malformed; log reason-coded metrics.</li>
+</ul>
+</li>
+<li>Identity mapping:<!-- -->
+<ul>
+<li>Precedence: thumbprint → SAN<!-- -->:email<!-- --> → SAN<!-- -->:URI<!-- -->/DNS/UPN. Log which rule matched; validate chain depth and issuer allow-list, not only root CA.</li>
+</ul>
+</li>
+<li>Incident response:<!-- -->
+<ul>
+<li>Support a hot-reloadable thumbprint blocklist and short OCSP/CRL cache TTLs for high-risk endpoints.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="certificate-identity-mapping-cert_identity_mappingsyaml">Certificate identity mapping (cert_identity_mappings.yaml)<a href="#certificate-identity-mapping-cert_identity_mappingsyaml" class="hash-link" aria-label="Direct link to Certificate identity mapping (cert_identity_mappings.yaml)" title="Direct link to Certificate identity mapping (cert_identity_mappings.yaml)">​</a></h3>
+<ul>
+<li>
+<p>Location and wiring</p>
+<ul>
+<li>File lives in your mounted config: <code>ServiceConfigs/CRUDService/config/cert_identity_mappings.yaml</code> → container path <code>/app/config/cert_identity_mappings.yaml</code>.</li>
+<li>Environment variable <code>CERT_IDENTITY_MAPPINGS=/app/config/cert_identity_mappings.yaml</code> enables it (already set in compose).</li>
+<li>Used by the authentication service when building a canonical ARN for mTLS identities.</li>
+</ul>
+</li>
+<li>
+<p>Purpose</p>
+<ul>
+<li>Control how a certificate becomes a principal ARN and constrain which certs are accepted (issuers, SAN domains, policy OIDs).</li>
+<li>Precedence is explicit and deterministic: <code>thumbprint_map</code> override → SAN email mapping (when allowed) → default thumbprint ARN.</li>
+</ul>
+</li>
+<li>
+<p>Fields</p>
+<ul>
+<li><code>thumbprint_map</code> (map): overrides specific x5t#S256 thumbprints to a concrete ARN.</li>
+<li><code>constraints.allowed_issuers</code> (list of substrings): issuer DN must contain at least one.</li>
+<li><code>constraints.allowed_email_domains</code> (list): RFC822 SAN must end with one of these domains to allow email-based mapping.</li>
+<li><code>constraints.allowed_policy_oids</code> (list, optional): require at least one policy OID (e.g., hardware token profile). If absent, policy OIDs aren’t enforced.</li>
+</ul>
+</li>
+<li>
+<p>ARN formats (canonical)</p>
+<ul>
+<li>Default thumbprint mapping: <code>auth:account:x509:sha256:{thumbprint}</code></li>
+<li>Email SAN mapping: <code>auth:account:x509:email:{address}</code></li>
+<li>You can map to any canonical ARN your PDP understands, e.g., <code>auth:account:x509:device:build-agent</code> for a CI runner.</li>
+</ul>
+</li>
+<li>
+<p>Real-world examples</p>
+<p>Minimal (default to thumbprint ARNs):</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">thumbprint_map</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">constraints</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">allowed_issuers</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain">          </span><span class="token comment" style="color:rgb(98, 114, 164)"># any issuer</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">allowed_email_domains</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;corp.tld&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><br></span></code></pre></div></div>
+<p>Pin a CI agent and restrict issuers and SAN domain:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">thumbprint_map</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">mQz0sE5e1E-6XfOUkqH8yYl2o9g0mY0y2X2qKX7fUOQ</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> auth</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain">account</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain">x509</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain">device</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain">ci</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">prod</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">build</span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain">agent</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">constraints</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">allowed_issuers</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;CN=EmpowerNow Dev CA&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;CN=Corp Root CA&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">allowed_email_domains</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;corp.tld&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">allowed_policy_oids</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;2.23.140.1.3&quot;</span><span class="token plain">   </span><span class="token comment" style="color:rgb(98, 114, 164)"># example hardware-token policy OID</span><br></span></code></pre></div></div>
+<p>Route specific users by email SAN while leaving others as thumbprint ARNs:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">thumbprint_map</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">constraints</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">allowed_issuers</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;CN=EmpowerNow Dev CA&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">allowed_email_domains</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;partner.example&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p>Computing x5t#S256 (thumbprint)</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token comment" style="color:rgb(98, 114, 164)"># DER → SHA-256 → base64url (no padding)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">openssl x509 </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-in</span><span class="token plain"> client.pem </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-outform</span><span class="token plain"> der </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token operator">|</span><span class="token plain"> openssl dgst </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-sha256</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-binary</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token operator">|</span><span class="token plain"> openssl base64 </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-A</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token operator">|</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">tr</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;+/&#x27;</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;-_&#x27;</span><span class="token plain"> </span><span class="token operator">|</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">tr</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-d</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;=&#x27;</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p>Testing changes in dev</p>
+<ol>
+<li>Edit <code>ServiceConfigs/CRUDService/config/cert_identity_mappings.yaml</code>.</li>
+<li>Restart <code>crud-service</code> (the file is read on startup).</li>
+<li>Call an endpoint that triggers identity mapping, e.g., <code>/execute</code> in <code>mtls</code> mode or any endpoint with mTLS present.</li>
+<li>Verify logs include the mapped ARN and that constraints are enforced (e.g., issuer mismatch → 401 with reason).</li>
+</ol>
+</li>
+<li>
+<p>Blocking a compromised cert quickly</p>
+<ul>
+<li>Prefer the dedicated blocklist: set <code>CERT_THUMBPRINT_BLOCKLIST=/app/config/blocked_thumbs.txt</code> and list x5t#S256 values (one per line). The middleware returns <code>401 certificate_blocklisted</code> for matches.</li>
+<li>You can also remove entries from <code>thumbprint_map</code> or tighten <code>allowed_issuers</code>/<code>allowed_email_domains</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Related</p>
+<ul>
+<li>Reference → mTLS (Design &amp; Guide)</li>
+<li>BFF → Upstream TLS/mTLS to CRUD: ../../bff/how-to/enable-upstream-tls-to-crud.md</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/services/crud-service/reference/mtls_design.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/empowernow_docs/docs/services/crud-service/reference/mcp_tool_recipes"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">mcp_tool_recipes</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/empowernow_docs/docs/services/crud-service/reference/overview"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">CRUD Service Reference Overview</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#quick-links" class="table-of-contents__link toc-highlight">Quick links</a><ul><li><a href="#mode-selection-quick-visual" class="table-of-contents__link toc-highlight">Mode selection (quick visual)</a></li></ul></li><li><a href="#at-a-glance" class="table-of-contents__link toc-highlight">At a glance</a></li><li><a href="#mtls-implementation-guide" class="table-of-contents__link toc-highlight">mTLS Implementation Guide</a><ul><li><a href="#what-we-built" class="table-of-contents__link toc-highlight">What we built</a></li><li><a href="#how-it-works-at-a-glance" class="table-of-contents__link toc-highlight">How it works (at a glance)</a></li><li><a href="#current-state-deep-assessment" class="table-of-contents__link toc-highlight">Current state (deep assessment)</a></li><li><a href="#goals" class="table-of-contents__link toc-highlight">Goals</a></li><li><a href="#trust-boundaries-and-deployment-options" class="table-of-contents__link toc-highlight">Trust boundaries and deployment options</a></li><li><a href="#target-architecture" class="table-of-contents__link toc-highlight">Target architecture</a></li><li><a href="#identity-mapping-canonical-and-policy-driven" class="table-of-contents__link toc-highlight">Identity mapping (canonical and policy-driven)</a></li><li><a href="#sender-binding-and-pop-enforcement" class="table-of-contents__link toc-highlight">Sender-binding and PoP enforcement</a></li><li><a href="#revocation-checks-and-cert-validation" class="table-of-contents__link toc-highlight">Revocation checks and cert validation</a></li><li><a href="#configuration-centralized-docker-compose-driven" class="table-of-contents__link toc-highlight">Configuration (centralized, docker-compose-driven)</a></li><li><a href="#app-changes-concrete" class="table-of-contents__link toc-highlight">App changes (concrete)</a></li><li><a href="#security-hardening" class="table-of-contents__link toc-highlight">Security hardening</a></li><li><a href="#rollout-plan" class="table-of-contents__link toc-highlight">Rollout plan</a></li><li><a href="#optional-direct-app-mtls-only-if-needed" class="table-of-contents__link toc-highlight">Optional: direct app mTLS (only if needed)</a></li><li><a href="#dev-docker--traefik--concrete-changes" class="table-of-contents__link toc-highlight">Dev (Docker + Traefik) – concrete changes</a></li><li><a href="#prod-kubernetes" class="table-of-contents__link toc-highlight">Prod (Kubernetes)</a></li><li><a href="#config-policy-and-ca-management" class="table-of-contents__link toc-highlight">Config, policy, and CA management</a></li><li><a href="#what-this-gives-you" class="table-of-contents__link toc-highlight">What this gives you</a></li><li><a href="#implementation-to-do-detailed" class="table-of-contents__link toc-highlight">Implementation To-Do (detailed)</a></li><li><a href="#per-path-binding-enforcement" class="table-of-contents__link toc-highlight">Per-path binding enforcement</a></li><li><a href="#kubernetes-ingress-snippets-and-ca-rotation" class="table-of-contents__link toc-highlight">Kubernetes ingress snippets and CA rotation</a></li><li><a href="#curl-examples" class="table-of-contents__link toc-highlight">Curl examples</a></li><li><a href="#config-validation" class="table-of-contents__link toc-highlight">Config validation</a></li><li><a href="#role-based-quick-guides-and-faqs" class="table-of-contents__link toc-highlight">Role-based quick guides and FAQs</a></li><li><a href="#sequence-request-flow" class="table-of-contents__link toc-highlight">Sequence: request flow</a></li><li><a href="#flow-mode-and-pop-enforcement" class="table-of-contents__link toc-highlight">Flow: mode and PoP enforcement</a></li><li><a href="#faqs-and-troubleshooting" class="table-of-contents__link toc-highlight">FAQs and troubleshooting</a></li><li><a href="#trust-boundary-hardening-recommended" class="table-of-contents__link toc-highlight">Trust boundary hardening (recommended)</a></li><li><a href="#certificate-identity-mapping-cert_identity_mappingsyaml" class="table-of-contents__link toc-highlight">Certificate identity mapping (cert_identity_mappings.yaml)</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/intro">Getting Started</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Marketing</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/">Home</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/solutions">Solutions</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/pricing">Pricing</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/products">Products</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/trust">Trust</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/resources">Resources</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/company">Company</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 EmpowerNow. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

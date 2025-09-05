@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-services/membership/explanation/reviewers-guide" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Membership Service Reviewer&#x27;s Guide | EmpowerNow Docs</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://empowerid.github.io/empowernow_docs/img/empowernow-logo.svg"><meta data-rh="true" name="twitter:image" content="https://empowerid.github.io/empowernow_docs/img/empowernow-logo.svg"><meta data-rh="true" property="og:url" content="https://empowerid.github.io/empowernow_docs/docs/services/membership/explanation/reviewers-guide"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Membership Service Reviewer&#x27;s Guide | EmpowerNow Docs"><meta data-rh="true" name="description" content="This guide helps evaluators trial the EmpowerNow Membership Service with a focus on AI authorization, user-bound identities, spending/budget controls, and graph-powered delegation. It provides business context, architecture, data/schema overview, key APIs, and a real-world case study with hands-on steps."><meta data-rh="true" property="og:description" content="This guide helps evaluators trial the EmpowerNow Membership Service with a focus on AI authorization, user-bound identities, spending/budget controls, and graph-powered delegation. It provides business context, architecture, data/schema overview, key APIs, and a real-world case study with hands-on steps."><link data-rh="true" rel="icon" href="/empowernow_docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://empowerid.github.io/empowernow_docs/docs/services/membership/explanation/reviewers-guide"><link data-rh="true" rel="alternate" href="https://empowerid.github.io/empowernow_docs/docs/services/membership/explanation/reviewers-guide" hreflang="en"><link data-rh="true" rel="alternate" href="https://empowerid.github.io/empowernow_docs/docs/services/membership/explanation/reviewers-guide" hreflang="x-default"><link rel="stylesheet" href="/empowernow_docs/assets/css/styles.b212d4ba.css">
+<script src="/empowernow_docs/assets/js/runtime~main.b7e4b38b.js" defer="defer"></script>
+<script src="/empowernow_docs/assets/js/main.288af713.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="dark";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/empowernow_docs/img/en-logo-light.png"><link rel="preload" as="image" href="/empowernow_docs/img/en-logo-dark.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/empowernow_docs/"><div class="navbar__logo"><img src="/empowernow_docs/img/en-logo-light.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/empowernow_docs/img/en-logo-dark.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/empowernow_docs/">Home</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/solutions">Solutions</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/products">Products</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/pricing">Pricing</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/trust">Trust</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/resources">Resources</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/website_copy/company">Company</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/intro">Docs</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/services/crud-service/explanation/secrets-executive-overview">Secrets Overview</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/services/bff/explanation/executive-overview">BFF Overview</a><a class="navbar__item navbar__link" href="/empowernow_docs/docs/services/bff/explanation/bff-visual-guide">BFF Visual Guide</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Membership Service Reviewer&#x27;s Guide</h1></header>
+<p>This guide helps evaluators trial the EmpowerNow Membership Service with a focus on AI authorization, user-bound identities, spending/budget controls, and graph-powered delegation. It provides business context, architecture, data/schema overview, key APIs, and a real-world case study with hands-on steps.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="executive-introduction-what-youre-reviewing-and-why-its-different">Executive introduction: what you’re reviewing and why it’s different<a href="#executive-introduction-what-youre-reviewing-and-why-its-different" class="hash-link" aria-label="Direct link to Executive introduction: what you’re reviewing and why it’s different" title="Direct link to Executive introduction: what you’re reviewing and why it’s different">​</a></h2>
+<ul>
+<li>What this is: an authoritative graph (FastAPI + Neo4j) for identities, delegations, capabilities, tenant/data scope, step-up hints, and identity-chaining eligibility. It exposes PIP endpoints to the PDP and is consulted by the IdP when issuing passports; Redis accelerates hot paths.</li>
+<li>ARIA profile and extensions: ARIA (Agent Relationship-based Identity &amp; Authorization) defines how rich authorization context is carried and enforced. In our system, the IdP emits OIDC tokens with <code>aria_extensions</code> (e.g., <code>budget</code>, <code>max_steps</code>, <code>schema_pins</code>, <code>call_id</code>), the PDP returns an ARIA v1 context (constraints/obligations), and the Gateway/BFF enforces them.</li>
+<li>Enterprise AI problems addressed:<!-- -->
+<ul>
+<li>On-behalf-of execution: bind agents to specific users/services with explicit capabilities and lifetimes.</li>
+<li>Data scope and tenancy: constrain which tenants/rows/columns an agent can access for safe RAG.</li>
+<li>Prompt/content safety: enforce egress allowlists and schema pins via PDP constraints.</li>
+<li>Cost control: attach budget_usd and max_steps to delegations to bound spend and chain length.</li>
+<li>Downstream calls: express identity-chaining eligibility (audiences/scopes) for provider tokens.</li>
+</ul>
+</li>
+<li>How it works (Authzen-aligned extensions implemented):<!-- -->
+<ul>
+<li>PIP under <code>/api/v1/pip/membership</code>: <code>capabilities</code>, <code>delegations</code> (includes <code>budget_usd</code>, <code>max_steps</code>), <code>data-scope</code>, <code>step-up</code>, <code>chain-eligibility</code>.</li>
+<li>Governance endpoints now available:<!-- -->
+<ul>
+<li>CONTROLLED_BY: <code>PUT /api/v1/agent/agents/{agent_id}/control</code>, <code>GET /api/v1/agent/agents/{agent_id}/controllers</code>, <code>DELETE /api/v1/agent/agents/{agent_id}/control</code></li>
+<li>Resource ownership: <code>POST /api/v1/resources/{resource_id}/owners</code>, <code>GET /api/v1/resources/{resource_id}/owners</code>, <code>DELETE /api/v1/resources/{resource_id}/owners</code></li>
+<li>RTR authoring: <code>POST /api/v1/rtrs/assign</code>, <code>POST /api/v1/rtrs/assign-at</code></li>
+</ul>
+</li>
+<li>IdP passports embed <code>aria_extensions.budget</code> and <code>aria_extensions.max_steps</code> derived from active delegations.</li>
+<li>PDP composes decision + constraints; Gateway/BFF enforces egress/schema/data_scope/step_up/identity_chain.</li>
+<li>Graph storage: <code>DELEGATES_TO</code> carries <code>budget_usd</code> and <code>max_steps</code>; delegations link to <code>Capability</code>; tenants attach to users; tools map to SaaS apps with required scopes.</li>
+</ul>
+</li>
+<li>What’s unique vs typical IAM:<!-- -->
+<ul>
+<li>Delegation-first, relationship-centric model purpose-built for AI agents (user-bound behavior).</li>
+<li>Cost and step limits on the delegation edge, not just coarse account quotas.</li>
+<li>Identity-chaining eligibility as a first-class API for safe provider-scoped tokens.</li>
+<li>Data-scope computed and returned in enforcement-ready form (e.g., SQL filter + tenant_ids).</li>
+<li>Reproducible evaluation: seeds, unit/integration tests, and Postman collection included.</li>
+</ul>
+</li>
+<li>How to evaluate quickly:<!-- -->
+<ul>
+<li>Seed Neo4j with <code>membership/seeds/pip_minimal.cypher</code> and run <code>membership/scripts/seed_neo4j.py</code>.</li>
+<li>Exercise the PIP endpoints with the sample IDs (see examples below) via curl/Postman.</li>
+<li>Compare PDP constraints output with your enforcement layer to validate fit.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mcp-catalog--discovery-new">MCP catalog &amp; discovery (new)<a href="#mcp-catalog--discovery-new" class="hash-link" aria-label="Direct link to MCP catalog &amp; discovery (new)" title="Direct link to MCP catalog &amp; discovery (new)">​</a></h3>
+<p>Membership now models MCP assets and discovery metadata:</p>
+<ul>
+<li>Nodes: <code>MCPService</code>, <code>MCPResource</code>, <code>MCPPrompt</code>, reference <code>MCPPolicyBinding</code></li>
+<li>Edges: <code>PROVIDES_RESOURCE</code>, <code>OFFERS_PROMPT</code></li>
+<li>Endpoints (base <code>/api/v1/mcp</code>): register/list services and tools, and register discovered resources/prompts</li>
+</ul>
+<p>ARIA at a glance (where it shows up):</p>
+<ul>
+<li>PDP: returns ARIA v1 rich context under <code>context.constraints</code> and <code>context.obligations</code> (AuthZEN request semantics).</li>
+<li>Membership: PIP supplies the graph truth PDP needs (capabilities, data_scope, step_up, chain_eligibility).</li>
+<li>Gateway/BFF: enforces constraints (egress allowlist, schema pins, budget, step_up, identity_chain).</li>
+</ul>
+<!-- -->
+<p>Glossary (quick):</p>
+<ul>
+<li>ARIA: Agent Relationship-based Identity &amp; Authorization; rich context carried in <code>aria_extensions</code> and PDP responses.</li>
+<li>AuthZEN: authorization request semantics <code>{subject, action, resource, context}</code> used by our PDP.</li>
+<li>Actor (act) claim: standard OIDC claim indicating on‑behalf‑of principal for user‑bound agents.</li>
+<li>ID‑JAG: Identity Assertion JWT used as a JWT Bearer grant (RFC 7523) after Token Exchange (RFC 8693) per the Identity &amp; Authorization Chaining profile.</li>
+</ul>
+<p>Cross‑App Access (Identity &amp; Authorization Chaining) – Membership’s role:</p>
+<ul>
+<li>Why it matters: eliminates per‑app interactive consent for AI tools while centralizing policy at the IdP.</li>
+<li>Membership tie‑in: <code>chain-eligibility</code> PIP returns allowed audiences/scopes for safe chaining; PDP consumes this to constrain downstream token issuance by resource providers.</li>
+</ul>
+<p>Industry momentum &amp; naming:</p>
+<ul>
+<li>Vendors (e.g., Okta) describe this profile as “Cross‑App Access.” Our implementation follows the same RFC pattern (8693 + 7523) with a dedicated Identity Assertion endpoint and Membership PIP <code>chain-eligibility</code> to bound audiences/scopes.</li>
+<li>Names vary, but the flow is the same: IdP sits in the middle, issues a short‑lived assertion, resource app AS validates and mints its own token.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="1-why-this-matters-ai-authorization-in-the-enterprise">1. Why this matters: AI authorization in the enterprise<a href="#1-why-this-matters-ai-authorization-in-the-enterprise" class="hash-link" aria-label="Direct link to 1. Why this matters: AI authorization in the enterprise" title="Direct link to 1. Why this matters: AI authorization in the enterprise">​</a></h2>
+<ul>
+<li>Problem: AI agents operate “on behalf of” users and services, touching sensitive data, systems, and budgets.</li>
+<li>Risks addressed:<!-- -->
+<ul>
+<li>Identity binding: ensure an agent is truly acting for a specific user/service pair.</li>
+<li>Delegation clarity: explicitly constrain what an agent can do (capabilities) and for how long.</li>
+<li>Data scope: enforce tenant/row/column restrictions for safe retrieval-augmented generation.</li>
+<li>Prompt/content security: prevent data exfiltration, schema drift, and over-permissive calls.</li>
+<li>Spend control: bound per-call, per-plan budgets and chain-token issuance.</li>
+</ul>
+</li>
+<li>Outcome: auditable authorization decisions with graph truth and policy overlays, enabling safe AI adoption.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="2-architecture-at-a-glance">2. Architecture at a glance<a href="#2-architecture-at-a-glance" class="hash-link" aria-label="Direct link to 2. Architecture at a glance" title="Direct link to 2. Architecture at a glance">​</a></h2>
+<ul>
+<li>Membership Service (FastAPI + Neo4j): source of truth for identities, delegations, capabilities, and metadata.</li>
+<li>PDP (AuthZ engine): computes allow/deny with constraints; calls Membership PIP for data_scope, step_up, and identity_chain.</li>
+<li>IdP: issues passports with budget and max_steps based on active delegations.</li>
+<li>BFF/Gateway: enforces constraints (egress allowlist, schema pins, budget, data_scope) at runtime.</li>
+<li>Redis: caching for hot paths; Kafka (optional) for events and audit.</li>
+</ul>
+<!-- -->
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="3-neo4j-schema-core-nodesedges">3. Neo4j schema (core nodes/edges)<a href="#3-neo4j-schema-core-nodesedges" class="hash-link" aria-label="Direct link to 3. Neo4j schema (core nodes/edges)" title="Direct link to 3. Neo4j schema (core nodes/edges)">​</a></h2>
+<ul>
+<li>Nodes: <code>User</code> (Identity), <code>Agent</code> (AI/service principal), <code>Delegation</code>, <code>Capability</code>, <code>Tenant</code>, <code>Tool</code>, <code>SaaSApp</code>.</li>
+<li>Relationships:<!-- -->
+<ul>
+<li><code>(:User)-[:DELEGATES_TO]-&gt;(:Delegation)-[:BINDS]-&gt;(:Agent)</code></li>
+<li><code>(:Delegation)-[:HAS_CAPABILITY]-&gt;(:Capability)</code></li>
+<li><code>(:User)-[:BELONGS_TO]-&gt;(:Tenant)</code></li>
+<li><code>(:Agent)-[:CAN_INVOKE]-&gt;(:Tool)-[:REQUIRES]-&gt;(:SaaSApp {scopes: [...]})</code></li>
+</ul>
+</li>
+<li>Indices/constraints: see <code>ServiceConfigs/membership/config/neo4j_indices.yaml</code>.</li>
+</ul>
+<p>Model invariants and lifecycles:</p>
+<ul>
+<li>Labels: <code>Identity</code> is the root label; <code>User</code>/<code>Agent</code> are specializations; <code>Account</code>, <code>Tenant</code>, <code>Tool</code>, <code>SaaSApp</code> as typed nodes.</li>
+<li>Uniqueness: <code>Identity.id</code>, <code>Agent.id</code>, <code>Tool.id</code>, <code>MCPService.id</code>, and <code>DELEGATES_TO.id</code> are unique; see <code>storage/graph_modules/graph_schema.py</code> and <code>storage/graph_store.py</code>.</li>
+<li><code>DELEGATES_TO</code> lifecycle: <code>status in {active, revoked, expired}</code>; validity checked as <code>d.expires_at IS NULL OR d.expires_at &gt; datetime()</code>; expiry sweeper marks overdue edges (APOC with fallback).</li>
+</ul>
+<!-- -->
+<p>Common Cypher snippets:</p>
+<div class="language-cypher codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cypher codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">// Active capabilities for a user-bound agent</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">MATCH (u:User {id:$user_id})-[:DELEGATES_TO]-&gt;(d:Delegation {status:&#x27;active&#x27;})-[:BINDS]-&gt;(a:Agent {id:$agent_id})</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">MATCH (d)-[:HAS_CAPABILITY]-&gt;(c:Capability)</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">RETURN collect(DISTINCT c.id) AS capabilities;</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">// Delegations with budget/steps</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">MATCH (u:User {id:$user_id})-[:DELEGATES_TO]-&gt;(d:Delegation)-[:BINDS]-&gt;(a:Agent {id:$agent_id})</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">RETURN d.id AS delegation_id, d.status, d.budget_usd, d.max_steps, d.expires_at;</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">// Tenants for data scope</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">MATCH (u:User {id:$sid})-[:BELONGS_TO]-&gt;(t:Tenant)</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">OPTIONAL MATCH (u)-[:ASSIGNED_TO]-&gt;(:Project)-[:OWNED_BY]-&gt;(tp:Tenant)</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">WITH collect(DISTINCT t.id) + collect(DISTINCT tp.id) AS tids</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">RETURN [x IN tids WHERE x IS NOT NULL] AS tenant_ids;</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="4-key-features-mapped-to-business-needs">4. Key features mapped to business needs<a href="#4-key-features-mapped-to-business-needs" class="hash-link" aria-label="Direct link to 4. Key features mapped to business needs" title="Direct link to 4. Key features mapped to business needs">​</a></h2>
+<ul>
+<li>User-bound identities and delegation<!-- -->
+<ul>
+<li>Why: bind an agent to a specific user; avoid “loose” service accounts.</li>
+<li>How: <code>DELEGATES_TO</code> with capabilities, status, time bounds, budget_usd, max_steps.</li>
+</ul>
+</li>
+<li>Data scope and tenancy<!-- -->
+<ul>
+<li>Why: ensure agents only query/see allowed tenants/rows/columns.</li>
+<li>How: derive <code>tenant_ids</code> and <code>row_filter_sql</code> (fail-closed to 1=0).</li>
+</ul>
+</li>
+<li>Step-up hints<!-- -->
+<ul>
+<li>Why: trigger MFA for sensitive actions.</li>
+<li>How: compute from user’s <code>mfa_level</code> or policy.</li>
+</ul>
+</li>
+<li>Identity chaining (downstream API calls)<!-- -->
+<ul>
+<li>Why: safely exchange the agent-user binding into provider-scoped tokens.</li>
+<li>How: return allowable audiences/scopes for a tool’s provider.</li>
+</ul>
+</li>
+<li>Spend and budget controls<!-- -->
+<ul>
+<li>Why: prevent runaway cost; enforce plan budgets and step limits.</li>
+<li>How: aggregate budget across delegations; IdP embeds <code>budget.initial</code> and <code>max_steps</code> in JWT.</li>
+</ul>
+</li>
+<li>Prompt/content security (via PDP + Gateway)<!-- -->
+<ul>
+<li>Why: block secret leakage, unsafe egress, schema violations.</li>
+<li>How: PDP returns constraints (egress allowlist, schema pins, disallowed phrases) that gateway enforces.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="5-pip-endpoints-membership--pdp">5. PIP endpoints (Membership → PDP)<a href="#5-pip-endpoints-membership--pdp" class="hash-link" aria-label="Direct link to 5. PIP endpoints (Membership → PDP)" title="Direct link to 5. PIP endpoints (Membership → PDP)">​</a></h2>
+<p>Base prefix: <code>/api/v1/pip/membership</code></p>
+<ul>
+<li><code>GET /capabilities?user_id=&amp;agent_id=</code> → <code>{ capabilities: [&quot;mcp:flights:search&quot;, ...] }</code></li>
+<li>Example (seeded demo):</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;capabilities&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;mcp:flights:book&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;mcp:flights:search&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></span></code></pre></div></div>
+<ul>
+<li><code>GET /delegations?user_id=&amp;agent_id=&amp;status=active</code> → list with <code>budget_usd</code>, <code>max_steps</code>.</li>
+<li>Pagination: <code>limit</code> (1–500, default 50), <code>offset</code> (&gt;=0). Server caps large responses.</li>
+<li>Example (seeded demo):</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;delegation_id&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;delegation:demo1-to-agent1&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;status&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;active&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;max_steps&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token number">5</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;budget_usd&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token number">25.0</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;expires_at&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token null keyword" style="color:rgb(189, 147, 249);font-style:italic">null</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><br></span></code></pre></div></div>
+<ul>
+<li><code>GET /data-scope?subject_id=&amp;resource_type=</code> → <code>{ tenant_ids: [...], row_filter_sql, column_mask }</code></li>
+<li>Example (seeded demo):</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;tenant_ids&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;tenant:acme&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;row_filter_sql&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;tenant_id IN (&#x27;tenant:acme&#x27;)&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;column_mask&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></span></code></pre></div></div>
+<ul>
+<li><code>GET /step-up?subject_id=</code> → <code>{ mfa_required, level }</code></li>
+<li>Example (seeded demo; default strong when mfa_level is none):</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;mfa_required&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token boolean">true</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;level&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;strong&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></span></code></pre></div></div>
+<ul>
+<li><code>GET /chain-eligibility?user_id=&amp;agent_id=&amp;tool_id=</code> → <code>[ { audience, scopes } ]</code></li>
+<li>Example (seeded demo):</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;audience&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;api.flights.com&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;scopes&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;flights.read&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;flights.write&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="6-core-apis-search-and-identity">6. Core APIs (search and identity)<a href="#6-core-apis-search-and-identity" class="hash-link" aria-label="Direct link to 6. Core APIs (search and identity)" title="Direct link to 6. Core APIs (search and identity)">​</a></h2>
+<ul>
+<li><code>/api/v1/identity_nodes/search</code> → search by <code>node_type</code>, <code>search</code>, <code>system</code>, optional filters; pagination.</li>
+<li>Example request (seeded demo):</li>
+</ul>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">/api/v1/identity_nodes/search?node_type=Person&amp;search=John&amp;system=active_directory&amp;limit=10&amp;skip=0</span><br></span></code></pre></div></div>
+<ul>
+<li>Returns: list of nodes; optional filters excluded when unset.</li>
+<li><code>/api/v1/identity_nodes/search/with-metadata</code> → adds <code>total</code>, <code>has_more</code>, and optional <code>relationships</code>.</li>
+<li>Example response shape:</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;nodes&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;id&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;person1&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;name&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;John&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;relationships&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;total&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token number">1</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;limit&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token number">10</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;skip&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token number">0</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;has_more&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token boolean">false</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;relationships&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></span></code></pre></div></div>
+<ul>
+<li><code>/api/v1/identity_nodes/count</code> → count by <code>node_type</code>/<code>search</code>/<code>system</code>.</li>
+<li>Example query params are normalized in routes to exclude nulls.</li>
+</ul>
+<p>All routes accept only non-null parameters; optional filters are excluded when unset.</p>
+<p>Search semantics:</p>
+<ul>
+<li>Filters are ANDed.</li>
+<li>Substring matches are case-insensitive by default (implementation-specific in graph layer).</li>
+<li>Use <code>use_fulltext=true</code> (metadata route) when relevance scoring and fuzzy matching are desirable.</li>
+</ul>
+<p>Indexes and constraints (selection):</p>
+<ul>
+<li>From <code>ServiceConfigs/membership/config/neo4j_indices.yaml</code>:<!-- -->
+<ul>
+<li><code>pip_support</code>: <code>Tenant(id,name)</code>, <code>MCPService(id,api_endpoint)</code>, <code>Tool(id)</code></li>
+<li><code>identity_pk</code>: <code>Person(id)</code>, <code>Account(id)</code>, <code>Group(id)</code>, etc.</li>
+<li><code>identity_search</code>: <code>Identity(job_title,email,country,telephone)</code></li>
+<li>Full-text: labels <code>Identity, Person, AIAgent, Group, Account</code> on properties <code>name, display_name, email, job_title, country, telephone</code></li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="7-hands-on-trial-setup">7. Hands-on: trial setup<a href="#7-hands-on-trial-setup" class="hash-link" aria-label="Direct link to 7. Hands-on: trial setup" title="Direct link to 7. Hands-on: trial setup">​</a></h2>
+<ul>
+<li>Seed Neo4j with a minimal dataset:<!-- -->
+<ul>
+<li><code>python membership/scripts/seed_neo4j.py --uri bolt://localhost:7687 --user neo4j --password test</code></li>
+<li>Or against the compose container: <code>bolt://localhost:7688</code>, password <code>password123</code>.</li>
+</ul>
+</li>
+<li>Verify seeds:<!-- -->
+<ul>
+<li><code>membership/scripts/quick_check.py</code> prints counts and sample relations.</li>
+</ul>
+</li>
+<li>Run focused tests:<!-- -->
+<ul>
+<li>PIP router unit/integration tests in <code>membership/tests</code> (see README snippets).</li>
+<li>Identity search unit tests (routes/services) should pass as of this guide.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="8-case-study-travel-booking-copilot">8. Case study: Travel booking copilot<a href="#8-case-study-travel-booking-copilot" class="hash-link" aria-label="Direct link to 8. Case study: Travel booking copilot" title="Direct link to 8. Case study: Travel booking copilot">​</a></h2>
+<ul>
+<li>Scenario: A travel copilot agent books flights “on behalf of” employees.</li>
+<li>Identities:<!-- -->
+<ul>
+<li><code>user:demo1</code> belongs to tenant <code>tenant:acme</code>.</li>
+<li>Agent <code>agent:svc-123:for:demo1</code> bound by an active delegation with capabilities <code>mcp:flights:search</code>, <code>mcp:flights:book</code>, budget <code>$25</code>, max_steps <code>5</code>.</li>
+</ul>
+</li>
+<li>Flow:<!-- -->
+<ol>
+<li>IdP issues a token with <code>aria_extensions.budget={&quot;unit&quot;:&quot;usd&quot;,&quot;amount&quot;:25}</code>, <code>aria_extensions.max_steps=5</code> and schema pins.</li>
+<li>PDP calls Membership PIP: verifies capability for <code>mcp:flights:search</code>; returns <code>data_scope</code> and <code>step_up</code> (strong if needed); returns <code>identity_chain</code> for <code>api.flights.com</code> with scopes.</li>
+<li>Gateway enforces egress allowlist, budget, schema pins; tool call proceeds.</li>
+</ol>
+</li>
+<li>Why it matters:<!-- -->
+<ul>
+<li>The agent is strictly constrained on actions, data, and cost.</li>
+<li>Auditability: all decisions logged with graph truth and constraints.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="9-observability--ops">9. Observability &amp; ops<a href="#9-observability--ops" class="hash-link" aria-label="Direct link to 9. Observability &amp; ops" title="Direct link to 9. Observability &amp; ops">​</a></h2>
+<ul>
+<li>Health: <code>/health</code> endpoints from services.</li>
+<li>Metrics: Prometheus counters/histograms for key operations.</li>
+<li>Logs: structured logs on request start/success/error with correlation IDs.</li>
+<li>Kafka (optional): delegation events for audit and analytics.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="10-review-checklist">10. Review checklist<a href="#10-review-checklist" class="hash-link" aria-label="Direct link to 10. Review checklist" title="Direct link to 10. Review checklist">​</a></h2>
+<ul>
+<li>Identity binding:<!-- -->
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Active <code>DELEGATES_TO</code> edges exist with status/ttl/jkt as appropriate</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Capabilities anchored on delegations</li>
+</ul>
+</li>
+<li>Data scope:<!-- -->
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <code>data_scope</code> returns correct tenant_ids and fail-closed when unknown</li>
+</ul>
+</li>
+<li>Policy integration:<!-- -->
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->PDP includes constraints for egress/schema/prompt rules</li>
+</ul>
+</li>
+<li>Budget/steps:<!-- -->
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Token includes <code>aria_extensions.budget</code> and <code>aria_extensions.max_steps</code> per delegations</li>
+</ul>
+</li>
+<li>Tool chaining:<!-- -->
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <code>chain-eligibility</code> lists correct audiences/scopes for target tool</li>
+</ul>
+</li>
+<li>Search UX:<!-- -->
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Search endpoints perform as expected; metadata endpoints return <code>total</code>/<code>has_more</code> and optional <code>relationships</code></li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="11-reference">11. Reference<a href="#11-reference" class="hash-link" aria-label="Direct link to 11. Reference" title="Direct link to 11. Reference">​</a></h2>
+<ul>
+<li>Config:<!-- -->
+<ul>
+<li><code>ServiceConfigs/membership/config/settings.yaml</code></li>
+<li><code>ServiceConfigs/membership/config/neo4j_indices.yaml</code></li>
+</ul>
+</li>
+<li>Seeds/tests:<!-- -->
+<ul>
+<li><code>membership/seeds/pip_minimal.cypher</code></li>
+<li><code>membership/scripts/seed_neo4j.py</code>, <code>membership/scripts/quick_check.py</code></li>
+<li><code>membership/tests/*</code></li>
+</ul>
+</li>
+<li>Design docs:<!-- -->
+<ul>
+<li><code>mcp_gateway/docs/________newdesign10_membership.md</code></li>
+<li>PDP and IdP design counterparts for constraints and passport flows</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>For questions or deep-dive sessions, contact the engineering team and reference decision logs with correlation IDs from your trial runs.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="appendix-a-pip-evaluation-sequence">Appendix A: PIP evaluation sequence<a href="#appendix-a-pip-evaluation-sequence" class="hash-link" aria-label="Direct link to Appendix A: PIP evaluation sequence" title="Direct link to Appendix A: PIP evaluation sequence">​</a></h2>
+<!-- -->
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="appendix-b-pdp-decisionconstraints-example">Appendix B: PDP decision/constraints example<a href="#appendix-b-pdp-decisionconstraints-example" class="hash-link" aria-label="Direct link to Appendix B: PDP decision/constraints example" title="Direct link to Appendix B: PDP decision/constraints example">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="appendix-f-query-cookbook-with-ddl">Appendix F: Query cookbook (with DDL)<a href="#appendix-f-query-cookbook-with-ddl" class="hash-link" aria-label="Direct link to Appendix F: Query cookbook (with DDL)" title="Direct link to Appendix F: Query cookbook (with DDL)">​</a></h2>
+<ul>
+<li>Capability check (user→agent): uses <code>DELEGATES_TO</code> with <code>status=&#x27;active&#x27;</code> and validity window; indexed by relationship properties. See <code>storage/graph_modules/graph_delegation.py</code> and <code>storage/graph_store.py</code> for constraints and indexes.</li>
+<li>Data scope: <code>MATCH (u {id:$sid}) OPTIONAL MATCH (u)-[:BELONGS_TO]-&gt;(t:Tenant) OPTIONAL MATCH (u)-[:ASSIGNED_TO]-&gt;(:Project)-[:OWNED_BY]-&gt;(tp:Tenant) ... LIMIT 1</code> – backed by <code>Tenant(id)</code> and full‑text indices for identity search.</li>
+<li>Chain eligibility: <code>MATCH (t:Tool {id:$tool_id})&lt;-[:PROVIDES]-(s:MCPService) RETURN s.api_endpoint, s.auth_config_metadata LIMIT 1</code> – backed by <code>Tool(id)</code> and <code>MCPService(id)</code>.</li>
+</ul>
+<p>Tip: Run <code>EXPLAIN</code> on these queries against the seeded dataset; indexes are declared in code (see <code>graph_mcp.py</code>, <code>graph_agent.py</code>, <code>graph_store.py</code>).</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="appendix-g-audit-and-lineage">Appendix G: Audit and lineage<a href="#appendix-g-audit-and-lineage" class="hash-link" aria-label="Direct link to Appendix G: Audit and lineage" title="Direct link to Appendix G: Audit and lineage">​</a></h2>
+<ul>
+<li>Events: delegation add/update/revoke and relation changes emit Kafka events when configured; see <code>services/membership.py</code>.</li>
+<li>Logs: <code>structured_log</code> around delegation and identity operations with correlation IDs; use these to reconstruct decision trails.</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="appendix-h-pip-data-contracts-and-error-taxonomy">Appendix H: PIP data contracts and error taxonomy<a href="#appendix-h-pip-data-contracts-and-error-taxonomy" class="hash-link" aria-label="Direct link to Appendix H: PIP data contracts and error taxonomy" title="Direct link to Appendix H: PIP data contracts and error taxonomy">​</a></h2>
+<ul>
+<li>Version: responses include stable shapes; future changes will add a <code>version</code> field. Suggested consumer default is strict field validation.</li>
+<li>Error taxonomy (minimum):<!-- -->
+<ul>
+<li>200 + empty/safe default when no relationship: <code>{capabilities: []}</code>, <code>{tenant_ids: [], row_filter_sql: &quot;1=0&quot;}</code>, <code>[]</code> for chain eligibility.</li>
+<li>4xx for validation errors (missing params), 5xx for backend errors (Neo4j/Redis unavailable).</li>
+</ul>
+</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;decision&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token boolean">true</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;context&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token property">&quot;constraints&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;egress&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token property">&quot;allow&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;api.openai.com:443&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;tools.example.com:443&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;schema_pins&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token property">&quot;tool:flights&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token property">&quot;schema_version&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;1.0&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;schema_hash&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;sha256:...&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;data_scope&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token property">&quot;tenant_ids&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;tenant:acme&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;row_filter_sql&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;tenant_id IN (&#x27;tenant:acme&#x27;)&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;column_mask&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;step_up&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token property">&quot;mfa_required&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token boolean">false</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;level&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;strong&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;identity_chain&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token property">&quot;allowed_audiences&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;api.flights.com&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;allowed_scopes&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;flights.read&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;flights.write&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;max_token_ttl_seconds&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token number">300</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token property">&quot;obligations&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token property">&quot;id&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;emit_receipt&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token property">&quot;decision_id&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;...&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="appendix-c-identity-chain-example">Appendix C: Identity chain example<a href="#appendix-c-identity-chain-example" class="hash-link" aria-label="Direct link to Appendix C: Identity chain example" title="Direct link to Appendix C: Identity chain example">​</a></h2>
+<p>Eligibility response:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token property">&quot;audience&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;api.flights.com&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;scopes&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;flights.read&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;flights.write&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><br></span></code></pre></div></div>
+<p>Provider token request (conceptual):</p>
+<div class="language-http codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-http codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">POST /oauth/token</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">audience=api.flights.com&amp;scope=flights.read%20flights.write&amp;act_sub=agent:svc-123:for:...</span><br></span></code></pre></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="appendix-d-quickstart-curl-and-postman">Appendix D: Quickstart (curl) and Postman<a href="#appendix-d-quickstart-curl-and-postman" class="hash-link" aria-label="Direct link to Appendix D: Quickstart (curl) and Postman" title="Direct link to Appendix D: Quickstart (curl) and Postman">​</a></h2>
+<p>curl examples:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token comment" style="color:rgb(98, 114, 164)"># Capabilities</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-s</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;https://membership.ocg.labs.empowernow.ai/api/v1/pip/membership/capabilities?user_id=user:demo1&amp;agent_id=agent:svc-123:for:demo1&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)"># Data scope</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-s</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;https://membership.ocg.labs.empowernow.ai/api/v1/pip/membership/data-scope?subject_id=user:demo1&amp;resource_type=record&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token comment" style="color:rgb(98, 114, 164)"># Search</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-s</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;https://membership.ocg.labs.empowernow.ai/api/v1/identity_nodes/search?node_type=Person&amp;search=John&amp;system=active_directory&amp;limit=10&amp;skip=0&quot;</span><br></span></code></pre></div></div>
+<p>Postman: import the collection from <code>docs/services/membership/reference/postman/membership_review.postman_collection.json</code> and set the <code>baseUrl</code> variable.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="appendix-e-rebac-walkthrough-and-policy-sketch">Appendix E: ReBAC walk‑through and policy sketch<a href="#appendix-e-rebac-walkthrough-and-policy-sketch" class="hash-link" aria-label="Direct link to Appendix E: ReBAC walk‑through and policy sketch" title="Direct link to Appendix E: ReBAC walk‑through and policy sketch">​</a></h2>
+<p>ReBAC example: “John can approve expense in cost center CC-100”</p>
+<p>Graph walk (conceptual):</p>
+<!-- -->
+<p>Cypher check (illustrative):</p>
+<div class="language-cypher codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cypher codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">MATCH (u:User {id:$user_id})-[:MEMBER_OF]-&gt;(:Group)-[:ASSIGNED_TO]-&gt;(br:BusinessRole {name:&#x27;ExpenseApprover&#x27;})</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">MATCH (br)-[:SCOPED_TO]-&gt;(cc:CostCenter {id:$cost_center_id})</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">MATCH (r:ExpenseReport {id:$report_id})-[:BELONGS_TO]-&gt;(cc)</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">RETURN r.id AS report_id LIMIT 1;</span><br></span></code></pre></div></div>
+<p>Policy sketch (conceptual) – PDP combines graph truth with authored conditions:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">allow</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">when</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> action == &quot;expense.approve&quot;</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">and</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> constraints.capabilities contains &quot;expense</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain">approve&quot;</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">and</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> data_scope.tenant_ids contains resource.tenant_id</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">and</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> rebac.expense_approver_for(resource.cost_center_id) == true</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">obligations</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> emit_receipt</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> tee_analytics</span><br></span></code></pre></div></div>
+<p>Notes:</p>
+<ul>
+<li>The Membership PIP can expose helper endpoints to answer specific relationship predicates, but most trials use PDP orchestration to merge constraints (capabilities + data_scope) with authored rules.</li>
+<li>Keep ReBAC queries narrow and index-backed (CostCenter.id, BusinessRole.name).</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/services/membership/explanation/reviewers-guide.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#executive-introduction-what-youre-reviewing-and-why-its-different" class="table-of-contents__link toc-highlight">Executive introduction: what you’re reviewing and why it’s different</a><ul><li><a href="#mcp-catalog--discovery-new" class="table-of-contents__link toc-highlight">MCP catalog &amp; discovery (new)</a></li></ul></li><li><a href="#1-why-this-matters-ai-authorization-in-the-enterprise" class="table-of-contents__link toc-highlight">1. Why this matters: AI authorization in the enterprise</a></li><li><a href="#2-architecture-at-a-glance" class="table-of-contents__link toc-highlight">2. Architecture at a glance</a></li><li><a href="#3-neo4j-schema-core-nodesedges" class="table-of-contents__link toc-highlight">3. Neo4j schema (core nodes/edges)</a></li><li><a href="#4-key-features-mapped-to-business-needs" class="table-of-contents__link toc-highlight">4. Key features mapped to business needs</a></li><li><a href="#5-pip-endpoints-membership--pdp" class="table-of-contents__link toc-highlight">5. PIP endpoints (Membership → PDP)</a></li><li><a href="#6-core-apis-search-and-identity" class="table-of-contents__link toc-highlight">6. Core APIs (search and identity)</a></li><li><a href="#7-hands-on-trial-setup" class="table-of-contents__link toc-highlight">7. Hands-on: trial setup</a></li><li><a href="#8-case-study-travel-booking-copilot" class="table-of-contents__link toc-highlight">8. Case study: Travel booking copilot</a></li><li><a href="#9-observability--ops" class="table-of-contents__link toc-highlight">9. Observability &amp; ops</a></li><li><a href="#10-review-checklist" class="table-of-contents__link toc-highlight">10. Review checklist</a></li><li><a href="#11-reference" class="table-of-contents__link toc-highlight">11. Reference</a></li><li><a href="#appendix-a-pip-evaluation-sequence" class="table-of-contents__link toc-highlight">Appendix A: PIP evaluation sequence</a></li><li><a href="#appendix-b-pdp-decisionconstraints-example" class="table-of-contents__link toc-highlight">Appendix B: PDP decision/constraints example</a></li><li><a href="#appendix-f-query-cookbook-with-ddl" class="table-of-contents__link toc-highlight">Appendix F: Query cookbook (with DDL)</a></li><li><a href="#appendix-g-audit-and-lineage" class="table-of-contents__link toc-highlight">Appendix G: Audit and lineage</a></li><li><a href="#appendix-h-pip-data-contracts-and-error-taxonomy" class="table-of-contents__link toc-highlight">Appendix H: PIP data contracts and error taxonomy</a></li><li><a href="#appendix-c-identity-chain-example" class="table-of-contents__link toc-highlight">Appendix C: Identity chain example</a></li><li><a href="#appendix-d-quickstart-curl-and-postman" class="table-of-contents__link toc-highlight">Appendix D: Quickstart (curl) and Postman</a></li><li><a href="#appendix-e-rebac-walkthrough-and-policy-sketch" class="table-of-contents__link toc-highlight">Appendix E: ReBAC walk‑through and policy sketch</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/intro">Getting Started</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Marketing</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/">Home</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/solutions">Solutions</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/pricing">Pricing</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/products">Products</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/trust">Trust</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/resources">Resources</a></li><li class="footer__item"><a class="footer__link-item" href="/empowernow_docs/docs/website_copy/company">Company</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 EmpowerNow. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
