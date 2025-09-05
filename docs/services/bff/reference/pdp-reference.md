@@ -1,5 +1,5 @@
 ---
-title: pdp.yaml Reference
+title: pdp.yaml Reference (legacy)
 ---
 
 Connection
@@ -13,8 +13,8 @@ Behavior
 - metrics: `enabled`, `include_timing`, `include_cache_stats`, `detailed_decision_metrics`
 - circuit_breaker: `enabled`, `failure_threshold`, `reset_timeout`, `min_requests`
 
-Endpoint map
+Endpoint map (legacy)
 
-- Maps HTTP paths/methods to `resource`, `action`, optional `id_from` and `props` (JSONPath) for PDP context.
+- Maps HTTP paths/methods to `resource`, `action`, optional `id_from` and `props` (JSONPath) for PDP context. Prefer inline `authz_map` on `routes.yaml` entries.
 
 

@@ -68,6 +68,7 @@ This guide explains what we built, how it works end-to-end, how to configure it 
 - FastAPI middleware parses the forwarded certificate, computes x5t#S256, and attaches identity details to `request.state`.
 - Authentication service supports modes: `bearer`, `mtls`, `bearer_plus_mtls_optional`, `bearer_plus_mtls_required` with PoP (sender-binding) enforcement using `cnf.x5t#S256`.
 - Identity mapping produces canonical ARNs like `auth:account:x509:sha256:{thumb}` or email SAN-based ARNs under policy.
+ - Identity mapping produces canonical ARNs like `auth:account:x509:sha256:{thumb}` or email SAN-based ARNs under policy. For JWT-derived identities, the provider segment in ARNs prefers the IdP `provider` alias (falls back to entry `name`) so identities remain stable across audiences of the same issuer.
 - Vault secrets path enforces sender-binding and drift detection.
 
 ### How it works (at a glance)

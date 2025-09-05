@@ -31,9 +31,16 @@ sequenceDiagram
 
 Where it’s implemented
 
-- Mapping: `services/path_mapper.py` reads `endpoint_map` from `ServiceConfigs/BFF/config/pdp.yaml`, compiles regex rules, and extracts URL params and JSON body fields (via simple `$.field` JSONPath) into `props`.
+- Mapping: prefer inline `authz_map` defined on routes in `routes.yaml` for PDP‑protected endpoints. Legacy external `pdp.yaml:endpoint_map` remains supported as a fallback during migration.
 - Decision: `services/pdp_client.py` builds an AuthZEN request, retrieves a bearer token, calls PDP, handles errors, and caches results in Redis when configured.
 - Enforcement: `core/permissions.py` provides dependencies (`has_permission`, `requires_auth`) and helpers to assemble the authorization context (headers, query, body subset, roles/permissions, correlation ID).
+
+Mapping precedence and defaults
+
+- Resolver order: inline `authz_map` → external `pdp.yaml` → derived defaults (if enabled)
+- Feature flags:
+  - `authz_validation_strict`: fail startup when PDP‑protected routes lack a mapping
+  - `authz_default_mapping_enabled`: allow deriving defaults (GET→read, POST→create, etc.)
 
 Caching
 
@@ -43,20 +50,34 @@ Caching
 Examples (mapping snippets)
 
 ```yaml
-endpoint_map:
-  /api/crud/workflow/start:
+# Inline on route (preferred)
+- id: "crud-workflow-start"
+  path: "/api/crud/workflow/start"
+  target_service: "crud_service"
+  upstream_path: "/workflow/start"
+  methods: ["POST"]
+  auth: "session"
+  authz: "pdp"
+  authz_map:
     POST:
       resource: workflow
       action: execute
       props:
         workflow_name: "$.workflow_name"
 
+# Legacy external mapping (supported during migration)
+endpoint_map:
   /api/crud/workflow/status/{execution_id}:
     GET:
       resource: workflow_execution
       id_from: "{execution_id}"
       action: read
 ```
+
+Payload behavior for AuthZEN (SPAs)
+
+- The BFF does not rewrite SPA AuthZEN payloads; it forwards as‑is.
+- Minimal normalization only: a default `resource.id` may be provided for collection‑level checks when omitted.
 
 Quick validate
 

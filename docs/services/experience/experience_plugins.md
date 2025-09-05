@@ -199,6 +199,8 @@ Compatibility note: The SPA loader currently uses query params. If needed later,
 {"type":"account","id":"auth:account:{provider}:{user_id}"}
 ```
 
+Provider note: `{provider}` is resolved from the IdP `provider` alias defined in `idps.yaml` (falls back to the IdP entry `name`). Use the same alias across entries with the same issuer to keep ARNs stable across audiences.
+
 **Resources**
 
 * Route: `{"type":"plugin.route","id":"/hello"}`

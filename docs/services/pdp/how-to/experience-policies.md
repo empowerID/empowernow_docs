@@ -18,7 +18,7 @@ Grant allow for common Experience surfaces (scope to real subjects in non‑demo
 - Workflow quick execute → resource: `workflows`, action: `execute_quick`
 - Plugin views → resource: `plugin.*`, action: `view`
 
-Subjects should use canonical ARNs: `auth:account:{provider}:{user_id}`
+Subjects should use canonical ARNs: `auth:account:{provider}:{user_id}` where `{provider}` is the IdP `provider` alias (falls back to entry `name`) to keep identities stable across admin/CRUD audiences of the same issuer.
 
 ## Membership PIP
 

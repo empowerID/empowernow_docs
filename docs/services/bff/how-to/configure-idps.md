@@ -16,6 +16,7 @@ What authentication the BFF supports
 File structure (fields)
 
 - `name`: logical name used in logs/telemetry.
+- `provider`: canonical alias for identity/ARNs. Use the same alias for IdP entries that share an issuer but differ by audience. If omitted, identity falls back to `name`.
 - `issuer`: OIDC issuer URL.
 - `audience`: expected `aud` for tokens in this context.
 - `jwks_url`: JWKS for signature keys (used when signature verification is enabled).
@@ -33,6 +34,7 @@ Example
 ```yaml
 idps:
   - name: empowernow
+    provider: empowernow
     issuer: https://idp.ocg.labs.empowernow.ai/api/oidc
     audience: https://idp.ocg.labs.empowernow.ai/api/admin
     jwks_url: https://idp.ocg.labs.empowernow.ai/api/oidc/jwks
@@ -52,6 +54,7 @@ idps:
 
   # Same issuer, different audience (CRUD)
   - name: empowernow-crud
+    provider: empowernow
     issuer: https://idp.ocg.labs.empowernow.ai/api/oidc
     audience: https://crud-service:8000
     jwks_url: https://idp.ocg.labs.empowernow.ai/api/oidc/jwks
@@ -97,6 +100,7 @@ Testing and verification
 ARNs (identity propagation)
 
 - The BFF represents unique identities as ARNs to standardize attribution and auditing, and may emit `X-Original-User` downstream when available.
+- Provider selection prefers the IdP entry `provider` field, falling back to `name`. This stabilizes ARNs across audiences of the same issuer, e.g., `auth:account:empowernow:{sub}` for both admin and CRUD audiences.
 - Learn more: Authentication — Unique Identity and ARNs, and Security Model — Headers contract (`X-Original-User`).
 
 See also

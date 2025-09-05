@@ -33,7 +33,7 @@ Quick links to commonly used specialized APIs exposed by the BFF (source on GitH
 - IdP admin proxy → [Reference / IdP admin proxy](/docs/services/bff/reference/idp-admin-proxy)
 - Health / Metrics → [Reference / Health / Metrics](/docs/services/bff/reference/health-metrics)
 - YAML proxy (routes.yaml) → [Reference / YAML proxy](/docs/services/bff/reference/proxy-yaml-reference)
-- PDP mapping (pdp.yaml) → [Reference / PDP mapping](/docs/services/bff/reference/pdp-mapping)
+- PDP authorization mapping → Prefer inline `authz_map` in routes; see [How‑to / BFF Configuration & Routing](/docs/services/bff/how-to/bff-config-routing) and [Reference / routes.yaml Reference](/docs/services/bff/reference/routes-reference). Legacy external file: [Reference / PDP mapping (legacy)](/docs/services/bff/reference/pdp-mapping)
 
 ## AI chat completions through the BFF
 

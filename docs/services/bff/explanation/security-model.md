@@ -25,7 +25,7 @@ Controls
 Header contracts
 
 - ForwardAuth response headers: `X-Session-ID`, `X-Auth-Time`, `X-Correlation-ID`
-- Downstream headers to services: always `X-Correlation-ID`; `X-Original-User` when ARN available; `Authorization` when target requires it
+- Downstream headers to services: always `X-Correlation-ID`; `X-Original-User` when ARN available; `Authorization` when target requires it. The user ARN uses the IdP entry `provider` alias (fallback `name`) as the provider segment to keep identities stable across audiences of the same issuer.
 
 What we do not do
 

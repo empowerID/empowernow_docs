@@ -1,6 +1,11 @@
 ---
-title: Configure PDP (pdp.yaml)
+title: Configure PDP (legacy pdp.yaml)
 ---
+
+Status
+
+- Preferred: define per-route inline `authz_map` in `routes.yaml` with `authz: pdp`.
+- This page documents the legacy external `pdp.yaml` used for endpoint mapping during migration.
 
 What this file is
 
@@ -13,7 +18,7 @@ What is supported
 - Resilience: `retry` with max retries, backoff, and retryable status codes.
 - Performance: `cache` with separate TTLs for allow/deny, max size, and invalidation on policy change.
 - Stability: `circuit_breaker` with thresholds and reset times.
-- Mapping: `endpoint_map` translating path+method to `resource`, `action`, optional `id_from`, and `props` (simple JSONPath `$.field` extraction from request body).
+- Mapping: `endpoint_map` translating path+method to `resource`, `action`, optional `id_from`, and `props` (simple JSONPath `$.field` extraction from request body). Prefer inline `authz_map` on the corresponding `routes.yaml` entries.
 
 Example
 
@@ -46,7 +51,7 @@ endpoint_map:
 
 How it’s enforced in the BFF
 
-- Path mapping: `services/path_mapper.py` reads `endpoint_map`, compiles rules, extracts URL params and body fields, and returns `(resource, action, id, props)`.
+- Path mapping: when inline mapping exists, the resolver uses the route’s `authz_map`. Otherwise, `services/path_mapper.py` reads `endpoint_map`, compiles rules, extracts URL params and body fields, and returns `(resource, action, id, props)`.
 - Authorization: `core/permissions.py` assembles context (roles/permissions, headers, query/body subset, correlation ID) and calls `services/pdp_client.py`.
 - Caching: allow/deny decisions are cached with separate TTLs from `pdp.yaml`.
 
@@ -76,9 +81,19 @@ Tips
 - Use canonical prefixes (`/api/crud/**`, preserved AuthZEN `/access/v1/evaluation`).
 - Set shorter TTL for deny to reduce false negatives after permissions change.
 
+Migration helper
+
+```bash
+python -m ms_bff.src.tools.migrate_pdp_to_routes \
+  --routes ServiceConfigs/BFF/config/routes.yaml \
+  --pdp ServiceConfigs/BFF/config/pdp.yaml \
+  --out ServiceConfigs/BFF/config/routes.migrated.yaml
+```
+
 See also
 
 - Explanation → Authorization Model (PDP, Mapping, Caching)
+- How‑to → BFF Configuration & Routing Guide
 - Reference → routes.yaml Reference
 - How‑to → Validate endpoint_map entries (Quick Checklist)
 

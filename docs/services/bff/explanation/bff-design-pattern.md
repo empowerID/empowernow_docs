@@ -17,7 +17,7 @@ Modern UIs (web SPAs, mobile, desktop) often need to call multiple services with
 EmpowerNow’s BFF is an application‑aware gateway that sits between UIs and services. It provides a secure session boundary, centralized authorization (PDP), pragmatic routing, and optional composition when needed.
 
 - Secure session boundary: OAuth/OIDC terminates server‑side; the browser only holds an HttpOnly session cookie (+ CSRF)
-- Central authorization: per‑request PDP decisions mapped from path/method/body via `pdp.yaml`
+- Central authorization: per‑request PDP decisions mapped from path/method/body via inline `authz_map` on routes (legacy `pdp.yaml` supported during migration)
 - Pragmatic routing: canonical `/api/<app>/**` front door defined in `routes.yaml`
 - Composition when needed: add custom BFF endpoints to aggregate, reshape, or validate data across services
 
@@ -83,8 +83,8 @@ def get_frontpage(current_session = Depends(require_session)) -> Dict[str, Any]:
 
 Route and authorization are still governed by the same configuration surfaces:
 
-- `routes.yaml`: define `/api/frontpage` with `auth: session`
-- `pdp.yaml`: map `/api/frontpage` (GET) to your resource/action so PDP is evaluated consistently
+- `routes.yaml`: define `/api/frontpage` with `auth: session`; add `authz: pdp` and inline `authz_map` for consistent decisions
+- `pdp.yaml` (legacy): alternative mapping for migration scenarios
 
 ## Configuring a BFF
 
@@ -120,7 +120,7 @@ Not a fit:
   - Executive Overview
 - Reference:
   - YAML proxy (routes.yaml)
-  - PDP mapping (pdp.yaml)
+  - PDP mapping (legacy)
 - Tutorials:
   - Admin Quickstart
   - React SPA + BFF — Golden Path

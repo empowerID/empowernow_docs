@@ -116,6 +116,14 @@ flowchart LR
   KAFDROP --- KAFKA
 ```
 
+### Note: Canonical provider aliases in ARNs
+
+- Purpose: introduce a canonical `provider` alias so identities (ARNs) are stable across multiple IdP entries that share the same issuer but differ by audience (e.g., admin vs CRUD).
+- Behavior: services that construct identities prefer the IdP config `provider` field (fallback: `name`) for the provider segment of ARNs. Claims injected downstream include `idp_name` and `provider` aligned to this alias.
+- Effect: tokens for the same issuer now yield the same provider namespace in ARNs, e.g., `auth:account:empowernow:{sub}` regardless of audience entry name.
+- Migration: safe to deploy code first (falls back to `name`); then add `provider: "empowernow"` to relevant IdP entries in `ServiceConfigs/*/config/idps.yaml`.
+- Testing: verify `unique_id` starts with `auth:account:empowernow:` and that claims contain `idp_name`/`provider` for both admin and CRUD audience tokens.
+
 ### Key roles at a glance
 
 - BFF: Terminates SPA sessions; proxies to backends using audience‑bound access tokens minted by the IdP.

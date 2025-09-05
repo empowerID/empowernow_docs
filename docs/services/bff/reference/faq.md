@@ -27,7 +27,7 @@ Q: Why 401 vs 403?
 A: 401 = not authenticated (login). 403 = authenticated but PDP denied the action.
 
 Q: How are permissions decided?
-A: `core/permissions.py` builds context; `services/path_mapper.py` maps path→resource/action using `pdp.yaml:endpoint_map`; `services/pdp_client.py` calls PDP and caches decisions.
+A: `core/permissions.py` builds context; the route’s inline `authz_map` (preferred) maps method→resource/action; legacy `pdp.yaml:endpoint_map` is used if no inline mapping is present; `services/pdp_client.py` calls PDP and caches decisions.
 
 Q: Which SPAs call the PDP from the UI?
 A: See `Reference / SPA PDP usage` for a current inventory (Visual Designer: yes; IdP UI: no; PDP UI: yes for tools/visualization).

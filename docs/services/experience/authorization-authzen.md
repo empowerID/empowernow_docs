@@ -27,6 +27,7 @@ description: Implementation-accurate guidance for SPA/BFF/PDP authorization usin
 - Subject (required):
   - Source: authenticated session via BFF; sent explicitly for clarity/compliance
   - Canonical (enforced): `subject.type = "account"`, `subject.id = "auth:account:{provider}:{user_id}"`
+  - Provider note: `{provider}` is the IdP entry `provider` alias (falls back to entry `name`). This stabilizes ARNs across audiences that share an issuer (e.g., admin vs CRUD), yielding `auth:account:empowernow:{user_id}`.
   - Example: `subject: { type: "account", id: "auth:account:oidc:alice@example.com" }`
 - Resource (required):
   - Shape: `resource: { type: "<domain>", id: "<identifier>" }`

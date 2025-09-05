@@ -25,8 +25,11 @@ Structure
   - upstream_path: templated backend path, `{path}` is wildcard capture
   - methods: [GET, POST, ...]
   - auth: `session` | `bearer` | `none`
+  - authz: `none` | `pdp`
+  - authz_map: optional per-method map for PDP (`GET`/`POST`/... → resource/action)
   - streaming: boolean (SSE)
   - preserve_path: boolean
+  - internal: optional boolean; when true, dispatches to internal handlers (no HTTP loopback)
 
 Mental model
 
@@ -50,5 +53,32 @@ Canonical prefixes
 
 - CRUD APIs are exposed under `/api/crud/**`
 - AuthZEN preserved paths are proxied as-is: `/access/v1/evaluation` and `/access/v1/evaluations` (paths preserved to PDP)
+
+Inline PDP mapping examples
+
+```yaml
+- id: "crud-tasks-exact"
+  path: "/api/crud/tasks"
+  target_service: "crud_service"
+  upstream_path: "/tasks"
+  methods: ["GET", "POST"]
+  auth: "session"
+  authz: "pdp"
+  authz_map:
+    GET:
+      resource: "task_list"
+      action: "read"
+    POST:
+      resource: "task"
+      action: "create"
+```
+
+Resolver precedence
+
+- Inline `authz_map` → external `pdp.yaml:endpoint_map` (legacy) → derived defaults (if enabled)
+
+Internal routes
+
+- Set `target_service: internal` and optionally `internal: true` for FastAPI handlers within the BFF. Keep Experience endpoints `auth: session` so cookies/CSRF apply.
 
 

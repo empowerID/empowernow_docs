@@ -137,7 +137,7 @@ await self.publish_event(
 
 - Each event includes a `correlation_id` (request or workflow id).
 - If OpenTelemetry is active, `trace_id` and `span_id` are attached.
-- `user_context` carries subject/issuer when available.
+- `user_context` carries subject/issuer when available. The subject/unique_id uses the canonical provider alias from IdP config for ARNs (provider falls back to IdP entry `name`).
 
 ## Example event (failure on `crud.operations`)
 

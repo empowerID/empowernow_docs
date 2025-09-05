@@ -54,6 +54,7 @@ Where it’s implemented
 
 - Bearer validation is in `utils/auth.py` (`get_current_user`): decodes issuer from JWT, loads `idps.yaml`, retries `introspect_token`, builds `EnhancedTokenClaims` with normalized roles/permissions.
 - Unique identity is represented as `auth:{entity_type}:{idp}:{subject}` (see `utils/arn.py` and `UniqueIdentity` in `utils/auth.py`).
+- Unique identity is represented as canonical ARNs. The provider/idp segment prefers the IdP `provider` alias (falls back to entry `name`) to keep identities stable across entries with the same issuer, e.g., `auth:account:empowernow:{sub}` for both admin and CRUD audiences.
 
 Key behaviors
 

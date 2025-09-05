@@ -120,6 +120,7 @@ Behavior
 
 - Where ForwardAuth is enabled (e.g., PDP and dashboard), Traefik calls `/auth/forward`; BFF validates session and returns 200 with headers (including `Authorization`) or 401.
 - For SPA same-origin `/api/**` routes, ForwardAuth is intentionally disabled and BFF performs auth, returning CORS-enabled 401 JSON when unauthenticated.
+- SPA routers must exclude API/auth/stream/PDP paths so the SPA assets router does not intercept API traffic. Create separate routers on the BFF host that forward `/api/`, `/auth/`, `/access/v1/`, and stream paths to the BFF app.
 
 SPA PDP calls (AuthZEN) via preserved paths
 
@@ -130,7 +131,7 @@ Where it’s configured (source of truth)
 
 - `CRUDService/traefik/dynamic.yml`: defines `middlewares.bff-forwardauth.forwardAuth.address` and sets `authResponseHeaders`/`authRequestHeaders`. Routers like `pdp-protected` and `traefik-dashboard` attach this middleware.
 - `CRUDService/docker-compose-authzen4.yml`: Traefik service labels apply `bff-forwardauth@file` to the dashboard; BFF router labels route SPA hosts `/api/**` and `/auth/**` without ForwardAuth.
-- `ServiceConfigs/BFF/config/routes.yaml`: the BFF’s own upstream proxy map; unrelated to ForwardAuth itself but explains what `/api/**` the BFF will handle after authentication.
+- `ServiceConfigs/BFF/config/routes.yaml`: the BFF’s own upstream proxy map; unrelated to ForwardAuth itself but explains what `/api/**` the BFF will handle after authentication. For PDP preserved paths, ensure routes exist for `/access/v1/evaluation(s)` with `preserve_path: true`.
 
 Testing (from QA guide)
 

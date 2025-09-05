@@ -8,7 +8,7 @@ This page inventories how each SPA uses the PDP (AuthZEN) via the BFF. It clarif
 ## Key points
 
 - BFF session: `auth: "session"` validates the user and CSRF but does not auto‑call the PDP.
-- PDP calls from SPAs: use preserved paths `/access/v1/evaluation` and `/access/v1/evaluations` (proxied by the BFF to `pdp_service`).
+- PDP calls from SPAs: use preserved paths `/access/v1/evaluation` and `/access/v1/evaluations` (proxied by the BFF to `pdp_service`). The BFF does not rewrite payloads; minimal normalization only (e.g., default `resource.id` for collection checks when omitted).
 - Subject: inferred by the BFF from the session cookie; SPAs do not send tokens.
 - Cookies: include credentials in the browser (fetch `credentials: 'include'`, axios `{ withCredentials: true }`).
 

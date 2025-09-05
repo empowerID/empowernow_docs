@@ -20,7 +20,7 @@ Auth: BFF session or bearer token. The legacy route accepts either an authentica
 Authentication model
 - Front-door: the legacy route is protected by `Depends(get_current_user)`; callers can authenticate with either a valid BFF session (cookie) or by sending `Authorization: Bearer <access_token>` from EmpowerID.
 - Downstream: the proxy forwards the caller's token unchanged in `Authorization: Bearer ...` when `request.state.token` exists; for `service=empowerid`, it also injects `X-EmpowerID-Api-Key` if configured.
-- Identity propagation: when a validated user ARN is available, `X-Original-User` is added for auditing/attribution.
+- Identity propagation: when a validated user ARN is available, `X-Original-User` is added for auditing/attribution. The provider segment in ARNs prefers the IdP entry `provider` alias (falls back to `name`), stabilizing identities across audiences of the same issuer.
 
 Endpoints
 - Any method `/api/v1/proxy/{service}/{path}`

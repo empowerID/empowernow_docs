@@ -25,6 +25,7 @@ Full key list (with env overrides)
 - auth.client_id, client_secret → `AUTH_CLIENT_ID`, `AUTH_CLIENT_SECRET`
 - auth.oauth_scopes → `OIDC_SCOPES`
 - pdp.* → `PDP_BASE_URL`, `PDP_TOKEN_URL`, `PDP_CLIENT_ID`, `PDP_CLIENT_SECRET`, `PDP_CACHE_DECISIONS`, `PDP_CACHE_TTL`, `PDP_ENABLED`
+- authz.* → `AUTHZ_VALIDATION_STRICT`, `AUTHZ_DEFAULT_MAPPING_ENABLED`
 - membership.* → `MEMBERSHIP_*`
 - cors.allow_origins/dev_origins/allow_credentials/allow_methods/allow_headers → `CORS_*`
 - cache.type/redis_url/redis_db/redis_max_connections/ttl/enable_memory_cache/memory_ttl
@@ -37,4 +38,5 @@ Notes
 
 - Env substitution uses `${VAR}` in YAML; ensure concrete values in Compose/K8s.
 - Scopes often must include: `admin.api`, `application.all` per downstream requirements.
+- For Experience app support, include `https://experience.ocg.labs.empowernow.ai` in `CORS__ALLOW_ORIGINS`, add `http://localhost:5177` to dev origins, and include Experience host in `ALLOWED_REDIRECT_ORIGINS`.
 
