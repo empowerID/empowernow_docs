@@ -66,9 +66,9 @@ Config model (YAML)
         - `required`: bool
         - `default`: any
         - `omit_if_empty`: bool
-        - `multi`: { `unique_sorted`: bool, `max_items`: int }
+        - `multi`: `{ unique_sorted: bool, max_items: int }`
     - `projection_profiles` (optional): map profileName → [attrs]. Used by executor when `attributes is None`.
-    - `pdp`: { `attribute_gate`: bool } default true
+    - `pdp`: `{ attribute_gate: bool }` default true
   - `merge_rules` (optional):
     - `precedence`: [systemName]
     - `attributes`:
@@ -77,7 +77,7 @@ Config model (YAML)
         - `{ merge_unique: { sources: ["sys1.list", "sys2.list"], sort: "ci" } }`
 - `filters`:
   - `allow_attrs`: [attr]
-  - `matching`: { attr: caseIgnore|caseExact }
+  - `matching`: `{ attr: caseIgnore|caseExact }`
   - `limits`: `sizeLimit`, `timeLimitMs`, `defaultPageSize` (also allowed under `mapping.limits`; mapping takes precedence)
 
 Mapping Engine enhancements

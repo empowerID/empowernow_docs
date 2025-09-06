@@ -172,3 +172,140 @@ merge_rules:
   - Composite cursor records last consumed per-source offsets when rows remain.
 
 
+
+### SCIM VDS (alongside LDAP)
+
+The VDS now exposes a SCIM 2.0 API in addition to LDAP. Directories can be:
+- Passthrough: project a single system to SCIM as-is.
+- Unified: merge multiple systems via the aggregator with merge rules and mapping profiles.
+
+#### API surface
+- Base: `/scim/v2`
+- Discovery: `GET /ServiceProviderConfig`, `GET /Schemas`, `GET /ResourceTypes`
+- Directory-scoped resources:
+  - Users: `GET /scim/v2/{directory}/Users`, `GET /scim/v2/{directory}/Users/{id}`
+  - Groups: `GET /scim/v2/{directory}/Groups`, `GET /scim/v2/{directory}/Groups/{id}`
+- When writes are enabled: `POST`/`PATCH`/`DELETE` for Users and Groups at the same paths.
+
+#### Compose: VDS with SCIM (concise)
+
+```yaml
+vds:
+  environment:
+    - REDIS_URL=redis://shared_redis:6379/6
+    - MAPPING_FILE=/app/config/mapping.yaml
+    - FILTERS_FILE=/app/config/filters.yaml
+    - PROVIDERS_FILE=/app/config/connectors.yaml
+    # SCIM core
+    - SCIM_ENABLED=true
+    - SCIM_DIRECTORIES_FILE=/app/config/scim_directories.yaml
+    - PAGE_SIZE_DEFAULT=500
+    # SCIM auth (disable in dev unless configured)
+    - SCIM_REQUIRE_AUTH=false
+    # - SCIM_STATIC_BEARER_TOKEN=change-me
+    # - SCIM_OAUTH_INTROSPECTION_URL=http://idp-app:8002/api/oidc/introspect
+    # - SCIM_OAUTH_CLIENT_ID=vds-scim
+    # - SCIM_OAUTH_CLIENT_SECRET=change-me
+    - SCIM_REQUIRE_MTLS=false
+    # Rate limiting & totals
+    - SCIM_RATE_CAPACITY=100
+    - SCIM_RATE_REFILL_PER_SEC=50
+    - SCIM_TOTAL_RESULTS_ENABLED=false
+    - SCIM_TOTAL_RESULTS_CAP=5000
+    # Writes (feature-gated)
+    - SCIM_WRITES_ENABLED=true
+    - SCIM_WRITE_REREAD=false
+    - SCIM_WRITE_IDEMPOTENCY_TTL_S=86400
+    # PDP base URL for write authorization
+    - PDP_BASE_URL=http://pdp:8001
+    # CRUD-compatible connector catalogs
+    - SYSTEM_TYPES_DIR=/app/ServiceConfigs/connectors/system_types
+    - SYSTEMS_DIR=/app/ServiceConfigs/connectors/systems
+    - MAX_COOKIE_BYTES=2048
+  volumes:
+    - ../ServiceConfigs/vds/config:/app/config:ro
+    - ../ServiceConfigs/connectors/system_types:/app/ServiceConfigs/connectors/system_types:ro
+    - ../ServiceConfigs/connectors/systems:/app/ServiceConfigs/connectors/systems:ro
+    - ../IdP/certs:/app/certs:ro
+```
+
+#### SCIM settings reference
+- `SCIM_ENABLED`: enable SCIM API (default true)
+- `SCIM_DIRECTORIES_FILE`: path to `scim_directories.yaml`
+- `PAGE_SIZE_DEFAULT`: default page size for list endpoints
+- `SCIM_REQUIRE_AUTH`: require bearer token; use static token or OAuth introspection
+- `SCIM_STATIC_BEARER_TOKEN`: dev/testing token
+- `SCIM_OAUTH_INTROSPECTION_URL`/`SCIM_OAUTH_CLIENT_ID`/`SCIM_OAUTH_CLIENT_SECRET`: OAuth introspection
+- `SCIM_REQUIRE_MTLS`: enforce client cert headers
+- `SCIM_RATE_CAPACITY`/`SCIM_RATE_REFILL_PER_SEC`: rate limiter
+- `SCIM_TOTAL_RESULTS_ENABLED`/`SCIM_TOTAL_RESULTS_CAP`: bounded `totalResults`
+- `SCIM_WRITES_ENABLED`: enable write routes (default off in prod)
+- `SCIM_WRITE_REREAD`: reread after create/update
+- `SCIM_WRITE_IDEMPOTENCY_TTL_S`: Idempotency-Key cache TTL (seconds)
+- `PDP_BASE_URL`: PDP base for write authorization
+- `SYSTEM_TYPES_DIR`/`SYSTEMS_DIR`: CRUD-compatible connector catalogs
+
+#### Directories configuration
+- File: `ServiceConfigs/vds/config/scim_directories.yaml`
+- Define Users/Groups with sources, merge rules, mapping profiles, and optional write allow-lists.
+
+Example:
+
+```yaml
+directories:
+  unified:
+    type: unified
+    users:
+      sources:
+        - system: addomain_ad
+          object_type: user
+          action: search_users
+        - system: auth0_eid
+          object_type: users
+          action: list
+      merge_rules:
+        precedence: [addomain_ad, auth0_eid]
+      mapping_profile: scim_user
+      capabilities:
+        filters: { eq: true, sw: true, co: true, pr: true }
+        sortBy: [userName, displayName]
+    groups:
+      sources:
+        - system: addomain_ad
+          object_type: group
+          action: search_groups
+      mapping_profile: scim_group
+
+  addomain_ad:
+    type: passthrough
+    users:
+      sources:
+        - system: addomain_ad
+          object_type: user
+          action: search_users
+      mapping_profile: passthrough
+      write:
+        allow_actions: ["create", "update", "delete"]
+        allow_attributes: ["subject", "displayName", "emails"]
+```
+
+#### Writes (opt-in)
+- Endpoints: `POST`/`PATCH`/`DELETE` `/scim/v2/{directory}/Users|Groups[/{id}]`
+- Responses: `201` with `Location` and `ETag` on create; `200` + `ETag` on update; `204` on delete
+- Policy gates: directory `write.allow_actions`/`write.allow_attributes`
+- Authorization: PDP coarse allow/deny per write via `PDP_BASE_URL` (403 on deny)
+- Idempotency: `Idempotency-Key` supported for create; TTL via `SCIM_WRITE_IDEMPOTENCY_TTL_S`
+
+#### Deployment notes
+- Compose mounts and env vars above are required for SCIM and connector catalogs
+- Provide these files:
+  - `ServiceConfigs/vds/config/scim_directories.yaml`
+  - `ServiceConfigs/connectors/system_types/*`
+  - `ServiceConfigs/connectors/systems/*`
+- Optional: expose SCIM externally via Traefik on the VDS host with path prefix `/scim/v2`
+
+#### Operational guidance
+- Start with `SCIM_REQUIRE_AUTH=false` in dev; enable static token or introspection in non-dev
+- Keep `SCIM_TOTAL_RESULTS_ENABLED=false` unless required; tune cap for upstreams
+- For production writes: define explicit allow-lists, enable PDP checks, consider `SCIM_WRITE_REREAD=true`
+- Monitor request volume, latency, and provider histograms
