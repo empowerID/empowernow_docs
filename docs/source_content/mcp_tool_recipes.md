@@ -6,6 +6,7 @@ This guide shows how to trigger our MCP tools and compose them to accomplish end
 - Bearer token with scopes: `mcp.tools.discovery` and `mcp.tools.invoke`.
 - BFF MCP URL: `https://api.ocg.labs.empowernow.ai/api/crud/mcp/jsonrpc`
 - Content-Type: `application/json`
+ - Optional SSE GET bridge (Cursor/streamable clients): `GET /api/crud/mcp/{view}/jsonrpc` (proxied to upstream POST)
 
 ## Quick discovery
 - List tools (JSON‑RPC):
@@ -15,11 +16,18 @@ curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
   https://api.ocg.labs.empowernow.ai/api/crud/mcp/jsonrpc | jq
 ```
 
-### View‑scoped discovery
+### View‑scoped discovery (with pagination)
 - List tools in `entra` view (JSON‑RPC):
 ```bash
 curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":"11","method":"tools/list","params":{"limit":50}}' \
+  -d '{"jsonrpc":"2.0","id":"11","method":"tools/list","params":{"limit":50,"cursor":null}}' \
+  https://api.ocg.labs.empowernow.ai/api/crud/mcp/entra/jsonrpc | jq
+```
+Next page (when `nextCursor` is present in the previous response):
+```bash
+CURSOR="<base64-url-cursor>"
+curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":"11b","method":"tools/list","params":{"limit":50,"cursor":"'"$CURSOR"'"}}' \
   https://api.ocg.labs.empowernow.ai/api/crud/mcp/entra/jsonrpc | jq
 ```
 
@@ -44,6 +52,14 @@ curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
   }' \
   https://api.ocg.labs.empowernow.ai/api/crud/mcp/systems/jsonrpc | jq -r '.result.content[0].text' | jq
 ```
+
+### SSE GET (streamable) JSON‑RPC bridge
+- For clients that prefer GET + event streams (e.g., Cursor), the BFF exposes an SSE bridge that proxies to CRUDService POST JSON‑RPC.
+```bash
+curl -N -H "Authorization: Bearer $TOKEN" \
+  "https://api.ocg.labs.empowernow.ai/api/crud/mcp/entra/jsonrpc?id=1&method=tools%2Flist&params=%7B%22limit%22%3A50%7D"
+```
+Notes: the bridge encodes `method` and `params` as query parameters; responses are Server‑Sent Events.
 
 ## Tools enabled today (examples)
 - Health: `system.health` (also available as `system_health`)
@@ -154,8 +170,14 @@ curl -s -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
 In Cursor, once `crud-mcp` is configured, you can say:
 - “List tools from crud-mcp.”
 - “Run the CRUD MCP health check with verbose true.”
-- “Given user `<id>`, fetch their groups and manager.”
+- “Given user <id>, fetch their groups and manager.”
 
 Cursor will chain calls via `tools/list` and `tools/call` using the same endpoints above.
+
+## Troubleshooting
+- 403 or JSON‑RPC error `-32001`: missing scope (`mcp.tools.discovery` or `mcp.tools.invoke`).
+- `-32601` when invoking in a view: the tool isn’t in that view; discover the view or use a matching one.
+- Empty lists: confirm ServiceConfigs are mounted and that virtual view filters match; see `mcp_virtual_views.md`.
+- Large catalogs: use `limit`/`cursor`; health tools are prepended but excluded from page counts.
 
 

@@ -2,7 +2,7 @@
 
 This guide covers building and configuring VDS connectors, the shared adapter layer, and example configs for LDAP, REST, SCIM, ODBC, and Azure Graph.
 
-See also: [Virtualization Phase 2 — Data Shaping, Merging, and Projection](./virtualization_phase2.md).
+See also: [Virtualization Phase 2 — Data Shaping, Merging, and Projection](./virtualization_phase2.md) and the end-to-end [Virtual Directory Service v3 Guide](./virtual_directory_v3_guide.md). Connector catalogs live under `ServiceConfigs/connectors/system_types` and `ServiceConfigs/connectors/systems` and are shared with VDS.
 
 ### Architecture
 

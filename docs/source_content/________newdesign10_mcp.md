@@ -2,7 +2,7 @@ Below is a **clean, v1‑aligned redesign** of the **MCP Gateway (ARIA)** servic
 
 > **What changed vs. older drafts**
 >
-> * ✅ **Keep**: user‑bound agent identity; **schema pins** (no vendor signatures); **plan contracts**; **AuthZEN PDP** rich constraints; **params/egress/data‑scope** enforcement; **receipts**; **optional** OAuth identity chaining behind a **feature flag**.
+> * ✅ **Keep**: user‑bound agent identity; **schema pins** (no vendor signatures); **plan contracts (step & params fp)**; **AuthZEN PDP** rich constraints; **params/egress/data‑scope** enforcement; **receipts**; **optional** OAuth identity chaining behind a **feature flag**.
 > * ❌ **Remove/Defer**: **vendor‑signed attestations** (pins only), **Merkle capability proofs** (use PDP/RAR + allowlists), **context‑root/DPoP binding** (only include a simple request digest in receipts if desired, **no gating**), **BDNA gating** (telemetry only).
 
 ---
@@ -15,7 +15,7 @@ Below is a **clean, v1‑aligned redesign** of the **MCP Gateway (ARIA)** servic
 
 * Terminate *agent→tool* (MCP) calls and act as a **PEP**.
 * Verify **user‑bound agent identity** and **schema pin**.
-* Enforce **plan contracts** (step & params fingerprint).
+* Enforce **plan contracts** (step & params fingerprint). Budgeting is enforced in the BFF for LLM/provider calls, not in MCP.
 * Call **PDP (AuthZEN)** → get **constraints** & **obligations**; **enforce** constraints; **execute** obligations on permit.
 * Apply **inbound gates** (redaction, rails injection, param allowlist, byte/tokens caps).
 * Apply **egress pinning** and **optional outbound leak guard**.
@@ -35,7 +35,7 @@ Below is a **clean, v1‑aligned redesign** of the **MCP Gateway (ARIA)** servic
 
 1. **Authenticate/Bind** — Validate ARIA passport audience, actor chain, pairwise **user‑binding**.
 2. **Schema Pin** — Verify tool’s `{schema_version, schema_hash}` against **Tool Registry** with **1‑version rollout window**.
-3. **Plan+Budget** — Enforce **plan step** + **params fingerprint** and perform **idempotent budget debit**.
+3. **Plan** — Enforce **plan step** + **params fingerprint**. No budget debit in MCP.
 4. **PDP Decision** — Call PDP `/access/v1/evaluation`, obtain **constraints** and **obligations**.
 5. **Enforce** — Inbound gates (redaction/rails/allowlist/tokens), **egress allowlist**, **data‑scope** shaping.
 6. **Forward** — Call downstream tool (MCP server/API).
@@ -75,6 +75,7 @@ graph TB
   * **Headers**
 
     * `Authorization: Bearer <ARIA Passport JWT>` (aud = `aria.gateway`)
+    * (Removed) `X-ARIA-Consent` — MCP does not enforce spend consent
     * `X-ARIA-MFA: ok` — if PDP `step_up.mfa_required` is true
   * **Body** (generic tool envelope)
 
@@ -166,14 +167,14 @@ graph TB
 * Compare ARIA passport `aria.schema_pins[tool_id]` to **Tool Registry**.
 * Accept **exact match**; else accept **previous\_version/hash** if within **4h** rollout window.
 
-### 5.3 Plan
+### 5.3 Plan (no MCP budget)
 
 * If `plan_contract_jws` present → verify **current step** tool id and **params fingerprint**; **deny on mismatch**.
-
+* (Removed) Budget debit in MCP.
 
 ### 5.4 PDP Decision
 
-* Build `subject=agent`, `action="execute"`, `resource=tool{schema_hash, pdp_application="aria-mcp-gw"}`, `context={"capability": tool_id}`.
+* Build `subject=agent`, `action="execute"`, `resource=tool{schema_hash, pdp_application=aria-mcp-gw}`, `context={"capability": tool_id}`.
 * **Do not** merge/modify constraints in the PEP. Treat PDP output as authoritative.
 
 ### 5.5 Inbound Gates
@@ -655,7 +656,7 @@ sequenceDiagram
   GW->>REG: GET /tools/{tool}
   REG-->>GW: endpoint + schema meta
   GW->>GW: schema pin check (w/ rollout window)
-  GW->>GW: plan step + params fp + budget(idempotent)
+  GW->>GW: plan step + params fp
   GW->>PDP: evaluate(subject,action,resource,context)
   PDP-->>GW: decision + constraints + obligations
   alt allow
@@ -703,7 +704,6 @@ sequenceDiagram
 | 403  | `user_binding_violation`     | Pairwise binding failed                 |
 | 403  | `schema_pin_mismatch`        | Pin ≠ registry (+rollout window failed) |
 | 403  | `plan_step_violation`        | Plan tool/params mismatch               |
-| 402  | `budget_exceeded`            | Removed — budget enforcement is BFF‑only |
 | 403  | `pdp_denied`                 | PDP decision = false                    |
 | 403  | `egress_denied`              | Host not in allowlist                   |
 | 403  | `identity_chaining_disabled` | Tool requires chaining but FF off       |
@@ -744,7 +744,7 @@ sequenceDiagram
 
 1. **Cross‑user isolation** — agent for user A cannot access B’s resources; binding denies.
 2. **Plan deviation** — tool order or params → `plan_step_violation`; deny with receipt reason.
-3. **Budget enforcement** — BFF‑only; MCP does not return 402.
+3. **Budget enforcement** — enforced by the BFF for LLM/provider calls; MCP does not debit budgets.
 4. **Schema drift** — registry version change; within 4h rollout → allow; after → deny.
 5. **Param allowlist** — regex mismatch → 400 with reason; receipt on deny contains reason.
 6. **Egress pinning** — endpoint host not in allowlist → deny.

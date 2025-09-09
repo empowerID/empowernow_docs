@@ -26,12 +26,17 @@
   - Same JSON‑RPC methods but constrained to the tools in the specified view
   - Invoking a tool not in the view returns `-32601` (not found)
 
+- **Prompts (if enabled in the gateway)**
+  - `prompts/list` and `prompts/get` are available over JSON‑RPC at `/mcp/{view}/jsonrpc` and respect the same view filters (e.g., `provider`, `tags`).
+  - BFF proxy exposes `POST /api/crud/mcp/{view}/jsonrpc` and an SSE GET bridge at `GET /api/crud/mcp/{view}/jsonrpc` for streamable clients (Cursor).
+
 ### Auth and scopes
 - Reuses CRUDService authn/z. Provide `Authorization: Bearer <token>`.
 - Scopes enforced:
   - `mcp.tools.discovery` for listing
   - `mcp.tools.invoke` for invoking
 - PDP `enable_authorization` flag is read from `config/pdp.yaml`.
+ - CSRF/DPoP exemption: the BFF exempts MCP proxy paths under `PREFIX:/api/crud/mcp` from CSRF/DPoP; use Bearer tokens with the scopes above.
 
 ### Tool sources and naming
 - **Default namespaced**: `provider.instance.base` for system tools (e.g., `entra.cont.account.get_by_id`, `ldap.av.account.get_by_dn`). Workflows use `workflow.<name>`.

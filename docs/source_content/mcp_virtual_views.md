@@ -11,7 +11,7 @@ The config is loaded at process start and is also hot‑reloaded on demand: when
 ## YAML format
 The file contains a list of view definitions. Each definition creates two endpoints: `/mcp/{view}/tools/list` and `/mcp/{view}/jsonrpc`.
 
-Allowed filter keys map directly to tool fields and annotations:
+Allowed filter keys map directly to tool/prompt fields and annotations:
 - `source`: one of `system`, `workflow` (matches tool source)
 - `provider`: matches `annotations.provider` or `metadata.provider`
 - `instance`: matches `annotations.instance` or `metadata.instance`
@@ -45,6 +45,7 @@ Notes:
 - `path_prefix` must be a single segment under `/mcp`, e.g., `/entra`, `/workflows`.
 - Health tools (`system.health`, `system_health`) are always included for connectivity checks.
 - Duplicate `path_prefix` values are not allowed; resolve conflicts in your YAML.
+ - Prompts can also be included in views by setting `source: ["prompt"]` or mixing with other sources; see section "Prompts in views" below.
 
 ## Endpoints
 Once configured, each view is available under:
@@ -55,6 +56,7 @@ Behavior within a view:
 - `tools/list` only returns tools that match the view filters (health tools always included)
 - `tools/invoke` only executes tools present in that view. Invoking a tool outside the view returns JSON-RPC error `-32601` (not found in this view)
 - Pagination parameters (`limit`, `cursor`) apply per view; health tools are prepended and excluded from page counts.
+ - If prompts are enabled for a view, `prompts/list` and `prompts/get` are similarly filter-scoped.
 
 ### Fallback views and hot‑reload
 - If `mcp_virtual_servers.yaml` is missing or a requested view isn’t defined, fallback views are synthesized:
@@ -132,6 +134,32 @@ Security notes:
 ## Router tools (optional)
 If you want a collapsed surface across provider/instance variants, enable:
 - `MCP_ENABLE_ROUTER=true` (aggregated router tools will be included in discovery)
+
+## Prompts in views
+- Prompts are first-class MCP features. Include them by adding `source: ["prompt"]` to a view or mixing with other sources.
+- Each prompt is tagged with `provider`, `instance`, and `tags`. The same filter keys apply.
+
+Example: dedicated prompts view
+```yaml
+- name: "prompts"
+  path_prefix: "/prompts"
+  filters:
+    source: ["prompt"]
+```
+
+Example: Entra view with both tools and prompts
+```yaml
+- name: "entra"
+  path_prefix: "/entra"
+  filters:
+    source: ["system","prompt"]
+    provider: ["entra"]
+```
+
+Discovery and usage within a view:
+- `prompts/list` returns only prompts that match the view filters
+- `prompts/get` renders only those prompts
+- Plans produced by prompts reference workflows/tools that should also be visible in the same view for clean execution
 
 ## Operational notes
 - Views are resolved at application import time; restart the CRUDService to reload the views file

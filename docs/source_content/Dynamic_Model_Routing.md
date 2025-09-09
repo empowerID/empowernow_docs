@@ -158,6 +158,10 @@ PDP context fields (request)
 
 - `provider`, `model`, `estimated_cents`, optional `tenant_id`, `category`
 
+Related endpoints
+
+- `GET /access/v1/budgets/effective` — UI reads effective limits (policy defaults + Analytics overrides) from PDP via BFF; short-cache; complements `budgets/state` when limits are null.
+
 Code touchpoints
 
 - Endpoint: `ms_bff/src/api/v1/endpoints/llm.py`

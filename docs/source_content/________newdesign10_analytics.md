@@ -452,6 +452,52 @@ async def runtime_hot(tenant_id: str):
 
 ---
 
+## 4b) AI Spend endpoints (shipped summary)
+
+- Budgets: `GET /api/v1/analytics/budgets/state`, `GET /budgets/state/bulk`, `GET /budgets/limits`, `PUT /budgets/limit`.
+- Receipts: `GET /receipts/recent`, alias `GET /receipts/{id}` (delegates to detail), `POST /receipts:batch`.
+- Spend: `GET /spend/summary`, `GET /spend/timeseries`, `GET /spend/leaders`.
+- Catalogs: `GET /catalog/categories`, `GET /catalog/models`, `GET /catalog/providers`.
+- Classification: `GET /classifications/pending`, `POST /classifications/apply`, `POST /classifications/bulk`.
+  - Apply semantics:
+    - Pending receipts remain attributed to `uncategorized` by default until applied.
+    - Applying a category records an acceptance mapping (e.g., by `tenant_id + subject_id` and optional day). Future receipts use the accepted category.
+    - Optionally, enable corrective deltas to adjust same‑day counters; history is not rewritten by default.
+  - Metrics: `aria_analytics_classify_proposed_total{source}`, `aria_analytics_classify_apply_total{result}`, `aria_analytics_classify_latency_ms`.
+- Subjects/search, forecasts, alerts endpoints available; major GETs return ETag/Last-Modified and support 304.
+- `runtime/hot` wrapped with validators for conditional GET.
+
+Redis keying for category/provider/model pools uses namespaced `subject_id` (Option A), e.g., `auth:...|cat:dev`.
+
+Kafka topics ensured via compose: `ai.spend.receipts`, `ai.spend.budgets`, `ai.spend.alerts`.
+
+---
+
+## AI Spend at a glance (Mermaid)
+
+```mermaid
+flowchart LR
+  subgraph PEPs
+    BFF
+    MCP
+  end
+  subgraph Control
+    PDP
+    RV
+  end
+  subgraph ANA[Analytics]
+    API
+    Redis
+  end
+  BFF-->PDP
+  MCP-->PDP
+  BFF-->RV
+  MCP-->RV
+  BFF-->API
+  MCP-->API
+  API<-->Redis
+```
+
 ## 5) Producer wiring (one‑liners)
 
 **ARIA Gateway/BFF** — right after you call `Receipt Vault` and get `{ jws, hash }`:
@@ -500,8 +546,17 @@ Append this to your existing `docker-compose.yml`:
 * **Spend:** Uses `usage.cost_usd` if present or prices by tokens/model; falls back to tool `cost_per_call` (from Tool Registry) when appropriate.
 * **Hot counters:** Keeps daily spend per `tenant_id` and per‑request cost (for stream tripwires or UX).
 * **Budgets (optional governance):** Simple **daily/monthly** counters by tenant/project/user scope in Redis, with `PUT /v1/budgets/limit` + `GET /v1/budgets/state`. (This is **in addition to** passport budgets enforced by Gateway/BFF.)
+* **Category pending semantics:** When `policy_snapshot.category_pending == true`, attribute counters to `uncategorized` by default while surfacing `proposed_category` for the pending queue and dashboards. After apply, future receipts attribute to the chosen category.
 
 > You can later back your budgets/ledger with **Postgres** and your events with **ClickHouse/S3**; the receipt ingest path stays the same.
+
+### Optional Prompt Journal integration (raw mode)
+- Analytics includes a publisher wrapper that, when raw mode is allowed and `PROMPT_JOURNAL_DSN` is set, writes raw prompt events to a separate Postgres database `prompt_journal` (pgvector‑enabled) and forwards a sanitized copy to Kafka/ClickHouse.
+- Large raw payloads (>1MB) are gzip+base64 encoded with size metadata; sanitized forwards contain no payload bodies.
+- Environment:
+  - `PROMPT_JOURNAL_DSN`: DSN for the dedicated `prompt_journal` database (on the shared Postgres server).
+  - `RAW_PROMPT_MODE`: enable raw acceptance (policy/tenant‑scoped).
+  - `RAW_PUBLISH_ALLOWLIST`: tenants allowed for raw.
 
 ---
 
@@ -522,6 +577,9 @@ Expose Prometheus counters/gauges in `analytics/main.py` if you want (omitted fo
 * `aria_analytics_chain_breaks_total`
 * `aria_analytics_spend_usd_total{tenant}`
 * `aria_analytics_budget_consumed_usd{tenant,period}`
+* `aria_analytics_classify_proposed_total{source}`
+* `aria_analytics_classify_apply_total{result}`
+* `aria_analytics_classify_latency_ms`
 
 Trace each ingest with OpenTelemetry `traceparent` if you propagate it.
 

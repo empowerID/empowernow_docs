@@ -3,7 +3,7 @@
 
 # LDAP VDS — Implementation Spec v2 (incorporating protocol & paging fixes)
 
-See also: [Virtualization Phase 2 — Data Shaping, Merging, and Projection](./virtualization_phase2.md) for merge rules, projection profiles, PDP attribute gating, and aggregator behavior.
+See also: [Virtualization Phase 2 — Data Shaping, Merging, and Projection](./virtualization_phase2.md) for merge rules, projection profiles, PDP attribute gating, and aggregator behavior. For SCIM, refer to [SCIM Interface — VDS](./scim_interface.md), and for protocol controls consult [Supported Controls and Behaviors](./SUPPORTED_CONTROLS.md).
 
 ## What changed since v1 (delta)
 

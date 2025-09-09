@@ -68,7 +68,7 @@ sequenceDiagram
   AR->>AR: check schema pin + rollout window
   AR->>PR: /access/v1/evaluation (subject, resource, context)
   PR-->>AR: {decision, context: {constraints, obligations, decision_id, ...}}
-  AR->>AR: enforce plan step (no budget)
+  AR->>AR: enforce plan step (no MCP budget debit)
   AR->>AR: enforce constraints (egress, params, data_scope)
   AR->>TL: forward request (shaped)
   TL-->>AR: response
@@ -753,17 +753,14 @@ async def mcp(tool_id: str, request: Request, authorization: str = Header(...)):
             raise HTTPException(403, "plan step violation")
 
     # Budget (per-call/tool cost model: from registry or flat)
-    cost = float(tool_meta.get("cost_per_call", 0.05))
-    ok, debited, remaining = await debit_budget(app.state.redis, call_id, agent_id, cost)
-    if not ok:
-        raise HTTPException(402, "budget exceeded")
+    # (MCP) No budget debit; BFF owns spend enforcement
 
     # PDP evaluation
     pdp_out = await pdp.evaluate(
         subject={"type":"agent","id":agent_id,"properties":{"bound_user":passport["sub"]}},
         action={"name":"execute"},
         resource={"type":"tool","id":tool_id,"properties":{"schema_hash": schema_pin["schema_hash"]}},
-        context={"budget_remaining": remaining, "capability": tool_id}
+        context={"capability": tool_id}
     )
     if not pdp_out.get("decision"):
         raise HTTPException(403, "PDP denied")
@@ -1022,10 +1019,11 @@ services:
 ## 10) Observability & run‑time
 
 * **Receipts (source of truth):** store JWS, keep normal logs minimal; redact params; only include hashes (params\_hash).
-* **Metrics (suggested counters/histograms):**
+* **Metrics (counters/histograms now implemented):**
 
-  * `aria.pdp.latency_ms`, `aria.plan.denied_total`, `aria.budget.denied_total`, `aria.egress.denied_total`, `aria.receipt.emit_ms`
-  * `bff.stream.truncated_total`, `bff.usage.cost_usd_total`, `bff.policy.violations_total`
+  * ARIA: `mcp_pdp_latency_ms`, `mcp_tool_latency_ms`, `mcp_egress_denied_total`, `mcp_params_rejected_total`, `mcp_identity_chain_used_total`, `mcp_identity_chain_fail_total`, `mcp_receipt_emit_ms`, `mcp_receipt_errors_total`
+  * HTTP client pool: `mcp_http_inflight` (in‑flight requests by target), `mcp_http_errors_total{target,type}`
+  * Registry/Vault: `mcp_registry_latency_ms`, `mcp_vault_latency_ms`
 * **Tracing:** propagate `call_id` and `agent_id` as headers.
 
 ---
@@ -1088,6 +1086,8 @@ async def test_budget_debit_idempotent():
 * **Egress pinning:** always build egress allowlists from PDP constraints; never follow redirects to non‑allowlisted hosts.
 * **Request shaping:** attach `row_filter_sql` / data scopes server‑side (not agent‑supplied).
 * **Receipts:** include policy snapshot (or `policy_etag`) to ensure reproducibility.
+* **TLS & redirect policy:** disable auto‑redirects for outbound calls; on any 3xx, re‑validate target host (and TLS SNI) against `egress.allow` before following; optionally pin IP netblocks per policy.
+* **DSAR/tombstones:** coordinate deletes across PG (messages/embeddings), raw blobs, and ClickHouse using a tombstone topic and `is_deleted` with TTL; avoid residual data.
 
 ---
 
@@ -1106,6 +1106,8 @@ async def test_budget_debit_idempotent():
 * **Plan contracts + idempotent budget debits** that bind **multi‑step cost** and **parameters**.
 * **BFF stream‑time enforcement** that caps output **by policy ∧ remaining budget** and **settles** on provider usage—turning “best effort” limits into **guarantees**.
 * **Provable, tamper‑evident receipts** for every decision, with **policy snapshots** and hash‑chained lineage.
+* **Shared outbound HTTP client with connection pooling**, configurable timeouts/limits, plus **redirect policy re‑checks** for egress pinning.
+* **Registry resilience** via short TTL positive cache and brief negative caching for 404s; optional batch lookups.
 
 This finish line version is **lean** but **complete** for v1: customers can deploy it to **control agents, cap spend, prove compliance, and keep shipping**—with a clear path to the deferred cryptographic features once market pull shows up.
 
@@ -1124,5 +1126,20 @@ This finish line version is **lean** but **complete** for v1: customers can depl
 - Scrape BFF `/metrics` and ARIA metrics for budgets/egress/streaming
 - Inspect PDP logs for `decision_id`, cache TTL behavior, and operator results
 - Receipts: monitor vault signing latency and Redis `receipt:last:{agent}` updates
+
+---
+
+## 17) Categorization addendum (taxonomy, proposer, and attribution)
+
+- Taxonomy: define an approved category set and an alias map (e.g., `{ "entertainment": ["fun","leisure"], "dev": ["engineering","code"] }`). Normalize any input (header, registry tag, ML) to these labels.
+- Proposer: optional low‑latency ML (e.g., DistilBERT/ONNX) runs only when `category` is absent or `x-category-mode=lazy`; runs on masked text by default; adds to receipts’ `policy_snapshot`:
+  - `category_pending: true`
+  - `proposed_category: "<label>"`
+  - `proposed_category_confidence: <0..1>`
+  - `proposed_category_source: "ml|header|registry"`
+- Precedence: `header > registry tag > ML proposer`.
+- Pending attribution (default): count spend under `uncategorized` until an admin applies; show `proposed_category` in the queue/UI. Config knob allows attributing to proposed directly if desired.
+- Caching: cache `{content_sha256 -> proposed_category, confidence}` for 24h to reduce inference and improve consistency.
+- Metrics: proposer hit‑rate, confidence distribution, admin acceptance rate, and classification latency p95.
 
 ---

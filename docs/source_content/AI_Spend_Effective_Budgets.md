@@ -83,6 +83,15 @@ parameters: { scope: "user", period: "monthly", limit_usd: 15.0, model: "gpt-4o-
 - If `state.limit_usd` is not null, treat as override (effective limit = `state.limit_usd`).
 - Else use policy’s `limit_usd` for that pool. Compute remaining accordingly.
 
+- Category-pending semantics:
+  - When receipts/request context indicates `category_pending=true` (lazy/advisory mode), PDP skips category-scoped pools or evaluates against an explicit `uncategorized` pool when configured. Overall/provider/model pools still apply.
+  - Inline `category` participates normally in all applicable pools.
+
+- Budget enforcement modes (`PDP_BUDGET_MODE`):
+  - `enforce` (default): deny on exhausted/insufficient budgets; attach `spend_snapshot`.
+  - `advisory`: never deny on budget; still attach `spend_snapshot` for UX/observability.
+  - `off`: disable BudgetState checks.
+
 ```mermaid
 flowchart TD
   A[Policy spend_budget entries] --> B[BudgetState PIP fetch per pool]
