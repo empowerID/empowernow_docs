@@ -90,6 +90,13 @@ constraints:
 * Custom subject / resource data must be under `properties`.
 * Only the five scopes above resolve attributes; `principal.*` or `ctx.*` will be `None`.
 * Do not use `conditions` (plural). Supported keys are `condition` (singular) or sugar: `allowIf` / `denyIf` / `when` / `unless` / `exceptIf`. The plural key is ignored and will cause rules to behave as unconditional.
+* Write expressions as `scope.attribute OP value` – attribute on the left, value on the right.
+* Prefer `all`/`any` over parentheses for grouping. Stray parentheses in string expressions often fail; keep inline boolean logic simple.
+* Membership: left side must be an attribute, right side a list. Example: `subject.roles !in ['payroll']`. Avoid `'payroll' in subject.roles`.
+* Strings must be quoted; lists must be bracketed. Example: `subject.role == 'manager'` and `subject.role in ['manager','director']`.
+* Operator names: use `in`/`!in`, `==`/`!=`. Avoid `includes(...)` and function-call style in string expressions.
+* `startsWith`/`endsWith` are supported; use the exact casing. Prefer structured form for advanced operators.
+* Policies rely on PIP-enriched attributes (e.g. `subject.roles`). Missing data is fail-closed and can surprise authors—guard accordingly.
 * Prefer `when` for "permit-only-on-match". `allowIf + effect: permit` keeps permit on false and is not a guard.
 
 ---

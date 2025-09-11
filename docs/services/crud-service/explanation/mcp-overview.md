@@ -1,6 +1,8 @@
 ## Loopback MCP in CRUDService – Overview
 
-Loopback MCP makes your CRUDService a first‑class Model Context Protocol server without running any extra processes. It exposes tools that are generated directly from your ServiceConfigs (systems + workflows) and serves them via REST and JSON‑RPC endpoints under `/mcp/*`. UIs, SDKs, and external agents can discover and invoke these tools securely through the BFF proxy.
+Loopback MCP makes your CRUDService a first‑class Model Context Protocol server without running any extra processes. It exposes tools that are generated directly from your ServiceConfigs (systems + workflows) and serves them via REST and JSON‑RPC endpoints under `/mcp/*`.
+
+> Note: CRUDService is an MCP Server (catalog generator). In production, external MCP clients SHOULD NOT call CRUDService `/mcp/*` directly. Route all MCP traffic through the MCP Gateway (Client+Server proxy) for OAuth OBO/RAR authentication and OpenID AuthZEN authorization.
 
 ### What you get
 - Deterministic, namespaced tool catalogue generated from ServiceConfigs

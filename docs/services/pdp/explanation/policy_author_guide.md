@@ -74,6 +74,14 @@ Use uppercase logical connectors **`AND` / `OR` / `NOT`**.  Supported comparison
 ```
 == != > < >= <= IN NOT IN LIKE NOT LIKE MATCHES NOT MATCHES
 ```
+Authoring rules of thumb (keeps it reliable):
+- Always write attribute on the left, value on the right: `subject.role == 'manager'`.
+- For membership, left must be an attribute and right must be a list: `subject.roles !in ['payroll']`.
+- Prefer `all`/`any` to parentheses for grouping; keep inline boolean expressions simple.
+- Use `in`/`!in` and `==`/`!=`. Avoid function-call style like `includes()` in string expressions.
+- `startsWith`/`endsWith` are supported; casing matters exactly.
+- Strings must be quoted; lists must be bracketed.
+- Policies depend on PIP-enriched attributes (e.g., `subject.roles`). Missing data fails closed; consider guards.
 Avoid deprecated patterns:
 * ✅ `context.attributes.delegator_id != None`
 * ❌ `context.attributes.delegator_id is not None`

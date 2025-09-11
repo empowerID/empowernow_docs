@@ -18,7 +18,8 @@ flowchart LR
   CRUD -->|/mcp/jsonrpc (tools/call)| I[Invocation]
   BFF[EmpowerNow BFF] -->|/api/crud/mcp/*| CRUD
   UI[Visual Designer] -->|/api/crud/tools/* (merged)| BFF
-  EXT[External Agents] -->|JSON-RPC| BFF
+  EXT[External Agents] -->|JSON-RPC| GW[MCP Gateway]
+  GW --> BFF
 ```
 
 ### Key benefits

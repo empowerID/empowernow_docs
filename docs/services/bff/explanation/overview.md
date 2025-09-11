@@ -23,6 +23,7 @@ What it is
 What it is not
 
 - Not a generic API Gateway replacement for east‑west traffic
+- Not the MCP Gateway. Agent MCP traffic (JSON‑RPC/REST) should flow through the MCP Gateway (Client+Server proxy) for OBO/RAR authentication and OpenID AuthZEN authorization.
 - Not a place to expose OAuth/DPoP/PKCE artifacts to the browser
 - Not a monolith; it orchestrates, it does not absorb all domain logic
 
