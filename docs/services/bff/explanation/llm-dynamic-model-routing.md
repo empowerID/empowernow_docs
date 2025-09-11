@@ -12,7 +12,7 @@ Dynamic Model Routing lets the BFF transparently select an allowed, affordable L
 1) BFF receives a chat request with `model`.
 2) PDP returns `constraints` (model/tokens/egress) and optional `spend_snapshot`.
 3) Preflight applies prompt guard, masking, token clamps.
-4) Budget hold based on estimated cost.
+4) Budget hold based on estimated cost (enforcement mode dependent; see budget modes in the Budgets how‑to).
 5) If denied (policy/budget), BFF tries allowed candidates cheapest-first, re-evaluating PDP with `estimated_cents` until one is allowed.
 6) Egress is re-pinned; request proceeds; receipt emitted.
 

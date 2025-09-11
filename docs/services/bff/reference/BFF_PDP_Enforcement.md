@@ -165,7 +165,7 @@ flowchart TD
   F --> G{"Egress host allowed?"}
   G -- "No" --> Z
   G -- "Yes" --> H["Budget hold (Redis)"]
-  H -- "Fail" --> Y["402 Budget insufficient"]
+  H -- "Fail" --> Y["402 Budget insufficient (redis_authoritative)"]
   H -- "OK" --> I{"Streaming?"}
   I -- "No" --> J["OpenAI call"]
   J --> K["Settle (actual usage)"]

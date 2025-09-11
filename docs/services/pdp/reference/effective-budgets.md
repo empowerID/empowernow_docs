@@ -28,12 +28,12 @@ Response
 ```
 
 ### Semantics
-- `limit_usd` is effective: Analytics override if present, else policy default (`spend_budget`).
+- `limit_usd` is effective: Analytics override if present, else policy default (`spend_budget`). This API is for UI/ops snapshots, not per‑call enforcement.
 - `remaining_policy_usd = max(limit_usd - consumed_usd, 0)`.
 - Multiple entries return when policies specify selectors (provider/model/category).
 
 ### Dependencies
-- BudgetState PIP calls Analytics `budgets/state` (Redis-backed) to fetch counters and optional overrides.
+- BudgetState PIP calls Analytics `budgets/state` (Redis-backed) to fetch counters and optional overrides. Gateways may still maintain an authoritative Redis ledger for per‑call holds.
 
 ### Performance & caching
 - The endpoint is optimized for UI reads (short latency, in-process TTL cache ~2s configurable).
