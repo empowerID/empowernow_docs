@@ -26,6 +26,16 @@ constraints:
 Tip: Use `pdp_authoritative` for pilots/sandboxes; prefer `redis_authoritative` for hard monetary enforcement.
 
 ## Receipts
+## Category-aware holds
+
+When `guard.actions` is configured in `classifier.yaml`, the BFF preflight returns `budget_hints` and the endpoint uses `hold_with_hints(subject_key, base_estimate_cents, hints, call_id)` to scale holds safely.
+
+Hints support:
+- `hold_multiplier` (>0)
+- `max_cents` (>0)
+- `min_remaining_usd` (>=0)
+
+This reduces spend risk by capping expensive categories and skipping holds when the remaining balance is below a configured floor.
 
 Optional: set `RECEIPT_VAULT_URL` to emit signed receipts with policy snapshot and usage/estimate.
 

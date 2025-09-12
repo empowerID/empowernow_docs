@@ -13,6 +13,10 @@ What to read next:
 - Observe decisions and health: `/docs/services/pdp/how-to/observability`
 - Runbooks (403s, degraded, error spikes): `/docs/services/pdp/how-to/runbooks`
 
+Backend internals:
+
+- Obligations processing and delegation provisioning: `/docs/services/pdp/backend/obligations-and-delegation`
+
 Secrets enforcement (PEP inside CRUDService):
 
 - Executive overview: `/docs/services/crud-service/explanation/secrets-executive-overview`

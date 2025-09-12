@@ -44,6 +44,10 @@ ARIA at a glance (where it shows up):
 - Membership: PIP supplies the graph truth PDP needs (capabilities, data_scope, step_up, chain_eligibility).
 - Gateway/BFF: enforces constraints (egress allowlist, schema pins, budget, step_up, identity_chain).
 
+See also:
+- PDP obligations processing and delegation provisioning → `/docs/services/pdp/backend/obligations-and-delegation`
+- IdP PEP → PDP request shape (mappings, scopes, context) → `/docs/services/idp/backend/pep-pdp-request`
+
 ```mermaid
 sequenceDiagram
   participant App

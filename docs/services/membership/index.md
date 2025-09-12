@@ -9,6 +9,11 @@ Start here:
 - How‑to: Trial setup and quick checks → `./how-to/trial-setup`
 - Postman: Review collection → `./reference/postman/membership_review.postman_collection.json`
 
+Related docs:
+
+- PDP obligations and delegation provisioning → `/docs/services/pdp/backend/obligations-and-delegation`
+- IdP PEP → PDP request shape → `/docs/services/idp/backend/pep-pdp-request`
+
 Doc types in this section:
 
 - Tutorials: end‑to‑end walkthroughs for first‑time setup

@@ -31,6 +31,10 @@ graph TB
   BFF -->|"call models"| Tools
 ```
 
+Cross references:
+
+- PDP obligations and delegation provisioning: `/docs/services/pdp/backend/obligations-and-delegation`
+- IdP PEP → PDP request shape: `/docs/services/idp/backend/pep-pdp-request`
 ## Graph model (essentials)
 
 - Nodes: `Identity` (Person, Account, AIAgent, Service, MCPService), `Group`, `BusinessRole`, `Location`, `Resource`, `RTR`, `Tool`, `Policy`, `Tenant`, `SaaSApp`, plus MCP nodes: `MCPResource`, `MCPPrompt`, `MCPPolicyBinding`

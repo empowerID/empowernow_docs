@@ -17,6 +17,11 @@ ARIA Shield is a new service in the EmpowerNow Identity Fabric. This placeholder
 
 - Services overview: /docs/services/index
 - Marketing overview: /docs/marketing/index
+- BFF LLM Guard and Routing:
+  - Explanation: /docs/services/bff/explanation/llm-dynamic-model-routing
+  - How‑to (Budgets): /docs/services/bff/how-to/llm-routing-budgets
+  - Reference (Config): /docs/services/bff/reference/llm-routing-config
+  - Reference (PDP): /docs/services/bff/reference/llm-routing-pdp
 
 ## Guides & specs
 
