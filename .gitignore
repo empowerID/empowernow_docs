@@ -19,6 +19,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Draft content (not to be published)
-docs/source_content/
-source_content/
