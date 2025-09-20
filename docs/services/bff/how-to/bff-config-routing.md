@@ -30,6 +30,7 @@ title: BFF Configuration and Routing Guide
 - Add `https://experience.ocg.labs.empowernow.ai` to `cors.allow_origins`
 - Add `http://localhost:5177` to `cors.dev_origins`
 - Add Experience host to `ALLOWED_REDIRECT_ORIGINS`
+- Canonical settings: `../reference/settings-reference.md#cors`, `../reference/settings-reference.md#session-and-cookies`
 
 ## Traefik expectations
 
@@ -63,9 +64,7 @@ title: BFF Configuration and Routing Guide
 ```
 
 - Resolver precedence: inline `authz_map` → external `pdp.yaml` → derived defaults (if enabled)
-- Feature flags in settings:
-  - `authz_validation_strict`: fail startup when PDP-protected routes lack a mapping
-  - `authz_default_mapping_enabled`: allow resolver to derive defaults (GET→read, POST→create, ...)
+- Feature flags in settings: see `../reference/settings-reference.md#authorization-mapping-flags` (`#env-AUTHZ_VALIDATION_STRICT`, `#env-AUTHZ_DEFAULT_MAPPING_ENABLED`)
 
 ## Migration from external pdp.yaml
 

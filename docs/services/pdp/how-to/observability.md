@@ -10,6 +10,7 @@ Observe PDP via:
 - BFF metrics: `/docs/services/bff/reference/health-metrics`
 - BFF observability: `/docs/services/bff/how-to/observability`
 - Optional: `/docs/services/bff/how-to/opentelemetry`
+- PDP logging/tracing flags: `../reference/settings-flags.md#observability`
 
 
 

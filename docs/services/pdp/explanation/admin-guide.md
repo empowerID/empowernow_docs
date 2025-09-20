@@ -25,7 +25,7 @@ Root: `SERVICE_CONFIG_DIR` (Compose mounts `../ServiceConfigs/pdp/config`).
 
 ## Policy review and merge workflow
 
-- Feature flag: `FEATURE_POLICY_MERGE_ENABLED` (default: off). When enabled, PDP exposes `POST /access/v1/policies/merge`.
+- Feature flag: `FEATURE_POLICY_MERGE_ENABLED` (default: off). See flag reference: `../reference/settings-flags.md#evaluation-behavior`.
 - Self-authorization: PDP evaluates an AuthZEN request internally to authorize merges.
   - Resource: `pdp:policy`
   - Action: `merge`
@@ -88,7 +88,7 @@ Cache-Control: public, max-age=60
 
 ## Feature flags
 
-- `FEATURE_POLICY_ADMIN_SELF_AUTH` (default: false): PDP self-authorizes admin ops by evaluating AuthZEN requests (`pdp:domain edit`, `pdp:application delete`).
+- `FEATURE_POLICY_ADMIN_SELF_AUTH` (default: false): PDP self-authorizes admin ops by evaluating AuthZEN requests (`pdp:domain edit`, `pdp:application delete`). See `../reference/settings-flags.md#evaluation-behavior`.
 
 Example policy snippet (enable domain edits for `pdp_admin`):
 
@@ -173,6 +173,5 @@ Admin → PIPs → switch a PIP on/off. Configuration persists to `pip_registry.
 - 403 on admin ops: either self-auth flag is on and policy denies, or session missing. Check PDP logs and BFF logs; disable self-auth to confirm.
 - No 304 responses: confirm ETag/Last-Modified present; check intermediary stripping headers; retry with direct curl; ensure clocks are reasonably synced.
 - Admin routes 404: ensure BFF routes include `/api/authz/{applications,domains,pips,debug}` and BFF is restarted.
-- Policy changes ignored: validate YAML; check PDP logs for load errors; ensure file paths under `config/policies/**` are correct.
 
 

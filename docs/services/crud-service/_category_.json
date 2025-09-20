@@ -1,7 +1,8 @@
 {
   "label": "CRUD Service",
   "position": 3,
-  "collapsed": false
+  "collapsed": false,
+  "link": { "type": "generated-index", "title": "CRUD Service Docs" }
 }
 
 

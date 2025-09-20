@@ -13,7 +13,7 @@ How it’s configured
 - Exporter endpoint (BFF picks the first that is set):
   - `OTLP_ENDPOINT` (preferred in `telemetry.py`, e.g., `http://otel-collector:4317`)
   - `OTEL_EXPORTER_OTLP_ENDPOINT` (alternate, supported by `observability.py`)
-- Resource attributes: `service.name=bff-auth-service`, plus `service.version` from `BFF_VERSION` and `deployment.environment` from `ENVIRONMENT`.
+- Resource attributes: `service.name=bff-auth-service`, plus `service.version` from `BFF_VERSION` and `deployment.environment` from `ENVIRONMENT` (see `../reference/settings-reference.md#core-runtime`).
 
 Minimal setup (compose)
 
@@ -59,7 +59,7 @@ How to verify
 References
 
 - Reference → Observability (Metrics, Tracing, Health)
-- Explanation → Security Model (correlation ID propagation)
+- Reference → Core runtime settings: `../reference/settings-reference.md#core-runtime`
 - Code: `ms_bff_spike/ms_bff/src/observability/telemetry.py`, `ms_bff_spike/ms_bff/src/observability.py`
 
 

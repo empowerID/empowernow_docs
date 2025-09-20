@@ -31,3 +31,8 @@ The Tool Registry is a catalog of MCP/HTTP tools that enables verifiable request
 - Caches efficiently on the read path (ETag) for high QPS
 
 CTAs: See pin format → Read admin guide → View ETag example
+
+## See also
+- Tool schema attestation: `services/aria-shield/tool-schema-attestation.md`
+- BFF proxy YAML reference: `services/bff/reference/proxy-yaml-reference.md`
+- PDP schema pins usage: `services/pdp/explanation/*`

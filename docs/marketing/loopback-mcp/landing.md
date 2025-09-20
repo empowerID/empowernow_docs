@@ -42,4 +42,11 @@ Show users a budget even when overrides aren’t configured. PDP now merges Anal
 ### Talk to us
 Ready to enable Loopback MCP in your environment? Contact the team to plan an adoption path and success metrics.
 
+### See also
+- Quickstart: `../../services/crud-service/how-to/mcp-quickstart.md`
+- API Reference: `../../services/crud-service/reference/mcp_api_reference.md`
+- Security & Governance: `../../services/crud-service/reference/mcp_security_governance.md`
+- BFF proxy routing: `../../services/bff/devops/mcp_proxy_routing.md`
+- Tool recipes and examples: `../../services/crud-service/reference/mcp_tool_recipes.md`
+
 

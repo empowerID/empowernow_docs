@@ -2,6 +2,8 @@
 
 Use this checklist to validate an environment end‑to‑end.
 
+See settings: `../reference/mcp_settings_reference.md`.
+
 ### Routing
 - BFF routes present:
   - GET `/api/crud/mcp/tools/list` → CRUD `/mcp/tools/list`

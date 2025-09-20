@@ -2,6 +2,8 @@
 
 This guide helps evaluators trial the EmpowerNow Membership Service with a focus on AI authorization, user-bound identities, spending/budget controls, and graph-powered delegation. It provides business context, architecture, data/schema overview, key APIs, and a real-world case study with hands-on steps.
 
+See reference: `../reference/schema-and-endpoints.md` and Postman collection `../reference/postman/membership_review.postman_collection.json`.
+
 ## Executive introduction: what you’re reviewing and why it’s different
 
 - What this is: an authoritative graph (FastAPI + Neo4j) for identities, delegations, capabilities, tenant/data scope, step-up hints, and identity-chaining eligibility. It exposes PIP endpoints to the PDP and is consulted by the IdP when issuing passports; Redis accelerates hot paths.

@@ -2,6 +2,8 @@
 
 > Canonical reference: `scoped_policy_design.md`. This doc covers request caching, registry caching, and PIP caching strategies.
 
+See also: `../reference/settings-flags.md#caching-and-performance` for runtime knobs and TTL anchors.
+
 ## Caching layers
 - **Registry cache**: Application registry context (e.g., domain/env) — TTL ~300s
 - **Policy load cache**: Scoped policy sets per app/config hash — TTL ~60s

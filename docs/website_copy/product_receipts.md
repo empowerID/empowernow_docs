@@ -25,3 +25,9 @@ Receipt Vault produces tamper‑evident, signed receipts for every permitted act
 - Supports compliance workflows in regulated environments
 
 CTAs: See receipt schema → View chain example → Read anchoring options
+
+## See also
+- Receipt chains (technical): `services/aria-shield/receipt-chains.md`
+- BFF receipts: `services/bff/reference/logging-reference.md`
+- PDP context in receipts: `services/pdp/explanation/*`
+- Controls reference: `services/aria-shield/reference/controls.md`

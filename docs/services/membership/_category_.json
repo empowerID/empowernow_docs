@@ -1,6 +1,7 @@
 {
   "label": "Membership",
   "position": 5,
-  "collapsed": false
+  "collapsed": false,
+  "link": { "type": "generated-index", "title": "Membership Docs" }
 }
 

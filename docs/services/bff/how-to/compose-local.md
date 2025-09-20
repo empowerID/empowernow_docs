@@ -4,6 +4,8 @@ title: Docker Compose (authzen4)
 
 This summarizes the verified BFF-related settings from `CRUDService/docker-compose-authzen4.yml` for local/dev stacks.
 
+Note: For full environment variable definitions, see `../reference/settings-reference.md#contents` and anchors under each section.
+
 ## Top services used by BFF
 - Traefik (reverse proxy)
   - image: `traefik:v3.4.3`
@@ -34,23 +36,23 @@ This summarizes the verified BFF-related settings from `CRUDService/docker-compo
 - Dynamic file must define `bff-forwardauth` pointing to BFF `/auth/forward` or `/auth/verify`.
 
 ## BFF environment (selected)
-- Core
+- Core — see `../reference/settings-reference.md#core-runtime` and anchors `#env-ENVIRONMENT`, `#env-HOST`, `#env-PORT`
   - `ENVIRONMENT=development`
   - `HOST=0.0.0.0`, `PORT=8000`
   - `REDIS_URL=redis://shared_redis:6379/5`
-- OAuth/IdP
+- OAuth/IdP — see `../reference/settings-reference.md#authentication-and-oauthidp`
   - `OIDC_ISSUER=http://idp-app:8002/api/oidc`
   - `IDP_PUBLIC_BASE=https://idp.ocg.labs.empowernow.ai/api/oidc`
   - `AUTH_CLIENT_ID`, `AUTH_CLIENT_SECRET` (secrets)
   - `MS_BFF_PAR_ENABLED=true`, `MS_BFF_DPOP_ENABLED=true`
-- Cookie/Session
+- Cookie/Session — see `../reference/settings-reference.md#session-and-cookies`
   - `BFF_COOKIE_DOMAIN=.ocg.labs.empowernow.ai`
   - `SESSION_LIFETIME=3600`
-- Callback mode
+- Callback mode — see `../reference/settings-reference.md#callback-url-model`
   - `BFF_DYNAMIC_CALLBACK=true`
   - `BFF_CALLBACK_URL=https://api.ocg.labs.empowernow.ai/auth/callback`
   - `BFF_DEFAULT_HOST=api.ocg.labs.empowernow.ai`, `BFF_DEFAULT_SCHEME=https`
-- Security & CORS
+- Security & CORS — see `../reference/settings-reference.md#cors`
   - `BFF_ALLOWED_REDIRECT_HOSTS=automate...,authn...,authz...,localhost,127.0.0.1`
   - `CORS__ALLOW_ORIGINS='["https://authn...","https://authz...","https://automate..."]'`
   - `CSRF_SECRET_KEY` (secret)

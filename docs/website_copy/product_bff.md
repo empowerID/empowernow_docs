@@ -22,3 +22,10 @@ The ARIA BFF is a drop‑in replacement for your existing provider proxy that up
 - Works alongside the ARIA Gateway; both emit receipts to the Receipt Vault
 
 CTAs: See streaming caps → View 402 behavior → Read receipts guide
+
+## See also
+- Streaming and caps: `services/bff/reference/streaming.md`
+- Settings: `services/bff/reference/settings-reference.md`
+- Logging and observability: `services/bff/reference/logging-reference.md`, `services/bff/reference/observability.md`
+- 402 behavior and budgets: `services/pdp/reference/effective-budgets.md`
+- Receipts: `services/aria-shield/receipt-chains.md`

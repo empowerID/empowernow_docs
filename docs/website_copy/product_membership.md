@@ -34,3 +34,8 @@ Membership is the authoritative graph for user→agent delegations, capabilities
 - Reviewer's Guide: `services/membership/explanation/reviewers-guide`
 - Schema & Endpoints: `services/membership/reference/schema-and-endpoints`
 - Postman collection: `services/membership/reference/postman/membership_review.postman_collection.json`
+
+## See also
+- Schema & endpoints: `services/membership/reference/schema-and-endpoints.md`
+- PDP usage: `services/pdp/explanation/*`
+- IdP issuance: `services/idp/index.md`

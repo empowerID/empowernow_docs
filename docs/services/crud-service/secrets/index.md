@@ -3,6 +3,8 @@ title: Secrets Platform
 sidebar_label: Overview
 ---
 
+> Internal Only — This section contains implementation and operational details not intended for public distribution. Public pages should link here rather than restating content.
+
 This section describes the EmpowerNow Secrets Platform end‑to‑end, from executive overview down to API details and ops runbooks.
 
 Suggested reading order:

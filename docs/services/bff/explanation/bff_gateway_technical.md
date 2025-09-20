@@ -98,16 +98,11 @@ Behavior when no mapping is found:
 
 ### 2.4 Environment variables reference
 
-Note: Exact names depend on your settings loader. Examples below illustrate common mappings to `settings` fields.
-
-- `MS_BFF_AUTHZ_ENABLED`: Enables/disables BFF authorization globally (`true`/`false`).
-- `KAFKA_ENABLED`: Turns Kafka business logging on/off.
-- `KAFKA_BOOTSTRAP_SERVERS`: Comma-separated brokers for Kafka producer.
-- `KAFKA_TOPIC_PREFIX` or `KAFKA_AUDIT_TOPIC`: Topic naming; aligns with your Kafka conventions.
-- `PDP_BASE_URL`: Base URL of the PDP service.
-- `PDP_TIMEOUT_MS`: PDP request timeout.
-- `PDP_CACHE_TTL`: Cache time-to-live for PDP decisions (if enabled).
-- `LOG_LEVEL`: Application log level.
+See canonical references for exact environment and settings:
+- BFF settings: `../reference/settings-reference.md#contents`
+- PDP integration: `../reference/settings-reference.md#pdp-integration`
+- Kafka settings: `../reference/settings-reference.md#kafka`
+- Core runtime/logging: `../reference/settings-reference.md#core-runtime`, `#logging-and-observability`
 
 ---
 
@@ -435,5 +430,11 @@ endpoint_map:
 
 ---
 For questions or escalation paths, include this doc in change tickets and link the dashboard and alert rules to your monitoring runbooks.
+
+
+## See also
+- Tutorials: `../tutorials/bff-quickstart.md`
+- How‑to: `../how-to/traefik-forwardauth.md`, `../how-to/bff-config-routing.md`
+- Reference: `../reference/pdp-reference.md`, `../reference/proxy-yaml-reference.md`, `../reference/settings-reference.md`
 
 

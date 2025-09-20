@@ -11,6 +11,7 @@ description: How to deploy/configure PDP and connect it to BFF and services.
 - Configure BFF to call PDP for authorization decisions
   - Route mapping reference: `/docs/services/bff/reference/pdp-mapping`
   - Health/metrics: `/docs/services/bff/reference/health-metrics`
+- Configure PDP flags and settings: `../reference/settings-flags.md#contents`
 - Validate with health and metrics
   - `/docs/services/pdp/how-to/observability`
 

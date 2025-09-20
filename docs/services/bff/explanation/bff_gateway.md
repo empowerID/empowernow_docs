@@ -211,41 +211,10 @@ sequenceDiagram
 
 ### Configuration quick reference
 
-- **Route security and PDP** (`ServiceConfigs/BFF/config/routes.yaml`)
-```yaml
-- id: "crud-execute"
-  path: "/api/crud/execute"
-  target_service: "crud_service"
-  upstream_path: "/execute"
-  methods: ["POST"]
-  auth: "session"
-  authz: "pdp"
-```
-
-- **Endpoint mapping (PDP)** (`ServiceConfigs/BFF/config/pdp.yaml`)
-```yaml
-endpoint_map:
-  /api/crud/execute:
-    POST:
-      resource: "crud:command"
-      action: "execute"
-      props:
-        system: "$.system"
-        object_type: "$.object_type"
-        command: "$.action"
-        SystemIdentifier: "$.params.SystemIdentifier"
-        id: "$.params.id"
-  /api/crud/workflow/resume/{task_id}:
-    POST:
-      resource: "workflow"
-      id_from: "{task_id}"
-      action: "resume"
-```
-
-- **Global toggle** (`ms_bff/src/core/config.py`)
-```python
-authz_enabled: bool = True  # set False to disable PDP globally
-```
+See canonical references instead of duplicating snippets:
+- Routes and security: `../reference/routes-reference.md`
+- PDP mapping: `../reference/pdp-mapping.md`
+- Global toggle and settings: `../reference/settings-reference.md#authorization-mapping-flags`
 
 ---
 
@@ -277,5 +246,10 @@ authz_enabled: bool = True  # set False to disable PDP globally
 - Rollout: enable PDP per route via `authz: pdp`; keep `authz_enabled=True`; staged rollout by route groups; fallback: set toggle to false.
 - Monitoring: import Grafana dashboard and alerts; watch deny rate, PDP errors, latency p95.
 - Tuning: adjust PDP cache TTLs, retry/backoff, circuit-breaker in `pdp.yaml`.
+
+## See also
+- Tutorials: `../tutorials/bff-quickstart.md`
+- How‑to: `../how-to/traefik-forwardauth.md`, `../how-to/bff-config-routing.md`
+- Reference: `../reference/pdp-mapping.md`, `../reference/routes-reference.md`, `../reference/settings-reference.md`
 
 

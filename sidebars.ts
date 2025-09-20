@@ -4,13 +4,13 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 /**
  * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
-
- The sidebars can be generated from the filesystem, or explicitly defined here.
-
- Create as many sidebars as you want.
+ * - create an ordered group of docs
+ * - render a sidebar for each doc of that group
+ * - provide next/previous navigation
+ *
+ * The sidebars can be generated from the filesystem, or explicitly defined here.
+ *
+ * Create as many sidebars as you want.
  */
 const sidebars: SidebarsConfig = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
@@ -153,22 +153,7 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
-        {
-          type: 'category',
-          label: 'VDS (Virtual Directory)',
-          link: { type: 'doc', id: 'source_content/virtual_directory_v3_guide' },
-          items: [
-            'source_content/design_v3',
-            'source_content/virtualization_phase2',
-            'source_content/scim_interface',
-            'source_content/DISCOVERY_PAGING',
-            'source_content/SUPPORTED_CONTROLS',
-            'source_content/connector_guide',
-            'source_content/DEPLOYMENT_CHECKLIST',
-            'source_content/design',
-          ],
-        },
-        // (duplicate Experience category removed; autogeneration handled above)
+        // VDS (Virtual Directory) source_content docs removed from sidebar; add back when migrated under docs/services
       ],
     },
     {

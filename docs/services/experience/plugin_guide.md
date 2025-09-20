@@ -11,6 +11,8 @@ This step‑by‑step focuses on wiring and verification. For the shortest path,
 - UI‑only extensions often bypass centralized authorization; we pre‑gate via AuthZEN decisions before mounting
 - Experience enforces per‑plugin allow‑lists and rate limits in the BFF and stamps `X‑Plugin‑Id` for auditability
 
+> Configuration schema lives at `./reference/plugins-config.md`. Link there instead of repeating fields here.
+
 ```mermaid
 flowchart LR
   A[Author plugin ESM bundle] --> B[Declare manifest in ServiceConfigs]

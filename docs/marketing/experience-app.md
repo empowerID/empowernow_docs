@@ -59,3 +59,9 @@ Proof points (source): see `experience/docs/empowernow_react_app.md` and `experi
 
 Canonical plugin reference for architecture and operations: `../../services/experience/experience_plugins`
 
+## Deeper technical docs
+- Experience architecture and plugins: `/docs/services/experience/experience_plugins`
+- Plugins configuration reference: `/docs/services/experience/reference/plugins-config`
+- BFF routes/settings: `/docs/services/bff/reference/routes-reference`, `/docs/services/bff/reference/settings-reference`
+- PDP flags: `/docs/services/pdp/reference/settings-flags`
+

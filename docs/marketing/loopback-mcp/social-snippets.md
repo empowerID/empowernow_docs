@@ -9,3 +9,9 @@
 4) Secure by design: scope‑gated discovery/invoke, PDP/BFF compatible. #Security
 
 
+### Deeper docs
+- Landing: `./landing.md`
+- Quickstart: `../../services/crud-service/how-to/mcp-quickstart.md`
+- API Reference: `../../services/crud-service/reference/mcp_api_reference.md`
+
+

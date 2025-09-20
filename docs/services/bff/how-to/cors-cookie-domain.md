@@ -6,8 +6,8 @@ This guide explains how CORS allow‑lists and cookie domains work in the Empowe
 
 What’s implemented (verified)
 
-- CORS: The BFF parses an allow‑list for origins. Code reads from environment to build a list (see `ms_bff_spike/ms_bff/src/main.py` and `ms_bff_spike/ms_bff/src/utils/proxy.py`, which handle `CORS__ALLOW_ORIGINS` and `ALLOWED_STREAM_ORIGINS` parsing).
-- Cookies: The session cookie name is `bff_session` (see security docs). Domain/scope are set by the BFF response and enforced by the browser; in production we recommend a shared parent domain (e.g., `.ocg.labs.empowernow.ai`) so all SPAs can share the session.
+- CORS: The BFF parses an allow‑list for origins. See canonical settings: `../reference/settings-reference.md#cors` (`CORS__ALLOW_ORIGINS`, `CORS__DEV_ORIGINS`, `CORS__ALLOW_METHODS`, `CORS__ALLOW_HEADERS`, `CORS__ALLOW_CREDENTIALS`).
+- Cookies: The session cookie name is `bff_session` (see security docs). Domain/scope are set by the BFF response and enforced by the browser; see canonical settings: `../reference/settings-reference.md#session-and-cookies` (`BFF_COOKIE_DOMAIN`, `SESSION_LIFETIME`).
 
 Same‑origin SPA vs cross‑origin dev
 
@@ -28,7 +28,7 @@ flowchart LR
 Steps
 
 1) Dev (cross‑origin)
-   - Set `CORS__ALLOW_ORIGINS` to include your dev server (e.g., `http://localhost:5173`).
+   - Set `CORS__ALLOW_ORIGINS` to include your dev server (e.g., `http://localhost:5173`). See `../reference/settings-reference.md#env-CORS__ALLOW_ORIGINS`.
    - For streaming endpoints, set `ALLOWED_STREAM_ORIGINS` if you use SSE from a different origin.
    - Verify preflights succeed; unauthenticated calls should return JSON with CORS headers.
 
@@ -37,7 +37,7 @@ Steps
    - The browser sends cookies automatically; no CORS preflight is triggered for `/api/**`.
 
 3) Cookie domain
-   - Use a shared parent domain at the ingress (Traefik) so the BFF sets the cookie for `.ocg.labs.empowernow.ai`.
+   - Use a shared parent domain at the ingress (Traefik) so the BFF sets the cookie for `.ocg.labs.empowernow.ai`. See `../reference/settings-reference.md#env-BFF_COOKIE_DOMAIN`.
    - Ensure `Secure` and `SameSite=Lax` are set; do not expose tokens to the browser.
 
 Validate

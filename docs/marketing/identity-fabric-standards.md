@@ -285,4 +285,10 @@ flowchart TB
 
 See also: Canonical plugin reference `../services/experience/experience_plugins`
 
+## Deeper technical docs
+- BFF routes/settings and ForwardAuth: `/docs/services/bff/reference/routes-reference`, `/docs/services/bff/reference/settings-reference`, `/docs/services/bff/reference/traefik-forwardauth`
+- PDP flags and cache tuning: `/docs/services/pdp/reference/settings-flags`, `/docs/services/bff/how-to/pdp-cache-tuning`
+- Experience plugins and config: `/docs/services/experience/experience_plugins`, `/docs/services/experience/reference/plugins-config`
+- CRUD Service MCP API: `/docs/services/crud-service/reference/mcp_api_reference`
+
 

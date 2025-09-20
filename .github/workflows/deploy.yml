@@ -13,6 +13,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          clean: true
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -28,8 +31,17 @@ jobs:
       - name: Remove draft source_content (exclude from build)
         run: |
           echo "Before removal:" && ls -la docs || true
-          rm -rf docs/source_content || true
+          # Remove any source_content directories anywhere under docs
+          find docs -type d -name source_content -prune -print -exec rm -rf {} + || true
           echo "After removal:" && ls -la docs || true
+          echo "Verifying no source_content remains under docs..."
+          if find docs -path "*/source_content/*" -print -quit | grep -q "."; then
+            echo "Error: source_content still present under docs after removal.";
+            find docs -path "*/source_content/*" -print;
+            exit 1;
+          else
+            echo "OK: No source_content under docs.";
+          fi
 
       - name: Install deps
         run: npm ci
@@ -37,7 +49,15 @@ jobs:
       - name: Build
         run: |
           # Double-check and remove again right before build
-          test ! -d docs/source_content || rm -rf docs/source_content
+          find docs -type d -name source_content -prune -exec rm -rf {} + || true
+          # Clear any caches that might reference removed drafts
+          rm -rf .docusaurus node_modules/.cache || true
+          echo "Final verification:"
+          if find docs -path "*/source_content/*" -print -quit | grep -q "."; then
+            echo "Error: source_content still present under docs before build.";
+            find docs -path "*/source_content/*" -print;
+            exit 1;
+          fi
           npm run build
 
       - name: Deploy to gh-pages

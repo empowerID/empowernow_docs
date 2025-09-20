@@ -2,6 +2,8 @@
 
 This quickstart gets you listing and invoking Loopback MCP tools in minutes, via the BFF proxy.
 
+See settings: `../reference/mcp_settings_reference.md`.
+
 ### Prerequisites
 - A Bearer token with scopes: `mcp.tools.discovery`, `mcp.tools.invoke`
 - BFF URL: `https://<bff-host>`

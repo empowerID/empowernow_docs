@@ -26,3 +26,10 @@ Get started
 - API: `../../services/crud-service/reference/mcp_api_reference.md`
 
 
+### See also
+- Quickstart: `../../services/crud-service/how-to/mcp-quickstart.md`
+- API Reference: `../../services/crud-service/reference/mcp_api_reference.md`
+- Tool recipes: `../../services/crud-service/reference/mcp_tool_recipes.md`
+- BFF proxy routing: `../../services/bff/devops/mcp_proxy_routing.md`
+
+

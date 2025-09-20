@@ -43,3 +43,11 @@ Response (tool’s JSON, sanitized) on permit; on deny, standard HTTP error with
 - Emits receipts to the Receipt Vault service for signing/anchoring
 
 CTAs: See MCP request → View guards (schema/params/egress) → Read plan enforcement
+
+## See also
+- Technical: `services/bff/explanation/bff_gateway.md`
+- Deep dive: `services/bff/explanation/bff_gateway_technical.md`
+- PDP mapping: `services/bff/reference/pdp-mapping.md`
+- Routes and settings: `services/bff/reference/routes-reference.md`, `services/bff/reference/settings-reference.md`
+- Receipts: `services/aria-shield/receipt-chains.md`
+- Controls reference: `services/aria-shield/reference/controls.md`

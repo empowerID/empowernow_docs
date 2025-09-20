@@ -14,9 +14,9 @@ What this file is
 
 What is supported
 
-- Connection and endpoints: `connection` (base URL, client credentials), `endpoints` (`evaluation`, `batch`, `search_actions`).
+- Connection and endpoints: `connection` (base URL, client credentials), `endpoints` (`evaluation`, `batch`, `search_actions`). See canonical settings: `../reference/settings-reference.md#pdp-integration` and anchors `#env-PDP_BASE_URL`, `#env-PDP_TOKEN_URL`, `#env-PDP_CLIENT_ID`, `#env-PDP_CLIENT_SECRET`.
 - Resilience: `retry` with max retries, backoff, and retryable status codes.
-- Performance: `cache` with separate TTLs for allow/deny, max size, and invalidation on policy change.
+- Performance: `cache` with separate TTLs for allow/deny, max size, and invalidation on policy change. See `#env-PDP_CACHE_DECISIONS`, `#env-PDP_CACHE_TTL` in settings reference.
 - Stability: `circuit_breaker` with thresholds and reset times.
 - Mapping: `endpoint_map` translating path+method to `resource`, `action`, optional `id_from`, and `props` (simple JSONPath `$.field` extraction from request body). Prefer inline `authz_map` on the corresponding `routes.yaml` entries.
 
@@ -92,9 +92,8 @@ python -m ms_bff.src.tools.migrate_pdp_to_routes \
 
 See also
 
-- Explanation → Authorization Model (PDP, Mapping, Caching)
-- How‑to → BFF Configuration & Routing Guide
-- Reference → routes.yaml Reference
+- Reference → PDP integration settings: `../reference/settings-reference.md#pdp-integration`
+- Reference → Routes reference: `../reference/routes-reference.md`
 - How‑to → Validate endpoint_map entries (Quick Checklist)
 
 

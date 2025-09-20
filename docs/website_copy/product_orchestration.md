@@ -100,3 +100,9 @@ The system returns Mermaid diagrams designed to be consumed by LLMs and humans a
 - Governance is built in: identity, authorization, boundary enforcement, and audit
 
 CTAs: Start a workflow → See enhanced response → View Mermaid examples
+
+## See also
+- Experience: `services/experience/index.md`
+- BFF constraints and streaming: `services/bff/reference/streaming.md`, `services/bff/reference/settings-reference.md`
+- PDP constraints reference: `services/pdp/explanation/*`
+- Receipts: `services/aria-shield/receipt-chains.md`

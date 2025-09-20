@@ -25,6 +25,9 @@ Checklist
 5) PDP mapping sanity
    - Confirm your endpoint appears in `pdp.yaml:endpoint_map` and allows the action
 
+Developer SDKs
+- Python and JS SDKs: `/docs/sdks/index.md`. Link there for client install and API usage examples instead of inlining code in how‑tos.
+
 If any step fails, see Runbooks and QA Test Execution.
 
 

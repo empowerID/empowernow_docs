@@ -53,4 +53,9 @@ sequenceDiagram
 - Centralize application authorization decisions via AuthZEN PDP when you want interoperable, explainable, and observable policy at runtime.
 - Keep governance (reviews, SoD) in IGA; let the Fabric enforce runtime policy.
 
+## Deeper technical docs
+- BFF gateway (PEP): `/docs/services/bff/explanation/bff_gateway`
+- PDP flags and settings: `/docs/services/pdp/reference/settings-flags`
+- BFF reference (routes/settings): `/docs/services/bff/reference/routes-reference`, `/docs/services/bff/reference/settings-reference`
+
 

@@ -23,4 +23,10 @@ Today we’re introducing Loopback MCP—a built‑in Model Context Protocol ser
 - Deep dive: `./deep-dive.md`
 - Release notes: `../../services/crud-service/reference/releases/loopback_mcp_1_0.md`
 
+### See also
+- Quickstart: `../../services/crud-service/how-to/mcp-quickstart.md`
+- API Reference: `../../services/crud-service/reference/mcp_api_reference.md`
+- Loopback how‑to: `../../services/crud-service/reference/mcp_loopback_howto.md`
+- BFF proxy routing: `../../services/bff/devops/mcp_proxy_routing.md`
+
 

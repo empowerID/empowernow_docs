@@ -21,10 +21,10 @@ Ingress and middlewares (from `k8s/ingress.yaml`):
 
 ConfigMap (from `k8s/configmap.yaml`):
 - `SESSION_COOKIE_NAME: bff_session`
-- `OIDC_ISSUER`, `OIDC_SCOPES`
-- Security flags: `CSRF_PROTECTION`, `SESSION_BINDING`
+- `OIDC_ISSUER`, `OIDC_SCOPES` (see `../reference/settings-reference.md#authentication-and-oauthidp` and anchors `#env-AUTH_ISSUER`, `#env-OIDC_SCOPES`)
+- Security flags: `CSRF_PROTECTION`, `SESSION_BINDING` (see `../reference/settings-reference.md#session-and-cookies` for cookie/session knobs)
 
 Checklist:
 - Set secrets (client credentials) in `bff-secrets`
-- Configure `OIDC_ISSUER`, callback mode (dynamic/static), cookie domain, allowed redirect hosts
+- Configure `OIDC_ISSUER`, callback mode (dynamic/static), cookie domain, allowed redirect hosts — see `../reference/settings-reference.md#callback-url-model`, `#env-BFF_COOKIE_DOMAIN`
 - Validate `/health` and metrics

@@ -7,6 +7,7 @@ Environment flags (verified in code)
 - `MS_BFF_PAR_ENABLED`: enable Pushed Authorization Requests in the auth flow (`ms_bff_spike/ms_bff/src/routes/auth_stub.py`).
 - `MS_BFF_DPOP_ENABLED`: toggle DPoP proof/validation (`auth_stub.py`; server‑side validation middleware in `src/main.py`).
 - `MS_BFF_TOKEN_AUTH_METHOD`: `client_secret_basic` or `private_key_jwt` for token endpoint auth (`src/services/idp_client.py`).
+- Related IdP/OAuth settings live in `../reference/settings-reference.md#authentication-and-oauthidp`.
 
 FAQ (client auth & JWKS)
 

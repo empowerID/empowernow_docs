@@ -37,4 +37,11 @@ For clients that cap catalog size, use view‑scoped endpoints:
 - A single source of truth keeps engineering focused and reduces errors
  - Virtual servers fit client limits while preserving full catalog breadth
 
+### See also
+- API Reference: `../../services/crud-service/reference/mcp_api_reference.md`
+- Security & Governance: `../../services/crud-service/reference/mcp_security_governance.md`
+- Loopback how‑to: `../../services/crud-service/reference/mcp_loopback_howto.md`
+- Release notes: `../../services/crud-service/reference/releases/loopback_mcp_1_0.md`
+- BFF proxy routing: `../../services/bff/devops/mcp_proxy_routing.md`
+
 

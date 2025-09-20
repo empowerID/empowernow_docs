@@ -79,3 +79,9 @@ A passport extends standard JWT claims with `authorization_details` (RAR) and an
 - Tool Registry is authoritative for pins; Receipt Vault signs and chains receipts downstream.
 
 CTAs: See identity chaining → Read claims reference → View discovery/JWKS
+
+## See also
+- Identity chaining how‑to: `services/idp/how-to/mint-iat-and-dcr.md`
+- Azure Entra federation: `services/idp/how-to/azure-entra-federation.md`
+- MCP Gateway: `services/mcp-gateway/index.md`
+- PDP evaluation contract: `services/bff/reference/pdp-reference.md`

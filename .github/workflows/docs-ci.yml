@@ -1,0 +1,48 @@
+name: Docs CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  link_check:
+    name: Link check (lychee)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run lychee on docs
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress --verbose --max-redirects 5
+            --scheme http,https,file
+            --retry-wait-time 2 --timeout 20
+            --exclude '^mailto:|^tel:'
+            'docs/**/*.md'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  duplication_guard:
+    name: Duplication guard (website_copy)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Fail if website pages contain env/config variables
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s globstar nullglob
+          echo "Scanning website_copy for env-style variables..."
+          matches=$(grep -RInE "[A-Z]{2,}_[A-Z0-9_]+" docs/website_copy || true)
+          if [[ -n "$matches" ]]; then
+            echo "Found env-style variables in website_copy (should link to references instead):"
+            echo "$matches"
+            echo "Error: Remove config/env details from website pages and link to canonical references."
+            exit 1
+          else
+            echo "OK: No env-style variables found in website_copy."
+          fi

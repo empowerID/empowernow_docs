@@ -51,3 +51,8 @@ Headers contract (edge and downstream)
   - Always includes `X-Correlation-ID`
   - Includes `X-Original-User` when ARN/subject is available
   - Adds `Authorization: Bearer ...` for service calls when required by the target
+
+## See also
+- Tutorials: `../tutorials/bff-quickstart.md`, `../tutorials/llm-routing-quickstart.md`, `../tutorials/spa-golden-path.md`
+- How‑to: `../how-to/traefik-forwardauth.md`, `../how-to/spa-pdp-usage.md`, `../how-to/bff-config-routing.md`
+- Reference: `../reference/settings-reference.md`, `../reference/routes-reference.md`, `../reference/pdp-reference.md`

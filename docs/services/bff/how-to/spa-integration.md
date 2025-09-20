@@ -8,7 +8,10 @@ Integration pattern verified in code.
 - Unauthenticated flows return 401 JSON; SPA should redirect to `/auth/login`
 - Session check endpoint: `GET /api/auth/session` → `{ authenticated: boolean, ... }`
 - CSRF: `_csrf_token` cookie set on safe GET; send `X-CSRF-Token` for state-changing calls
-- CORS allowlist read from `CORS__ALLOW_ORIGINS` / `CORS_ALLOW_ORIGINS`
+- CORS allowlist read from settings (`../reference/settings-reference.md#cors`)
+
+Client code
+- Use SDKs for API calls: `/docs/sdks/index.md` (Python/JS). Avoid inlining large code samples; link to SDK docs.
 
 ```mermaid
 sequenceDiagram

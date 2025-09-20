@@ -68,3 +68,9 @@ Response (shape):
 AuthZEN gives you a standard, future‑proof PEP↔PDP contract. The Membership PIP ensures decisions carry live, graph‑derived context (tenancy, MFA, chaining), and the merge model keeps effective constraints conservative across policy layers.
 
 CTAs: View evaluation examples · See Membership PIP · Read the operator/merge guide
+
+## See also
+- Evaluation reference: `services/bff/reference/pdp-reference.md`
+- Operator/merge model: `services/pdp/explanation/*`
+- Effective budgets: `services/pdp/reference/effective-budgets.md`
+- Membership: `services/membership/reference/schema-and-endpoints.md`

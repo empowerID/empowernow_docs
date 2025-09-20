@@ -5,7 +5,7 @@ title: PDP Cache Tuning (Allow/Deny TTLs)
 Where to configure
 
 - `ServiceConfigs/BFF/config/pdp.yaml` → `cache` section: `enabled`, `ttl_allow`, `ttl_deny`, `max_size`, `invalidate_on_policy_change`.
-- Note: Inline `authz_map` vs legacy `endpoint_map` does not change caching semantics; cache settings remain here.
+- See also: `../reference/settings-reference.md#pdp-integration` and anchors `#env-PDP_CACHE_DECISIONS`, `#env-PDP_CACHE_TTL`.
 
 Runtime behavior (verified)
 
