@@ -26,13 +26,19 @@ jobs:
           npm --version
 
       - name: Remove draft source_content (exclude from build)
-        run: rm -rf docs/source_content
+        run: |
+          echo "Before removal:" && ls -la docs || true
+          rm -rf docs/source_content || true
+          echo "After removal:" && ls -la docs || true
 
       - name: Install deps
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          # Double-check and remove again right before build
+          test ! -d docs/source_content || rm -rf docs/source_content
+          npm run build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
