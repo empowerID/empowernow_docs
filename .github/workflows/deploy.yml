@@ -33,9 +33,20 @@ jobs:
         run: |
           set -euo pipefail
           echo "Before removal:" && ls -la docs || true
+          # Direct removal of top-level path just in case
+          if [ -d docs/source_content ]; then
+            echo "Removing explicit docs/source_content";
+            ls -la docs/source_content || true
+            rm -rf docs/source_content || true
+          fi
           shopt -s globstar nullglob
           for d in docs/**/source_content; do
             echo "Removing draft dir: $d";
+            rm -rf "$d" || true;
+          done
+          # Fallback: case-insensitive match
+          for d in $(find docs -type d -iname source_content -print); do
+            echo "Removing case-insensitive draft dir: $d";
             rm -rf "$d" || true;
           done
           echo "After removal:" && ls -la docs || true
@@ -47,6 +58,8 @@ jobs:
           else
             echo "OK: No source_content under docs.";
           fi
+          echo "Debug listing (first 200 matches containing source_content):"
+          find docs -iwholename "*source_content*" -print | head -n 200 || true
 
       - name: Enforce: fail if drafts still present
         run: |
@@ -78,6 +91,8 @@ jobs:
             echo "Removing draft dir pre-build: $d";
             rm -rf "$d" || true;
           done
+          if [ -d docs/source_content ]; then rm -rf docs/source_content || true; fi
+          for d in $(find docs -type d -iname source_content -print); do rm -rf "$d" || true; done
           # Clear any caches that might reference removed drafts
           rm -rf .docusaurus node_modules/.cache || true
           echo "Final verification:"
@@ -85,6 +100,12 @@ jobs:
             echo "Error: source_content still present under docs before build.";
             find docs -path "*/source_content/*" -print;
             exit 1;
+          fi
+          echo "Searching for any doc imports referencing source_content (should be none):"
+          if grep -RIn "source_content" docs | grep -v "\.git" | head -n 50; then
+            echo "Warning: references to source_content found above (ensure not imported by MDX).";
+          else
+            echo "OK: no references in markdown to source_content.";
           fi
           npm run build
 
