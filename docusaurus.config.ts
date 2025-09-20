@@ -49,6 +49,16 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // Only include known content trees; exclude everything else by default
+          include: [
+            '*.{md,mdx}',
+            'services/**/*.{md,mdx}',
+            'website_copy/**/*.{md,mdx}',
+            'marketing/**/*.{md,mdx}',
+            'sdks/**/*.{md,mdx}',
+            'personas/**/*.{md,mdx}',
+            'enablement/**/*.{md,mdx}',
+          ],
           // Exclude draft folders anywhere (defense-in-depth for CI)
           exclude: ['**/source_content/**', 'source_content/**', '**/docs/source_content/**'],
         },
