@@ -29,10 +29,15 @@ jobs:
           npm --version
 
       - name: Remove draft source_content (exclude from build)
+        shell: bash
         run: |
+          set -euo pipefail
           echo "Before removal:" && ls -la docs || true
-          # Remove any source_content directories anywhere under docs
-          find docs -type d -name source_content -prune -print -exec rm -rf {} + || true
+          shopt -s globstar nullglob
+          for d in docs/**/source_content; do
+            echo "Removing draft dir: $d";
+            rm -rf "$d" || true;
+          done
           echo "After removal:" && ls -la docs || true
           echo "Verifying no source_content remains under docs..."
           if find docs -path "*/source_content/*" -print -quit | grep -q "."; then
@@ -64,9 +69,15 @@ jobs:
         run: npm ci
 
       - name: Build
+        shell: bash
         run: |
+          set -euo pipefail
           # Double-check and remove again right before build
-          find docs -type d -name source_content -prune -exec rm -rf {} + || true
+          shopt -s globstar nullglob
+          for d in docs/**/source_content; do
+            echo "Removing draft dir pre-build: $d";
+            rm -rf "$d" || true;
+          done
           # Clear any caches that might reference removed drafts
           rm -rf .docusaurus node_modules/.cache || true
           echo "Final verification:"
