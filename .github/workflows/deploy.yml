@@ -25,6 +25,9 @@ jobs:
           node --version
           npm --version
 
+      - name: Remove draft source_content (exclude from build)
+        run: rm -rf docs/source_content
+
       - name: Install deps
         run: npm ci
 
