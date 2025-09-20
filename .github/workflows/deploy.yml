@@ -43,6 +43,23 @@ jobs:
             echo "OK: No source_content under docs.";
           fi
 
+      - name: Enforce: fail if drafts still present
+        run: |
+          set -euo pipefail
+          if [ -d docs/source_content ]; then
+            echo "Found docs/source_content after removal:";
+            find docs/source_content -maxdepth 2 -type f -print || true;
+            exit 1;
+          fi
+          hits=$(find docs -path "*/source_content/*" -type f -print | wc -l || true)
+          if [ "${hits}" != "0" ]; then
+            echo "Found draft files under docs:";
+            find docs -path "*/source_content/*" -type f -print;
+            exit 1;
+          else
+            echo "OK: No draft files found under docs.";
+          fi
+
       - name: Install deps
         run: npm ci
 
