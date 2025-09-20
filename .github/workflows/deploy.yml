@@ -107,7 +107,7 @@ jobs:
           else
             echo "OK: no references in markdown to source_content.";
           fi
-          npm run build
+          DOCS_INPUT_DIR=docs npm run build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3

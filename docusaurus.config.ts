@@ -4,6 +4,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const docsPath = process.env.DOCS_INPUT_DIR ?? 'docs';
+
 const config: Config = {
   title: 'EmpowerNow Docs',
   tagline: 'Standards‑driven Identity Fabric for zero‑token SPAs, AuthZEN decisions, and policy‑guarded automation.',
@@ -46,6 +48,7 @@ const config: Config = {
       'classic',
       {
         docs: {
+          path: docsPath,
           sidebarPath: './sidebars.ts',
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
