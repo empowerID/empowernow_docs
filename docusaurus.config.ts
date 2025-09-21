@@ -107,12 +107,16 @@ const config: Config = {
         { to: '/docs/website_copy/products', label: 'Products', position: 'left' },
         { to: '/docs/website_copy/pricing', label: 'Pricing', position: 'left' },
         { to: '/docs/website_copy/trust', label: 'Trust', position: 'left' },
-        { to: '/docs/website_copy/resources', label: 'Resources', position: 'left', items: [
-          { to: '/docs/website_copy/resources', label: 'Overview' },
-          { to: '/docs/website_copy/standards/index', label: 'Standards Fundamentals' },
-          { to: '/docs/website_copy/resources_whitepaper', label: 'Whitepapers' },
-          { to: '/docs/website_copy/resources_demo', label: 'Demos' },
-        ] as any },
+        {
+          label: 'Resources',
+          position: 'left',
+          items: [
+            { to: '/docs/resources', label: 'Overview' },
+            { to: '/docs/website_copy/standards/', label: 'Standards Fundamentals' },
+            { to: '/docs/website_copy/resources_whitepaper', label: 'Whitepapers' },
+            { to: '/docs/website_copy/resources_demo', label: 'Demos' },
+          ],
+        },
         { to: '/docs/website_copy/company', label: 'Company', position: 'left' },
         {
           type: 'docSidebar',
