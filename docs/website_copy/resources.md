@@ -45,3 +45,10 @@ Outline candidates and data points to collect:
 - Services overview: /docs/services/index
 - Marketing overview: /docs/marketing/index
 
+## Standards Fundamentals
+
+- Explore primers: /docs/website_copy/standards/index
+- OAuth · OIDC · PKCE: /docs/website_copy/standards/oauth · /docs/website_copy/standards/oidc · /docs/website_copy/standards/pkce
+- RAR · PAR · JARM · FAPI 2.0: /docs/website_copy/standards/rar · /docs/website_copy/standards/par · /docs/website_copy/standards/jarm · /docs/website_copy/standards/fapi-2-0
+- SCIM · CIBA · MCP · CAEP: /docs/website_copy/standards/scim · /docs/website_copy/standards/ciba · /docs/website_copy/standards/mcp · /docs/website_copy/standards/caep
+

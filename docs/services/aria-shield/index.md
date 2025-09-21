@@ -38,3 +38,8 @@ ARIA Shield is a new service in the EmpowerNow Identity Fabric. This placeholder
 - Placeholder (TBD): [Guide 3](/docs/services/aria-shield/pm-guide3-tbd)
 
 
+## Competitive notes
+
+- SPA security: Curity’s Token Handler positions an OAuth agent + API gateway proxy issuing secure HTTP‑only cookies and translating them to tokens at the gateway. Source: [Curity Token Handler](https://curity.io/product/token-handler/)
+- Our positioning: Application‑aware BFF + ARIA Gateway with centralized PDP mapping, SSE pre‑checks, per‑service token brokering, and enterprise observability. See: `marketing/competitive.md` and `services/bff/explanation/bff_gateway.md`.
+

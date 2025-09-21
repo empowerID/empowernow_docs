@@ -104,6 +104,14 @@ graph TD
   BFF -->|PDP decisions| PDP["Central PDP (AuthZEN)"]
 ```
 
+#### Token Handler pattern vs application‑aware BFF
+
+- Curity’s Token Handler: issues secure HTTP‑Only, SameSite=strict cookies via an OAuth agent and uses an OAuth proxy on an API gateway to translate cookies to tokens; routes all API calls via a gateway; advertises plug‑and‑play with Azure APIM, Google Apigee, AWS, Kong and NGINX; positioned as ready‑to‑deploy, low‑code. Source: [Curity Token Handler](https://curity.io/product/token-handler/)
+- Our BFF: a dedicated service behind Traefik that owns session verification and per‑route orchestration, performs centralized PDP authorization with request→policy mapping (resource/action/id), denies on NoMapping (fail‑secure), and pre‑checks SSE before opening streams.
+- Token handling: Curity’s page describes cookie→token translation at the API gateway; our BFF brokers per‑service tokens server‑side and injects them per upstream call.
+- Observability: Curity’s page does not describe structured business audit streams or detailed authorization metrics; our BFF emits Kafka `AUTHZ_DECISION` events and Prometheus metrics with dashboards/alerts.
+- Fit: Curity emphasizes gateway customization and low‑code deployment; our model emphasizes application‑aware policy, enterprise observability, and deeper authorization context.
+
 ---
 
 ### Supported scenarios

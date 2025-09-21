@@ -105,6 +105,10 @@ Competes with Salesforce/ServiceNow/Teams via flexible, secure, cost‑effective
 - Time‑boxed, self‑destructing Docker trials that run on customer hardware
 - Enables individual developers and small teams to evaluate locally without hosted costs
 
+### Competitive angle: Curity Token Handler (for sales readiness)
+
+- Curity positions an OAuth agent in the browser issuing secure HTTP‑only cookies and an OAuth proxy on an API gateway that translates cookies to tokens; API calls are routed via the gateway; marketed as ready‑to‑deploy and compatible with Azure APIM, Apigee, AWS, Kong, and NGINX. Source: [Curity Token Handler](https://curity.io/product/token-handler/)
+- Our positioning: application‑aware BFF behind Traefik with centralized PDP per‑route mapping (resource/action/id), SSE pre‑checks, per‑service token brokering, and enterprise observability (Kafka `AUTHZ_DECISION`, Prometheus). See: `marketing/competitive.md` and `services/bff/explanation/bff_gateway.md`.
 ---
 
 ## Quiz

@@ -83,6 +83,19 @@ Automation (Zapier/Make/n8n):
 - Where we win:
   - Identity Fabric that unifies IdP+BFF+PDP+Automation/Inventory with built‑in eventing/analytics and UI runtime
 
+### Curity Token Handler (SPA security)
+
+- What they say/do: Backend for Frontend authentication in the browser; issues secure HTTP‑Only, SameSite=strict cookies; routes API requests via an API gateway; uses an OAuth agent to issue cookies and an OAuth proxy on the gateway to translate them to tokens; offers plug‑and‑play compatibility with Azure API Management, Google Apigee, AWS, Kong and NGINX; positioned as a ready‑to‑deploy, low‑code solution. Source: [Curity Token Handler](https://curity.io/product/token-handler/)
+- Strengths:
+  - Plug‑and‑play with popular API gateways; follows OAuth best practices for browser apps (separates web vs API concerns via agent/proxy)
+  - Reduces SPA auth complexity; mitigates token exfiltration/XSS via HTTP‑only cookies
+  - Can be deployed without a firewall‑protected backend per their positioning
+- Constraints vs our Fabric/BFF (based on the product page’s scope):
+  - Cookie→token translation happens at the API gateway; the page does not describe per‑endpoint, business‑context PDP mapping
+  - The page does not highlight structured business audit streams or detailed authorization metrics
+- Where we win:
+  - Application‑aware BFF behind Traefik with centralized PDP per‑route mapping (resource/action/id), SSE pre‑checks, per‑service token brokering, and enterprise observability (Kafka `AUTHZ_DECISION`, Prometheus). See: `services/bff/explanation/bff_gateway.md`, `services/bff/explanation/bff_gateway_technical.md`
+
 ### Okta (Workforce/Customer Identity Cloud)
 
 - What they say/do: Cloud‑native IdP with SSO, Adaptive MFA, Lifecycle, API Access Management; very large integration network. Sources: [Frontegg guide](https://frontegg.com/guides/ping-identity-vs-okta), [TechRepublic](https://www.techrepublic.com/article/okta-vs-ping/).

@@ -29,3 +29,9 @@ CTAs: See streaming caps → View 402 behavior → Read receipts guide
 - Logging and observability: `services/bff/reference/logging-reference.md`, `services/bff/reference/observability.md`
 - 402 behavior and budgets: `services/pdp/reference/effective-budgets.md`
 - Receipts: `services/aria-shield/receipt-chains.md`
+
+## How we compare
+- Curity’s Token Handler secures SPAs using HTTP‑only cookies and an OAuth agent + API gateway proxy. For a deeper comparison and positioning, see the competitive page. Source: [Curity Token Handler](https://curity.io/product/token-handler/)
+- Our approach is an application‑aware BFF behind Traefik with centralized PDP mapping, per‑service token brokering, SSE pre‑checks, and enterprise observability. See: `services/bff/explanation/bff_gateway.md`
+
+Learn more: `marketing/competitive.md`

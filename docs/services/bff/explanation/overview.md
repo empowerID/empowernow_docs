@@ -65,6 +65,8 @@ EmpowerNow specifics (code‑verified)
 - Edge: Traefik ForwardAuth configured to call BFF; response/request headers include identity/session info
 - Tokens: acquired server‑side, per‑service; never stored in or exposed to the browser
 
+Note: For a brief comparison of the Token Handler pattern vs our application‑aware BFF, see `services/bff/explanation/bff_gateway.md#token-handler-pattern-vs-application‑aware-bff`. Source: [Curity Token Handler](https://curity.io/product/token-handler/)
+
 
 ## See also
 - Tutorials: `../tutorials/bff-quickstart.md`, `../tutorials/llm-routing-quickstart.md`

@@ -51,3 +51,9 @@ CTAs: See MCP request → View guards (schema/params/egress) → Read plan enfor
 - Routes and settings: `services/bff/reference/routes-reference.md`, `services/bff/reference/settings-reference.md`
 - Receipts: `services/aria-shield/receipt-chains.md`
 - Controls reference: `services/aria-shield/reference/controls.md`
+
+## How we compare
+- Curity’s Token Handler secures SPAs with HTTP‑only cookies via an OAuth agent + API gateway proxy and advertises plug‑and‑play support for Azure APIM, Apigee, AWS, Kong, and NGINX. Source: [Curity Token Handler](https://curity.io/product/token-handler/)
+- Our ARIA Gateway + BFF approach adds application‑aware PDP enforcement (resource/action/id mapping), SSE pre‑checks, per‑service token brokering, and enterprise observability. See: `services/bff/explanation/bff_gateway.md`
+
+Learn more: `marketing/competitive.md`
