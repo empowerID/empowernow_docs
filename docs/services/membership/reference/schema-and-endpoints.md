@@ -93,6 +93,47 @@ sequenceDiagram
   PDP-->>PDP: Merge with policy → constraints + obligations
 ```
 
+## Identity and search APIs (stable)
+
+Base prefix: `/api/v1`
+
+- `GET /identity_nodes/search` → Search nodes by `node_type`, `search`, `system`, with pagination (`limit`, `skip`). Optional filters are omitted when unset.
+- `GET /identity_nodes/search/with-metadata` → Same as above plus `{total, has_more, relationships?}` metadata.
+- `GET /identity_nodes/count` → Count nodes matching criteria (`node_type`, `search`, `system`).
+- `GET /identity_nodes/systems` → List available `system` values for filtering.
+- `GET /identity_nodes/{node_id}` → Fetch an identity node by ID.
+- `GET /identity_nodes/{node_id}/relationships` → Fetch related nodes/edges for an ID.
+- `GET /identity_nodes/stats/types` → Distribution of node types.
+- `GET /identity_nodes/fulltext-search` → Full‑text search across identity labels.
+
+Parameters (selected):
+
+- `node_type` (optional): One of configured labels, e.g., `Person`, `Group`, `Account`, `AIAgent`, `Identity`.
+- `search` (optional): Case‑insensitive substring; if unset, excluded from query.
+- `system` (optional): Source system filter, see `/identity_nodes/systems`.
+- `limit` (default 50, max 500), `skip` (>= 0).
+
+Examples:
+
+```http
+GET /api/v1/identity_nodes/search?node_type=Person&search=John&system=active_directory&limit=10&skip=0
+GET /api/v1/identity_nodes/search/with-metadata?node_type=AIAgent&limit=10
+GET /api/v1/identity_nodes/count?node_type=Group&search=Ops
+```
+
+Response shape (with‑metadata):
+
+```json
+{
+  "nodes": [{"id": "person:123", "name": "John Doe", "relationships": {}}],
+  "total": 1,
+  "limit": 10,
+  "skip": 0,
+  "has_more": false,
+  "relationships": {}
+}
+```
+
 ## Reference queries (Cypher)
 
 ```cypher
@@ -121,6 +162,23 @@ Base: `/api/v1/mcp`
 - `POST /services` · `GET /services/{service_id}` · `GET /services/by-name/{name}` · `GET /services` · `DELETE /services/{service_id}`
 - `POST /services/{service_id}/tools` · `GET /services/{service_id}/tools` · `GET /tools/{tool_id}` · `GET /tools/by-name/{tool_name}` · `DELETE /tools/{tool_id}`
 - `POST /services/{service_id}/resources` · `POST /services/{service_id}/prompts`
+
+Notes:
+
+- Registration surfaces for MCP services, tools, resources, and prompts are provided for discovery and policy binding. Policy bindings used by PDP are managed under the MCP policy binding router and stored as graph reference data.
+
+## Governance endpoints (agent control, ownership, RTR)
+
+Base prefix: `/api/v1`
+
+- `PUT /agent/agents/{agent_id}/control` → Establish controller for an agent.
+- `GET /agent/agents/{agent_id}/controllers` → List controllers of an agent.
+- `DELETE /agent/agents/{agent_id}/control` → Remove controller binding.
+- `POST /resources/{resource_id}/owners` → Add resource owner with level/role.
+- `GET /resources/{resource_id}/owners` → List resource owners.
+- `POST /rtrs/assign` → Assign RTR to actor/resource pair.
+
+These routes are exercised in the bundled Postman collection and backed by graph operations on `CONTROLLED_BY`, ownership relations, and RTR assignment edges.
 
 ## Health & diagnostics
 
