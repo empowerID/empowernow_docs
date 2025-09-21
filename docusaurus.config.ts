@@ -140,6 +140,11 @@ const config: Config = {
           position: 'left',
         },
         {
+          href: 'https://empowerid.github.io/empowernow_info/',
+          label: 'Back to Marketing Site',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/empowerID/empowernow_docs',
           label: 'GitHub',
           position: 'right',
