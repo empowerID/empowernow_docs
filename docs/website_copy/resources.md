@@ -1,6 +1,7 @@
 ---
 title: Resources
 description: Evidence hub, benchmarks, case studies, events, and docs.
+slug: /resources
 ---
 
 ## Evidence hub (claims → artifacts)

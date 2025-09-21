@@ -1,3 +1,7 @@
+---
+slug: /docs/resources/standards
+---
+
 # Standards Fundamentals
 
 Welcome. This hub explains the identity and API security standards we build on. Each primer is vendor‑agnostic, fast to read, and links to deeper, technical docs in our services.
