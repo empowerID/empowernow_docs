@@ -10,25 +10,25 @@ Use this to get clarity, align teams, and make confident decisions.
 ## Browse by category
 
 ### Identity & Access
-- What is OAuth 2.0 → `website_copy/standards/oauth.md`
-- What is OpenID Connect (OIDC) → `website_copy/standards/oidc.md`
-- What is PKCE → `website_copy/standards/pkce.md`
+- [What is OAuth 2.0](/docs/website_copy/standards/oauth)
+- [What is OpenID Connect (OIDC)](/docs/website_copy/standards/oidc)
+- [What is PKCE](/docs/website_copy/standards/pkce)
 
 ### Fine‑grained authorization
-- What is RAR (Rich Authorization Requests) → `website_copy/standards/rar.md`
+- [What is RAR (Rich Authorization Requests)](/docs/website_copy/standards/rar)
 
 ### Security profiles & authorization flows
-- What is PAR (Pushed Authorization Requests) → `website_copy/standards/par.md`
-- What is JARM (JWT Secured Authorization Response Mode) → `website_copy/standards/jarm.md`
-- What is FAPI 2.0 → `website_copy/standards/fapi-2-0.md`
+- [What is PAR (Pushed Authorization Requests)](/docs/website_copy/standards/par)
+- [What is JARM (JWT Secured Authorization Response Mode)](/docs/website_copy/standards/jarm)
+- [What is FAPI 2.0](/docs/website_copy/standards/fapi-2-0)
 
 ### Provisioning & Directory
-- What is SCIM → `website_copy/standards/scim.md`
+- [What is SCIM](/docs/website_copy/standards/scim)
 
 ### Agent workflows & eventing
-- What is CIBA → `website_copy/standards/ciba.md`
-- What is MCP (Model Context Protocol) → `website_copy/standards/mcp.md`
-- What is CAEP (Continuous Access Evaluation Protocol) → `website_copy/standards/caep.md`
+- [What is CIBA](/docs/website_copy/standards/ciba)
+- [What is MCP (Model Context Protocol)](/docs/website_copy/standards/mcp)
+- [What is CAEP (Continuous Access Evaluation Protocol)](/docs/website_copy/standards/caep)
 
 ## How to use these primers
 - Start with the short definition and why‑it‑matters.
