@@ -107,16 +107,7 @@ const config: Config = {
         { to: '/docs/website_copy/products', label: 'Products', position: 'left' },
         { to: '/docs/website_copy/pricing', label: 'Pricing', position: 'left' },
         { to: '/docs/website_copy/trust', label: 'Trust', position: 'left' },
-        {
-          label: 'Resources',
-          position: 'left',
-          items: [
-            { to: '/docs/resources', label: 'Overview' },
-            { to: '/docs/website_copy/standards/', label: 'Standards Fundamentals' },
-            { to: '/docs/website_copy/resources_whitepaper', label: 'Whitepapers' },
-            { to: '/docs/website_copy/resources_demo', label: 'Demos' },
-          ],
-        },
+        // Resources menu lives on the marketing site; keep docs navbar lean
         { to: '/docs/website_copy/company', label: 'Company', position: 'left' },
         {
           type: 'docSidebar',
