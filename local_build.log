@@ -1,0 +1,12 @@
+
+> empowernow-docs@0.0.0 build
+> docusaurus build
+
+[INFO] [en] Creating an optimized production build...
+Warn: `blogDir` doesn't exist: "C:\source\repos\empowernow_docs\blog".
+[info] [webpackbar] Compiling Client
+[info] [webpackbar] Compiling Server
+[success] [webpackbar] Server: Compiled successfully in 22.73s
+[success] [webpackbar] Client: Compiled successfully in 35.75s
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.
