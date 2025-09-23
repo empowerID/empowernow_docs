@@ -4,7 +4,7 @@ title: EmpowerNow Identity Fabric – Suite Overview
 description: High-level overview of the EmpowerNow Identity Fabric, including ingress, identity, policy, data services, eventing, analytics, and observability. Includes a system diagram and core hostnames.
 ---
 
-The EmpowerNow Identity Fabric is a modular suite that provides identity, policy, workflow/CRUD execution, eventing, analytics, and observability. This page shows how the pieces fit together end‑to‑end.
+The EmpowerNow Identity & Authorization Fabric enforces the same policy for APIs, apps, and AI agents. It includes ARIA Shield (gateway), Authorization (PDP), Authentication (IdP), Automation Studio, and Inventory — adopt one or all. This page shows how the pieces fit together end‑to‑end.
 
 ```mermaid
 flowchart LR

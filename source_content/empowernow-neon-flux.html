@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmpowerNow - Identity & Authorization Fabric (Neon-Flux Theme)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0A0A0B;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            min-height: 680px;
+            background: #0A0A0B;
+            border-radius: 24px;
+            padding: 48px;
+            overflow: hidden;
+        }
+        
+        /* Glow effects */
+        .glow-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.6;
+            filter: blur(60px);
+            background: 
+                radial-gradient(50% 50% at 35% 30%, rgba(122,44,240,0.35) 0%, rgba(122,44,240,0) 60%),
+                radial-gradient(40% 40% at 75% 60%, rgba(32,224,255,0.35) 0%, rgba(32,224,255,0) 60%);
+            pointer-events: none;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #C8C8CC;
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+        
+        /* Feature list */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+        }
+        
+        .feature-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #B8FF5E;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+        
+        /* Meta info */
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 12px;
+            color: #999;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .meta-divider {
+            opacity: 0.4;
+        }
+        
+        /* SVG Diagram */
+        .diagram-container {
+            position: relative;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .rotating-ring {
+            animation: spin 24s linear infinite;
+            transform-origin: center;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .rotating-ring {
+                animation: none !important;
+            }
+        }
+        
+        /* CTAs */
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        
+        .cta-button {
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            text-decoration: none;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .cta-button:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-1px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" role="main" aria-label="Identity & Authorization Fabric">
+        <div class="glow-bg" aria-hidden="true"></div>
+        
+        <div class="content">
+            <!-- Left Column: Copy -->
+            <header>
+                <h1>Secure every human, service, and AI agent</h1>
+                <p class="subtitle">
+                    One Identity & Authorization Fabric—same policy at the gateway, in services, and for AI tools/models.
+                </p>
+                
+                <ul class="features">
+                    <li class="feature-item">
+                        <span class="feature-dot"></span>
+                        <span>Real-time authorization on every request</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-dot"></span>
+                        <span>Policy-enforced budgets & spend limits</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-dot"></span>
+                        <span>Guardrails to reduce data exfiltration</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-dot"></span>
+                        <span>Audit receipts to satisfy compliance</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-dot"></span>
+                        <span>Incremental adoption, cloud or self-hosted</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-dot"></span>
+                        <span>Config-as-code with PR-gated changes</span>
+                    </li>
+                </ul>
+                
+                <div class="meta-info">
+                    <span>OpenID AuthZEN • OIDC • SCIM • CAEP</span>
+                    <span class="meta-divider">|</span>
+                    <span>Works with Okta, Microsoft Entra ID, SailPoint, EmpowerID, CyberArk, Vault</span>
+                </div>
+            </header>
+            
+            <!-- Right Column: Diagram -->
+            <div class="diagram-container">
+                <svg
+                    role="img"
+                    aria-label="ARIA Shield gateway with surrounding modules"
+                    width="440"
+                    height="380"
+                    viewBox="0 0 440 380"
+                >
+                    <defs>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="4.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                        <linearGradient id="ringGrad" x1="0" x2="1" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#7A2CF0"/>
+                            <stop offset="100%" stop-color="#20E0FF"/>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Outer rotating ring -->
+                    <circle
+                        cx="220"
+                        cy="175"
+                        r="120"
+                        stroke="url(#ringGrad)"
+                        stroke-width="3"
+                        fill="none"
+                        filter="url(#glow)"
+                        class="rotating-ring"
+                    />
+                    
+                    <!-- Inner ring -->
+                    <circle cx="220" cy="175" r="90" stroke="rgba(255,255,255,0.18)" stroke-width="1" fill="none"/>
+                    
+                    <!-- Center Shield -->
+                    <g>
+                        <rect
+                            x="150"
+                            y="130"
+                            rx="10"
+                            width="140"
+                            height="90"
+                            fill="rgba(255,255,255,0.06)"
+                            stroke="#7A2CF0"
+                            stroke-width="1.2"
+                        />
+                        <text x="220" y="152" text-anchor="middle" font-size="14" font-weight="700" fill="#20E0FF">
+                            ARIA Shield (Gateway)
+                        </text>
+                        <text x="220" y="170" text-anchor="middle" font-size="11" fill="#C8C8CC">
+                            Server-side session · AuthZEN checks
+                        </text>
+                        <text x="220" y="186" text-anchor="middle" font-size="11" fill="#B7BDC6">
+                            Budgets · Receipts · mTLS · Rate limits
+                        </text>
+                    </g>
+                    
+                    <!-- Legend chips -->
+                    <g transform="translate(130, 205)">
+                        <rect width="66" height="20" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+                        <text x="33" y="14" text-anchor="middle" font-size="10" fill="#EAEAEA">ALLOW</text>
+                    </g>
+                    <g transform="translate(200, 205)">
+                        <rect width="66" height="20" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+                        <text x="33" y="14" text-anchor="middle" font-size="10" fill="#EAEAEA">DENY</text>
+                    </g>
+                    <g transform="translate(270, 205)">
+                        <rect width="66" height="20" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+                        <text x="33" y="14" text-anchor="middle" font-size="10" fill="#EAEAEA">Budget: $42.13</text>
+                    </g>
+                    <g transform="translate(340, 205)">
+                        <rect width="66" height="20" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)"/>
+                        <text x="33" y="14" text-anchor="middle" font-size="10" fill="#EAEAEA">Receipt #8F2C</text>
+                    </g>
+                    
+                    <!-- Ring nodes - Authentication (top) -->
+                    <g>
+                        <line x1="220" y1="55" x2="220" y2="15" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
+                        <rect x="165" y="-1" rx="8" width="110" height="32" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)"/>
+                        <text x="220" y="20" text-anchor="middle" font-size="12" fill="#FFFFFF">Authentication</text>
+                    </g>
+                    
+                    <!-- Ring nodes - Authorization (right) -->
+                    <g>
+                        <line x1="340" y1="175" x2="380" y2="175" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
+                        <rect x="325" y="159" rx="8" width="110" height="32" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)"/>
+                        <text x="380" y="180" text-anchor="middle" font-size="12" fill="#FFFFFF">Authorization</text>
+                    </g>
+                    
+                    <!-- Ring nodes - Automation Studio (bottom) -->
+                    <g>
+                        <line x1="220" y1="295" x2="220" y2="335" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
+                        <rect x="165" y="319" rx="8" width="110" height="32" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)"/>
+                        <text x="220" y="340" text-anchor="middle" font-size="12" fill="#FFFFFF">Automation Studio</text>
+                    </g>
+                    
+                    <!-- Ring nodes - Inventory (left) -->
+                    <g>
+                        <line x1="100" y1="175" x2="60" y2="175" stroke="rgba(255,255,255,0.28)" stroke-width="0.8"/>
+                        <rect x="5" y="159" rx="8" width="110" height="32" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.2)"/>
+                        <text x="60" y="180" text-anchor="middle" font-size="12" fill="#FFFFFF">Inventory</text>
+                    </g>
+                    
+                    <!-- Audience arrows -->
+                    <!-- Humans -->
+                    <g>
+                        <text x="100" y="90" text-anchor="middle" font-size="12" fill="#FFFFFF">Humans</text>
+                        <line x1="100" y1="95" x2="140" y2="120" stroke="#20E0FF" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+                    </g>
+                    
+                    <!-- Services -->
+                    <g>
+                        <text x="220" y="70" text-anchor="middle" font-size="12" fill="#FFFFFF">Services</text>
+                        <line x1="220" y1="75" x2="220" y2="120" stroke="#20E0FF" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+                    </g>
+                    
+                    <!-- AI Agents -->
+                    <g>
+                        <text x="340" y="90" text-anchor="middle" font-size="12" fill="#FFFFFF">AI Agents</text>
+                        <line x1="340" y1="95" x2="300" y2="120" stroke="#20E0FF" stroke-width="1.2" marker-end="url(#arrowhead)"/>
+                    </g>
+                    
+                    <!-- Arrow marker definition -->
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#20E0FF"/>
+                        </marker>
+                    </defs>
+                </svg>
+                
+                <!-- Kiosk CTAs -->
+                <div class="cta-buttons">
+                    <a href="https://empowernow.ai/identity-fabric-demo" class="cta-button">
+                        Open Quickstart
+                    </a>
+                    <a href="https://empowernow.ai/docs" class="cta-button">
+                        View Docs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
