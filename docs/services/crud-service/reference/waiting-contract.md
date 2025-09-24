@@ -5,7 +5,7 @@ title: WAITING Contract Reference
 Fields
 - `workflow_status`: string (waiting|completed|failed)
 - `state_version`: integer (monotonic)
-- `required_action`: { task_type, task_name, allowed_decisions? }
+- `required_action`: `{ task_type, task_name, allowed_decisions? }`
 - `request_format`:
   - `method`: POST
   - `url`: `/workflow/resume/{task_id}`

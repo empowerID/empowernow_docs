@@ -16,7 +16,7 @@ Headers: `ETag`, `Cache-Control: public, max-age=60`
 ### HEAD /tools/{tool_id}
 Returns headers only.
 
-### GET /tools/{tool_id}/pin` or `/pins/{tool_id}
+### GET /tools/{tool_id}/pin or /pins/{tool_id}
 Minimal pin payload; add `?format=jws` to receive a compact JWS when signing is configured.
 
 ## Admin (write)
