@@ -103,13 +103,6 @@ const config: Config = {
         srcDark: 'img/en-logo-dark.png',
       },
       items: [
-        { to: '/', label: 'Home', position: 'left' },
-        { to: '/docs/website_copy/solutions', label: 'Solutions', position: 'left' },
-        { to: '/docs/website_copy/products', label: 'Products', position: 'left' },
-        { to: '/docs/website_copy/pricing', label: 'Pricing', position: 'left' },
-        { to: '/docs/website_copy/trust', label: 'Trust', position: 'left' },
-        // Resources menu lives on the marketing site; keep docs navbar lean
-        { to: '/docs/website_copy/company', label: 'Company', position: 'left' },
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
@@ -153,18 +146,7 @@ const config: Config = {
             { label: 'Getting Started', to: '/docs/intro' },
           ],
         },
-        {
-          title: 'Marketing',
-          items: [
-            { label: 'Home', to: '/' },
-            { label: 'Solutions', to: '/docs/website_copy/solutions' },
-            { label: 'Pricing', to: '/docs/website_copy/pricing' },
-            { label: 'Products', to: '/docs/website_copy/products' },
-            { label: 'Trust', to: '/docs/website_copy/trust' },
-            { label: 'Resources', to: '/docs/website_copy/resources' },
-            { label: 'Company', to: '/docs/website_copy/company' },
-          ],
-        },
+        // Keep footer focused on docs; marketing links are available on the main site
         {
           title: 'More',
           items: [
