@@ -1,6 +1,6 @@
 ---
 title: AuthZEN PDP – The Control Plane for Decisions
-description: What is OpenID AuthZEN, how we implement PDP decisions at the BFF, migration from OPA/Cedar, and evidence.
+description: What is OpenID AuthZEN, how we implement PDP decisions at ARIA Shield, migration from OPA/Cedar, and evidence.
 ---
 
 ## What is OpenID AuthZEN?
@@ -9,9 +9,9 @@ OpenID AuthZEN standardizes authorization decisions: discovery, request/response
 
 - Read more: [Aserto AuthZEN overview](https://www.aserto.com/lp/authzen)
 
-## Fabric architecture: PDP at the BFF
+## Fabric architecture: PDP at ARIA Shield
 
-- Every API call passes through the BFF (session terminator). The BFF is the PEP, calling our AuthZEN‑compliant PDP for subject/resource/action decisions.
+- Every API call passes through ARIA Shield (session terminator). ARIA Shield is the PEP, calling our AuthZEN‑compliant PDP for subject/resource/action decisions.
 - Zero‑token SPA: no access tokens in the browser; policies are enforced server‑side.
 - CAEP/Shared‑Signals‑style events emitted for audit and analytics.
 
@@ -19,7 +19,7 @@ OpenID AuthZEN standardizes authorization decisions: discovery, request/response
 sequenceDiagram
   autonumber
   participant SPA as SPA (Studio)
-  participant BFF as BFF (PEP)
+  participant BFF as ARIA Shield (PEP)
   participant PDP as PDP (AuthZEN)
   participant SVC as Service (CRUD/Data)
 
@@ -44,7 +44,7 @@ sequenceDiagram
 ## Evidence checklist
 
 - AuthZEN discovery document exposed by PDP
-- BFF logs show per‑request decision ids with allow/deny and explanations
+- ARIA Shield logs show per‑request decision ids with allow/deny and explanations
 - CAEP events emitted and consumed by analytics
 - p95 PDP latency dashboard
 
@@ -54,8 +54,8 @@ sequenceDiagram
 - Keep governance (reviews, SoD) in IGA; let the Fabric enforce runtime policy.
 
 ## Deeper technical docs
-- BFF gateway (PEP): `/docs/services/bff/explanation/bff_gateway`
+- ARIA Shield gateway (PEP): `/docs/services/bff/explanation/bff_gateway`
 - PDP flags and settings: `/docs/services/pdp/reference/settings-flags`
-- BFF reference (routes/settings): `/docs/services/bff/reference/routes-reference`, `/docs/services/bff/reference/settings-reference`
+- ARIA Shield reference (routes/settings): `/docs/services/bff/reference/routes-reference`, `/docs/services/bff/reference/settings-reference`
 
 

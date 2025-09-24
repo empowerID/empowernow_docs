@@ -1,11 +1,12 @@
-﻿# Backend for Frontend (BFF)
+﻿# ARIA Shield (formerly BFF)
 
-The EmpowerNow BFF is the session and security gateway for our SPAs:
+ARIA Shield (formerly BFF) is the session and security gateway for our SPAs and AI providers:
 
 - Terminates OAuth in the backend (tokens never reach the browser)
 - Issues/validates httpOnly session cookies and CSRF tokens
 - Authorizes each request via the PDP (AuthZEN) before proxying
 - Proxies canonical `/api/...` routes to backend services
+- Enforces stream‑time caps and budgets (402 semantics) for provider streaming
 
 Start here:
 

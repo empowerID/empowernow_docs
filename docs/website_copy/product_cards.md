@@ -9,11 +9,11 @@ PDP — AuthZEN + Membership PIP
 - Standard evaluation (/access/v1/evaluation) returning decision + constraints/obligations.
 - Membership‑powered constraints: data_scope, step_up, identity_chain allowlists.
 
-ARIA Gateway (MCP PEP)
+ARIA MCP Gateway (MCP PEP)
 - Enforce schema pins, params allowlists, and egress allowlists before tool calls.
-- Validate plan steps, enforce budgets, and execute obligations (receipts, analytics).
+- Validate plan steps and execute obligations (receipts, analytics). Budgets are enforced by ARIA Shield.
 
-BFF Spending Control
+ARIA Shield (formerly BFF)
 - Stream‑time token caps and leakage guards; 402 budget_exceeded behavior with receipts.
 - Provider‑compatible API surface for minimal app changes.
 

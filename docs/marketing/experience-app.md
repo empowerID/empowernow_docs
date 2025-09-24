@@ -3,15 +3,15 @@ title: Experience App – Unified End‑User Portal
 description: Why the Experience app is a killer differentiator, how it works, and where it beats competitors.
 ---
 
-The Experience app is the unified, PDP‑aware end‑user portal for the Identity Fabric. It dynamically enables modules (IdP, PDP, Automation/CRUD, Workflows) at runtime and strictly communicates via the BFF.
+The Experience app is the unified, PDP‑aware end‑user portal for the Identity Fabric. It dynamically enables modules (IdP, PDP, Automation/CRUD, Workflows) at runtime and strictly communicates via ARIA Shield.
 
 What’s innovative (and why it matters):
 
-- PDP‑aware UI: every route, widget, and action is governed by OpenID AuthZEN decisions through the BFF. Value: provable least‑privilege UX, audit‑ready.
-- Runtime module activation: a BFF‑served config (`/api/configs/ui` + SSE stream) enables/disables app modules on the fly. Value: single portal for any subset of services; no rebuilds for tenants.
-- Unified API and SSE layer: one client (`@api`) namespaces to `/idp`, `/pdp`, `/crud`, `/workflow` behind the BFF; SSE for live task counters and workflow status. Value: fast, consistent UX.
-- Plugin model (CSP‑safe): plugins are discovered via manifests and loaded as ESM bundles through the BFF; no CSP relaxations or cross‑origin scripts. Value: extensibility without security debt.
-- Zero‑token SPA: session in httpOnly cookies; no access tokens in browser; all traffic same‑origin to BFF. Value: eliminates token exfiltration class.
+- PDP‑aware UI: every route, widget, and action is governed by OpenID AuthZEN decisions through ARIA Shield. Value: provable least‑privilege UX, audit‑ready.
+- Runtime module activation: an ARIA Shield‑served config (`/api/configs/ui` + SSE stream) enables/disables app modules on the fly. Value: single portal for any subset of services; no rebuilds for tenants.
+- Unified API and SSE layer: one client (`@api`) namespaces to `/idp`, `/pdp`, `/crud`, `/workflow` behind ARIA Shield; SSE for live task counters and workflow status. Value: fast, consistent UX.
+- Plugin model (CSP‑safe): plugins are discovered via manifests and loaded as ESM bundles through ARIA Shield; no CSP relaxations or cross‑origin scripts. Value: extensibility without security debt.
+- Zero‑token SPA: session in httpOnly cookies; no access tokens in browser; all traffic same‑origin to ARIA Shield. Value: eliminates token exfiltration class.
 - Design‑system consistency: Neon Flux tokens/components ensure a premium, coherent UI. Value: faster delivery, brand quality.
 
 Architecture (at‑a‑glance):
@@ -25,7 +25,7 @@ flowchart TB
     Workflows[Workflow Runner]
     Plugins[Dynamic Plugins]
   end
-  BFF["BFF (auth, PDP, proxy)"]
+  BFF["ARIA Shield (auth, PDP, proxy)"]
   UI --> BFF
 
   subgraph Svc["Backends"]
@@ -62,6 +62,6 @@ Canonical plugin reference for architecture and operations: `../../services/expe
 ## Deeper technical docs
 - Experience architecture and plugins: `/docs/services/experience/experience_plugins`
 - Plugins configuration reference: `/docs/services/experience/reference/plugins-config`
-- BFF routes/settings: `/docs/services/bff/reference/routes-reference`, `/docs/services/bff/reference/settings-reference`
+- ARIA Shield routes/settings: `/docs/services/bff/reference/routes-reference`, `/docs/services/bff/reference/settings-reference`
 - PDP flags: `/docs/services/pdp/reference/settings-flags`
 

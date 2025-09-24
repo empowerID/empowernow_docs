@@ -17,6 +17,6 @@ Embedding AI agents into your product means calling many tools and SaaS APIs saf
 ## Getting started
 - Catalog tools in the Registry; pin schemas and set grace windows
 - Author PDP constraints for egress/params and (optionally) identity chaining
-- Wire ARIA Gateway as the PEP for agent→tool calls
+- Wire ARIA MCP Gateway as the PEP for agent→tool calls
 
 CTAs: Book a platform demo · See schema pin example · Read identity chaining guide

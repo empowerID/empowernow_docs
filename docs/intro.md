@@ -47,7 +47,7 @@ OpenID AuthZEN + governed OAuth; OIDC/SCIM/CAEP supported.
 
 ## Quickstart
 
-- ARIA Shield (Gateway): start here → [/docs/services/bff/](./services/bff/index.md)
+- ARIA Shield + ARIA MCP Gateway: start here → [/docs/services/aria-shield/](./services/aria-shield/index.md)
 - Authentication (IdP): configure sign‑in → [/docs/services/idp/](./services/idp/index.md)
 - Authorization (PDP): enforce policy → [/docs/services/pdp/](./services/pdp/index.md)
 
@@ -59,7 +59,7 @@ OpenID AuthZEN + governed OAuth; OIDC/SCIM/CAEP supported.
 
 - IdP (Identity Provider) and IdP UI (Authentication Studio)
 - PDP (Policy Decision Point) and PDP UI (Authorization Studio)
-- BFF (Backend for Frontend) for SPA APIs and session auth
+- ARIA Shield for SPA APIs, provider streaming, and budgets
 - CRUD Service (workflow engine and service layer)
 - Visual Designer (Automation Studio) – frontend for CRUD Service
 - Analytics service (Kafka → ClickHouse → API layer for SPAs)

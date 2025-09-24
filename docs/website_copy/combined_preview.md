@@ -13,7 +13,7 @@ This index lists all newly created or updated marketing content files for review
 - product_comparison.md — ARIA vs gateways/auth engines/workflows
 - product_idp.md — IdP: Agent Passports (RAR/DPoP/plan/schema pins; identity chaining)
 - product_pdp.md — PDP: AuthZEN + Membership PIP (constraints/obligations; merge/operators)
-- product_gateway.md — ARIA Gateway (MCP PEP): guards, plan/budget, receipts
+- product_gateway.md — ARIA MCP Gateway (MCP PEP): guards, plan/egress/params, receipts
 - product_bff.md — BFF: stream‑time enforcement, leakage guards, budget/402
 - product_registry.md — Tool Registry: CURRENT/pins, ETag, signed pins, admin flows
 - product_receipts.md — Receipt Vault: signed, hash‑chained receipts, optional anchoring

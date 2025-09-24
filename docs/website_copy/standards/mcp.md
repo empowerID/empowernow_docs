@@ -18,5 +18,5 @@ MCP is an emerging pattern for agent-to-tool interactions that standardizes how 
 - Schema drift across versions; insufficient validation at the boundary
 
 ## Next steps
-- ARIA Gateway product: `website_copy/product_gateway.md`
-- BFF gateway explanation: `services/bff/explanation/bff_gateway.md`
+- ARIA MCP Gateway product: `website_copy/product_gateway.md`
+- ARIA Shield: `services/bff/explanation/bff_gateway.md`

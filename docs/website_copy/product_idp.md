@@ -74,7 +74,7 @@ A passport extends standard JWT claims with `authorization_details` (RAR) and an
   - `GET /aria-claims` — claims schema and examples
 
 ## Interoperability
-- ARIA Gateway accepts Passports as Bearer or (optionally) PoP.
+- ARIA MCP Gateway accepts Passports as Bearer or (optionally) PoP.
 - PDP governs identity chaining audiences/scopes/TTL; Gateway enforces constraints and obligations.
 - Tool Registry is authoritative for pins; Receipt Vault signs and chains receipts downstream.
 

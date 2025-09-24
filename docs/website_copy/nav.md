@@ -13,8 +13,8 @@ Product Dropdown
 - Overview
 - IdP — Agent Passports
 - PDP — AuthZEN + Membership PIP
-- ARIA Gateway (MCP PEP)
-- BFF Spending Control
+- ARIA MCP Gateway (MCP PEP)
+- ARIA Shield (formerly BFF)
 - Tool Registry
 - Receipt Vault
 - Orchestration — Self‑Driving Workflows

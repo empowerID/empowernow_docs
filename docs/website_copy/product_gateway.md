@@ -1,7 +1,7 @@
-# Product — ARIA Gateway (MCP PEP)
+# Product — ARIA MCP Gateway (MCP PEP)
 
 ## Overview
-The ARIA Gateway is a policy enforcement point (PEP) at the agent→tool boundary. It terminates MCP/HTTP requests, verifies the agent’s ARIA Passport, and enforces policy before any tool executes.
+The ARIA MCP Gateway is a policy enforcement point (PEP) at the agent→tool boundary. It terminates MCP/HTTP requests, verifies the agent’s ARIA Passport, and enforces policy before any tool executes. It is part of the ARIA Shield product family.
 
 - MCP‑aware ingress: `POST /mcp/{tool_id}`
 - Normalizes PDP responses (nested or top‑level) into enforceable constraints
@@ -13,7 +13,7 @@ The ARIA Gateway is a policy enforcement point (PEP) at the agent→tool boundar
 - Params allowlists: regex by key per tool
 - Egress allowlists: host[:port] allow‑listed; redirects denied unless configured and target still allow‑listed
 - Plan‑step checks: verify plan tool and params fingerprint match signed plan JWS (when present)
-- Budget enforcement: handled by the BFF (LLM proxy). The MCP Gateway enforces plan/egress/params and never returns 402.
+- Budget enforcement: handled by ARIA Shield (formerly BFF). The ARIA MCP Gateway enforces plan/egress/params and never returns 402.
 - Inbound shaping: optional redaction, rails injection, token/byte caps, data_scope tagging
 
 ## Plan (enforcement lifecycle)
@@ -45,7 +45,7 @@ Response (tool’s JSON, sanitized) on permit; on deny, standard HTTP error with
 CTAs: See MCP request → View guards (schema/params/egress) → Read plan enforcement
 
 ## See also
-- Technical: `services/bff/explanation/bff_gateway.md`
+- ARIA Shield (formerly BFF): `services/bff/explanation/bff_gateway.md`
 - Deep dive: `services/bff/explanation/bff_gateway_technical.md`
 - PDP mapping: `services/bff/reference/pdp-mapping.md`
 - Routes and settings: `services/bff/reference/routes-reference.md`, `services/bff/reference/settings-reference.md`
@@ -54,6 +54,6 @@ CTAs: See MCP request → View guards (schema/params/egress) → Read plan enfor
 
 ## How we compare
 - Curity’s Token Handler secures SPAs with HTTP‑only cookies via an OAuth agent + API gateway proxy and advertises plug‑and‑play support for Azure APIM, Apigee, AWS, Kong, and NGINX. Source: [Curity Token Handler](https://curity.io/product/token-handler/)
-- Our ARIA Gateway + BFF approach adds application‑aware PDP enforcement (resource/action/id mapping), SSE pre‑checks, per‑service token brokering, and enterprise observability. See: `services/bff/explanation/bff_gateway.md`
+- Our ARIA MCP Gateway + ARIA Shield approach adds application‑aware PDP enforcement (resource/action/id mapping), SSE pre‑checks, per‑service token brokering, and enterprise observability. See: `services/bff/explanation/bff_gateway.md`
 
 Learn more: `marketing/competitive.md`

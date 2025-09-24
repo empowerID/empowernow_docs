@@ -16,8 +16,8 @@ PDP — AuthZEN + Membership PIP
 - Title: PDP — AuthZEN Decisions with Membership PIP
 - Description: Standard evaluation returning constraints/obligations enriched by delegations, data_scope, step_up, and identity_chain.
 
-ARIA Gateway (MCP PEP)
-- Title: ARIA Gateway — MCP Policy Enforcement Point
+ARIA MCP Gateway (MCP PEP)
+- Title: ARIA MCP Gateway — MCP Policy Enforcement Point
 - Description: Enforce schema pins, params and egress allowlists, plan‑step checks, and budgets before tool execution.
 
 BFF — Spending Control

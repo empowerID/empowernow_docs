@@ -48,9 +48,16 @@ Use this page as the canonical source for PDP runtime settings and feature flags
 
 | Setting | Env var | Notes |
 |---|---|---|
-| Decision cache enabled | PDP_DECISION_CACHE_ENABLED | Toggle L1 cache |
-| Decision cache TTL (ms) | PDP_DECISION_CACHE_TTL_MS | Default TTL for decisions |
+| L1 decision cache enabled | PDP_L1_CACHE_ENABLED | Enable Graph‑Eval L1 decision cache |
+| L1 decision cache TTL (s) | PDP_L1_CACHE_TTL | TTL in seconds for L1 decisions |
 | Negative cache TTL (ms) | PDP_NEGATIVE_CACHE_TTL_MS | TTL for deny decisions |
+
+Deprecated (use PDP_L1_CACHE_* instead):
+
+| Setting | Env var | Notes |
+|---|---|---|
+| Decision cache enabled | PDP_DECISION_CACHE_ENABLED | Replaced by PDP_L1_CACHE_ENABLED |
+| Decision cache TTL (ms) | PDP_DECISION_CACHE_TTL_MS | Replaced by PDP_L1_CACHE_TTL (seconds) |
 
 ## Evaluation behavior
 
@@ -60,6 +67,9 @@ Use this page as the canonical source for PDP runtime settings and feature flags
 | Default app scope | PDP_DEFAULT_APPLICATION | Fallback app key if missing |
 | Failure policy | PDP_FAILURE_POLICY | fail_closed or fail_open |
 | Budget mode | PDP_BUDGET_MODE | enforce | advisory | off |
+| Graph eval enabled | GRAPH_EVAL_ENABLED | Enables graph-eval path |
+| Graph eval apps | GRAPH_EVAL_APPS | CSV app ids using graph mode |
+| Evaluation mode default | EVALUATION_MODE | eps | graph |
 
 ## Security and integrity
 
@@ -89,6 +99,8 @@ Use this page as the canonical source for PDP runtime settings and feature flags
 <span id="env-MEMBERSHIP_BASE_URL"></span>
 <span id="env-MEMBERSHIP_TIMEOUT_MS"></span>
 <span id="env-MEMBERSHIP_CACHE_TTL_MS"></span>
+<span id="env-PDP_L1_CACHE_ENABLED"></span>
+<span id="env-PDP_L1_CACHE_TTL"></span>
 <span id="env-PDP_DECISION_CACHE_ENABLED"></span>
 <span id="env-PDP_DECISION_CACHE_TTL_MS"></span>
 <span id="env-PDP_NEGATIVE_CACHE_TTL_MS"></span>
@@ -96,6 +108,9 @@ Use this page as the canonical source for PDP runtime settings and feature flags
 <span id="env-PDP_DEFAULT_APPLICATION"></span>
 <span id="env-PDP_FAILURE_POLICY"></span>
 <span id="env-PDP_BUDGET_MODE"></span>
+<span id="env-GRAPH_EVAL_ENABLED"></span>
+<span id="env-GRAPH_EVAL_APPS"></span>
+<span id="env-EVALUATION_MODE"></span>
 <span id="env-PDP_REQUIRE_SCHEMA_HASH"></span>
 <span id="env-PDP_EMIT_RECEIPT_DEFAULT"></span>
 <span id="env-PDP_JWT_SIGNING_KEY"></span>

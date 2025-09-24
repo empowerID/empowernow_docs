@@ -16,7 +16,7 @@ Security needs to be built into delivery. AI agents amplify risk if identity, po
 
 ## Getting started
 - Author baseline constraints (egress, params, tokens) and enable Membership PIP
-- Wrap agent→tool calls with the ARIA Gateway
+- Wrap agent→tool calls with the ARIA MCP Gateway
 - Turn on receipts and integrate with your analytics pipeline
 
 CTAs: Book a DevSecOps demo · Read AuthZEN guide · See Membership PIP

@@ -8,7 +8,7 @@ See `marketing/packaging-pricing` for full tiers and meters.
 ## Tiers
 
 Community
-- ARIA Gateway (MCP PEP)
+- ARIA MCP Gateway (MCP PEP)
 - Tool Registry (read endpoints)
 - PDP client integration (AuthZEN)
 - Quickstart and sample workflows
@@ -17,7 +17,7 @@ Team
 - Everything in Community
 - Receipt Vault (signed receipts)
 - Membership PIP integration (data_scope, step_up, identity_chain)
-- BFF spending control (stream caps, budget/402)
+- ARIA Shield (stream caps, budget/402)
 - Email support
 
 Enterprise

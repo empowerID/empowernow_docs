@@ -1,12 +1,12 @@
 ---
 id: index
-title: MCP Gateway — Client+Server Authorization Proxy
+title: ARIA MCP Gateway — Client+Server Authorization Proxy
 description: The centralized MCP Client+Server that proxies all MCP traffic with advanced OAuth OBO/RAR authentication and OpenID AuthZEN authorization.
 ---
 
 ## What it is
 
-The MCP Gateway is a dual‑role MCP Client and MCP Server that sits in front of all MCP traffic. It connects to upstream MCP Servers (e.g., CRUDService Loopback MCP and vendor MCPs) as a client, and republishes a governed MCP endpoint as a server so agents and UIs talk to a single, secured entry point.
+The ARIA MCP Gateway is a dual‑role MCP Client and MCP Server that sits in front of all MCP traffic. It connects to upstream MCP Servers (e.g., CRUDService Loopback MCP and vendor MCPs) as a client, and republishes a governed MCP endpoint as a server so agents and UIs talk to a single, secured entry point. It is part of the ARIA Shield product family.
 
 ## Responsibilities
 
@@ -18,9 +18,9 @@ The MCP Gateway is a dual‑role MCP Client and MCP Server that sits in front of
 
 ## Why it exists (and what it is not)
 
-- The MCP Gateway is the central choke point for MCP authN/Z. All MCP JSON‑RPC/REST must pass through it in production.
+- The ARIA MCP Gateway is the central choke point for MCP authN/Z. All MCP JSON‑RPC/REST must pass through it in production.
 - It is not a tool catalog generator. CRUDService Loopback MCP generates the no‑code tool catalogs and exposes `/mcp/*` endpoints; the Gateway authorizes and proxies access to them.
-- It is not the SPA BFF. Human traffic (SPAs) continues to use the BFF; agent MCP traffic uses the MCP Gateway.
+- It is not ARIA Shield (formerly BFF). Human traffic (SPAs) and provider streaming/budgets use ARIA Shield; agent MCP traffic uses the MCP Gateway.
 
 ## Architecture (high level)
 
@@ -52,14 +52,14 @@ flowchart LR
 
 ## Production guidance
 
-- Configure agents/UIs to call the MCP Gateway endpoint only. Do not expose CRUDService `/mcp/*` directly to external clients.
+- Configure agents/UIs to call the ARIA MCP Gateway endpoint only. Do not expose CRUDService `/mcp/*` directly to external clients.
 - Keep Loopback MCP enabled on CRUDService to generate tools; register those upstreams in the Gateway configuration.
-- Treat the BFF and MCP Gateway as complementary: BFF for human SPA routes; MCP Gateway for agent MCP routes.
+- Treat ARIA Shield and ARIA MCP Gateway as complementary: ARIA Shield for SPA routes and provider streaming/budgets; MCP Gateway for agent MCP routes.
 
 ## See also
 
 - CRUDService — Loopback MCP (no‑code tool catalogs)
-- ARIA Shield — Agent‑aware enforcement at the boundary (for agent traffic)
+- ARIA Shield — Provider Proxy and MCP Gateway product family (agent and provider traffic)
 
 
 

@@ -18,8 +18,8 @@ EmpowerNow ARIA is the Identity Fabric and Self‑Driving Workflows platform for
 ## Components
 - IdP — Agent Passports
 - PDP — AuthZEN + Membership PIP
-- ARIA Gateway (MCP PEP)
-- BFF Spending Control
+- ARIA MCP Gateway (MCP PEP)
+- ARIA Shield (formerly BFF)
 - Tool Registry
 - Receipt Vault
 - Orchestration — Self‑Driving Workflows

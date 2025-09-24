@@ -1,7 +1,7 @@
-# Product — BFF: Spending Control for AI Providers
+# Product — ARIA Shield (formerly BFF)
 
 ## Overview
-The ARIA BFF is a drop‑in replacement for your existing provider proxy that upgrades runtime control without changing the external API surface (e.g., `/chat/completions`). It consumes PDP constraints, enforces caps while streaming, and settles receipts on completion.
+ARIA Shield (formerly BFF) is a drop‑in replacement for your existing provider proxy that upgrades runtime control without changing the external API surface (e.g., `/chat/completions`). It consumes PDP constraints, enforces caps while streaming, and settles receipts on completion.
 
 ## Stream‑time enforcement
 - Live token/output caps from PDP (`tokens.max_output`, `tokens.max_stream`) guide the streaming loop
@@ -19,7 +19,7 @@ The ARIA BFF is a drop‑in replacement for your existing provider proxy that up
 
 ## Interoperability
 - Compatible with multiple providers; constraints come from the PDP, not provider‑specific configuration
-- Works alongside the ARIA Gateway; both emit receipts to the Receipt Vault
+- Works alongside the ARIA MCP Gateway; both emit receipts to the Receipt Vault
 
 CTAs: See streaming caps → View 402 behavior → Read receipts guide
 

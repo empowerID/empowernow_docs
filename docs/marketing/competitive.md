@@ -9,7 +9,7 @@ Authorization (OPA/Cedar):
 
 Authentication (Auth0/Okta):
 
-- Zero‑token BFF model; CAEP across services; self‑host option; integrated PDP for consistent authZ at the edge
+- Zero‑token ARIA Shield model; CAEP across services; self‑host option; integrated PDP for consistent authZ at the edge
 
 Automation (Zapier/Make/n8n):
 
@@ -26,10 +26,10 @@ Automation (Zapier/Make/n8n):
   - Clear alignment with OpenID AuthZEN and PEP↔PDP model; credible standards advocacy
   - Developer‑friendly API and cloud‑managed offering; strong story for app‑level externalized authZ
 - Risks/constraints vs our Fabric:
-  - Focused on PDP, not a full identity fabric (no BFF/session termination pattern, no Studios, no automation/inventory plane)
+  - Focused on PDP, not a full identity fabric (no ARIA Shield/session termination pattern, no Studios, no automation/inventory plane)
   - Operational surface limited to authorization; broader observability/CAEP coverage varies by integration
 - Where we win:
-  - End‑to‑end, PDP‑guarded platform (Studios, BFF, Automation/Inventory) with zero‑token SPAs and CAEP/analytics by default
+  - End‑to‑end, PDP‑guarded platform (Studios, ARIA Shield, Automation/Inventory) with zero‑token SPAs and CAEP/analytics by default
   - Runtime module activation and plugin model across UI, not only service‑side decisions
 
 ### Cerbos (open‑source PDP + Cerbos Hub)
@@ -39,11 +39,11 @@ Automation (Zapier/Make/n8n):
   - Proven open‑source footprint; fast to embed; familiar ABAC/RBAC policy model; good developer tooling
   - Self‑host + managed options; success stories and partner ecosystem
 - Risks/constraints vs our Fabric:
-  - Emphasis on PDP, not AuthZEN interop positioning across the board; no BFF/session termination or UI runtime model
+  - Emphasis on PDP, not AuthZEN interop positioning across the board; no ARIA Shield/session termination or UI runtime model
   - Analytics, CAEP‑style events, and hybrid connectivity depend on customer assembly
 - Where we win:
   - Standards‑first (AuthZEN) across the fabric with built‑in CAEP/observability and hybrid connectivity patterns
-  - Unified Studios + BFF + Data plane with policy gates on every call
+  - Unified Studios + ARIA Shield + Data plane with policy gates on every call
 
 ### Permit.io (AuthZ as a Service)
 
@@ -53,7 +53,7 @@ Automation (Zapier/Make/n8n):
   - Bridges RBAC→ABAC use cases for app teams
 - Risks/constraints vs our Fabric:
   - Vendor‑managed control plane introduces lock‑in concerns for some enterprises
-  - Not a fabric: lacks BFF, Studios, automation/inventory, and end‑to‑end observability out of the box
+  - Not a fabric: lacks ARIA Shield, Studios, automation/inventory, and end‑to‑end observability out of the box
 - Where we win:
   - Composable, self‑hostable or SaaS fabric that standardizes AuthN/AuthZ/Automation with evidence (events/metrics/traces)
 
@@ -65,7 +65,7 @@ Automation (Zapier/Make/n8n):
   - Clear thought leadership on centralized authorization
 - Risks/constraints vs our Fabric:
   - Historically XACML‑centric estates can be complex to operate and modernize for cloud‑native
-  - Not a full identity fabric; lacks our BFF pattern, Studios, real‑time UI runtime and plugin model
+  - Not a full identity fabric; lacks our ARIA Shield pattern, Studios, real‑time UI runtime and plugin model
 - Where we win:
   - Modern, standards‑driven AuthZEN across UI and service calls, with zero‑token SPAs and policy‑guarded automation
 
@@ -78,10 +78,10 @@ Automation (Zapier/Make/n8n):
   - Strong standards posture (OIDC/OAuth; often FAPI‑aligned) and security credibility
   - Enterprise‑grade IdP feature set; good developer docs
 - Risks/constraints vs our Fabric:
-  - IdP‑first scope; customer must assemble PDP, BFF, CAEP, automation/inventory to reach “fabric” outcome
+  - IdP‑first scope; customer must assemble PDP, ARIA Shield, CAEP, automation/inventory to reach “fabric” outcome
   - No unified Studios or runtime UI activation
 - Where we win:
-  - Identity Fabric that unifies IdP+BFF+PDP+Automation/Inventory with built‑in eventing/analytics and UI runtime
+  - Identity Fabric that unifies IdP+ARIA Shield+PDP+Automation/Inventory with built‑in eventing/analytics and UI runtime
 
 ### Curity Token Handler (SPA security)
 
@@ -90,11 +90,11 @@ Automation (Zapier/Make/n8n):
   - Plug‑and‑play with popular API gateways; follows OAuth best practices for browser apps (separates web vs API concerns via agent/proxy)
   - Reduces SPA auth complexity; mitigates token exfiltration/XSS via HTTP‑only cookies
   - Can be deployed without a firewall‑protected backend per their positioning
-- Constraints vs our Fabric/BFF (based on the product page’s scope):
+- Constraints vs our Fabric/ARIA Shield (based on the product page’s scope):
   - Cookie→token translation happens at the API gateway; the page does not describe per‑endpoint, business‑context PDP mapping
   - The page does not highlight structured business audit streams or detailed authorization metrics
 - Where we win:
-  - Application‑aware BFF behind Traefik with centralized PDP per‑route mapping (resource/action/id), SSE pre‑checks, per‑service token brokering, and enterprise observability (Kafka `AUTHZ_DECISION`, Prometheus). See: `services/bff/explanation/bff_gateway.md`, `services/bff/explanation/bff_gateway_technical.md`
+  - Application‑aware ARIA Shield behind Traefik with centralized PDP per‑route mapping (resource/action/id), SSE pre‑checks, per‑service token brokering, and enterprise observability (Kafka `AUTHZ_DECISION`, Prometheus). See: `services/bff/explanation/bff_gateway.md`, `services/bff/explanation/bff_gateway_technical.md`
 
 ### Okta (Workforce/Customer Identity Cloud)
 
@@ -104,9 +104,9 @@ Automation (Zapier/Make/n8n):
   - Strong admin UX and ecosystem; fast time‑to‑value for SaaS SSO/MFA
 - Risks/constraints vs our Fabric:
   - No standardized OpenID AuthZEN decision API; app‑level authorization often baked into apps or via proprietary policy layers
-  - Limited zero‑token SPA story (browser tokens) without a BFF; CAEP/Shared‑Signals‑style eventing not first‑class across services
+  - Limited zero‑token SPA story (browser tokens) without ARIA Shield; CAEP/Shared‑Signals‑style eventing not first‑class across services
 - Where we win:
-  - Standards‑first PDP (AuthZEN) enforced at the BFF on every call, zero‑token SPAs, and event‑native analytics; composable with any IdP
+  - Standards‑first PDP (AuthZEN) enforced at ARIA Shield on every call, zero‑token SPAs, and event‑native analytics; composable with any IdP
 
 ### Ping Identity (PingFederate/PingAuthorize)
 
@@ -116,9 +116,9 @@ Automation (Zapier/Make/n8n):
   - AI‑assisted threat detection (PingIntelligence)
 - Risks/constraints vs our Fabric:
   - PDP is product‑specific; no explicit OpenID AuthZEN decision API standard surfaced end‑to‑end
-  - Not a full fabric with BFF session termination and runtime UI/plugin model
+  - Not a full fabric with ARIA Shield session termination and runtime UI/plugin model
 - Where we win:
-  - AuthZEN decision API across the stack, BFF‑enforced policy at every hop, CAEP‑style events, and Studios for rapid, policy‑guarded delivery
+  - AuthZEN decision API across the stack, ARIA Shield‑enforced policy at every hop, CAEP‑style events, and Studios for rapid, policy‑guarded delivery
 
 ### Microsoft Entra ID (formerly Azure AD)
 
@@ -128,9 +128,9 @@ Automation (Zapier/Make/n8n):
   - Tight integration with Microsoft ecosystem, good admin and compliance tooling
 - Risks/constraints vs our Fabric:
   - Conditional Access is IdP‑tier policy; no standardized PDP for application/service decisions (AuthZEN) out of the box
-  - Requires customer assembly for CAEP‑style events across non‑Microsoft services and for BFF zero‑token SPA pattern
+  - Requires customer assembly for CAEP‑style events across non‑Microsoft services and for ARIA Shield zero‑token SPA pattern
 - Where we win:
-  - Vendor‑agnostic fabric with standardized PDP/AuthZEN, BFF session termination, CAEP‑style events, and automation/inventory guarded by policy
+  - Vendor‑agnostic fabric with standardized PDP/AuthZEN, ARIA Shield session termination, CAEP‑style events, and automation/inventory guarded by policy
 
 ## Automation competitors (no‑code/low‑code workflows)
 
@@ -169,7 +169,7 @@ Automation (Zapier/Make/n8n):
   - No native AuthZEN PDP gate, DPoP, or CAEP out of the box; security posture depends on assembly
   - Requires teams to curate observability, approvals, and governance patterns
 - Where we win:
-  - Opinionated enterprise guardrails (policy‑gated nodes, CAEP, OTEL) and unified BFF/Studios surface for safe execution at scale
+  - Opinionated enterprise guardrails (policy‑gated nodes, CAEP, OTEL) and unified ARIA Shield/Studios surface for safe execution at scale
 
 ---
 
@@ -187,10 +187,10 @@ Automation (Zapier/Make/n8n):
   - Assembly & complexity: silos and heavy customization to stitch governance with runtime policy enforcement and modern app patterns. Sources: [Common Clarity](https://www.common-clarity.org/blog/the-proven-vs-the-emerging/)
   - Real‑time and runtime: slower feedback loops; limited real‑time CAEP‑style eventing and PDP decisions at the application edge
   - Hybrid execution: deeper on‑prem connectivity and low‑latency runtime policy often require additional platforms
-  - Cloud posture: even with “cloud IGA,” broader fabric needs (BFF, PDP/AuthZEN, observability, automation) are outside core IGA scope
+  - Cloud posture: even with “cloud IGA,” broader fabric needs (ARIA Shield, PDP/AuthZEN, observability, automation) are outside core IGA scope
 
 - Our Identity Fabric differentiation:
-  - Standards‑first PDP/AuthZEN at the BFF on every call, with zero‑token SPAs and Shared‑Signals/CAEP‑style events
+  - Standards‑first PDP/AuthZEN at ARIA Shield on every call, with zero‑token SPAs and Shared‑Signals/CAEP‑style events
   - Built‑in Automation/Inventory guarded by policy, hybrid connectivity via Azure Relay patterns, and first‑class observability (OTEL/Prom/Graf/Loki/Jaeger)
   - Composable with any IdP/IGA: treat SailPoint/Saviynt as governance sources of truth while the fabric enforces runtime policy and provides evidence (events/metrics/traces)
 
@@ -198,5 +198,5 @@ Automation (Zapier/Make/n8n):
 
 Notes
 
-- We should expect continued consolidation and convergence on OpenID AuthZEN semantics and discovery. Competitors in PDP will strengthen interop stories rapidly; our advantage is a provable end‑to‑end fabric with BFF‑mediated zero‑token SPAs, Studios, and CAEP/observability baked in.
+- We should expect continued consolidation and convergence on OpenID AuthZEN semantics and discovery. Competitors in PDP will strengthen interop stories rapidly; our advantage is a provable end‑to‑end fabric with ARIA Shield‑mediated zero‑token SPAs, Studios, and CAEP/observability baked in.
 - Keep this honest: for app‑only teams that “just need decisions,” a specialized PDP (Aserto/Cerbos/Permit.io) can be the fastest path. Our differentiation matters when buyers want one control plane for AuthN+AuthZ+Automation+Inventory with runtime UI, hybrid connectivity, and measurable evidence.

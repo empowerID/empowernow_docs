@@ -19,6 +19,6 @@ What to read next:
 
 ## Headline differentiator: Experience App
 
-The Experience app is our unified, PDP‑aware end‑user portal. It turns the Identity Fabric into a live product surface with runtime module activation (via `/api/configs/ui` + SSE), a CSP‑safe plugin model, and a zero‑token SPA pattern through the BFF. Start here for the story we want to tell externally: `marketing/experience-app`.
+The Experience app is our unified, PDP‑aware end‑user portal. It turns the Identity Fabric into a live product surface with runtime module activation (via `/api/configs/ui` + SSE), a CSP‑safe plugin model, and a zero‑token SPA pattern through ARIA Shield. Start here for the story we want to tell externally: `marketing/experience-app`.
 
 

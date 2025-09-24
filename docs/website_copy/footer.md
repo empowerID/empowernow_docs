@@ -4,8 +4,8 @@ Product
 - Overview
 - IdP — Agent Passports
 - PDP — AuthZEN + Membership PIP
-- ARIA Gateway (MCP PEP)
-- BFF Spending Control
+- ARIA MCP Gateway (MCP PEP)
+- ARIA Shield (formerly BFF)
 - Tool Registry
 - Receipt Vault
 - Orchestration — Self‑Driving Workflows
@@ -27,8 +27,8 @@ Resources
 Docs
 - Quickstart
 - API — PDP (/access/v1/evaluation)
-- API — MCP Gateway (/mcp/`{tool}`)
-- API — BFF (/chat/completions)
+- API — ARIA MCP Gateway (/mcp/`{tool}`)
+- API — ARIA Shield (/chat/completions)
 - API — Tool Registry (/tools/`{id}`)
 - API — Receipt Vault
 - IdP Identity Chaining

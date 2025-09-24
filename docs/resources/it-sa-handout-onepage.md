@@ -6,7 +6,7 @@ description: Print‑friendly one‑pager for EmpowerNow — Identity & Authoriz
 
 ### Secure every human, service, and AI agent with one Identity & Authorization Fabric
 
-- What it is: One fabric that enforces the same policy for APIs, apps, and AI agents: ARIA Shield (gateway), Authentication, Authorization, Automation Studio, and Inventory.
+- What it is: One fabric that enforces the same policy for APIs, apps, and AI agents: ARIA Shield (Provider Proxy + MCP Gateway), Authentication, Authorization, Automation Studio, and Inventory.
 
 ### Why it matters
 - Real‑time authorization on every API/tool/model call

@@ -52,3 +52,59 @@ Validation & consumers
 See also
 - Settings & flags: `services/pdp/reference/settings-flags.md`
 
+
+## Inbound CDC and cache invalidation
+
+Certain upstream change events should be consumed to keep PDP caches fresh. When these topics are observed for a subject, evict EPS for that subject across all applications; on revoke/expire, also apply hard‑evict to suppress LKG reuse temporarily.
+
+Topics (examples):
+- `delegates_to.created`, `delegates_to.updated`, `delegates_to.revoked`
+- `delegation.add`, `delegation.update`, `delegation.revoke`, `delegation.expire`
+- `policy_ref.added`, `policy_ref.removed`
+- Role/edge changes: `identity.belongs_to*`, `controlled_by*`
+
+Actions:
+- Evict: subject‑wide EPS → `eps:{subject_arn}:*`
+- On revoke/expire: mark hard‑evict for the subject to disable LKG for a TTL window
+
+See also
+- Caching layers and keys: `services/pdp/explanation/performance_caching.md`
+
+### Sequence (example)
+
+```mermaid
+sequenceDiagram
+  participant Prov as Provisioner/IdP/CRUD
+  participant CDC as Topic (delegation.*, policy_ref.*, identity.edges)
+  participant PDP as PDP CDC Subscriber
+  participant EPS as EPS Cache (L1/L2)
+  participant HE as Hard‑Evict
+
+  Prov->>CDC: delegates_to.created / delegation.add
+  PDP->>EPS: evict_subject_all_apps(subject_arn)
+  Note over EPS: Removes eps:{subject}:* from L1 and L2
+
+  Prov->>CDC: delegation.revoke / delegates_to.revoked
+  PDP->>EPS: evict_subject_all_apps(subject_arn)
+  PDP->>HE: mark_subject_all_apps(subject_arn)
+  Note over HE: Temporarily disables LKG reuse
+```
+
+## Event schemas (selected)
+
+### delegation.add
+
+```json
+{
+  "event_type": "delegation.add",
+  "subject": "auth:identity:tenant:delegator",
+  "correlation_id": "uuid",
+  "data": {
+    "delegator_id": "auth:identity:tenant:delegator",
+    "delegate_id": "auth:identity:tenant:delegate",
+    "capabilities": ["identity_chain:act_on_behalf_of"]
+  }
+}
+```
+
+Consumers: the PDP CDC subscriber evicts EPS for `subject` across all apps; on revoke/expire events it also marks Hard‑Evict to disable LKG.

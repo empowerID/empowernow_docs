@@ -8,7 +8,7 @@ Provable AI guardrails that cap spend, stop data leaks, and pass audit — witho
   - Spend governance for GenAI: budgets pre‑gate + stream‑time settle + receipts → predictable costs
   - Agent/tool safety: schema pins, egress control, parameter allowlists → prevent breakage/exfiltration
   - Audit‑ready operations: signed, hash‑chained receipts → faster audits and RCA
-- Why us: Application‑aware enforcement at the edges that matter (ARIA Gateway for tools, BFF for SPAs/LLMs), policy on every call (AuthZEN PDP), and evidence by default (receipts, metrics, events)
+- Why us: Application‑aware enforcement at the edges that matter (ARIA MCP Gateway for tools, ARIA Shield for SPAs/LLMs), policy on every call (AuthZEN PDP), and evidence by default (receipts, metrics, events)
 
 Learn more: `services/bff/explanation/bff_gateway.md`, `services/bff/explanation/bff_gateway_technical.md`, `services/aria-shield/receipt-chains.md`
 
@@ -21,8 +21,8 @@ Reference: [Ping Agentic AI Identity](https://www.pingidentity.com/en/solution/a
 
 ## Our solution — Identity Fabric for Agentic AI
 - Application‑aware enforcement:
-  - `ARIA Gateway` is the PEP at the agent→tool boundary; terminates requests, enforces policy, and emits receipts.
-  - `BFF` secures SPAs/LLM calls with zero‑token sessions, per‑service token brokering, PDP authorization, and stream‑time enforcement.
+- `ARIA MCP Gateway` is the PEP at the agent→tool boundary; terminates requests, enforces policy, and emits receipts.
+- `ARIA Shield` secures SPAs/LLM calls with zero‑token sessions, per‑service token brokering, PDP authorization, and stream‑time enforcement.
 - Policy on every call: Central PDP (OpenID AuthZEN) evaluates resource/action/id with fail‑secure behavior on NoMapping.
 - Zero‑token SPAs: HTTP‑only session cookies; tokens never reach the browser.
 - Provable outcomes: Structured Kafka business logs and hash‑chained receipts; Prometheus metrics with dashboards/alerts.
@@ -51,8 +51,8 @@ See: `services/bff/explanation/bff_gateway.md`, `services/bff/explanation/overvi
 - See: `services/bff/explanation/bff_gateway_technical.md`, `services/aria-shield/receipt-chains.md`
 
 ## How it works
-- Tools: Agent → `ARIA Gateway` → PDP → Tool Registry checks → Tool → Receipt Vault (signed receipts)
-- LLMs: UI/Agent → `BFF` → PDP → Provider (SSE) with stream‑time truncation and final settlement + receipt
+- Tools: Agent → `ARIA MCP Gateway` → PDP → Tool Registry checks → Tool → Receipt Vault (signed receipts)
+- LLMs: UI/Agent → `ARIA Shield` → PDP → Provider (SSE) with stream‑time truncation and final settlement + receipt
 
 See sequence diagrams and details: `services/bff/explanation/bff_gateway.md`
 
@@ -73,8 +73,8 @@ graph TB
   end
 
   subgraph DataPlane
-    ARIA["ARIA Gateway (MCP-aware PEP)"]
-    BFF["LLM BFF (preflight/stream/settle)"]
+    ARIA["ARIA MCP Gateway (MCP-aware PEP)"]
+    BFF["ARIA Shield (preflight/stream/settle)"]
     Tools["MCP Tools / HTTP APIs"]
     LLMs["Model Providers"]
   end
@@ -130,7 +130,7 @@ See: `services/bff/explanation/bff_gateway_technical.md`, `services/aria-shield/
 ## Roadmap & next
 ### Shipped
 - IdP token exchange (passports, schema pins, optional plan contracts)
-- `ARIA Gateway` PEP for tools; `BFF` stream‑time enforcement for LLMs
+- `ARIA MCP Gateway` PEP for tools; `ARIA Shield` stream‑time enforcement for LLMs
 - PDP constraints/obligations; Membership PIP integration
 - Receipt Vault; Analytics (receipt‑centric ingest); PDP‑led budgets (enforce)
 
@@ -149,7 +149,7 @@ See: `services/bff/explanation/bff_gateway_technical.md`, `services/aria-shield/
 
 ## See also
 - BFF product: `website_copy/product_bff.md`
-- ARIA Gateway product: `website_copy/product_gateway.md`
+- ARIA MCP Gateway product: `website_copy/product_gateway.md`
 - Technical: `services/bff/explanation/bff_gateway.md`, `services/bff/explanation/bff_gateway_technical.md`
 - Competitive: `marketing/competitive.md`
 

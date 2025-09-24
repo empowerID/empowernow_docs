@@ -17,7 +17,7 @@ Standards: AuthZEN · OAuth Token Exchange (RFC 8693) · RAR (RFC 9396) · DPoP 
 - Orchestration (Self‑Driving Workflows): No‑code agent tools and Self‑Driving Workflows with zero‑shot execution. LLM‑native Next Path Generation, node‑centric decisions, AI‑native Mermaid diagrams, and enhanced responses that guide agents safely.
 
 ## Architecture Snapshot
-IdP issues ARIA Passports (RAR, plan JWS, schema pins, optional DPoP) → ARIA Gateway/BFF enforce constraints at runtime and call tools → PDP (AuthZEN) returns decision + constraints/obligations, enriched by Membership graph → Receipt Vault signs and chains receipts → Tool Registry serves schema version/hash with rollout windows.
+IdP issues ARIA Passports (RAR, plan JWS, schema pins, optional DPoP) → ARIA MCP Gateway / ARIA Shield Provider Proxy enforce constraints at runtime and call tools/providers → PDP (AuthZEN) returns decision + constraints/obligations, enriched by Membership graph → Receipt Vault signs and chains receipts → Tool Registry serves schema version/hash with rollout windows.
 
 Why it matters: A standard PEP/PDP contract (AuthZEN) with graph‑backed context and boundary enforcement creates consistent, auditable control over agent actions across tools and providers.
 

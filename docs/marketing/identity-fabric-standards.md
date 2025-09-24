@@ -16,7 +16,7 @@ What “vendor‑agnostic” really means:
 How EmpowerNow meets (and raises) the bar:
 
 - Authorization: OpenID AuthZEN‑compliant PDP with batch evaluation and explainability
-- Authentication: OIDC provider with WebAuthn/passkeys; BFF session termination—no browser tokens
+- Authentication: OIDC provider with WebAuthn/passkeys; ARIA Shield session termination—no browser tokens
 - Automation: All node calls PDP‑authorized; DPoP proof and CAEP events per call
 - Inventory: No‑code ingestion with PDP‑gated deltas; dry‑run safety; YAML policies
 - Events & Analytics: Kafka topics for authn/authz/business events; ClickHouse analytics; OTEL/Prometheus/Loki/Jaeger
@@ -25,7 +25,7 @@ How EmpowerNow meets (and raises) the bar:
 Competitive context (how others use “fabric”):
 
 - Many vendors market “fabric” but ship closed schemas or gateway‑only models; limited AuthZEN/CAEP support and token handling in the browser
-- Our proof is in public docs/code: BFF ForwardAuth model, AuthZEN API reference, CAEP‑style eventing, SDKs in Python/TS, and self‑hostable services
+- Our proof is in public docs/code: ARIA Shield ForwardAuth model, AuthZEN API reference, CAEP‑style eventing, SDKs in Python/TS, and self‑hostable services
 
 Buyer‑oriented value:
 
@@ -38,15 +38,14 @@ Proof checklist (use in RFPs and evaluations):
 
 - AuthZ API is OpenID AuthZEN with discovery document
 - IdP issues tokens via OIDC with PKCE/PAR/JARM; supports DPoP or mTLS
-- BFF pattern eliminates browser token exposure; ForwardAuth documented
+- ARIA Shield pattern eliminates browser token exposure; ForwardAuth documented
 - CAEP/Shared‑Signals‑style events emitted for authn/authz and consumed by Kafka/analytics
 - OTEL traces, Prometheus metrics, Loki logs, Grafana/Jaeger dashboards provided
 - Hybrid connectivity via Azure Relay; reference architectures published
-- Self‑managed and SaaS options; no mandatory proprietary data plane
 
 ## Assurance pack (evidence & where to look)
 
-- BFF controls and posture
+- ARIA Shield controls and posture
   - Security model: ../services/bff/explanation/security-model.md
   - Session binding & CSRF: ../services/bff/reference/session-binding-csrf.md
   - Edge ForwardAuth: ../services/bff/reference/traefik-forwardauth.md
@@ -62,8 +61,8 @@ Proof checklist (use in RFPs and evaluations):
   - Configure PDP mapping: ../services/bff/how-to/configure-pdp.md
   - PDP cache tuning: ../services/bff/how-to/pdp-cache-tuning.md
 - Authentication and token lifecycle
-  - BFF + IdP OAuth (E2E): ../services/bff/reference/bff-idp-oauth-e2e.md
-  - Key/secret rotation (BFF): ../services/bff/how-to/secret-rotation.md
+  - ARIA Shield + IdP OAuth (E2E): ../services/bff/reference/bff-idp-oauth-e2e.md
+  - Key/secret rotation (ARIA Shield): ../services/bff/how-to/secret-rotation.md
   - Switch token auth methods safely: ../services/bff/how-to/switch-auth-methods.md
   - mTLS design (CRUD): ../services/crud-service/reference/mtls_design.md
 - Operations
@@ -76,8 +75,8 @@ Related persona guide: ../personas/security/intro.md
 
 | Control (NIST-ish) | Where implemented | Evidence docs |
 | --- | --- | --- |
-| Access enforcement (AC‑3) | PDP decision at BFF on every call | ../services/bff/reference/pdp-reference.md, ../services/bff/how-to/configure-pdp.md |
-| Identification & authn (IA‑2) | OIDC at IdP; BFF session; no browser tokens | ../services/bff/reference/bff-idp-oauth-e2e.md, ../services/bff/explanation/security-model.md |
+| Access enforcement (AC‑3) | PDP decision at ARIA Shield on every call | ../services/bff/reference/pdp-reference.md, ../services/bff/how-to/configure-pdp.md |
+| Identification & authn (IA‑2) | OIDC at IdP; ARIA Shield session; no browser tokens | ../services/bff/reference/bff-idp-oauth-e2e.md, ../services/bff/explanation/security-model.md |
 | Session authenticity (SC‑23) | Session binding + CSRF | ../services/bff/reference/session-binding-csrf.md |
 | Transmission protection (SC‑8) | TLS, FIPS crypto, FAPI/DPoP/mTLS | ../services/bff/reference/fips-140-3.md, ../services/bff/reference/fapi-support.md, ../services/crud-service/reference/mtls_design.md |
 | Audit generation (AU‑12) | Structured logs, events, metrics | ../services/bff/reference/logging-events.md, ../services/bff/reference/observability.md, ../services/bff/reference/health-metrics.md |

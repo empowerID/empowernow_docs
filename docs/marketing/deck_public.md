@@ -5,7 +5,7 @@ description: Executive overview and canonical links. Technical details live in t
 
 ## TL;DR
 - Govern AI agents with seven controls: identity, capability, plan, context, attestation, behavior, receipts.
-- Enforce at the edges that matter: ARIA Gateway (MCP PEP) and BFF (provider proxy) with a central PDP.
+- Enforce at the edges that matter: ARIA MCP Gateway (MCP PEP) and ARIA Shield (provider proxy) with a central PDP.
 - Prove outcomes with signed, hash‑chained receipts and structured audit.
 
 ## What this page is
@@ -19,12 +19,12 @@ A concise, public‑safe narrative with canonical links. The deep technical deta
 ## How it works (at a glance)
 - IdP issues Passports (RAR + ARIA extensions) for user‑bound agents.
 - PDP evaluates AuthZEN requests and returns constraints/obligations.
-- ARIA Gateway and BFF enforce constraints before tools/providers execute.
+- ARIA MCP Gateway and ARIA Shield enforce constraints before tools/providers execute.
 - Receipt Vault signs/anchors receipts for audit and analytics.
 
 ## See also (canonical docs)
 - Gateway (MCP PEP): `/docs/website_copy/product_gateway`
-- BFF (provider proxy): `/docs/website_copy/product_bff`
+- ARIA Shield (provider proxy): `/docs/website_copy/product_bff`
 - PDP overview: `/docs/website_copy/product_pdp` and flags: `/docs/services/pdp/reference/settings-flags`
 - Budgets: `/docs/services/pdp/reference/effective-budgets`
 - Controls reference: `/docs/services/aria-shield/reference/controls`

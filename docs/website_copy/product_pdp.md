@@ -74,3 +74,4 @@ CTAs: View evaluation examples · See Membership PIP · Read the operator/merge 
 - Operator/merge model: `services/pdp/explanation/*`
 - Effective budgets: `services/pdp/reference/effective-budgets.md`
 - Membership: `services/membership/reference/schema-and-endpoints.md`
+ - PDP performance & caching: `services/pdp/explanation/performance_caching.md`
