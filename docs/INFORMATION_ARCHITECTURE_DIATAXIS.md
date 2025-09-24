@@ -55,6 +55,11 @@ Canonical index: `services/crud-service/index.md`
 - Actions:
   - Consolidate MCP configuration tables under `reference/*`; link from how‑tos.
   - Mark PDFs/internal docs as internal; ensure public pages link without copying content.
+  - Add approvals content:
+    - Explanation: `services/crud-service/explanation/approvals-overview.md`
+    - How‑to: `services/crud-service/how-to/approver-resolvers.md`, `services/crud-service/how-to/synonyms-and-refresh.md`
+    - Reference: `services/crud-service/reference/approval-tasks-and-apis.md`
+    - Operations: `services/crud-service/operations/approvals-operations.md`
 
 ---
 

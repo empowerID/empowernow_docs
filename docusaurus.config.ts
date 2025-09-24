@@ -55,6 +55,7 @@ const config: Config = {
           // Only include known content trees; exclude everything else by default
           include: [
             '*.{md,mdx}',
+            'approvals/**/*.{md,mdx}',
             'services/**/*.{md,mdx}',
             'website_copy/**/*.{md,mdx}',
             'marketing/**/*.{md,mdx}',
