@@ -20,6 +20,45 @@ class ApproverResolver:
 
 Return shape of `resolve_approvers` includes `allowed_approvers`.
 
+### PDPSubjectSearchResolver (config schema)
+
+```yaml
+pdp:
+  base_url: string
+  auth:
+    type: "client_credentials" | "bearer" | "none"
+    token_url?: string
+    client_id?: string
+    client_secret?: string
+    scope?: string
+    bearer_token?: string
+  timeouts_sec?: number
+  retries?: number
+action:
+  name: string | string[]
+  mode?: "any" | "all"
+resource:
+  type: string
+  id?: string
+  filter?: object
+  from_context?: string
+subject_filter?: object
+normalize:
+  provider?: string
+  enforce_canonical_arns?: boolean
+limits:
+  page_size?: number
+  max_results?: number
+validate:
+  strategy?: "membership" | "pdp_evaluate" | "none"
+  evaluation_action?: string
+```
+
+Endpoints used
+
+- `POST /access/v1/search/subject` → list of user ids allowed for action/resource
+- `POST /access/v1/evaluation` → per-user decision for validation (optional)
+
 ### Decision synonyms
 
 File: `config/approval_synonyms.yaml`

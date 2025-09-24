@@ -49,7 +49,7 @@ Overlaps: `bff_gateway.md` appears in both explanation and website product pages
 - Explanation/how‑to/reference/tutorials present. Secrets folder contains internal docs and PDFs.
   - Approvals (new):
     - Explanation: `services/crud-service/explanation/approvals-overview.md`
-    - How‑to: `services/crud-service/how-to/approver-resolvers.md`, `services/crud-service/how-to/synonyms-and-refresh.md`
+    - How‑to: `services/crud-service/how-to/approver-resolvers.md` (includes PDPSubjectSearchResolver), `services/crud-service/how-to/synonyms-and-refresh.md`
     - Reference: `services/crud-service/reference/approval-tasks-and-apis.md`
     - Operations: `services/crud-service/operations/approvals-operations.md`
 

@@ -57,7 +57,7 @@ Canonical index: `services/crud-service/index.md`
   - Mark PDFs/internal docs as internal; ensure public pages link without copying content.
   - Add approvals content:
     - Explanation: `services/crud-service/explanation/approvals-overview.md`
-    - How‑to: `services/crud-service/how-to/approver-resolvers.md`, `services/crud-service/how-to/synonyms-and-refresh.md`
+    - How‑to: `services/crud-service/how-to/approver-resolvers.md` (incl. PDPSubjectSearchResolver), `services/crud-service/how-to/synonyms-and-refresh.md`
     - Reference: `services/crud-service/reference/approval-tasks-and-apis.md`
     - Operations: `services/crud-service/operations/approvals-operations.md`
 

@@ -15,12 +15,15 @@ sequenceDiagram
   participant WF as Workflow Engine
   participant PL as Plugin Loader
   participant AR as Approver Resolver
+  participant PDP as PDP (AuthZEN)
   participant DB as Task Store (Postgres)
   participant UI as Approvals UI/API Client
 
   WF->>PL: Load resolver from approval_config
   PL-->>WF: Resolver instance
   WF->>AR: resolve_approvers(approval_config, context)
+  AR->>PDP: POST /access/v1/search/subject
+  PDP-->>AR: {results: [user ids]}
   AR-->>WF: {allowed_approvers: [...]} 
   WF->>DB: Create APPROVAL task (approval_data)
   WF->>WF: Set WAITING; expose task_id
@@ -28,6 +31,8 @@ sequenceDiagram
   UI->>DB: POST /tasks/{id}/complete (decision)
   WF->>PL: Load resolver (validate)
   WF->>AR: validate_approver(user, approval_data)
+  AR->>PDP: POST /access/v1/evaluation (optional)
+  PDP-->>AR: {decision: true|false}
   AR-->>WF: True/False
   WF->>WF: Record vote; check thresholds
   WF-->>WF: COMPLETE or remain WAITING
