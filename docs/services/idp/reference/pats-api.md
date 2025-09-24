@@ -2,7 +2,7 @@
 title: PATs API Reference
 ---
 
-## POST /api/idp/oauth/pat
+## POST `/api/idp/oauth/pat`
 Issue a PAT; returns raw token once.
 
 Body
@@ -14,15 +14,15 @@ Response
 { "pat_id":"pat_01H...","token":"aria_pat_...","prefix":"aria_pat_ab12cd34","expires_at":"..." }
 ```
 
-## GET /api/idp/oauth/pat
+## GET `/api/idp/oauth/pat`
 List PATs for a user.
 
 Query: `tenant_id=...&user_arn=...`
 
-## DELETE /api/idp/oauth/pat/{pat_id}
+## DELETE `/api/idp/oauth/pat/{pat_id}`
 Revoke a PAT.
 
-## POST /api/idp/oauth/pat/introspect
+## POST `/api/idp/oauth/pat/introspect`
 Introspect a PAT (service‑to‑service).
 
 Body: `{ "token": "aria_pat_..." }`
