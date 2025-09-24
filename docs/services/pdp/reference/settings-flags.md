@@ -59,6 +59,7 @@ Use this page as the canonical source for PDP runtime settings and feature flags
 | Most‑restrictive merge | PDP_MERGE_STRICT | Intersection/minimum behavior for constraints |
 | Default app scope | PDP_DEFAULT_APPLICATION | Fallback app key if missing |
 | Failure policy | PDP_FAILURE_POLICY | fail_closed or fail_open |
+| Budget mode | PDP_BUDGET_MODE | enforce | advisory | off |
 
 ## Security and integrity
 
@@ -94,6 +95,7 @@ Use this page as the canonical source for PDP runtime settings and feature flags
 <span id="env-PDP_MERGE_STRICT"></span>
 <span id="env-PDP_DEFAULT_APPLICATION"></span>
 <span id="env-PDP_FAILURE_POLICY"></span>
+<span id="env-PDP_BUDGET_MODE"></span>
 <span id="env-PDP_REQUIRE_SCHEMA_HASH"></span>
 <span id="env-PDP_EMIT_RECEIPT_DEFAULT"></span>
 <span id="env-PDP_JWT_SIGNING_KEY"></span>
@@ -105,3 +107,26 @@ Use this page as the canonical source for PDP runtime settings and feature flags
 Notes
 - Keep flags minimal in how‑tos; link to this page for authoritative definitions.
 - For budgets semantics and 402 mapping, see `./effective-budgets.md`.
+
+---
+
+## BudgetState PIP (Analytics) configuration
+
+| Setting | Env var | Notes |
+|---|---|---|
+| Analytics base URL | ANALYTICS_URL | e.g., `http://analytics:8090` |
+| Budget PIP cache TTL (ms) | PDP_BUDGET_CACHE_TTL_MS | Small in‑process TTL (e.g., 1500) |
+| Budget PIP timeout (ms) | PDP_BUDGET_TIMEOUT_MS | Overall PIP upper bound (e.g., 500) |
+| Budget failure policy | PDP_BUDGET_FAILURE_POLICY | `fail_closed` (deny) or `fail_open` (dev/test) |
+
+```mermaid
+flowchart LR
+  PDP -->|BudgetState| ANA[Analytics /budgets/state]
+  ANA --> PDP
+```
+
+### Anchor index
+<span id="env-ANALYTICS_URL"></span>
+<span id="env-PDP_BUDGET_CACHE_TTL_MS"></span>
+<span id="env-PDP_BUDGET_TIMEOUT_MS"></span>
+<span id="env-PDP_BUDGET_FAILURE_POLICY"></span>

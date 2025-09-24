@@ -30,6 +30,12 @@ Structure
   - streaming: boolean (SSE)
   - preserve_path: boolean
   - internal: optional boolean; when true, dispatches to internal handlers (no HTTP loopback)
+  - token_policy: optional per‑route token rules
+    - mode: `session_passthrough` | `service_token` | `on_behalf_of`
+    - service: logical service key (maps to registry defaults)
+    - audience: override audience (validated against allow‑list)
+    - scopes: override scopes
+    - cache_ttl: optional hint (seconds)
 
 Mental model
 
@@ -55,6 +61,34 @@ Canonical prefixes
 - AuthZEN preserved paths are proxied as-is: `/access/v1/evaluation` and `/access/v1/evaluations` (paths preserved to PDP)
 
 Inline PDP mapping examples
+Token policy examples
+
+```yaml
+- id: idp-admin
+  path: /api/idp/admin/*
+  target_service: idp_service
+  upstream_path: /api/admin/{path}
+  methods: [GET, POST]
+  auth: session
+  token_policy:
+    mode: service_token
+    service: idp_admin
+    audience: https://idp.../api/admin
+    scopes: [admin.api]
+
+- id: idp-user-v1
+  path: /api/idp/v1/*
+  target_service: idp_service
+  upstream_path: /api/v1/{path}
+  methods: [GET]
+  auth: session
+  token_policy:
+    mode: on_behalf_of
+    service: idp_user
+    audience: https://idp.../api/v1
+    scopes: [user:read]
+```
+
 
 ```yaml
 - id: "crud-tasks-exact"

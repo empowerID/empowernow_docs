@@ -12,6 +12,7 @@ What to read next:
 - Configure and deploy: `/docs/services/pdp/how-to/configure`
 - Observe decisions and health: `/docs/services/pdp/how-to/observability`
 - Runbooks (403s, degraded, error spikes): `/docs/services/pdp/how-to/runbooks`
+- Kafka & eventing topics: `/docs/services/pdp/reference/kafka-eventing`
 
 Backend internals:
 

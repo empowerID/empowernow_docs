@@ -34,5 +34,5 @@ CTAs: See pin format → Read admin guide → View ETag example
 
 ## See also
 - Tool schema attestation: `services/aria-shield/tool-schema-attestation.md`
-- BFF proxy YAML reference: `services/bff/reference/proxy-yaml-reference.md`
-- PDP schema pins usage: `services/pdp/explanation/*`
+- Tool Registry (service index): `services/tool-registry/index.md`
+- Tool Registry APIs (read/admin): `services/tool-registry/reference/api.md`

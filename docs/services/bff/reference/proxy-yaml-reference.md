@@ -9,7 +9,7 @@ Source of truth: `ServiceConfigs/BFF/config/routes.yaml` (mounted to `/app/confi
 
 What it defines
 - Service entries and upstreams
-- Route entries with: `id`, `path`, `target_service`, `upstream_path`, `methods`, `auth` (`none|session|bearer`), `streaming`, `preserve_path`, `authz` (`none|pdp`), optional inline `authz_map`
+- Route entries with: `id`, `path`, `target_service`, `upstream_path`, `methods`, `auth` (`none|session|bearer`), `streaming`, `preserve_path`, `authz` (`none|pdp`), optional inline `authz_map`, optional `token_policy` (per‑route upstream token mode)
 
 Usage from SPA
 - Call `/api/...` on the BFF domain. Example:
@@ -82,5 +82,21 @@ Authorization semantics
 - Define per-method mapping with `authz_map` or rely on legacy `pdp.yaml` until migrated
 
 See also: `../how-to/bff-config-routing`, `./routes-reference`, `./pdp-mapping`
+
+Token policy (per route)
+
+```yaml
+- id: idp-admin
+  path: /api/idp/admin/*
+  target_service: idp_service
+  upstream_path: /api/admin/{path}
+  methods: [GET, POST]
+  auth: session
+  token_policy:
+    mode: service_token               # session_passthrough | service_token | on_behalf_of
+    service: idp_admin
+    audience: https://idp.../api/admin
+    scopes: [admin.api]
+```
 
 

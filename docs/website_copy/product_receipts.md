@@ -28,6 +28,7 @@ CTAs: See receipt schema → View chain example → Read anchoring options
 
 ## See also
 - Receipt chains (technical): `services/aria-shield/receipt-chains.md`
-- BFF receipts: `services/bff/reference/logging-reference.md`
-- PDP context in receipts: `services/pdp/explanation/*`
+- Analytics (receipt‑centric): `services/analytics/explanation/receipt-centric-architecture.md`
+- Analytics APIs (ingest, budgets, hot state): `services/analytics/reference/runtime-apis.md`
+- BFF enforcement (receipts, budgets): `services/bff/reference/BFF_PDP_Enforcement.md`
 - Controls reference: `services/aria-shield/reference/controls.md`
