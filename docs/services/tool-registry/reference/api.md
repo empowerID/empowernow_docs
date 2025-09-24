@@ -4,7 +4,7 @@ title: API Reference
 
 ## Read (hot path)
 
-### GET /tools/{tool_id}
+### GET `/tools/{tool_id}`
 Response
 ```
 { "id":"...","endpoint":"...","schema_version":"1.2.0","schema_hash":"sha256:...",
@@ -13,21 +13,21 @@ Response
 ```
 Headers: `ETag`, `Cache-Control: public, max-age=60`
 
-### HEAD /tools/{tool_id}
+### HEAD `/tools/{tool_id}`
 Returns headers only.
 
-### GET /tools/{tool_id}/pin or /pins/{tool_id}
+### GET `/tools/{tool_id}/pin` or `/pins/{tool_id}`
 Minimal pin payload; add `?format=jws` to receive a compact JWS when signing is configured.
 
 ## Admin (write)
 
-### POST /tools
+### POST `/tools`
 Create a tool.
 
-### POST /tools/{tool_id}/versions
+### POST `/tools/{tool_id}/versions`
 Add a schema version; `activate` flips CURRENT.
 
-### POST /tools/{tool_id}/rollout
+### POST `/tools/{tool_id}/rollout`
 Flip CURRENT to a specific `schema_version` atomically.
 
 ## Security & caching

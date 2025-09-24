@@ -20,7 +20,7 @@ Body
 ```
 Response: `{ "ok": true, "persisted": N }`
 
-## GET /journal/v1/coach/{user_id}/latest
+## GET `/journal/v1/coach/{user_id}/latest`
 Response: `{ "period_date":"YYYY-MM-DD","summary":"...","tips":[],"skills":[] }`
 
 ### See also
