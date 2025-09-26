@@ -1,0 +1,22 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Microsoft Entra ID Governance",
+  "url": "https://learn.microsoft.com/entra/id-governance/",
+  "category": "CRUD",
+  "positioning": "Identity governance with lifecycle workflows, access reviews, and entitlement management.",
+  "capabilities": ["approvals", "connectors"],
+  "claims": ["lifecycle_workflows", "access_reviews"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://learn.microsoft.com/entra/id-governance/identity-governance-overview"},
+    {"type": "url", "href": "https://learn.microsoft.com/entra/id-governance/automate-lifecycle-workflows-overview"}
+  ],
+  "gapsVsEmpowerNow": ["no_idempotent_workflows", "no_receipt_chain", "no_streaming_ops_slo"],
+  "traps_counters": {"trap": "Governance workflows handle reliability", "counter": "Ops plane adds idempotency, SLOs, and receipts for audit"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Strong governance features; runtime idempotent execution model not exposed"
+}
+
+

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Cloudflare AI Gateway",
+  "url": "https://developers.cloudflare.com/ai-gateway/",
+  "category": "MCPGateway",
+  "positioning": "Gateway for AI traffic with routing, caching, observability, and controls.",
+  "capabilities": ["params_allowlist"],
+  "claims": ["time_to_value", "observability"],
+  "pricing_signals": "usage",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://developers.cloudflare.com/ai-gateway/"},
+    {"type": "url", "href": "https://developers.cloudflare.com/ai-gateway/features/token-management/"},
+    {"type": "url", "href": "https://developers.cloudflare.com/ai-gateway/features/caching/"}
+  ],
+  "gapsVsEmpowerNow": ["no_plan_jws", "no_schema_pins", "no_receipt_chain", "no_budget_enforcement_402"],
+  "traps_counters": {"trap": "We log tool calls", "counter": "Need pre-execution enforcement + pins + receipts + budget semantics"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Based on public developers page; verify detailed enforcement semantics during POC"
+}
+
+

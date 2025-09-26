@@ -11,11 +11,24 @@ description: Studios and Platform components overview for the marketing site.
 - Inventory Studio — no‑code connectors, PDP‑gated deltas, visual diffs. Learn more: /docs/marketing/identity-fabric-standards
 - Governance Studio (EA) — reviews, SoD, certifications (EA). Learn more: /docs/marketing/fabric-plus-iga
 
+## Products
+
+- IdP — Agent Passports
+- PDP — AuthZEN
+- ARIA MCP Gateway (MCP PEP)
+- ARIA Shield (formerly BFF)
+- CRUD Service
+- Data Collector
+- VDS (Virtual Directory Server) — Coming soon
+
+## Bundled components
+- Tool Registry (with ARIA MCP Gateway)
+- Membership Graph (with PDP)
+- Receipt Vault (included Pro/Enterprise)
+
 ## Platform
 
 - Experience App — unified, PDP‑aware portal. Learn more: /docs/marketing/experience-app
-- BFF — zero‑token SPAs, ForwardAuth, session termination. Learn more: /docs/services/bff/explanation/bff_gateway
-- PDP (AuthZEN) — interoperable decisions at runtime. Learn more: /docs/marketing/authzen-pdp
 - NowConnect — hybrid connectivity (Azure Relay patterns). Learn more: /docs/services/nowconnect/index
 - Observability & Analytics — OTEL/Prometheus/Loki/Grafana/Jaeger, Kafka→ClickHouse. Learn more: /docs/marketing/identity-fabric-standards
 

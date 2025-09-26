@@ -1,0 +1,5 @@
+{"timestamp":"2025-09-26T15:00:00Z","event":"page_view","page":"/docs/website_copy/product_bff.md","product":"shield","persona":"Developers","stage":"consideration","utm_campaign":"shield","utm_persona":"dev","utm_stage":"consideration"}
+{"timestamp":"2025-09-26T15:01:12Z","event":"cta_click","cta_level":"medium","page":"/docs/website_copy/product_bff.md","product":"shield","persona":"Developers","stage":"consideration","utm_campaign":"shield","utm_persona":"dev","utm_stage":"consideration","metadata":{"cta":"Watch 5-min demo"}}
+{"timestamp":"2025-09-26T15:02:10Z","event":"demo_start","page":"/resources/demo","product":"shield","persona":"Developers","stage":"evaluation","utm_campaign":"shield","utm_persona":"dev","utm_stage":"evaluation"}
+
+

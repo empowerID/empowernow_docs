@@ -1,3 +1,13 @@
+---
+lastReviewed: 2025-09-26
+claims:
+  - { key: pairwise_id, proof: { type: reference, ref: "/docs/services/idp/index.md" } }
+  - { key: token_exchange_rfc8693, proof: { type: reference, ref: "/docs/services/idp/reference/token-exchange.md" } }
+  - { key: rar_rfc9396, proof: { type: reference, ref: "/docs/services/idp/reference/token-exchange.md" } }
+  - { key: dpop_rfc9449, proof: { type: reference, ref: "/docs/services/idp/index.md#dpop" } }
+  - { key: schema_pins, proof: { type: reference, ref: "/docs/services/tool-registry/index.md" } }
+  - { key: receipt_chain, proof: { type: reference, ref: "/docs/services/aria-shield/reference/receipts.md" } }
+---
 # Product — IdP: Agent Passports
 
 ## Overview

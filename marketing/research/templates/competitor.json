@@ -1,0 +1,21 @@
+{
+  "$schema": "../taxonomy/claims.schema.json",
+  "name": "<Vendor / Product>",
+  "url": "https://example.com",
+  "category": "IdP",
+  "positioning": "one line positioning",
+  "capabilities": ["schema_pins"],
+  "claims": ["spend_reduction"],
+  "pricing_signals": "enterprise|usage|custom",
+  "customers_mentioned": ["Acme"],
+  "evidence": [
+    {"type": "quote", "text": "≤25 words …", "href": "https://example.com/docs"}
+  ],
+  "gapsVsEmpowerNow": ["no_cryptographic_receipts"],
+  "traps_counters": {"trap": "…", "counter": "…"},
+  "lastFetched": "2025-09-25",
+  "stalenessDays": 60,
+  "notes": "release cadence, analyst mentions, support model"
+}
+
+

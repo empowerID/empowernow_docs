@@ -1,0 +1,24 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Make (Integromat)",
+  "url": "https://www.make.com",
+  "category": "CRUD",
+  "positioning": "iPaaS with strong flow control: error handlers, incomplete executions, routers/iterators.",
+  "capabilities": ["connectors", "eventing", "retries_slo"],
+  "claims": ["operational_efficiency", "time_to_value"],
+  "pricing_signals": "tiers",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://help.make.com/overview-of-error-handling"},
+    {"type": "url", "href": "https://help.make.com/how-to-handle-errors"},
+    {"type": "quote", "text": "Respond to new market demands thanks to 2,500+ pre-built apps.", "href": "https://www.make.com/en"},
+    {"type": "quote", "text": "Explore over 2700 apps.", "href": "https://www.make.com/en/integrations"}
+  ],
+  "gapsVsEmpowerNow": ["no_idempotent_workflows", "no_policy_linked_approvals", "no_receipt_chain"],
+  "traps_counters": {"trap": "Error handlers = transactional guarantees", "counter": "CRUD Service provides idempotency keys, approvals binding, and receipts across steps"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Strong runtime controls; approvals/governance and receipts are not first-class"
+}
+
+

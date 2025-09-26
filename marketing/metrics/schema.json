@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://empowernow.dev/schemas/marketing.metrics.schema.json",
+  "title": "Marketing Event Schema",
+  "type": "object",
+  "required": ["timestamp", "event", "page", "product", "persona", "stage"],
+  "properties": {
+    "timestamp": { "type": "string", "format": "date-time" },
+    "event": { "type": "string", "enum": ["page_view", "cta_click", "demo_start", "demo_complete", "quickstart_click", "link_out"] },
+    "cta_level": { "type": "string", "enum": ["soft", "medium", "hard"], "description": "For cta_click" },
+    "page": { "type": "string" },
+    "product": { "type": "string", "enum": ["idp", "pdp", "crud", "collector", "shield", "mcp", "na"] },
+    "persona": { "type": "string" },
+    "stage": { "type": "string", "enum": ["awareness", "consideration", "evaluation", "na"] },
+    "utm_campaign": { "type": "string" },
+    "utm_persona": { "type": "string" },
+    "utm_stage": { "type": "string" },
+    "referrer": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  }
+}
+
+

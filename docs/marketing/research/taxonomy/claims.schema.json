@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://empowernow.dev/schemas/claims.schema.json",
+  "title": "Claims and Capabilities Evidence Schema",
+  "type": "object",
+  "required": ["name", "url", "category", "capabilities", "claims", "evidence", "lastFetched", "stalenessDays"],
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "url": { "type": "string", "format": "uri" },
+    "category": { "type": "string", "enum": ["IdP", "PDP", "CRUD", "DataCollector", "Shield", "MCPGateway", "Adjacent"] },
+    "positioning": { "type": "string" },
+    "capabilities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "claims": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 0
+    },
+    "pricing_signals": { "type": "string" },
+    "customers_mentioned": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["type", "href"],
+        "properties": {
+          "type": { "type": "string", "enum": ["quote", "url", "image", "video"] },
+          "text": { "type": "string", "maxLength": 200 },
+          "href": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "gapsVsEmpowerNow": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "traps_counters": {
+      "type": "object",
+      "properties": {
+        "trap": { "type": "string" },
+        "counter": { "type": "string" }
+      },
+      "required": ["trap", "counter"]
+    },
+    "lastFetched": { "type": "string", "format": "date" },
+    "stalenessDays": { "type": "integer", "minimum": 1, "maximum": 365 },
+    "notes": { "type": "string" }
+  }
+}
+
+

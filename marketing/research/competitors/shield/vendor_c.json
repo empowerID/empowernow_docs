@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "NGINX (Gateway) + OIDC",
+  "url": "https://docs.nginx.com/nginx/",
+  "category": "Shield",
+  "positioning": "High‑performance gateway; secures apps via OIDC and reverse proxy patterns.",
+  "capabilities": ["pdp_mapping"],
+  "claims": ["api_gateway_security"],
+  "pricing_signals": "oss|enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-oauth-authentication/"},
+    {"type": "url", "href": "https://docs.nginx.com/"},
+    {"type": "url", "href": "https://docs.nginx.com/nginx/admin-guide/security-controls/controlling-access-proxied-http/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_receipt_chain", "no_stream_caps"],
+  "traps_counters": {"trap": "OIDC at the gateway equals governance", "counter": "Budgets/402 + stream caps + receipts provide provable runtime enforcement"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Generic OIDC/OAuth config; verify SPA patterns and runtime controls in POC"
+}
+
+

@@ -1,0 +1,21 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "One Identity Manager — Discovery & Inventory",
+  "url": "https://www.oneidentity.com/products/identity-manager/",
+  "category": "DataCollector",
+  "positioning": "IGA platform with identity data discovery, provisioning, and governance features.",
+  "capabilities": ["normalization"],
+  "claims": ["governance"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://support.oneidentity.com/technical-documents/identity-manager"}
+  ],
+  "gapsVsEmpowerNow": ["freshness_sla_unspecified", "lineage_unspecified", "no_clickhouse_kafka"],
+  "traps_counters": {"trap": "Governance platforms provide sufficient analytics", "counter": "Near‑real‑time freshness and lineage improve policy accuracy and audit speed"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Docs hub cited; confirm freshness/lineage mechanisms during POC"
+}
+
+

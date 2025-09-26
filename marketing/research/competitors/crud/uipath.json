@@ -1,0 +1,34 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "UiPath",
+  "url": "https://www.uipath.com",
+  "category": "CRUD",
+  "positioning": "RPA/enterprise automation with Orchestrator queues, Action Center approvals, Integration Service connectors/triggers.",
+  "capabilities": ["idempotent_workflows", "approvals", "retries_slo", "connectors", "eventing"],
+  "claims": ["operational_efficiency", "time_to_value"],
+  "pricing_signals": "enterprise|tiers",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://docs.uipath.com/orchestrator/standalone/2023.10/user-guide/managing-queues-in-orchestrator"},
+    {"type": "url", "href": "https://docs.uipath.com/orchestrator/automation-cloud/latest/user-guide/about-queues-and-transactions"},
+    {"type": "url", "href": "https://docs.uipath.com/orchestrator/automation-cloud/latest/user-guide/monitoring-queues"},
+    {"type": "url", "href": "https://docs.uipath.com/orchestrator/automation-cloud/latest/user-guide/creating-a-time-trigger"},
+    {"type": "url", "href": "https://www.uipath.com/platform/agentic-automation/human-in-the-loop"},
+    {"type": "url", "href": "https://docs.uipath.com/integration-service/automation-cloud/latest/user-guide/triggers"},
+    {"type": "url", "href": "https://docs.uipath.com/marketplace/automation-cloud/latest/user-guide/integration-service-connectors-overview"}
+  ],
+  "gapsVsEmpowerNow": [
+    "no_policy_linked_approvals",
+    "no_receipt_chain",
+    "cross_workflow_idempotency_unspecified"
+  ],
+  "traps_counters": {
+    "trap": "RPA queues + retries solve reliability for identity ops",
+    "counter": "CRUD Service adds cross-system idempotency with policy-bound approvals and cryptographic receipts"
+  },
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Queues support Unique Reference dedupe; Action Center provides human-in-the-loop approvals; Integration Service offers connectors and triggers."
+}
+
+

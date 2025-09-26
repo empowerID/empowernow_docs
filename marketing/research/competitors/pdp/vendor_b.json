@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Cerbos",
+  "url": "https://cerbos.dev/",
+  "category": "PDP",
+  "positioning": "ABAC/RBAC authorization engine with policies in YAML and APIs for decisions.",
+  "capabilities": [],
+  "claims": ["time_to_value"],
+  "pricing_signals": "oss|enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://docs.cerbos.dev/"},
+    {"type": "quote", "text": "Authorisation as a service for your applications.", "href": "https://cerbos.dev/"},
+    {"type": "url", "href": "https://docs.cerbos.dev/cerbos/latest/policies/outputs.html"}
+  ],
+  "gapsVsEmpowerNow": ["no_authzen_contract", "no_conservative_merge", "no_obligations", "no_decision_ttl"],
+  "traps_counters": {"trap": "Union rules suffice", "counter": "Need conservative merge and standardized constraints/obligations"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Cerbos offers decision APIs; response envelope differs from AuthZEN"
+}
+
+

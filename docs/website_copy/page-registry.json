@@ -1,0 +1,121 @@
+{
+  "products": [
+    {
+      "key": "idp",
+      "title": "EmpowerNow IdP — Agent Passports",
+      "slug": "/product/idp",
+      "file": "product_idp.md",
+      "required_reference": [
+        "services/idp/index.md"
+      ],
+      "required_explanation": [
+        "services/idp/explanation/*"
+      ],
+      "required_links": [
+        "products.md",
+        "product_hub.md"
+      ],
+      "owners": ["Marketing", "Product"],
+      "lastReviewedMaxDays": 90
+    },
+    {
+      "key": "pdp",
+      "title": "EmpowerNow PDP — AuthZEN Decisions",
+      "slug": "/product/pdp",
+      "file": "product_pdp.md",
+      "required_reference": [
+        "services/pdp/index.md"
+      ],
+      "required_explanation": [
+        "services/pdp/explanation/*"
+      ],
+      "required_links": [
+        "products.md",
+        "product_hub.md"
+      ],
+      "owners": ["Marketing", "Product"],
+      "lastReviewedMaxDays": 90
+    },
+    {
+      "key": "crud",
+      "title": "EmpowerNow CRUD Service — Identity Operations",
+      "slug": "/product/crud-service",
+      "file": "product_crud-service.md",
+      "required_reference": [
+        "services/crud-service/index.md"
+      ],
+      "required_explanation": [
+        "services/crud-service/explanation/*"
+      ],
+      "required_links": [
+        "products.md",
+        "product_hub.md"
+      ],
+      "owners": ["Marketing", "Product"],
+      "lastReviewedMaxDays": 90
+    },
+    {
+      "key": "collector",
+      "title": "EmpowerNow Data Collector — Inventory & Usage",
+      "slug": "/product/data-collector",
+      "file": "product_data-collector.md",
+      "required_reference": [
+        "services/data-collector/index.md"
+      ],
+      "required_explanation": [
+        "services/data-collector/explanation/*"
+      ],
+      "required_links": [
+        "products.md",
+        "product_hub.md"
+      ],
+      "owners": ["Marketing", "Product"],
+      "lastReviewedMaxDays": 90
+    },
+    {
+      "key": "shield",
+      "title": "ARIA Shield — Zero-Token SPA & AI Gateway",
+      "slug": "/product/bff",
+      "file": "product_bff.md",
+      "required_reference": [
+        "services/aria-shield/index.md",
+        "services/bff/reference/settings-reference.md"
+      ],
+      "required_explanation": [
+        "services/aria-shield/explanation/*",
+        "services/bff/explanation/*"
+      ],
+      "required_links": [
+        "products.md",
+        "product_hub.md"
+      ],
+      "owners": ["Marketing", "Product"],
+      "lastReviewedMaxDays": 90
+    },
+    {
+      "key": "mcp",
+      "title": "ARIA MCP Gateway — Tool-Boundary Enforcement",
+      "slug": "/product/gateway",
+      "file": "product_gateway.md",
+      "required_reference": [
+        "services/bff/explanation/bff_gateway_technical.md"
+      ],
+      "required_explanation": [
+        "services/bff/explanation/bff_gateway.md"
+      ],
+      "required_links": [
+        "products.md",
+        "product_hub.md"
+      ],
+      "owners": ["Marketing", "Product"],
+      "lastReviewedMaxDays": 90
+    }
+  ],
+  "ci": {
+    "coverageRequiredKeys": ["idp", "pdp", "crud", "collector", "shield", "mcp"],
+    "noTablesInWebsiteCopy": true,
+    "requireClaimsProof": true
+  }
+}
+
+

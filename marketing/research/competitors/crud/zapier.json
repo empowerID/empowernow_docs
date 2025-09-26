@@ -1,0 +1,24 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Zapier",
+  "url": "https://zapier.com",
+  "category": "CRUD",
+  "positioning": "Large iPaaS catalog with triggers/actions and builder UX; broad app coverage.",
+  "capabilities": ["connectors", "eventing", "retries_slo"],
+  "claims": ["developer_velocity", "time_to_value"],
+  "pricing_signals": "tiers",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://help.zapier.com/hc/en-us/articles/8496260269965-How-Zapier-handles-duplicate-data-in-Zaps"},
+    {"type": "url", "href": "https://docs.zapier.com/platform/build/deduplication"},
+    {"type": "quote", "text": "Zapier connects more than 8,000 apps.", "href": "https://zapier.com/apps"},
+    {"type": "quote", "text": "One connection point, 8,000 apps, 30,000+ actions: Zapier MCP…", "href": "https://zapier.com/mcp"}
+  ],
+  "gapsVsEmpowerNow": ["no_idempotent_workflows", "no_policy_linked_approvals", "no_receipt_chain"],
+  "traps_counters": {"trap": "Trigger dedupe = end-to-end idempotency", "counter": "CRUD Service ensures transactional idempotency across steps + receipts"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Trigger dedupe prevents duplicate runs; action-level idempotency varies by app"
+}
+
+

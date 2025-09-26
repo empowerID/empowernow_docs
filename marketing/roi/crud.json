@@ -1,0 +1,26 @@
+{
+  "$schema": "./roi.schema.json",
+  "product": "crud",
+  "inputs": {
+    "monthly_calls": 50000,
+    "avg_cost_per_call": 0.0,
+    "rogue_call_rate_pct": 0,
+    "audit_events_per_year": 4,
+    "engineer_hours_controls_per_month": 80,
+    "breach_risk_baseline_pct": 5
+  },
+  "assumptions": {
+    "spend_reduction_pct": 0,
+    "audit_hours_saved_per_event": 20,
+    "risk_reduction_pct": 10,
+    "implementation_weeks": 6,
+    "license_cost_per_month": 2500,
+    "infra_cost_per_month": 400
+  },
+  "evidence_links": [
+    "https://example.com/case/approvals-audit",
+    "https://example.com/blog/idempotency"
+  ]
+}
+
+

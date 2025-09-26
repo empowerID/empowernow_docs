@@ -1,0 +1,26 @@
+{
+  "$schema": "./roi.schema.json",
+  "product": "pdp",
+  "inputs": {
+    "monthly_calls": 200000,
+    "avg_cost_per_call": 0.0,
+    "rogue_call_rate_pct": 0.5,
+    "audit_events_per_year": 8,
+    "engineer_hours_controls_per_month": 60,
+    "breach_risk_baseline_pct": 8
+  },
+  "assumptions": {
+    "spend_reduction_pct": 0,
+    "audit_hours_saved_per_event": 30,
+    "risk_reduction_pct": 20,
+    "implementation_weeks": 6,
+    "license_cost_per_month": 4000,
+    "infra_cost_per_month": 600
+  },
+  "evidence_links": [
+    "https://example.com/reports/authz-drift",
+    "https://example.com/standards/authzen"
+  ]
+}
+
+

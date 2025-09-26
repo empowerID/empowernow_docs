@@ -1,0 +1,20 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Okta Customer Identity Cloud",
+  "url": "https://developer.okta.com/docs/",
+  "category": "IdP",
+  "positioning": "Cloud IdP with OAuth/OIDC, extensibility, and marketplace integrations.",
+  "capabilities": ["pairwise_id"],
+  "claims": ["developer_friendly", "marketplace"],
+  "pricing_signals": "tiers",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://developer.okta.com/docs/guides/"},
+    {"type": "url", "href": "https://developer.okta.com/docs/guides/implement-grant-type/"}
+  ],
+  "gapsVsEmpowerNow": ["token_exchange_rfc8693_unspecified", "rar_rfc9396_unspecified", "no_agent_passport_plan_pins", "no_receipt_chain"],
+  "traps_counters": {"trap": "Standard OIDC covers agent controls", "counter": "Agent Passports add plan JWS + schema pins + receipts for provable enforcement"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Conservative: TE/RAR support not asserted; validate during POC"
+}

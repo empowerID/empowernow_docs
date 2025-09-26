@@ -1,3 +1,12 @@
+---
+lastReviewed: 2025-09-26
+claims:
+  - { key: zero_token_spa, proof: { type: reference, ref: "/docs/services/aria-shield/explanation/zero-token.md" } }
+  - { key: budget_enforcement, proof: { type: reference, ref: "/docs/services/aria-shield/explanation/budgets.md" } }
+  - { key: 402_semantics, proof: { type: reference, ref: "/docs/services/pdp/reference/effective-budgets.md" } }
+  - { key: stream_caps, proof: { type: reference, ref: "/docs/services/bff/reference/streaming.md" } }
+  - { key: receipt_chain, proof: { type: reference, ref: "/docs/services/aria-shield/reference/receipts.md" } }
+---
 # Product — ARIA Shield (formerly BFF)
 
 ## Overview

@@ -1,0 +1,21 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Microsoft Entra ID",
+  "url": "https://learn.microsoft.com/entra/identity-platform/",
+  "category": "IdP",
+  "positioning": "Microsoft identity platform (OAuth/OIDC) for apps and APIs.",
+  "capabilities": ["dpop_rfc9449"],
+  "claims": ["enterprise_idp"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://learn.microsoft.com/entra/identity-platform/dpop-proof-of-possession"}
+  ],
+  "gapsVsEmpowerNow": ["no_agent_passport_plan_pins", "no_receipt_chain", "no_schema_pins"],
+  "traps_counters": {"trap": "Standard OAuth covers agent controls", "counter": "Agent Passports add plan JWS + schema pins + receipts for provable enforcement"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "DPoP doc cited; additional capabilities evaluated during POC"
+}
+
+

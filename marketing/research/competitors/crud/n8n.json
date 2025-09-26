@@ -1,0 +1,22 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "n8n",
+  "url": "https://n8n.io",
+  "category": "CRUD",
+  "positioning": "Open-source iPaaS/workflow automation with nodes, triggers, and HTTP integrations.",
+  "capabilities": ["connectors", "eventing", "retries_slo"],
+  "claims": ["developer_velocity", "time_to_value"],
+  "pricing_signals": "oss|cloud tiers",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "quote", "text": "n8n will retry the execution from the beginning rather than from the middle of your workflow.", "href": "https://community.n8n.io/t/multiple-retry-for-failed-workflow-execution/16056"},
+    {"type": "quote", "text": "We've built over 400 pre-configured integrations.", "href": "https://n8n.io/features/"}
+  ],
+  "gapsVsEmpowerNow": ["no_idempotent_workflows", "no_policy_linked_approvals", "no_receipt_chain"],
+  "traps_counters": {"trap": "Workflow retries ensure reliability", "counter": "CRUD Service adds idempotent operations, policy-linked approvals, and cryptographic receipts"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Whole-run retry typical; build dedupe/checkpoints manually; strong OSS adoption"
+}
+
+

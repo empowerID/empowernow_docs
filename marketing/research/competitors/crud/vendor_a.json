@@ -1,0 +1,22 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "SailPoint (Identity Security Cloud)",
+  "url": "https://www.sailpoint.com/solutions/identity-security/",
+  "category": "CRUD",
+  "positioning": "Enterprise identity security with automated lifecycle provisioning and access governance.",
+  "capabilities": ["connectors"],
+  "claims": ["automated_provisioning", "governance"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "quote", "text": "Automate lifecycle management to ensure the right access at the right time.", "href": "https://www.sailpoint.com/solutions/identity-security/"},
+    {"type": "url", "href": "https://documentation.sailpoint.com/"}
+  ],
+  "gapsVsEmpowerNow": ["no_idempotent_workflows", "no_receipt_chain", "no_policy_linked_approvals"],
+  "traps_counters": {"trap": "Provisioning platforms cover reliability", "counter": "Idempotency + receipts + policy‑linked approvals reduce MTTR and audit time"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Provisioning and governance focus; runtime idempotent ops model not first‑class"
+}
+
+

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Kong Gateway + OIDC/Plugins",
+  "url": "https://docs.konghq.com/gateway/",
+  "category": "Shield",
+  "positioning": "API gateway with OIDC and traffic control plugins; can secure SPAs via backend.",
+  "capabilities": ["pdp_mapping"],
+  "claims": ["api_gateway_security"],
+  "pricing_signals": "oss|enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://docs.konghq.com/hub/kong-inc/openid-connect/"},
+    {"type": "url", "href": "https://docs.konghq.com/gateway/latest/"},
+    {"type": "url", "href": "https://docs.konghq.com/hub/kong-inc/rate-limiting/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_receipt_chain", "no_stream_caps"],
+  "traps_counters": {"trap": "Gateway + OIDC equals runtime governance", "counter": "Budgets/402 + stream caps + receipts provide provable enforcement"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "General-purpose API gateway; governance controls differ from ARIA Shield"
+}
+
+

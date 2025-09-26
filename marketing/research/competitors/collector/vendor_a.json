@@ -1,0 +1,21 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "SailPoint — Discovery & Inventory",
+  "url": "https://www.sailpoint.com/solutions/identity-security/",
+  "category": "DataCollector",
+  "positioning": "IGA discovery and inventory for identity security and governance.",
+  "capabilities": ["freshness_sla", "normalization"],
+  "claims": ["audit_time_reduction"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://documentation.sailpoint.com/"}
+  ],
+  "gapsVsEmpowerNow": ["no_lineage", "no_clickhouse_kafka"],
+  "traps_counters": {"trap": "Daily sync is enough", "counter": "Policies and budgets need near‑real‑time freshness and lineage"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Docs hub cited; evaluate lineage freshness specifics in POC"
+}
+
+

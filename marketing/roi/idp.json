@@ -1,0 +1,26 @@
+{
+  "$schema": "./roi.schema.json",
+  "product": "idp",
+  "inputs": {
+    "monthly_calls": 100000,
+    "avg_cost_per_call": 0.002,
+    "rogue_call_rate_pct": 2,
+    "audit_events_per_year": 6,
+    "engineer_hours_controls_per_month": 40,
+    "breach_risk_baseline_pct": 12
+  },
+  "assumptions": {
+    "spend_reduction_pct": 10,
+    "audit_hours_saved_per_event": 25,
+    "risk_reduction_pct": 30,
+    "implementation_weeks": 4,
+    "license_cost_per_month": 3000,
+    "infra_cost_per_month": 500
+  },
+  "evidence_links": [
+    "https://example.com/reports/identity-key-risk",
+    "https://example.com/standards/rfc8693"
+  ]
+}
+
+

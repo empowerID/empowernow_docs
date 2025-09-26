@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Permit.io",
+  "url": "https://www.permit.io/",
+  "category": "PDP",
+  "positioning": "Authorization platform built on OPA/OPAL with policy management and SDKs.",
+  "capabilities": [],
+  "claims": ["time_to_value"],
+  "pricing_signals": "tiers",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://docs.permit.io/"},
+    {"type": "quote", "text": "Build authorization faster with Permit.io.", "href": "https://www.permit.io/"},
+    {"type": "url", "href": "https://docs.permit.io/cerbos/overview/"}
+  ],
+  "gapsVsEmpowerNow": ["no_authzen_contract", "no_obligations", "no_conservative_merge", "no_decision_ttl"],
+  "traps_counters": {"trap": "Managed OPA is enough", "counter": "Still lacks AuthZEN response envelope and conservative merge"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Focus on policy lifecycle; runtime contract differs from AuthZEN"
+}
+
+

@@ -1,0 +1,26 @@
+{
+  "$schema": "./roi.schema.json",
+  "product": "shield",
+  "inputs": {
+    "monthly_calls": 150000,
+    "avg_cost_per_call": 0.004,
+    "rogue_call_rate_pct": 3,
+    "audit_events_per_year": 6,
+    "engineer_hours_controls_per_month": 50,
+    "breach_risk_baseline_pct": 10
+  },
+  "assumptions": {
+    "spend_reduction_pct": 20,
+    "audit_hours_saved_per_event": 25,
+    "risk_reduction_pct": 25,
+    "implementation_weeks": 5,
+    "license_cost_per_month": 3500,
+    "infra_cost_per_month": 500
+  },
+  "evidence_links": [
+    "https://example.com/blog/budget-enforcement",
+    "https://example.com/docs/receipts"
+  ]
+}
+
+

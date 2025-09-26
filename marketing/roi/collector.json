@@ -1,0 +1,26 @@
+{
+  "$schema": "./roi.schema.json",
+  "product": "collector",
+  "inputs": {
+    "monthly_calls": 0,
+    "avg_cost_per_call": 0.0,
+    "rogue_call_rate_pct": 0,
+    "audit_events_per_year": 6,
+    "engineer_hours_controls_per_month": 30,
+    "breach_risk_baseline_pct": 6
+  },
+  "assumptions": {
+    "spend_reduction_pct": 5,
+    "audit_hours_saved_per_event": 15,
+    "risk_reduction_pct": 15,
+    "implementation_weeks": 4,
+    "license_cost_per_month": 2000,
+    "infra_cost_per_month": 300
+  },
+  "evidence_links": [
+    "https://example.com/blog/lineage-benefits",
+    "https://example.com/docs/freshness-sla"
+  ]
+}
+
+

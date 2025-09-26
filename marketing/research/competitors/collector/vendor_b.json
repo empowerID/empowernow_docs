@@ -1,0 +1,21 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Saviynt Identity Cloud — Discovery & Inventory",
+  "url": "https://saviynt.com/solutions/identity-governance/",
+  "category": "DataCollector",
+  "positioning": "IGA platform with discovery, analytics, and identity governance capabilities.",
+  "capabilities": ["freshness_sla", "normalization"],
+  "claims": ["governance_analytics"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://saviynt.com/solutions/identity-governance/"}
+  ],
+  "gapsVsEmpowerNow": ["no_clickhouse_kafka", "lineage_unspecified"],
+  "traps_counters": {"trap": "Governance analytics replaces freshness/lineage needs", "counter": "Policy accuracy and audit need near‑real‑time freshness and lineage"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Public solution page cited; verify lineage and freshness SLAs during POC"
+}
+
+

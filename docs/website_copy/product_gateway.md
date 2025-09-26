@@ -1,3 +1,12 @@
+---
+lastReviewed: 2025-09-26
+claims:
+  - { key: schema_pins, proof: { type: reference, ref: "/docs/services/bff/explanation/bff_gateway_technical.md" } }
+  - { key: plan_jws, proof: { type: reference, ref: "/docs/services/bff/explanation/bff_gateway.md" } }
+  - { key: params_allowlist, proof: { type: reference, ref: "/docs/services/bff/reference/routes-reference.md" } }
+  - { key: egress_allowlist, proof: { type: reference, ref: "/docs/services/bff/reference/routes-reference.md" } }
+  - { key: receipt_chain, proof: { type: reference, ref: "/docs/services/aria-shield/reference/receipts.md" } }
+---
 # Product — ARIA MCP Gateway (MCP PEP)
 
 ## Overview

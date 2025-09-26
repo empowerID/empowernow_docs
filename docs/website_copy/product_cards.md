@@ -17,17 +17,16 @@ ARIA Shield (formerly BFF)
 - Stream‑time token caps and leakage guards; 402 budget_exceeded behavior with receipts.
 - Provider‑compatible API surface for minimal app changes.
 
-Tool Registry
-- CURRENT/pin semantics with schema version/hash and rollout grace windows; ETag caching.
-- Optional signed pin JWS for integrity.
+CRUD Service
+- Workflow execution and service layer; policy‑guarded automation; resume/approvals.
 
-Receipt Vault
-- Signed, hash‑chained receipts with policy snapshot and params hash; optional KMS anchoring.
+Data Collector
+- No‑code connectors and inventory ingestion; PDP‑gated deltas; visual diffs.
 
-Orchestration — Self‑Driving Workflows
-- Zero‑shot execution, LLM‑native next paths, node‑centric decisions, AI‑native Mermaid diagrams.
-- Enhanced responses (ai_context, next_paths, node diagrams) and resumable flows.
+VDS (Virtual Directory Server) — Coming soon
+- Standards‑based virtual directory layer for directory consolidation and policy‑aware views.
 
-Membership Graph
-- Delegations, capabilities, budgets/max_steps, and SaaS eligibility in Neo4j.
-- Read‑only PIP endpoints used by IdP issuance and PDP decisions.
+Bundled components
+- Tool Registry (with ARIA MCP Gateway): CURRENT/pins with rollout windows
+- Membership Graph (with PDP): delegations, data_scope, step_up, identity_chain
+- Receipt Vault (Pro/Enterprise): signed, hash‑chained receipts

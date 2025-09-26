@@ -1,0 +1,26 @@
+{
+  "$schema": "./roi.schema.json",
+  "product": "mcp",
+  "inputs": {
+    "monthly_calls": 80000,
+    "avg_cost_per_call": 0.003,
+    "rogue_call_rate_pct": 4,
+    "audit_events_per_year": 5,
+    "engineer_hours_controls_per_month": 45,
+    "breach_risk_baseline_pct": 9
+  },
+  "assumptions": {
+    "spend_reduction_pct": 12,
+    "audit_hours_saved_per_event": 20,
+    "risk_reduction_pct": 20,
+    "implementation_weeks": 5,
+    "license_cost_per_month": 3200,
+    "infra_cost_per_month": 450
+  },
+  "evidence_links": [
+    "https://example.com/docs/schema-pins",
+    "https://example.com/docs/plan-jws"
+  ]
+}
+
+

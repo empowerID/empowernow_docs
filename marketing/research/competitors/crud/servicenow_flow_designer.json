@@ -1,0 +1,21 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "ServiceNow Flow Designer",
+  "url": "https://www.servicenow.com/docs",
+  "category": "CRUD",
+  "positioning": "Enterprise workflow engine with approvals, spokes, and retry policy for intermittent failures.",
+  "capabilities": ["approvals", "connectors", "eventing", "retries_slo"],
+  "claims": ["operational_efficiency"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "quote", "text": "Automatically retry failed requests when a step encounters an intermittent issue.", "href": "https://www.servicenow.com/docs/bundle/xanadu-build-workflows/page/administer/flow-designer/concept/retry-policy.html"}
+  ],
+  "gapsVsEmpowerNow": ["no_idempotent_workflows", "no_receipt_chain"],
+  "traps_counters": {"trap": "Per-step retries = reliability solved", "counter": "CRUD Service adds end-to-end idempotency and receipts for auditability"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Native approvals and retry; transactional idempotency depends on target systems"
+}
+
+

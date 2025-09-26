@@ -1,3 +1,12 @@
+---
+lastReviewed: 2025-09-26
+claims:
+  - { key: authzen_contract, proof: { type: reference, ref: "/docs/services/pdp/index.md" } }
+  - { key: conservative_merge, proof: { type: reference, ref: "/docs/services/pdp/explanation/merge-model.md" } }
+  - { key: obligations, proof: { type: reference, ref: "/docs/services/pdp/index.md" } }
+  - { key: pip_membership, proof: { type: reference, ref: "/docs/services/pdp/explanation/pip-membership.md" } }
+  - { key: ttl, proof: { type: reference, ref: "/docs/services/pdp/explanation/performance_caching.md" } }
+---
 # Product — PDP: AuthZEN + Membership PIP
 
 ## Overview

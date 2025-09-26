@@ -1,0 +1,22 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Curity Token Handler",
+  "url": "https://curity.io/product/token-handler/",
+  "category": "Shield",
+  "positioning": "Secures SPAs using HTTP-only cookies and an OAuth agent + API gateway proxy.",
+  "capabilities": ["pdp_mapping"],
+  "claims": ["spa_security"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://curity.io/product/token-handler/"},
+    {"type": "url", "href": "https://curity.io/resources/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_receipt_chain", "no_stream_caps"],
+  "traps_counters": {"trap": "SPA cookies alone are enough", "counter": "Budgets, streaming caps, and receipts provide provable runtime enforcement"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Product page cited; evaluate detailed feature set during POC"
+}
+
+

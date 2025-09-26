@@ -15,15 +15,19 @@ EmpowerNow ARIA is the Identity Fabric and Self‑Driving Workflows platform for
 - DPoP (RFC 9449) — optional proof‑of‑possession binding (`cnf.jkt`)
 - MCP — Model Context Protocol for agent↔tool interactions
 
-## Components
+## Products
 - IdP — Agent Passports
-- PDP — AuthZEN + Membership PIP
+- PDP — AuthZEN
 - ARIA MCP Gateway (MCP PEP)
 - ARIA Shield (formerly BFF)
-- Tool Registry
-- Receipt Vault
-- Orchestration — Self‑Driving Workflows
-- Membership Graph
+- CRUD Service
+- Data Collector
+- VDS (Virtual Directory Server) — Coming soon
+
+## Bundled components
+- Tool Registry (with ARIA MCP Gateway)
+- Membership Graph (with PDP)
+- Receipt Vault (included in Pro/Enterprise)
 
 ## Why ARIA (vs alternatives)
 - “AI gateways” focus on observability and cost estimation; ARIA enforces plan/budgets at runtime, before tools execute.

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Portkey",
+  "url": "https://www.portkey.ai/",
+  "category": "MCPGateway",
+  "positioning": "AI gateway/observability with routing, prompts, and evaluations.",
+  "capabilities": ["params_allowlist"],
+  "claims": ["observability", "routing"],
+  "pricing_signals": "tiers|usage",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://www.portkey.ai/docs"},
+    {"type": "url", "href": "https://www.portkey.ai/docs/sdk/introduction"},
+    {"type": "url", "href": "https://www.portkey.ai/docs/gateway/overview"}
+  ],
+  "gapsVsEmpowerNow": ["no_plan_jws", "no_schema_pins", "no_receipt_chain", "no_budget_enforcement_402"],
+  "traps_counters": {"trap": "Observability equals governance", "counter": "Pins, plan discipline, budgets, and receipts provide provable enforcement"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Docs hub cited; verify request shaping/enforcement depth in POC"
+}
+
+

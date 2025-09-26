@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://empowernow.dev/schemas/roi.schema.json",
+  "title": "ROI/TCO Model Schema",
+  "type": "object",
+  "required": ["product", "inputs", "assumptions"],
+  "properties": {
+    "product": { "type": "string", "enum": ["idp", "pdp", "crud", "collector", "shield", "mcp"] },
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "monthly_calls": { "type": "number", "minimum": 0 },
+        "avg_cost_per_call": { "type": "number", "minimum": 0 },
+        "rogue_call_rate_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "audit_events_per_year": { "type": "number", "minimum": 0 },
+        "engineer_hours_controls_per_month": { "type": "number", "minimum": 0 },
+        "breach_risk_baseline_pct": { "type": "number", "minimum": 0, "maximum": 100 }
+      },
+      "additionalProperties": true
+    },
+    "assumptions": {
+      "type": "object",
+      "properties": {
+        "spend_reduction_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "audit_hours_saved_per_event": { "type": "number", "minimum": 0 },
+        "risk_reduction_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "implementation_weeks": { "type": "number", "minimum": 0 },
+        "license_cost_per_month": { "type": "number", "minimum": 0 },
+        "infra_cost_per_month": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "evidence_links": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" }
+    }
+  }
+}
+
+

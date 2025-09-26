@@ -1,0 +1,22 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Aquera — Governance Aggregation Bridge",
+  "url": "https://aquera.com/governance-aggregation-bridge",
+  "category": "DataCollector",
+  "positioning": "Delta-based aggregation bridge that imports changed compliance/governance data from apps into identity governance platforms for faster aggregation.",
+  "capabilities": ["freshness_sla", "normalization"],
+  "claims": ["governance_analytics", "time_to_value"],
+  "pricing_signals": "saas",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "quote", "text": "The bridge detects account changes (deltas)... sends only the deltas to the identity governance platform for aggregation processing.", "href": "https://aquera.com/governance-aggregation-bridge"},
+    {"type": "quote", "text": "The account data includes all the attributes and entitlements needed to fully analyze the identity access governance and compliance posture.", "href": "https://aquera.com/governance-aggregation-bridge"}
+  ],
+  "gapsVsEmpowerNow": ["lineage_unspecified", "no_clickhouse_kafka", "inventory_graph_unspecified"],
+  "traps_counters": {"trap": "Delta import equals real-time governance", "counter": "Policy accuracy benefits from near-real-time freshness with explicit lineage and an inventory graph for decision enrichment"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Delta detection, multi-protocol ingest (file/JDBC/API/RPA) claimed; verify SLAs and lineage mechanisms during POC."
+}
+
+

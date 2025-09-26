@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "updated": "2025-09-26",
+  "capabilities": [
+    { "key": "zero_token_spa", "label": "Zero-Token SPA", "description": "No tokens in browser; backend-only tokens via BFF with httpOnly cookies." },
+    { "key": "budget_enforcement", "label": "Budget Enforcement", "description": "Pre-hold/settle budgets with idempotent call IDs; enforce spend limits in real time." },
+    { "key": "402_semantics", "label": "402 Semantics", "description": "Clear HTTP 402 behavior on budget exceed with deterministic UX and retry guidance." },
+    { "key": "stream_caps", "label": "Streaming Caps", "description": "Policy-enforced limits for output tokens/stream length with early stop." },
+    { "key": "pdp_mapping", "label": "PDP Route Mapping", "description": "Per-route mapping to policy decisions and constraint enforcement." },
+    { "key": "receipt_chain", "label": "Cryptographic Receipts", "description": "Signed, hash-chained receipts capturing policy and shape fingerprints." },
+    { "key": "schema_pins", "label": "Schema Pins", "description": "Pin tool schemas by version/hash with rollout grace windows and ETag-friendly reads." },
+    { "key": "plan_jws", "label": "Plan JWS Discipline", "description": "Per-step plan contracts (JWS) binding tool and parameter fingerprints." },
+    { "key": "params_allowlist", "label": "Params Allowlist", "description": "Allowlist of permitted parameters with normalized ingress validation." },
+    { "key": "egress_allowlist", "label": "Egress Allowlist", "description": "Allowlist of permitted outbound destinations/domains for tools." },
+    { "key": "authzen_contract", "label": "AuthZEN Contract", "description": "Standardized decision response with constraints, obligations, TTL, and versions." },
+    { "key": "conservative_merge", "label": "Conservative Merge", "description": "Intersect/minimum merge model across layers to prevent over-granting." },
+    { "key": "obligations", "label": "Obligations", "description": "Required actions returned with decisions (e.g., step-up MFA)." },
+    { "key": "ttl", "label": "Decision TTL", "description": "Time-to-live for decision caching and re-evaluation cadence." },
+    { "key": "pip_membership", "label": "Membership PIP", "description": "Decision enrichment from Membership graph: data-scope, capabilities, identity-chain eligibility." },
+    { "key": "pairwise_id", "label": "Pairwise Identity", "description": "Per-audience subject identifiers to prevent correlation and tighten scope." },
+    { "key": "token_exchange_rfc8693", "label": "OAuth Token Exchange", "description": "Issue agent Passports using OAuth Token Exchange (RFC 8693)." },
+    { "key": "rar_rfc9396", "label": "Rich Authorization Requests", "description": "Purpose-bound scopes via RAR (RFC 9396)." },
+    { "key": "dpop_rfc9449", "label": "DPoP", "description": "Proof-of-possession via Demonstration of Proof-of-Possession (RFC 9449)." },
+    { "key": "identity_chaining", "label": "Identity Chaining", "description": "Delegated/brokered identity chains with controlled issuance." },
+    { "key": "idempotent_workflows", "label": "Idempotent Workflows", "description": "Deterministic retries/dedup via event/correlation IDs across workflow steps." },
+    { "key": "approvals", "label": "Approvals", "description": "Multi-step approvals with policy-linked paths and auditability." },
+    { "key": "retries_slo", "label": "Retries & SLOs", "description": "Retry policies and service-level objectives for reliable operations." },
+    { "key": "connectors", "label": "Connectors", "description": "Catalog of integrations for identity, SaaS, and provider ecosystems." },
+    { "key": "eventing", "label": "Eventing", "description": "Event-first architecture emitting actionable events to analytics/ops." },
+    { "key": "freshness_sla", "label": "Freshness SLA", "description": "Timely data collection with SLA-backed freshness guarantees." },
+    { "key": "lineage", "label": "Lineage", "description": "Source→transform→sink lineage with timestamps and integrity markers." },
+    { "key": "normalization", "label": "Normalization", "description": "Canonical models across heterogeneous sources for policy accuracy." },
+    { "key": "inventory_graph", "label": "Inventory Graph", "description": "Graph model of identities, resources, and relationships for governance." },
+    { "key": "clickhouse_kafka", "label": "ClickHouse/Kafka", "description": "Scale-out analytics and streaming backbone for receipts/usage." }
+  ],
+  "business_claims": [
+    { "key": "audit_time_reduction", "label": "Audit Time Reduction", "unit": "hours", "description": "Hours saved preparing/responding to audits due to provable receipts and lineage." },
+    { "key": "spend_reduction", "label": "Spend Reduction", "unit": "% or $", "description": "Reduction in AI/provider spend via budgets and enforcement." },
+    { "key": "breach_risk_reduction", "label": "Breach Risk Reduction", "unit": "%", "description": "Modeled reduction in breach likelihood/impact from zero-token and policy enforcement." },
+    { "key": "time_to_value", "label": "Time to Value", "unit": "days", "description": "Days to initial value due to standards alignment and templates." },
+    { "key": "tco_reduction", "label": "TCO Reduction", "unit": "% or $", "description": "Total cost of ownership reduction across build/run due to unified fabric." }
+  ]
+}
+
+

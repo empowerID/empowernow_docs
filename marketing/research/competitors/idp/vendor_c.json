@@ -1,0 +1,21 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Auth0 by Okta",
+  "url": "https://auth0.com/",
+  "category": "IdP",
+  "positioning": "Identity platform with OAuth/OIDC, extensibility, and marketplace integrations.",
+  "capabilities": ["dpop_rfc9449"],
+  "claims": ["extensible_idp"],
+  "pricing_signals": "tiers",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://auth0.com/docs/secure/tokens/token-best-practices/dpop-proof-of-possession"}
+  ],
+  "gapsVsEmpowerNow": ["no_agent_passport_plan_pins", "no_receipt_chain"],
+  "traps_counters": {"trap": "Standard OIDC is enough", "counter": "Agent Passports add plan/pins and produce receipts for enforcement proof"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Auth0 DPoP docs cited; plan/pins/receipts are EmpowerNow differentiators"
+}
+
+

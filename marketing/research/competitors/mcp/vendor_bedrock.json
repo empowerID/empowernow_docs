@@ -1,0 +1,31 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Amazon Bedrock (AI Gateway/Controls) — Adjacent",
+  "url": "https://docs.aws.amazon.com/bedrock/",
+  "category": "Adjacent",
+  "positioning": "Managed foundation model platform with routing, guardrails, observability; adjacent to ARIA MCP Gateway/Shield scope.",
+  "capabilities": ["params_allowlist"],
+  "claims": ["time_to_value", "observability"],
+  "pricing_signals": "aws_metered",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html"},
+    {"type": "url", "href": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html"}
+  ],
+  "gapsVsEmpowerNow": [
+    "no_plan_jws",
+    "no_schema_pins",
+    "no_receipt_chain",
+    "no_budget_enforcement_402",
+    "no_tool_boundary_mcp_contract"
+  ],
+  "traps_counters": {
+    "trap": "Bedrock guardrails replace tool-bound enforcement",
+    "counter": "Guardrails are content filters; ARIA adds pre-execution pins, budgets (402), and cryptographic receipts at tool boundaries"
+  },
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "See source_content/________aria_versus_aws_bedrock.md for detailed comparison and prioritized gaps."
+}
+
+

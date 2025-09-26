@@ -1,0 +1,22 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Curity Identity Server",
+  "url": "https://curity.io/",
+  "category": "IdP",
+  "positioning": "Standards-focused Identity Server with OAuth/OIDC and advanced token features.",
+  "capabilities": ["pairwise_id", "token_exchange_rfc8693", "rar_rfc9396", "dpop_rfc9449"],
+  "claims": ["standards_alignment"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://curity.io/resources"},
+    {"type": "url", "href": "https://curity.io/resources/standards"}
+  ],
+  "gapsVsEmpowerNow": ["no_receipt_chain", "no_tool_schema_pins", "no_plan_jws"],
+  "traps_counters": {"trap": "Standards alone are sufficient", "counter": "Pins, plan discipline, and receipts add runtime integrity and audit"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "Curity strong on OAuth standards; evidence links to standards hub"
+}
+
+

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Open Policy Agent (OPA)",
+  "url": "https://www.openpolicyagent.org/",
+  "category": "PDP",
+  "positioning": "General-purpose policy engine with Rego for decision-making.",
+  "capabilities": [],
+  "claims": ["time_to_value"],
+  "pricing_signals": "oss",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://www.openpolicyagent.org/docs/latest/#overview"},
+    {"type": "quote", "text": "OPA decouples policy from the service's code.", "href": "https://www.openpolicyagent.org/docs/latest/#overview"},
+    {"type": "url", "href": "https://www.openpolicyagent.org/docs/latest/management-decision-logs/"},
+    {"type": "url", "href": "https://www.openpolicyagent.org/docs/latest/management-bundles/"}
+  ],
+  "gapsVsEmpowerNow": ["no_authzen_contract", "no_conservative_merge", "no_obligations", "no_decision_ttl"],
+  "traps_counters": {"trap": "OPA is enough", "counter": "OPA lacks AuthZEN contract (constraints, obligations, TTL) and merge semantics"},
+  "lastFetched": "2025-09-26",
+  "stalenessDays": 60,
+  "notes": "OPA returns boolean/data; no standardized AuthZEN response envelope"
+}
+
+

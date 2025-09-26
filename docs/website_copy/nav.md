@@ -12,13 +12,12 @@ Top Navigation
 Product Dropdown
 - Overview
 - IdP — Agent Passports
-- PDP — AuthZEN + Membership PIP
+- PDP — AuthZEN
 - ARIA MCP Gateway (MCP PEP)
 - ARIA Shield (formerly BFF)
-- Tool Registry
-- Receipt Vault
-- Orchestration — Self‑Driving Workflows
-- Membership Graph
+- CRUD Service
+- Data Collector
+- VDS (Virtual Directory Server) — Coming soon
 
 Solutions Dropdown
 - FinOps Governance

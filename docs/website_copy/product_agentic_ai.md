@@ -29,6 +29,25 @@ Reference: [Ping Agentic AI Identity](https://www.pingidentity.com/en/solution/a
 
 See: `services/bff/explanation/bff_gateway.md`, `services/bff/explanation/overview.md`, `services/bff/explanation/bff_gateway_technical.md`
 
+## Agent Workflow Explainability (V3)
+- Self‑describing WAITING responses provide the exact next step and safe resume call.
+- Safety metadata: `state_version` (concurrency), `idempotency_key` (replay dedupe), `fingerprint` (audit); MCP facade enables zero‑SDK resume.
+
+```mermaid
+sequenceDiagram
+  participant Agent as MCP Agent/UI
+  participant API as CRUDService API
+  participant EX as Graph Engine
+
+  Agent->>API: POST /workflow/start { name, data }
+  API->>EX: run_workflow()
+  EX-->>Agent: WAITING { required_action, request_format, state_version, idempotency_key }
+  Agent->>API: POST /workflow/resume (If-Match: state_version)
+  EX-->>Agent: next WAITING or COMPLETED
+```
+
+See also: `source_content/explainability_v3.md`, `source_content/explainability_v3_flow.md`, `source_content/explainability_v3_market_survey.md`
+
 ## Core capabilities
 ### Identify and classify agents
 - Enforce agent→user binding (pairwise identities), origin checks, tool schema pins, parameter allowlists, and egress allowlists at the PEP.
