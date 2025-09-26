@@ -38,12 +38,12 @@ hide_table_of_contents: true
 
 ---
 
-### 4) Live Demo (60–90s): **Author Once → Publish Many**
+### 4) Live Demo (60–90s): **Code‑Free to Cross‑Platform, Governed**
 
-- Build a tool once in **Automation Studio** (YAML).
-- Publish to **Anthropic MCP**, **OpenAI Functions**, **Microsoft Copilot** (adapters).
-- Invoke from each platform: **Authorization Studio** constraints enforced; **Gateway/Shield** stop off-plan/over-budget; **Receipt** captured.
-- **Takeaway:** unified governance **without** forcing a single agent platform.
+- In minutes, build a code‑free connector workflow in **CRUD Service** (Automation Studio).
+- One‑click publish that workflow as an **MCP Tool**; adapters output manifests for **OpenAI Functions** and **Copilot**.
+- Call it from each platform; **Authorization Studio** enforces constraints, **PDP** applies spending/content controls, **Gateway/Shield** blocks off‑plan, and a **Receipt** is issued.
+- **Takeaway:** ship governed capabilities fast—without locking into one agent platform.
 
 ---
 
@@ -107,19 +107,19 @@ hide_table_of_contents: true
 
 ---
 
-### 12) Studios Overview (No-Code • Standard Outputs)
+### 12) Studios Overview (No‑Code • Standard Outputs)
 
-- **Automation Studio** — visual connectors/workflows; approvals; idempotent runs; multi-platform publish.
-- **Authorization Studio** — visual PDP policies; standardized decision for PEPs/gateways.
-- **Authentication Studio** — no-code client onboarding & **Agent Passports** (OAuth TE/RAR).
-- **Inventory Studio** — identity/IGA inventory & lineage (accounts, entitlements, memberships, role mappings, sources, freshness).
+- **Automation Studio** — code‑free connectors/workflows; approvals; idempotent runs; publish as MCP tools (plus Functions/Copilot manifests).
+- **Authorization Studio** — visual PDP policies; standardized decision (constraints/obligations/TTL) for PEPs and gateways.
+- **Authentication Studio** — no‑code client onboarding & **Agent Passports** (OAuth Token Exchange/RAR).
+- **Inventory Studio** — identity/IGA inventory & lineage to improve policy accuracy (supporting backbone; not shown in demo).
 
 ---
 
 ### 13) Runtime Enforcement & Proof
 
-- **MCP Gateway** — plan discipline & schema pins; deny off-plan **before execution**.
-- **ARIA Shield** — budgets/402, streaming caps, zero-token SPA (no tokens in browsers).
+- **MCP Gateway** — plan discipline & schema pins; deny off‑plan **before execution**.
+- **ARIA Shield** — spending control (budgets/402), streaming caps, and content controls (prompt/egress/PII redaction); zero‑token SPA.
 - **Receipt Vault** — decision_id, policy snapshot hash, tool schema/pin hashes for audit & forensics.
 
 ---
