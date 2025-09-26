@@ -1,5 +1,7 @@
 ---
+id: marketing-research
 title: Marketing Research Spine
+slug: /marketing/research
 ---
 
 # Marketing research spine
