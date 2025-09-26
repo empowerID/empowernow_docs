@@ -10,7 +10,8 @@
   "customers_mentioned": [],
   "evidence": [
     {"type": "url", "href": "https://developer.okta.com/docs/guides/"},
-    {"type": "url", "href": "https://developer.okta.com/docs/guides/implement-grant-type/"}
+    {"type": "url", "href": "https://developer.okta.com/docs/guides/implement-grant-type/"},
+    {"type": "url", "href": "https://auth0.com/docs/secure/tokens/token-best-practices/dpop-proof-of-possession"}
   ],
   "gapsVsEmpowerNow": ["token_exchange_rfc8693_unspecified", "rar_rfc9396_unspecified", "no_agent_passport_plan_pins", "no_receipt_chain"],
   "traps_counters": {"trap": "Standard OIDC covers agent controls", "counter": "Agent Passports add plan JWS + schema pins + receipts for provable enforcement"},

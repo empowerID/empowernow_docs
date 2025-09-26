@@ -10,7 +10,9 @@
   "customers_mentioned": [],
   "evidence": [
     {"type": "url", "href": "https://curity.io/resources"},
-    {"type": "url", "href": "https://curity.io/resources/standards"}
+    {"type": "url", "href": "https://curity.io/resources/standards"},
+    {"type": "url", "href": "https://curity.io/resources/learn/oauth-token-exchange"},
+    {"type": "url", "href": "https://curity.io/resources/learn/rich-authorization-requests"}
   ],
   "gapsVsEmpowerNow": ["no_receipt_chain", "no_tool_schema_pins", "no_plan_jws"],
   "traps_counters": {"trap": "Standards alone are sufficient", "counter": "Pins, plan discipline, and receipts add runtime integrity and audit"},
