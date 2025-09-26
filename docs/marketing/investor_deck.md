@@ -4,8 +4,8 @@ title: EmpowerNow — Investor Deck (Final • Production-Ready)
 hide_table_of_contents: true
 ---
 
-> Slide order: Problem → Switzerland (solution) → Live Demo → Why Us → Inevitability → What We Are → Coverage → Momentum → Model → Economics → Studios → Runtime & Proof → Patents → Network Effects → Competition → Neutrality & Trust → Distribution → KPIs → 12-Month Milestones → Early Validation → Team & Ask → Close.
-> 3–5 bullets per slide. One visual each (diagram, screenshot, or logo strip).
+> Optimized for investors: **Problem → Switzerland → Live Demo → Why Us → Inevitability → What We Are → Coverage → Momentum → Model → Economics → Studios (emphasis on Automation & Authorization) → Runtime & Proof → Patents → Network Effects → Competition → Neutrality & Trust → Distribution → KPIs → 12-Month Milestones → Early Validation → Team & Ask → Close**.
+> Focus demos on **code-free connectors/workflows as MCP tools** (Automation Studio) and **PDP authorization + spending/content control** (Authorization Studio + ARIA Shield). Inventory Studio is supporting only.
 
 ---
 
@@ -16,7 +16,7 @@ hide_table_of_contents: true
 - No-Code AI Integration (**Automation Studio**)
 - Policy & Constraints (**Authorization Studio**)
 - Passports / Token Exchange (**Authentication Studio**)
-- Identity Inventory & Lineage (**Inventory Studio**)
+- Identity Inventory & Lineage (**Inventory Studio**, supporting)
 - Runtime Enforcement (**ARIA Shield • MCP Gateway**)
   **Built by EmpowerID** — IGA/PAM since 2005; $20M+ revenue; trusted by global brands
 
@@ -25,32 +25,32 @@ hide_table_of_contents: true
 ### 2) The $100B Problem
 
 - By 2026: **1k–10k+ agents/enterprise** across **5+ platforms** (OpenAI, Anthropic/MCP, Copilot, Vertex, Bedrock, LangChain, custom).
-- Controls are **siloed**; “governance” is **platform-specific**; **no cross-platform enforcement or receipts**.
+- Controls are siloed; “governance” is platform-specific; **no cross-platform enforcement or receipts**.
 - Outcome: spend bleed, off-plan tool calls, audit findings → **AI rollouts stall** without a unifying layer.
 
 ---
 
 ### 3) Switzerland = 100× Bigger
 
-- **Enable everyone, compete with no one**: OEM/white-label for all IGA/PAM vendors and agent platforms.
+- **Enable everyone, compete with no one**: OEM/white-label across IGA/PAM vendors and agent platforms.
 - Neutrality multiplies distribution, lowers CAC, compounds network effects.
 - TAM expands from “our customers” to **every enterprise using agents** (platforms, SIs, DIY).
 
 ---
 
-### 4) Live Demo (60–90s): **Code‑Free to Cross‑Platform, Governed**
+### 4) Live Demo (90s): **Author Once → Publish Many**  *(primary demo)*
 
-- In minutes, build a code‑free connector workflow in **CRUD Service** (Automation Studio).
-- One‑click publish that workflow as an **MCP Tool**; adapters output manifests for **OpenAI Functions** and **Copilot**.
-- Call it from each platform; **Authorization Studio** enforces constraints, **PDP** applies spending/content controls, **Gateway/Shield** blocks off‑plan, and a **Receipt** is issued.
-- **Takeaway:** ship governed capabilities fast—without locking into one agent platform.
+- Build a tool once in **Automation Studio** (YAML).
+- Publish to **Anthropic MCP**, **OpenAI Functions**, **Microsoft Copilot** (adapters).
+- Invoke from each platform: **Authorization Studio** constraints enforced; **MCP Gateway/ARIA Shield** stop off-plan/over-budget; **Receipt** captured.
+- **Takeaway:** unified governance **without** forcing a single agent platform.
 
 ---
 
 ### 5) Why Identity Experts Win
 
 - **Enterprise trust:** EmpowerID heritage in regulated, global environments.
-- **Governance DNA:** policies, approvals, lineage, audit—now applied to agents.
+- **Governance DNA:** policies, approvals, content controls, audit—now applied to agents.
 - **Procurement & distribution:** existing pathways into large accounts; faster starts.
 
 ---
@@ -59,7 +59,7 @@ hide_table_of_contents: true
 
 - **Tools converge:** MCP & Function-Calling are becoming common denominators.
 - **Architectures converge:** multi-agent, cross-platform patterns standardize.
-- **Compliance converges:** auditors expect governance, budget controls, **provable** enforcement.
+- **Compliance converges:** auditors expect budget/content controls with **provable** enforcement.
 - **Therefore:** one **neutral governance layer** becomes mandatory infrastructure.
 
 ---
@@ -69,7 +69,7 @@ hide_table_of_contents: true
 - **Create tools fast** — **Automation Studio** → MCP Tools/Resources/Prompts; adapters for non-MCP formats.
 - **Decide & constrain** — **Authorization Studio** → standardized decision (constraints/obligations/TTL).
 - **Enforce & prove** — **MCP Gateway & ARIA Shield** + **Receipt Vault** (cryptographic audit chain).
-- **Keep identity truth fresh** — **Inventory Studio** (IGA/identity inventory & lineage) feeding PDP/PIP.
+- **Keep identity truth fresh** — **Inventory Studio** (IGA/identity inventory & lineage) feeding PDP/PIP *(supporting role)*.
 
 ---
 
@@ -77,7 +77,7 @@ hide_table_of_contents: true
 
 - Initial GA targets: **Anthropic MCP (native)**, **OpenAI Functions**, **Microsoft Copilot** actions, **Google Vertex** tools, **AWS Bedrock** Agents, **LangChain/LangGraph**, **LlamaIndex**.
 - Principle: **author once → publish many** (shared schema; per-platform manifests).
-- DX goals: 5-minute tool creation; 1-line policy call; drop-in budget control.
+- DX goals: 5-minute tool creation; 1-line policy call; drop-in budget/content controls.
 
 ---
 
@@ -107,20 +107,20 @@ hide_table_of_contents: true
 
 ---
 
-### 12) Studios Overview (No‑Code • Standard Outputs)
+### 12) Studios Overview (No-Code • Emphasis on Demos)
 
-- **Automation Studio** — code‑free connectors/workflows; approvals; idempotent runs; publish as MCP tools (plus Functions/Copilot manifests).
-- **Authorization Studio** — visual PDP policies; standardized decision (constraints/obligations/TTL) for PEPs and gateways.
-- **Authentication Studio** — no‑code client onboarding & **Agent Passports** (OAuth Token Exchange/RAR).
-- **Inventory Studio** — identity/IGA inventory & lineage to improve policy accuracy (supporting backbone; not shown in demo).
+- **Automation Studio** *(headline)* — visual connectors/workflows; approvals; idempotent runs; **multi-platform publish (MCP, Functions, Copilot)**.
+- **Authorization Studio** *(headline)* — visual PDP policies; **content/egress/params/budget constraints**; standardized decision.
+- **Authentication Studio** — no-code **Agent Passports** (OAuth TE/RAR), client onboarding.
+- **Inventory Studio** *(supporting)* — identity/IGA inventory & lineage for accurate PDP/PIP decisions; not a demo centerpiece.
 
 ---
 
-### 13) Runtime Enforcement & Proof
+### 13) Runtime Enforcement & Proof  *(demo-friendly)*
 
-- **MCP Gateway** — plan discipline & schema pins; deny off‑plan **before execution**.
-- **ARIA Shield** — spending control (budgets/402), streaming caps, and content controls (prompt/egress/PII redaction); zero‑token SPA.
-- **Receipt Vault** — decision_id, policy snapshot hash, tool schema/pin hashes for audit & forensics.
+- **Spending control:** **ARIA Shield** enforces budgets/402; clean UX to request budget; receipts tie to policy.
+- **Content control:** **Authorization Studio** flags/blocks disallowed outputs/egress; **MCP Gateway** denies off-plan at tool boundary.
+- **Audit:** **Receipt Vault** chains decision_id, policy snapshot hash, and tool schema/pin hashes.
 
 ---
 
@@ -138,18 +138,18 @@ hide_table_of_contents: true
 - More enterprises → more tools created → broader coverage.
 - More platforms supported → fewer blockers → faster attach.
 - More receipts → stronger compliance baselines → higher stickiness.
-- **Result:** winner-take-most dynamics in the neutral governance layer.
+- **Result:** winner-take-most dynamics for the neutral governance layer.
 
 ---
 
 ### 16) Competitive Frame (Honest)
 
-| Segment                  | Value                | Gap We Fill                                           |
-| ------------------------ | -------------------- | ----------------------------------------------------- |
-| Gateways/observability   | logs/routing/metrics | no **cross-platform enforcement + receipts**          |
-| Orchestration frameworks | agent logic          | identity policy, budgets, multi-platform tools, audit |
-| IGA/PAM vendors          | identity authority   | **agent-runtime governance + receipts + adapters**    |
-| DIY enterprise           | bespoke fit          | slow, brittle, single-platform, costly                |
+| Segment                  | Value                | Gap We Fill                                                               |
+| ------------------------ | -------------------- | ------------------------------------------------------------------------- |
+| Gateways/observability   | logs/routing/metrics | no **cross-platform enforcement + receipts**                              |
+| Orchestration frameworks | agent logic          | identity policy, **budget/content** controls, multi-platform tools, audit |
+| IGA/PAM vendors          | identity authority   | **agent-runtime governance + receipts + adapters**                        |
+| DIY enterprise           | bespoke fit          | slow, brittle, single-platform, costly                                    |
 
 ---
 
@@ -201,10 +201,10 @@ hide_table_of_contents: true
 
 - **Patrick Parker — Founder & CEO, EmpowerID**
 
-  - 20+ years in enterprise identity; pioneered Role/Attribute-Based Access Control in Identity Orchestration.
+  - 20+ years in enterprise identity; pioneered RBAC/ABAC within Identity Orchestration.
   - MBA (Ohio State), MS Biology (Penn State), BS Zoology (Ohio University).
   - Former evolutionary biologist identifying new species; applies research rigor to Identity Governance & Analytics.
-- **CTO — [Name]** *(insert name/biography; if search in progress, list interim technical advisors on call)*
+- **CTO — [Name]** *(insert; if in active search, state “Interim CTO function with named advisors: [Names]”)*
 - **Head of Product — [Name]** • **Head of BizDev — [Name]**
   **Raising:** **$15M Series A** (first close **$8M**) — **priced round**, prior investors participating
 - **Use:** 40% adapters & DX; 30% partner engineering (OEM/SI kits); 20% Studios & receipts tooling; 10% neutrality/audits
@@ -221,12 +221,12 @@ The neutral layer the agent economy will standardize on—built on 20 years of e
 
 ---
 
-## Investor One-Pager (Handout)
+## One-Pager (Handout)
 
 **EmpowerNow — The Universal Agent Governance & Integration Layer**
 **What:** neutral Layer-2 middleware to **create tools once**, **enforce policy & budgets** across agent platforms, and **prove** every action with cryptographic receipts.
 
-- **Studios:** **Automation** (no-code tools; multi-platform publish), **Authorization** (standardized decisions), **Authentication** (Agent Passports/Token Exchange), **Inventory** (IGA identity inventory & lineage).
+- **Studios:** **Automation** (no-code tools; multi-platform publish), **Authorization** (standardized decisions; **content/egress/params/budget** controls), **Authentication** (Agent Passports/Token Exchange), **Inventory** (IGA identity inventory & lineage, supporting).
 - **Runtime:** **MCP Gateway** (plan/schema pins), **ARIA Shield** (budgets/402 • streaming caps • zero-token SPA), **Receipt Vault** (audit chain).
 - **Neutrality:** OEM/white-label by any vendor; separate infra from EmpowerID; open-source verifier; advisory board.
 - **Patents:** Graph-Anchored ABAC (policy→decision), Agent-Centric Workflow (agent next steps + universal auth + audit).
@@ -237,15 +237,21 @@ The neutral layer the agent economy will standardize on—built on 20 years of e
 
 ---
 
-## Demo Scripts (90 seconds)
+## Demo Scripts (90s) — Emphasize What’s Exciting
 
-**Demo 1 — Author Once → Publish Many**
+**Demo 1 — Author Once → Publish Many (flagship)**
 
 1. Build “Create Contractor” in **Automation Studio** (YAML).
 2. Publish to **MCP**, **OpenAI Functions**, **Copilot**.
-3. Call from each platform: **Authorization Studio** constraints enforced; **Gateway/Shield** handle off-plan/budget; open **Receipt**.
+3. Call from each platform: **Authorization Studio** constraints enforced; **Gateway/Shield** block off-plan/budget; open **Receipt**.
+   *Outcome:* “One tool, many platforms—governed and provable.”
 
-**Demo 2 — Policy + Identity Accuracy**
+**Demo 2 — Authorization & Spend/Content Control (impact)**
 
-1. Decision depends on current entitlements; **Inventory Studio** refresh updates PDP/PIP; re-evaluate → correct outcome.
-2. Repeat on another platform; consistent deny/permit; **Receipt** chains decision_id + policy snapshot + pins.
+1. Enforce **budget** with ARIA Shield: over-cap returns **402** with request-budget CTA; receipt shows budget cap & policy snapshot.
+2. Enforce **content/egress** with Authorization Studio + MCP Gateway: off-policy output or disallowed egress **denied before execution**; receipt chains pin hashes.
+   *Outcome:* “Real-time control that finance, security, and audit accept.”
+
+---
+
+**Key change:** Inventory Studio is acknowledged but **not** demo-center stage; the pitch and demos spotlight **Automation Studio** (code-free connectors & workflows as MCP tools) and **Authorization/Shield** (policy, spending, and content control)—the compelling pieces investors will remember.
