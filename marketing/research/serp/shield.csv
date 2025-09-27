@@ -11,5 +11,6 @@ rank,title,url,angle,content_type,schema_used,notes
 10,Curity — Token Handler Deep Dive,https://curity.io/resources/learn/oauth-for-spa-without-sso-tricks,spa cookies deep dive,doc,Article,"T2: cookies pattern"
 11,Kong — Rate Limiting,https://docs.konghq.com/hub/kong-inc/rate-limiting/,rate limiting,doc,Article,"T3: controls vs budgets"
 12,NGINX — Rate Limiting,https://docs.nginx.com/nginx/admin-guide/security-controls/controlling-access-proxied-http/,rate limiting,doc,Article,"T3: controls vs budgets"
+13,Kong — AI Gateway,https://docs.konghq.com/hub/kong-inc/ai-gateway/,ai gateway,doc,Article,"T2: adjacent gateway vs runtime governance"
 13,ARIA — Receipts (internal),/docs/services/aria-shield/receipt-chains.md,receipts chain,doc,Article,"T2: proof link"
 14,ARIA — PDP Mapping (internal),/docs/services/bff/explanation/overview.md,pdp mapping,doc,Article,"T2: route mapping"

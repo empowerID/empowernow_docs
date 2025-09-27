@@ -10,7 +10,8 @@
   "customers_mentioned": [],
   "evidence": [
     {"type": "url", "href": "https://docs.helicone.ai/"},
-    {"type": "url", "href": "https://docs.helicone.ai/introduction/why-helicone"}
+    {"type": "url", "href": "https://docs.helicone.ai/introduction/why-helicone"},
+    {"type": "url", "href": "https://docs.helicone.ai/features/overview"}
   ],
   "gapsVsEmpowerNow": ["no_plan_jws", "no_schema_pins", "no_receipt_chain", "no_budget_enforcement_402"],
   "traps_counters": {"trap": "Observability equals governance", "counter": "Enforcement requires plan/pins + budgets + receipts to stop off‑plan calls"},

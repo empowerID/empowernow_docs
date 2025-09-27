@@ -11,7 +11,8 @@
   "evidence": [
     {"type": "url", "href": "https://developers.cloudflare.com/ai-gateway/"},
     {"type": "url", "href": "https://developers.cloudflare.com/ai-gateway/features/token-management/"},
-    {"type": "url", "href": "https://developers.cloudflare.com/ai-gateway/features/caching/"}
+    {"type": "url", "href": "https://developers.cloudflare.com/ai-gateway/features/caching/"},
+    {"type": "url", "href": "https://developers.cloudflare.com/ai-gateway/features/rate-limiting/"}
   ],
   "gapsVsEmpowerNow": ["no_plan_jws", "no_schema_pins", "no_receipt_chain", "no_budget_enforcement_402"],
   "traps_counters": {"trap": "We log tool calls", "counter": "Need pre-execution enforcement + pins + receipts + budget semantics"},

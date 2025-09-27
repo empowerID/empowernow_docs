@@ -10,7 +10,8 @@
   "customers_mentioned": [],
   "evidence": [
     {"type": "url", "href": "https://curity.io/product/token-handler/"},
-    {"type": "url", "href": "https://curity.io/resources/"}
+    {"type": "url", "href": "https://curity.io/resources/"},
+    {"type": "url", "href": "https://curity.io/resources/learn/oauth-for-spa-without-sso-tricks"}
   ],
   "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_receipt_chain", "no_stream_caps"],
   "traps_counters": {"trap": "SPA cookies alone are enough", "counter": "Budgets, streaming caps, and receipts provide provable runtime enforcement"},

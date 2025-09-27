@@ -11,7 +11,8 @@
   "evidence": [
     {"type": "url", "href": "https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-oauth-authentication/"},
     {"type": "url", "href": "https://docs.nginx.com/"},
-    {"type": "url", "href": "https://docs.nginx.com/nginx/admin-guide/security-controls/controlling-access-proxied-http/"}
+    {"type": "url", "href": "https://docs.nginx.com/nginx/admin-guide/security-controls/controlling-access-proxied-http/"},
+    {"type": "url", "href": "https://www.nginx.com/resources/webinars/securing-spas-oauth-oidc/"}
   ],
   "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_receipt_chain", "no_stream_caps"],
   "traps_counters": {"trap": "OIDC at the gateway equals governance", "counter": "Budgets/402 + stream caps + receipts provide provable runtime enforcement"},

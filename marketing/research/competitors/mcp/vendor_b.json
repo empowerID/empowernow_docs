@@ -11,7 +11,8 @@
   "evidence": [
     {"type": "url", "href": "https://www.portkey.ai/docs"},
     {"type": "url", "href": "https://www.portkey.ai/docs/sdk/introduction"},
-    {"type": "url", "href": "https://www.portkey.ai/docs/gateway/overview"}
+    {"type": "url", "href": "https://www.portkey.ai/docs/gateway/overview"},
+    {"type": "url", "href": "https://www.portkey.ai/docs/observability/overview"}
   ],
   "gapsVsEmpowerNow": ["no_plan_jws", "no_schema_pins", "no_receipt_chain", "no_budget_enforcement_402"],
   "traps_counters": {"trap": "Observability equals governance", "counter": "Pins, plan discipline, budgets, and receipts provide provable enforcement"},

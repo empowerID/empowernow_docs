@@ -13,3 +13,5 @@ rank,title,url,angle,content_type,schema_used,notes
 12,Helicone — Observability,https://docs.helicone.ai/introduction/why-helicone,observability,doc,Article,"T3: logging"
 13,Cloudflare — Token Management,https://developers.cloudflare.com/ai-gateway/features/token-management/,token controls,doc,Article,"T2: provider tokens"
 14,Cloudflare — Caching & Rate Limits,https://developers.cloudflare.com/ai-gateway/features/caching/,cache/limits,doc,Article,"T3: controls"
+15,Cloudflare — Rate Limiting,https://developers.cloudflare.com/ai-gateway/features/rate-limiting/,limits,doc,Article,"T3: rate limits vs budgets"
+16,Portkey — Observability,https://www.portkey.ai/docs/observability/overview,observability,doc,Article,"T2: observability depth"

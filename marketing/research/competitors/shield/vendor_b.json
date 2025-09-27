@@ -11,7 +11,8 @@
   "evidence": [
     {"type": "url", "href": "https://docs.konghq.com/hub/kong-inc/openid-connect/"},
     {"type": "url", "href": "https://docs.konghq.com/gateway/latest/"},
-    {"type": "url", "href": "https://docs.konghq.com/hub/kong-inc/rate-limiting/"}
+    {"type": "url", "href": "https://docs.konghq.com/hub/kong-inc/rate-limiting/"},
+    {"type": "url", "href": "https://docs.konghq.com/hub/kong-inc/ai-gateway/"}
   ],
   "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_receipt_chain", "no_stream_caps"],
   "traps_counters": {"trap": "Gateway + OIDC equals runtime governance", "counter": "Budgets/402 + stream caps + receipts provide provable enforcement"},
