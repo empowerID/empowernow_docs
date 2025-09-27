@@ -30,7 +30,7 @@ flowchart LR
 ## How it works
 
 1. Validate Passport & plan JWS step.
-2. Enforce {schema_version, schema_hash} pins (with grace).
+2. Enforce `{schema_version, schema_hash}` pins (with grace).
 3. Params & egress allowlists; receipt on permit.
 → See `../../../services/mcp-gateway/index.md` and BFF gateway technical pages.
 

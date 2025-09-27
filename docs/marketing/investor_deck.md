@@ -84,7 +84,7 @@ hide_table_of_contents: true
 ### 9) Proof & Momentum
 
 - **Adapter cadence:** weekly releases; public changelog.
-- **DX metrics:** time-to-first-tool **<10 min**; “publish to 3 platforms” live **<1 hour**.
+- **DX metrics:** time-to-first-tool **&lt;10 min**; “publish to 3 platforms” live **&lt;1 hour**.
 - **Commercial signals:** platform POCs in motion; SI design-partner outreach; pilot→prod targets.
 
 ---
@@ -172,9 +172,9 @@ hide_table_of_contents: true
 
 ### 19) KPIs to Instrument
 
-- Pilot→production conversion **>60%** in ≤90 days.
-- Adapters GA **≥3** in two quarters; “publish to 3 platforms” **<1 hour**.
-- Software GM **≥80%**; CAC payback **<12 months** (direct); OEM CAC near-zero.
+- Pilot→production conversion **&gt;60%** in ≤90 days.
+- Adapters GA **≥3** in two quarters; “publish to 3 platforms” **&lt;1 hour**.
+- Software GM **≥80%**; CAC payback **&lt;12 months** (direct); OEM CAC near-zero.
 - Expansion: endpoints/account, receipts/day, catalog seats, partner-attached ACV.
 
 ---
@@ -233,7 +233,7 @@ The neutral layer the agent economy will standardize on—built on 20 years of e
 - **12-mo goals:** 3+ adapters GA; 1 platform LOI; 2 SI partners; 1 Fortune-100 at 1k+ agents/tools; OSS verifier live.
 - **Pricing (indicative):** **$500 / governed endpoint / month** + decision/receipt usage + catalog seats; OEM rev share.
 - **Typical account:** **20–50 endpoints × $500 = $10k–$25k / month** (=$120k–$300k ARR) + usage + seats.
-- **Contact:** <Name • Email • Phone> — QR → Data Room
+- **Contact:** &lt;Name • Email • Phone&gt; — QR → Data Room
 
 ---
 
