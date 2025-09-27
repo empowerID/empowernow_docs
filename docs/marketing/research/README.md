@@ -23,21 +23,23 @@ research/
 
 ```mermaid
 flowchart TB
-  subgraph Inputs
-    I1[Vendors\nDocs\nPricing]
-    I2[Releases\nBlogs\nGitHub]
-    I3[Analyst\nMedia]
-    I4[SERP]
-  end
-  I1 --> H[Harvest]
-  I2 --> H
-  I3 --> H
-  I4 --> H
-  H --> N[Normalize → vocabulary]
-  N --> J[competitors/*.json]
-  J --> L[Lint (staleness/evidence/schema)]
-  J --> B[Briefs]
-  B --> G[Generated WWW pages]
+  I1["Vendor docs / pricing"] --> H["Harvest"]
+  I2["Releases / blogs / GitHub"] --> H
+  I3["Analyst / media"] --> H
+  I4["SERP logs"] --> H
+  H --> N["Normalize (vocabulary)"]
+  N --> J["competitors/*.json"]
+  J --> L["Lint (staleness, evidence, schema)"]
+  J --> B["Briefs"]
+  B --> G["Generated WWW pages"]
 ```
+
+## Jump to
+
+- Research taxonomy: [/docs/marketing/research/taxonomy](/docs/marketing/research/taxonomy)
+- PDP matrix (head-to-head): [/docs/marketing/research/matrix/pdp](/docs/marketing/research/matrix/pdp)
+- SERP templates: `marketing/research/templates/serp.csv`
+- Competitors data: `marketing/research/competitors/`
+- ROI primer: [/docs/website_copy/primers/primer_roi_calculator](/docs/website_copy/primers/primer_roi_calculator)
 
 
