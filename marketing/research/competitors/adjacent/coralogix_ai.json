@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Coralogix AI",
+  "url": "https://coralogix.com/",
+  "category": "Adjacent",
+  "positioning": "Observability with real-time dashboards for AI systems: errors, token usage, costs, latency.",
+  "capabilities": ["eventing", "normalization"],
+  "claims": [],
+  "pricing_signals": "tiers",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://coralogix.com/blog/ai-observability/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_stream_caps", "no_receipt_chain"],
+  "traps_counters": {"trap": "Dashboards equal governance", "counter": "ARIA enforces constraints on each call with budgets/402, caps, receipts"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "Observability vendor with AI focus; verify token/cost tracking depth"
+}
+
+
+
+

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "New Relic",
+  "url": "https://newrelic.com/",
+  "category": "Adjacent",
+  "positioning": "Observability platform expanding into AI monitoring and business observability for LLMs.",
+  "capabilities": ["eventing", "lineage"],
+  "claims": [],
+  "pricing_signals": "tiers|enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://newrelic.com/platform/ai"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_stream_caps", "no_receipt_chain"],
+  "traps_counters": {"trap": "Observability equals governance", "counter": "ARIA enforces per-call budgets/402, caps, and receipts"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "Observability with AI features; complement not replacement for runtime governance"
+}
+
+
+
+

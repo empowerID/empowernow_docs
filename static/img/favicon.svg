@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="77px" height="87px" viewBox="0 0 77 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>favicon</title>
+    <defs>
+        <linearGradient x1="-1.76074433e-14%" y1="39.5946618%" x2="99.0257473%" y2="39.5946618%" id="linearGradient-1">
+            <stop stop-color="#8862FF" offset="0%"></stop>
+            <stop stop-color="#0AB2FF" offset="31.8919362%"></stop>
+            <stop stop-color="#04C8F0" offset="72.8310752%"></stop>
+            <stop stop-color="#00DF9D" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="favicon" stroke="none" fill="none" fill-rule="evenodd">
+        <path d="M18.4944626,25.4052516 L38.9990341,18.3448276 L59.5055374,25.4052516 L59.5789474,45.0718109 C59.5519016,48.0385193 59.5441742,60.0497925 38.9990341,66.7586207 C18.4558258,60.0497925 18.4480984,48.0385193 18.4210526,45.0718109 L18.4944626,25.4052516 Z M38.999467,82 C38.999467,82 73.001066,72.1324494 72.9684478,48.5074033 C73.0394403,25.6350645 72.9684478,15.507035 72.9684478,15.507035 L38.999467,4 L5.03240501,15.507035 C5.03240501,15.507035 4.95949373,25.6350645 5.03240501,48.5074033 C5,72.1324494 38.999467,82 38.999467,82 L38.999467,82 Z" id="Fill-1" fill="url(#linearGradient-1)"></path>
+    </g>
+</svg>

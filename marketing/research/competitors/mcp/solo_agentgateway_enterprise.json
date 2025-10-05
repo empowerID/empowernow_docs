@@ -1,0 +1,31 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Solo Agentgateway (Enterprise)",
+  "url": "https://www.solo.io/products/agentgateway-enterprise",
+  "category": "MCPGateway",
+  "positioning": "Enterprise AI/agent gateway to secure, connect, and observe LLMs, agents, and MCP tools with unified control (LLM consumption, inference routing, MCP/A2A connectivity).",
+  "capabilities": ["params_allowlist", "eventing"],
+  "claims": ["observability", "routing"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": ["T-Mobile", "Dell", "CoreWeave", "UBS"],
+  "evidence": [
+    {"type": "url", "href": "https://www.solo.io/products/agentgateway-enterprise"},
+    {"type": "url", "href": "https://agentgateway.dev/"}
+  ],
+  "gapsVsEmpowerNow": [
+    "no_plan_jws",
+    "no_schema_pins",
+    "no_receipt_chain",
+    "no_budget_enforcement_402"
+  ],
+  "traps_counters": {
+    "trap": "Gateway guardrails/observability equal runtime governance",
+    "counter": "ARIA enforces plan/pins with budgets (402), streaming caps, and cryptographic receipts per call"
+  },
+  "lastFetched": "2025-10-04",
+  "stalenessDays": 60,
+  "notes": "Positioned as AI-native gateway across LLM consumption, inference routing, and MCP/A2A; verify any documented per-request budget semantics in POC"
+}
+
+
+

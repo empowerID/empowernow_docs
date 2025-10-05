@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Arize AI",
+  "url": "https://arize.com/",
+  "category": "Adjacent",
+  "positioning": "LLM observability and evaluation platform with tracing and continuous evaluation.",
+  "capabilities": ["eventing", "lineage"],
+  "claims": [],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": ["Microsoft", "Siemens", "Handshake"],
+  "evidence": [
+    {"type": "url", "href": "https://arize.com/llm-observability/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_stream_caps", "no_receipt_chain"],
+  "traps_counters": {"trap": "Observability equals governance", "counter": "ARIA provides provable runtime enforcement (budgets/402, caps, receipts)"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "Strong eval/observability; complement ARIA runtime enforcement"
+}
+
+
+
+

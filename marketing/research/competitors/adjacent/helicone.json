@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Helicone",
+  "url": "https://www.helicone.ai/",
+  "category": "Adjacent",
+  "positioning": "Unified API gateway and observability for LLMs with prompt mgmt, caching, and routing to cut costs.",
+  "capabilities": ["egress_allowlist", "eventing"],
+  "claims": [],
+  "pricing_signals": "tiers|oss",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://www.helicone.ai/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_stream_caps", "no_receipt_chain"],
+  "traps_counters": {"trap": "Observability/gateway equals governance", "counter": "ARIA enforces budgets/402, caps, and cryptographic receipts at runtime"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "Gateway+observability; complements ARIA enforcement"
+}
+
+
+
+

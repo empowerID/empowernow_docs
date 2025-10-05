@@ -1,0 +1,31 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "agentgateway (OSS)",
+  "url": "https://agentgateway.dev/",
+  "category": "MCPGateway",
+  "positioning": "Open-source agent connectivity gateway: A2A and MCP connectivity, tool federation, observability.",
+  "capabilities": ["params_allowlist", "eventing"],
+  "claims": ["open_source", "observability"],
+  "pricing_signals": "oss",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://agentgateway.dev/"},
+    {"type": "url", "href": "https://agentgateway.dev/docs/llm-consumption/control-spend"}
+  ],
+  "gapsVsEmpowerNow": [
+    "no_plan_jws",
+    "no_schema_pins",
+    "no_receipt_chain",
+    "no_budget_enforcement_402"
+  ],
+  "traps_counters": {
+    "trap": "Gateway spend controls equal budget enforcement",
+    "counter": "Rate-limits/guardrails differ from per-call budgets with 402 semantics and receipts"
+  },
+  "lastFetched": "2025-10-04",
+  "stalenessDays": 60,
+  "notes": "Docs include spend control, rate limiting, routing, and observability; treat as complementary to ARIA runtime governance"
+}
+
+
+

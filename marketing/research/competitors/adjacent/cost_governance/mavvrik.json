@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../taxonomy/claims.schema.json",
+  "name": "Mavvrik",
+  "url": "https://www.mavvrik.ai/",
+  "category": "Adjacent",
+  "positioning": "AI & hybrid cloud cost management: visibility, chargeback, forecasting, and guardrails for GPU/model costs.",
+  "capabilities": ["eventing", "inventory_graph", "lineage"],
+  "claims": ["ai_cost_governance", "hybrid_cloud_cost_management"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://www.mavvrik.ai/"},
+    {"type": "url", "href": "https://www.prnewswire.com/news-releases/finops-platform-digitalex-rebrands-as-mavvrik-announces-6-2mm-seed-round-to-address-spiraling-it-costs-302379322.html"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_receipt_chain", "no_stream_caps"],
+  "traps_counters": {"trap": "Chargebacks/forecasts equal runtime governance", "counter": "ARIA enforces budgets/402, stream caps, and receipts inline"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "FinOps + hybrid cloud; complementary not overlapping with runtime enforcement"
+}
+
+
+
+

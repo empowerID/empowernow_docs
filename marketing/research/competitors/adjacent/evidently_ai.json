@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Evidently AI",
+  "url": "https://www.evidentlyai.com/",
+  "category": "Adjacent",
+  "positioning": "Open-source LLM evaluation and observability with 100+ monitoring metrics.",
+  "capabilities": ["eventing", "normalization"],
+  "claims": [],
+  "pricing_signals": "oss|enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://www.evidentlyai.com/llm-observability"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_stream_caps", "no_receipt_chain"],
+  "traps_counters": {"trap": "Eval dashboards equal governance", "counter": "ARIA enforces constraints at request time with budgets/402, caps, receipts"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "OSS-first; complements runtime enforcement with evaluation/metrics"
+}
+
+
+
+

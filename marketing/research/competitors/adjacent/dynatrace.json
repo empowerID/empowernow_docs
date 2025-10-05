@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Dynatrace",
+  "url": "https://www.dynatrace.com/",
+  "category": "Adjacent",
+  "positioning": "AI observability for GenAI apps: token cost metrics, request duration, Davis AI anomaly detection.",
+  "capabilities": ["eventing", "lineage"],
+  "claims": [],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://www.dynatrace.com/solutions/ai-observability/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_stream_caps", "no_receipt_chain"],
+  "traps_counters": {"trap": "Observability equals governance", "counter": "ARIA enforces budgets/402, caps, and receipts at request time"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "Strong enterprise observability; complements ARIA's runtime governance"
+}
+
+
+
+

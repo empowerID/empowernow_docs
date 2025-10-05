@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Datadog",
+  "url": "https://www.datadoghq.com/",
+  "category": "Adjacent",
+  "positioning": "Full‑stack observability with emerging GenAI/LLM monitoring and tracing capabilities.",
+  "capabilities": ["eventing", "lineage"],
+  "claims": [],
+  "pricing_signals": "tiers|enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://www.datadoghq.com/solutions/ai-observability/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_stream_caps", "no_receipt_chain"],
+  "traps_counters": {"trap": "Observability equals governance", "counter": "ARIA adds budgets/402, caps, and receipts for runtime enforcement"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "General observability vendor; AI modules emerging"
+}
+
+
+
+

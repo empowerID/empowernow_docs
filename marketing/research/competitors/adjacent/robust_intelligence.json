@@ -1,0 +1,23 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Robust Intelligence",
+  "url": "https://www.robustintelligence.com/",
+  "category": "Adjacent",
+  "positioning": "AI security and model validation: testing, monitoring, and protection for LLMs and ML.",
+  "capabilities": ["lineage", "params_allowlist"],
+  "claims": [],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://www.robustintelligence.com/platform"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_stream_caps", "no_receipt_chain"],
+  "traps_counters": {"trap": "Model validation equals runtime governance", "counter": "ARIA enforces budgets/402, caps, and receipts inline with API calls"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "Security/validation focus; complementary to runtime enforcement"
+}
+
+
+
+

@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../taxonomy/claims.schema.json",
+  "name": "WrangleAI",
+  "url": "https://wrangleai.com/",
+  "category": "Adjacent",
+  "positioning": "AI cost governance: token-level visibility, multi-provider support, budget caps, and instant alerts.",
+  "capabilities": ["eventing", "inventory_graph", "lineage"],
+  "claims": ["ai_cost_governance"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": [],
+  "evidence": [
+    {"type": "url", "href": "https://wrangleai.com/"},
+    {"type": "url", "href": "https://wrangleai.com/blog/ai-finops-software/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_receipt_chain", "no_stream_caps"],
+  "traps_counters": {"trap": "Cost tracking/alerts equals runtime governance", "counter": "ARIA enforces budgets/402, stream caps, and receipts inline"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "FinOps-oriented; complementary to runtime enforcement"
+}
+
+
+
+

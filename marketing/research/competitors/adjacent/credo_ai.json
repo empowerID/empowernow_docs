@@ -1,0 +1,25 @@
+{
+  "$schema": "../../taxonomy/claims.schema.json",
+  "name": "Credo AI",
+  "url": "https://credo.ai/",
+  "category": "Adjacent",
+  "positioning": "Enterprise AI governance platform for oversight, risk management, and regulatory compliance.",
+  "capabilities": ["inventory_graph", "approvals", "lineage"],
+  "claims": ["audit_time_reduction"],
+  "pricing_signals": "enterprise",
+  "customers_mentioned": ["Mastercard", "Northrop Grumman", "Booz Allen Hamilton"],
+  "evidence": [
+    {"type": "url", "href": "https://credo.ai/"},
+    {"type": "url", "href": "https://credo.ai/pulse"},
+    {"type": "url", "href": "https://aithority.com/it-and-devops/cloud/credo-ai-closes-21-million-in-funding/"}
+  ],
+  "gapsVsEmpowerNow": ["no_budget_enforcement", "no_402_semantics", "no_stream_caps"],
+  "traps_counters": {"trap": "Governance registry equals runtime enforcement", "counter": "ARIA adds budgets/402, streaming caps, and cryptographic receipts at runtime"},
+  "lastFetched": "2025-10-02",
+  "stalenessDays": 60,
+  "notes": "Strong governance/compliance focus; confirm runtime controls vs. policy registry"
+}
+
+
+
+
