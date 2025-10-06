@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-source_content/bff_gateway" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">bff_gateway | EmpowerNow Docs</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.empowernow.ai/img/empowernow-logo.svg"><meta data-rh="true" name="twitter:image" content="https://docs.empowernow.ai/img/empowernow-logo.svg"><meta data-rh="true" property="og:url" content="https://docs.empowernow.ai/docs/source_content/bff_gateway"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="bff_gateway | EmpowerNow Docs"><meta data-rh="true" name="description" content="BFF Gateway Architecture: Scenarios, Capabilities, and Comparison"><meta data-rh="true" property="og:description" content="BFF Gateway Architecture: Scenarios, Capabilities, and Comparison"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.empowernow.ai/docs/source_content/bff_gateway"><link data-rh="true" rel="alternate" href="https://docs.empowernow.ai/docs/source_content/bff_gateway" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.empowernow.ai/docs/source_content/bff_gateway" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.b212d4ba.css">
+<script src="/assets/js/runtime~main.e1f6effd.js" defer="defer"></script>
+<script src="/assets/js/main.c35b9ae4.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="dark";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/en-logo-light.png"><link rel="preload" as="image" href="/img/en-logo-dark.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/en-logo-light.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/en-logo-dark.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/">Home</a><a class="navbar__item navbar__link" href="/docs/website_copy/solutions">Solutions</a><a class="navbar__item navbar__link" href="/docs/website_copy/products">Products</a><a class="navbar__item navbar__link" href="/docs/website_copy/pricing">Pricing</a><a class="navbar__item navbar__link" href="/docs/website_copy/trust">Trust</a><a class="navbar__item navbar__link" href="/docs/website_copy/resources">Resources</a><a class="navbar__item navbar__link" href="/docs/website_copy/company">Company</a><a class="navbar__item navbar__link" href="/docs/intro">Docs</a><a class="navbar__item navbar__link" href="/docs/services/crud-service/explanation/secrets-executive-overview">Secrets Overview</a><a class="navbar__item navbar__link" href="/docs/services/bff/explanation/executive-overview">BFF Overview</a><a class="navbar__item navbar__link" href="/docs/services/bff/explanation/bff-visual-guide">BFF Visual Guide</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>bff_gateway</h1></header><h3 class="anchor anchorWithStickyNavbar_LWe7" id="bff-gateway-architecture-scenarios-capabilities-and-comparison">BFF Gateway Architecture: Scenarios, Capabilities, and Comparison<a href="#bff-gateway-architecture-scenarios-capabilities-and-comparison" class="hash-link" aria-label="Direct link to BFF Gateway Architecture: Scenarios, Capabilities, and Comparison" title="Direct link to BFF Gateway Architecture: Scenarios, Capabilities, and Comparison">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="executive-summary">Executive summary<a href="#executive-summary" class="hash-link" aria-label="Direct link to Executive summary" title="Direct link to Executive summary">​</a></h4>
+<ul>
+<li>The BFF operates as an application-aware API gateway behind Traefik. It handles session-based auth, per-service token brokering, PDP authorization with rich business context, SSE streaming checks, and Kafka-structured business audit.</li>
+<li>Traefik fronts TLS/routing; the BFF provides domain-aware policy enforcement and orchestration. The same model supports external callers (BFF as the public API endpoint) and SPA same-origin calls.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="market-landscape-overview">Market landscape overview<a href="#market-landscape-overview" class="hash-link" aria-label="Direct link to Market landscape overview" title="Direct link to Market landscape overview">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="what-api-gateways-solve-common-challenges">What API gateways solve (common challenges)<a href="#what-api-gateways-solve-common-challenges" class="hash-link" aria-label="Direct link to What API gateways solve (common challenges)" title="Direct link to What API gateways solve (common challenges)">​</a></h4>
+<ul>
+<li>Security and access: TLS/mTLS termination, OAuth2/OIDC, WAF, rate limiting, IP reputation.</li>
+<li>Traffic management: routing, retries, timeouts, canary/blue‑green, global anycast/CDN edge.</li>
+<li>API productization: developer portals, keys/quotas/monetization, versioning and lifecycle.</li>
+<li>Observability: metrics/tracing/logging, audit, anomaly detection.</li>
+<li>Transformation and mediation: headers/body transformation, protocol bridging, schema validation.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="vendor-categories-representative-examples">Vendor categories (representative examples)<a href="#vendor-categories-representative-examples" class="hash-link" aria-label="Direct link to Vendor categories (representative examples)" title="Direct link to Vendor categories (representative examples)">​</a></h4>
+<ul>
+<li>Managed cloud gateways: AWS API Gateway / API GW + ALB, Azure API Management, Google Apigee/X.</li>
+<li>Self‑managed/commercial &amp; OSS: Kong (Gateway/Enterprise), Tyk, NGINX, Traefik Enterprise, WSO2.</li>
+<li>Security/perimeter/CDN: Cloudflare, Akamai (incl. WAF/bot protection), F5.</li>
+<li>Integration/iPaaS platforms: MuleSoft/Anypoint, Boomi, SnapLogic (API mgmt modules).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="architectural-approaches-and-flavors">Architectural approaches and flavors<a href="#architectural-approaches-and-flavors" class="hash-link" aria-label="Direct link to Architectural approaches and flavors" title="Direct link to Architectural approaches and flavors">​</a></h4>
+<ul>
+<li>Edge API gateways (L7 at perimeter) focusing on scale, security, traffic control.</li>
+<li>Internal/BFF gateways (app‑aware) close to services/UI, adding session UX, business context.</li>
+<li>Service mesh &amp; gateways: Istio/Envoy/Consul for east‑west traffic; ingress/egress gateways.</li>
+<li>Policy engines: OPA/Rego (embedded/sidecar) vs. centralized PDP (AuthZEN/XACML/ABAC).</li>
+<li>Extension models: plugin‑based (Lua/Go/JS), config‑driven (YAML/CRDs), or code‑centric (BFF).</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="how-our-bff-aligns-and-differs">How our BFF aligns and differs<a href="#how-our-bff-aligns-and-differs" class="hash-link" aria-label="Direct link to How our BFF aligns and differs" title="Direct link to How our BFF aligns and differs">​</a></h4>
+<ul>
+<li>Aligns with gateways on: L7 routing/proxy, OAuth2/OIDC authentication, PDP‑backed authorization, metrics and logging.</li>
+<li>Differs by being application‑aware:<!-- -->
+<ul>
+<li>Session UX and return_to handling, SSE‑aware authorization.</li>
+<li>Per‑service token brokering from a user session; audience/scope mapping.</li>
+<li>Business‑context PDP via <code>endpoint_map</code> (resource/action/id from path/body), not just generic edge checks.</li>
+<li>Kafka‑structured business audit (<code>AUTHZ_DECISION</code> with ARNs, route_id, correlation) and Prometheus metrics tailored to decisions/latency.</li>
+<li>First‑party plugin allow‑listing and domain‑specific headers (canonical ARNs) propagation.</li>
+</ul>
+</li>
+<li>What we intentionally do not replace: WAF/bot protection at global edge, multi‑tenant API productization (dev portal/monetization), TCP/UDP L4, global control planes—delegate to Traefik/Kong/Cloudflare/Akamai as needed.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="where-they-fit-together-reference-map">Where they fit together (reference map)<a href="#where-they-fit-together-reference-map" class="hash-link" aria-label="Direct link to Where they fit together (reference map)" title="Direct link to Where they fit together (reference map)">​</a></h4>
+<!-- -->
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="supported-scenarios">Supported scenarios<a href="#supported-scenarios" class="hash-link" aria-label="Direct link to Supported scenarios" title="Direct link to Supported scenarios">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="spa-same-origin-api-current">SPA same-origin API (current)<a href="#spa-same-origin-api-current" class="hash-link" aria-label="Direct link to SPA same-origin API (current)" title="Direct link to SPA same-origin API (current)">​</a></h4>
+<ul>
+<li>Flow: SPA → /api/* → Traefik → BFF → internal service</li>
+<li>Features: session auth, PDP per-route (authz: pdp), per-service tokens, SSE pre-checks, correlation, ARNs, Kafka audit, Prometheus metrics</li>
+</ul>
+<p>Classifier-first summary (LLM gateway)</p>
+<ul>
+<li>For LLM endpoints, the BFF predicts a category from the prompt first and exports it to the PDP (<code>context.category_*</code>). The PDP decides Allow/Deny and can attach constraints (models, tokens, egress) and obligations (audit/workflows). In strict mode, the BFF’s guard may still block based on label/threshold.</li>
+</ul>
+<!-- -->
+<!-- -->
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="external-api-endpoint-bff-as-api">External API endpoint (BFF as API)<a href="#external-api-endpoint-bff-as-api" class="hash-link" aria-label="Direct link to External API endpoint (BFF as API)" title="Direct link to External API endpoint (BFF as API)">​</a></h4>
+<ul>
+<li>Flow: External Client → api.example.com → Traefik → BFF → upstreams</li>
+<li>Additions: edge TLS/WAF/rate-limit at Traefik; BFF remains policy and orchestration engine</li>
+</ul>
+<!-- -->
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="ssestreaming">SSE/Streaming<a href="#ssestreaming" class="hash-link" aria-label="Direct link to SSE/Streaming" title="Direct link to SSE/Streaming">​</a></h4>
+<ul>
+<li>PDP enforced before opening stream; deny early if unauthorized. Origin checks applied.</li>
+</ul>
+<!-- -->
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="capabilities-by-scenario-updated">Capabilities by scenario (updated)<a href="#capabilities-by-scenario-updated" class="hash-link" aria-label="Direct link to Capabilities by scenario (updated)" title="Direct link to Capabilities by scenario (updated)">​</a></h3>
+<ul>
+<li>
+<p><strong>Authentication</strong></p>
+<ul>
+<li>Session-based and JWT; route-level auth types from <code>ServiceConfigs/BFF/config/routes.yaml</code> (<code>auth: session|none|bearer</code>).</li>
+<li>Global PDP toggle: <code>authz_enabled</code> in <code>ms_bff/src/core/config.py</code> (can be driven by env via settings loader).</li>
+</ul>
+</li>
+<li>
+<p><strong>Authorization (PDP)</strong></p>
+<ul>
+<li>Route-level <code>authz: pdp</code> in <code>ServiceConfigs/BFF/config/routes.yaml</code>.</li>
+<li>Classifier-first export: BFF classifies prompts and exports <code>category_*</code> to PDP context; PDP decides Allow/Deny and may attach constraints/obligations.</li>
+<li>Mapping for resource/action/id via <code>ServiceConfigs/BFF/config/pdp.yaml</code> <code>endpoint_map</code> (supports path params <code>{id}</code> and <code>$.json.paths</code>).</li>
+<li>Global kill-switch: <code>settings.authz_enabled</code>.</li>
+<li>Authorization enforced for both regular and streaming routes before proxying.</li>
+</ul>
+</li>
+<li>
+<p><strong>Token brokering</strong></p>
+<ul>
+<li>Session manager issues per-service access tokens and injects them per call.</li>
+</ul>
+</li>
+<li>
+<p><strong>Observability</strong></p>
+<ul>
+<li>Prometheus: <code>bff_authz_requests_total{decision,resource}</code>, <code>bff_authz_latency_seconds</code>, service request/error/latency, cache metrics.</li>
+<li>Kafka-structured business logs:<!-- -->
+<ul>
+<li><code>AUTHZ_DECISION</code>: Allow|Deny|NoMapping with <code>route_id</code>, <code>subject</code>, <code>resource</code>, <code>action</code>, <code>resource_id</code>, <code>principal_arn</code>, <code>actor_arn</code>, <code>correlation_id</code>.</li>
+<li>PDP client logs for token fetch, request success/error, cache; obligation dispatch best-effort logs (audit/workflow).</li>
+</ul>
+</li>
+<li>Dashboard + alerts (provided):<!-- -->
+<ul>
+<li><code>observability/grafana/dashboard_bff_authz.json</code> (deny rates, PDP errors, latency)</li>
+<li><code>observability/grafana/alerts_bff_authz.yaml</code> (deny rate high, PDP error spike, NoMapping events)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>SSE specifics</strong></p>
+<ul>
+<li>PDP pre-check before opening stream; deny early.</li>
+<li>CORS/origin enforcement in middleware.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="configuration-quick-reference">Configuration quick reference<a href="#configuration-quick-reference" class="hash-link" aria-label="Direct link to Configuration quick reference" title="Direct link to Configuration quick reference">​</a></h3>
+<ul>
+<li><strong>Route security and PDP</strong> (<code>ServiceConfigs/BFF/config/routes.yaml</code>)</li>
+</ul>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;crud-execute&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">path</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;/api/crud/execute&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">target_service</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;crud_service&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">upstream_path</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;/execute&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">methods</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;POST&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">auth</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;session&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">authz</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;pdp&quot;</span><br></span></code></pre></div></div>
+<ul>
+<li><strong>Endpoint mapping (PDP)</strong> (<code>ServiceConfigs/BFF/config/pdp.yaml</code>)</li>
+</ul>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">endpoint_map</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">/api/crud/execute</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">POST</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">resource</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;crud:command&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">action</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;execute&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">props</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">system</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;$.system&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">object_type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;$.object_type&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">command</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;$.action&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">SystemIdentifier</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;$.params.SystemIdentifier&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;$.params.id&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  /api/crud/workflow/resume/</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain">task_id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">POST</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">resource</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;workflow&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">id_from</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{task_id}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">action</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;resume&quot;</span><br></span></code></pre></div></div>
+<ul>
+<li><strong>Global toggle</strong> (<code>ms_bff/src/core/config.py</code>)</li>
+</ul>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">authz_enabled</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token builtin" style="color:rgb(189, 147, 249)">bool</span><span class="token plain"> </span><span class="token operator">=</span><span class="token plain"> </span><span class="token boolean">True</span><span class="token plain">  </span><span class="token comment" style="color:rgb(98, 114, 164)"># set False to disable PDP globally</span><br></span></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="bff-vs-kongapigee-clear-differentiation">BFF vs Kong/Apigee: clear differentiation<a href="#bff-vs-kongapigee-clear-differentiation" class="hash-link" aria-label="Direct link to BFF vs Kong/Apigee: clear differentiation" title="Direct link to BFF vs Kong/Apigee: clear differentiation">​</a></h3>
+<ul>
+<li>
+<p><strong>What the BFF offers (application-aware)</strong></p>
+<ul>
+<li>Session flows (login redirects, return_to), SSE-aware authorization, per-service token brokering, domain-aware authorization (resource/action/id) via body/path extraction, enterprise audit (Kafka <code>AUTHZ_DECISION</code> with ARNs), Prometheus metrics tailored to business auth decisions, SDK integration (FIPS-friendly clients), plugin enforcer for internal plugin calls.</li>
+<li>Config-driven: <code>routes.yaml</code> for routing; <code>pdp.yaml</code> for policy mapping; <code>authz_enabled</code> for global control.</li>
+</ul>
+</li>
+<li>
+<p><strong>What the BFF doesn’t attempt to replace</strong></p>
+<ul>
+<li>At-scale edge/WAF/DDOS, API productization (dev portal, monetization, per-consumer plans), L4/L7 multi-protocol, global control planes. Use Traefik/Kong for those outer-edge concerns if needed.</li>
+</ul>
+</li>
+<li>
+<p><strong>Complementary model</strong></p>
+<ul>
+<li>Traefik/Kong at the edge; BFF inside as the application-aware policy gateway.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="new-enhancements-gateway-pdp-classifier-first-and-obligations">New enhancements (gateway PDP, classifier-first, and obligations)<a href="#new-enhancements-gateway-pdp-classifier-first-and-obligations" class="hash-link" aria-label="Direct link to New enhancements (gateway PDP, classifier-first, and obligations)" title="Direct link to New enhancements (gateway PDP, classifier-first, and obligations)">​</a></h3>
+<ul>
+<li>Classifier-first export to PDP context (category fields) so policy can decide.</li>
+<li>Privacy modes for prompt journaling (sanitized | balanced | raw) are policy-driven via PDP constraints/obligations; default is sanitized-only with sanitized events to Kafka/CH.</li>
+<li>Generic PDP pre-check for regular and streaming routes based on <code>authz: pdp</code> with a global <code>authz_enabled</code> switch.</li>
+<li><code>AuthzResolver</code> for body/path → resource/action/id mapping per <code>pdp.yaml</code> endpoint_map.</li>
+<li>Standardized Kafka <code>AUTHZ_DECISION</code> events (Allow/Deny/NoMapping) including route_id, subject, ARNs, correlation ID.</li>
+<li>Prometheus metrics and dashboard/alerts for deny rate and PDP errors.</li>
+<li>Obligation dispatcher: <code>audit_log</code> → Kafka; <code>run_workflow</code> → CRUDService <code>/workflow/start</code> with correlation and ARNs.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ops-playbook-high-level">Ops playbook (high level)<a href="#ops-playbook-high-level" class="hash-link" aria-label="Direct link to Ops playbook (high level)" title="Direct link to Ops playbook (high level)">​</a></h3>
+<ul>
+<li>Rollout: enable PDP per route via <code>authz: pdp</code>; keep <code>authz_enabled=True</code>; staged rollout by route groups; fallback: set toggle to false.</li>
+<li>Monitoring: import Grafana dashboard and alerts; watch deny rate, PDP errors, latency p95.</li>
+<li>Tuning: adjust PDP cache TTLs, retry/backoff, circuit-breaker in <code>pdp.yaml</code>.</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/source_content/bff_gateway.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#bff-gateway-architecture-scenarios-capabilities-and-comparison" class="table-of-contents__link toc-highlight">BFF Gateway Architecture: Scenarios, Capabilities, and Comparison</a></li><li><a href="#market-landscape-overview" class="table-of-contents__link toc-highlight">Market landscape overview</a></li><li><a href="#supported-scenarios" class="table-of-contents__link toc-highlight">Supported scenarios</a></li><li><a href="#capabilities-by-scenario-updated" class="table-of-contents__link toc-highlight">Capabilities by scenario (updated)</a></li><li><a href="#configuration-quick-reference" class="table-of-contents__link toc-highlight">Configuration quick reference</a></li><li><a href="#bff-vs-kongapigee-clear-differentiation" class="table-of-contents__link toc-highlight">BFF vs Kong/Apigee: clear differentiation</a></li><li><a href="#new-enhancements-gateway-pdp-classifier-first-and-obligations" class="table-of-contents__link toc-highlight">New enhancements (gateway PDP, classifier-first, and obligations)</a></li><li><a href="#ops-playbook-high-level" class="table-of-contents__link toc-highlight">Ops playbook (high level)</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Getting Started</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Marketing</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/">Home</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/solutions">Solutions</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/pricing">Pricing</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/products">Products</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/trust">Trust</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/resources">Resources</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/company">Company</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 EmpowerNow. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

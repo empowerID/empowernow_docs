@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-source_content/mcp_prompts" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">mcp_prompts | EmpowerNow Docs</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.empowernow.ai/img/empowernow-logo.svg"><meta data-rh="true" name="twitter:image" content="https://docs.empowernow.ai/img/empowernow-logo.svg"><meta data-rh="true" property="og:url" content="https://docs.empowernow.ai/docs/source_content/mcp_prompts"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="mcp_prompts | EmpowerNow Docs"><meta data-rh="true" name="description" content="Executive summary"><meta data-rh="true" property="og:description" content="Executive summary"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.empowernow.ai/docs/source_content/mcp_prompts"><link data-rh="true" rel="alternate" href="https://docs.empowernow.ai/docs/source_content/mcp_prompts" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.empowernow.ai/docs/source_content/mcp_prompts" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.b212d4ba.css">
+<script src="/assets/js/runtime~main.e1f6effd.js" defer="defer"></script>
+<script src="/assets/js/main.c35b9ae4.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="dark";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/en-logo-light.png"><link rel="preload" as="image" href="/img/en-logo-dark.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/en-logo-light.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/en-logo-dark.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/">Home</a><a class="navbar__item navbar__link" href="/docs/website_copy/solutions">Solutions</a><a class="navbar__item navbar__link" href="/docs/website_copy/products">Products</a><a class="navbar__item navbar__link" href="/docs/website_copy/pricing">Pricing</a><a class="navbar__item navbar__link" href="/docs/website_copy/trust">Trust</a><a class="navbar__item navbar__link" href="/docs/website_copy/resources">Resources</a><a class="navbar__item navbar__link" href="/docs/website_copy/company">Company</a><a class="navbar__item navbar__link" href="/docs/intro">Docs</a><a class="navbar__item navbar__link" href="/docs/services/crud-service/explanation/secrets-executive-overview">Secrets Overview</a><a class="navbar__item navbar__link" href="/docs/services/bff/explanation/executive-overview">BFF Overview</a><a class="navbar__item navbar__link" href="/docs/services/bff/explanation/bff-visual-guide">BFF Visual Guide</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>mcp_prompts</h1></header><h3 class="anchor anchorWithStickyNavbar_LWe7" id="executive-summary">Executive summary<a href="#executive-summary" class="hash-link" aria-label="Direct link to Executive summary" title="Direct link to Executive summary">​</a></h3>
+<ul>
+<li>Prompts: human-triggered planners that return messages (and a JSON “Plan IR”); no execution.</li>
+<li>Workflows: deterministic, auditable executors that orchestrate your CRUD/Graph tools.</li>
+<li>Best practice: prompts decide and collect consent; workflows do. A tiny Plan IR bridges them so planning stays flexible and execution stays governed.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="final-design-how-it-works-end-to-end">Final design (how it works end-to-end)<a href="#final-design-how-it-works-end-to-end" class="hash-link" aria-label="Direct link to Final design (how it works end-to-end)" title="Direct link to Final design (how it works end-to-end)">​</a></h3>
+<ul>
+<li>
+<p>Prompt catalog (YAML-backed)</p>
+<ul>
+<li>Location: <code>ServiceConfigs/CRUDService/config/prompts/*.yaml</code></li>
+<li>Each prompt defines name/title/description, arguments, and 1–N message templates.</li>
+<li>The gateway registers them as MCP prompts; clients can discover via <code>prompts/list</code> and render via <code>prompts/get</code>.</li>
+<li>Admin endpoints: list/detail/save/delete/reload are exposed; see <code>MCP_PROMPTS_GUIDE.md</code> for the SPA and APIs.</li>
+</ul>
+</li>
+<li>
+<p>Plan IR (the contract between prompts and execution)</p>
+<ul>
+<li>The prompt instructs the model to output a strictly-validated plan, not prose.</li>
+<li>Minimal schema (stable, testable):</li>
+</ul>
+</li>
+</ul>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;version&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;plan/v1&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;steps&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;kind&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;workflow|tool|approve|wait&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;ref&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;av_ad_addomain_create_user&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;version&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;1.0.0&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;params&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;FirstName&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Jane&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;LastName&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Doe&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;...&quot;</span><span class="token plain"> </span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;...&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;allow_tags&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;account&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;create&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;ad&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;dry_run&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token boolean">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;meta&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;prompt_id&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;idp.identity.onboard@1.0.0&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;tenant&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;cont-av&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></span></code></pre></div></div>
+<ul>
+<li>
+<p>Compiler + executor (in the gateway)</p>
+<ul>
+<li>Validate: ensure Plan IR shape, allow-listed steps, and per-workflow input schemas pass.</li>
+<li>Resolve: map step refs/tags to concrete MCP workflow tools (you already expose workflows as tools).</li>
+<li>Simulate (optional, deterministic-first): run dry-run or “simulate” variants to get diffs and policy checks.</li>
+<li>Approve: if the plan includes an <code>approve</code> step or UI requires consent, pause for explicit confirmation.</li>
+<li>Execute: call the referenced workflow/tool steps in order; propagate <code>dry_run=false</code> once approved.</li>
+<li>Receipt: persist a run receipt linking plan → workflow runs for audit and retries.</li>
+<li>Views: prompts participate in virtual views; <code>prompts/list</code> and <code>prompts/get</code> are filter-scoped by provider/tags. See <code>mcp_virtual_views.md</code>.</li>
+</ul>
+</li>
+<li>
+<p>Safety and UX</p>
+<ul>
+<li>Elicitation: if arguments are missing/invalid (e.g., AD DN), the server asks the client to collect structured inputs.</li>
+<li>Allow-lists: each prompt declares allowed tags or specific workflows/tools; compiler enforces this.</li>
+<li>Idempotency: use workflow inputs to derive idempotency keys; avoid double-creates.</li>
+<li>Observability: log <code>{prompt_id, version, tenant, plan_hash, outcome}</code>; enable A/B variants and <code>prompts/list_changed</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="what-it-offers-why-its-useful">What it offers (why it’s useful)<a href="#what-it-offers-why-its-useful" class="hash-link" aria-label="Direct link to What it offers (why it’s useful)" title="Direct link to What it offers (why it’s useful)">​</a></h3>
+<ul>
+<li>Predictability where it matters: workflows stay deterministic and auditable.</li>
+<li>Flexibility where you want it: prompts can route by tenant/provider, embed policy context, and gather missing inputs.</li>
+<li>Clear human-in-the-loop: prompts plan and explain; users approve; workflows execute safely.</li>
+<li>Testability: Plan IR is small and easy to snapshot-test and validate in CI.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="real-world-scenarios-mapped-to-your-workflows">Real-world scenarios mapped to your workflows<a href="#real-world-scenarios-mapped-to-your-workflows" class="hash-link" aria-label="Direct link to Real-world scenarios mapped to your workflows" title="Direct link to Real-world scenarios mapped to your workflows">​</a></h3>
+<ul>
+<li>
+<p>AD user creation (<code>av_ad_addomain_create_user</code>)</p>
+<ul>
+<li>Prompt: identity.onboard.ad</li>
+<li>Output plan:<!-- -->
+<ul>
+<li>Step 1: <code>approve</code> (“Create AD account for Jane Doe in OU=People?”)</li>
+<li>Step 2: <code>workflow</code> ref=<code>av_ad_addomain_create_user</code> version=<code>1.0.0</code> with mapped inputs (FirstName, DN, etc.) <code>dry_run:true</code></li>
+<li>Step 3 (optional): <code>tool</code> add to groups/license (if policy requires)</li>
+</ul>
+</li>
+<li>Flow: simulate → explain risks (password/OU policy) → approve → execute.</li>
+</ul>
+</li>
+<li>
+<p>Entra group → OpenLDAP import + set password + email (<code>av_entraid_contractors_import_group_and_users_to_openldap_set_password</code>)</p>
+<ul>
+<li>Prompt: group.sync_offline_access</li>
+<li>Output plan:<!-- -->
+<ul>
+<li>Step 1: <code>approve</code> (“Import N users; send email with temp password?”)</li>
+<li>Step 2: <code>workflow</code> ref=that long import workflow (dry_run first)</li>
+<li>Step 3: optional <code>wait</code> (windowing), then execute.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Add user to group (<code>av_entraid_contractors_users_add_user_to_group</code>)</p>
+<ul>
+<li>Prompt: group.add_member</li>
+<li>Output plan:<!-- -->
+<ul>
+<li>Step 1: <code>workflow</code> ref=<code>av_entraid_contractors_users_add_user_to_group</code> with <code>SystemIdentifier</code>, <code>GroupSystemIdentifier</code></li>
+<li>Step 2: <code>approve</code> if group is sensitive; else just run.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>View group users (<code>av_entraid_ocg_view_group_users</code>)</p>
+<ul>
+<li>Prompt: group.view_users</li>
+<li>Output: either a plan with a read-only workflow step or directly include results as an embedded resource message.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-prompts-and-workflows-cooperate-simple-mental-model">How prompts and workflows cooperate (simple mental model)<a href="#how-prompts-and-workflows-cooperate-simple-mental-model" class="hash-link" aria-label="Direct link to How prompts and workflows cooperate (simple mental model)" title="Direct link to How prompts and workflows cooperate (simple mental model)">​</a></h3>
+<ul>
+<li>Prompts decide:<!-- -->
+<ul>
+<li>Gather/normalize inputs (email/UPN/DN).</li>
+<li>Choose provider(s) and workflows/tools by tags (e.g., [&quot;account&quot;,&quot;create&quot;,&quot;entra&quot;]).</li>
+<li>Produce a strict Plan IR and explain the intent/risks.</li>
+</ul>
+</li>
+<li>Workflows do:<!-- -->
+<ul>
+<li>Deterministic orchestration of your system definition commands (MCP tools).</li>
+<li>Pre/post validations, logging, compensation, and idempotency.</li>
+</ul>
+</li>
+<li>The gateway glues them:<!-- -->
+<ul>
+<li>Validates the plan, simulates if configured, gates approval, and executes.</li>
+<li>Records a receipt for audit and metrics.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="modes-you-can-enable-without-overengineering">Modes you can enable without overengineering<a href="#modes-you-can-enable-without-overengineering" class="hash-link" aria-label="Direct link to Modes you can enable without overengineering" title="Direct link to Modes you can enable without overengineering">​</a></h3>
+<ul>
+<li>Deterministic-first (recommended default for risky ops)<!-- -->
+<ul>
+<li>Always simulate workflow(s) first; prompt explains and asks for consent; then execute.</li>
+</ul>
+</li>
+<li>Prompt-first (for exploratory/triage)<!-- -->
+<ul>
+<li>Prompt drafts a plan; compiler just validates and runs low-risk steps.</li>
+</ul>
+</li>
+<li>Prompt-wrapped workflow (for “explain before run” UX)<!-- -->
+<ul>
+<li>Prompt renders a concise summary and a dry-run diff for a single known workflow.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="authoring-parity-and-operations">Authoring parity and operations<a href="#authoring-parity-and-operations" class="hash-link" aria-label="Direct link to Authoring parity and operations" title="Direct link to Authoring parity and operations">​</a></h3>
+<ul>
+<li>Author prompts in YAML in <code>ServiceConfigs/CRUDService/config/prompts/*.yaml</code>; no Python required.</li>
+<li>Hot-reload prompts and send <code>prompts/list_changed</code> so clients refresh.</li>
+<li>Version prompts (<code>prompt_id@semver</code>) and workflows (<code>version: &quot;1.0.0&quot;</code>) explicitly.</li>
+<li>Validate Plan IR and workflow input schemas in CI with fixtures.</li>
+<li>Admin flow: browse/test/create via <code>/prompts</code> SPA; focused editing at <code>/admin/prompt/:name</code>; API-driven updates at <code>/api/crud/configs/prompts/{name}</code>; reload via <code>/api/crud/admin/prompts/reload</code>.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="further-reading">Further reading<a href="#further-reading" class="hash-link" aria-label="Direct link to Further reading" title="Direct link to Further reading">​</a></h3>
+<ul>
+<li>End-to-end walkthrough: see <code>docs/mcp_prompts_e2e.md</code> (prompt → plan → workflow → UI mapping).</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="virtual-servers--scoping">Virtual servers &amp; scoping<a href="#virtual-servers--scoping" class="hash-link" aria-label="Direct link to Virtual servers &amp; scoping" title="Direct link to Virtual servers &amp; scoping">​</a></h3>
+<ul>
+<li>Prompts are first-class MCP features, alongside tools and resources. They are registered on the CRUDService MCP gateway and can be exposed through &quot;virtual servers&quot; (filtered views) defined in <code>ServiceConfigs/CRUDService/config/mcp_virtual_servers.yaml</code>.</li>
+<li>Each prompt carries metadata for filtering, analogous to tools/resources:<!-- -->
+<ul>
+<li><code>source: &quot;prompt&quot;</code></li>
+<li><code>provider</code>: e.g., <code>entra</code>, <code>ad</code>, <code>auth0</code></li>
+<li><code>instance/tenant</code>: from the system’s <code>mcpInstance</code> (when applicable)</li>
+<li><code>tags</code>: domain hints like <code>account</code>, <code>group</code>, <code>onboard</code>, <code>license</code></li>
+</ul>
+</li>
+<li>Virtual servers include prompts whose metadata matches the view’s <code>filters</code>:<!-- -->
+<ul>
+<li>A dedicated prompts catalog (optional):<!-- -->
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;prompts&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">path_prefix</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;/prompts&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">filters</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">source</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;prompt&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><br></span></code></pre></div></div>
+</li>
+<li>Existing views can include prompts by reusing provider/source filters. For example, in a workflows-only view you might keep <code>source: [&quot;workflow&quot;]</code> to exclude prompts, while in an Entra view you can include both systems and prompts:</li>
+</ul>
+</li>
+</ul>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;entra&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">path_prefix</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;/entra&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">filters</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">source</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;system&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;prompt&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token key atrule">provider</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;entra&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><br></span></code></pre></div></div>
+<ul>
+<li>Discovery &amp; use:<!-- -->
+<ul>
+<li>Clients target a view endpoint (e.g., <code>/mcp/entra</code>) and call <code>prompts/list</code> to discover only the prompts in scope for that view, then <code>prompts/get</code> to render with arguments.</li>
+<li>The same view’s tools/resources remain filter-scoped, so prompt outputs (Plan IR) reference workflows/tools that are also visible in that view.</li>
+</ul>
+</li>
+<li>Hot-reload parity:<!-- -->
+<ul>
+<li>When prompt YAML files change, re-register and emit <code>notifications/prompts/list_changed</code> so virtual views reflect updates without a restart.</li>
+</ul>
+</li>
+<li>BFF proxy and transport: <code>POST /api/crud/mcp/{view}/jsonrpc</code> for JSON‑RPC and <code>GET /api/crud/mcp/{view}/jsonrpc</code> SSE bridge for streamable clients.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="agent-ui-integration-using-prompts">Agent UI integration (using prompts)<a href="#agent-ui-integration-using-prompts" class="hash-link" aria-label="Direct link to Agent UI integration (using prompts)" title="Direct link to Agent UI integration (using prompts)">​</a></h3>
+<ul>
+<li>Where to use prompts: any MCP-capable agent client (Cursor/Claude Desktop/OpenAI Agents SDK) or our own Agent UI (WS/HTTP).</li>
+<li>Flow in the UI:<!-- -->
+<ol>
+<li>Discover prompts via MCP (optionally through a virtual view) with <code>prompts/list</code>.</li>
+<li>Render a selected prompt with arguments via <code>prompts/get</code> → returns <code>messages[]</code>.</li>
+<li>Map to our runner:<!-- -->
+<ul>
+<li>systemPrompt = messages[0].content</li>
+<li>userInput = join(messages[1:].content, &quot;\n\n&quot;)</li>
+<li>outputSchema (optional) = Plan IR schema for validation</li>
+</ul>
+</li>
+<li>Run through existing channels:<!-- -->
+<ul>
+<li>WebSocket: <code>openAgentWs({ systemPrompt, userInput, outputSchema })</code></li>
+<li>HTTP: <code>POST /agents/{name}/execute</code> with <code>prompt</code> and <code>output_schema</code> if needed</li>
+</ul>
+</li>
+<li>Parse model output as Plan IR → show Approve → execute referenced workflows/tools (visible in the same virtual view).</li>
+</ol>
+</li>
+<li>Virtual servers: prompts are filter-scoped like tools/resources. A dedicated <code>/mcp/prompts</code> view can list only prompts; <code>/mcp/entra</code> can list Entra-scoped prompts+tools.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="to-do-agent-prompt-support-implementation-tasks">To-Do: Agent prompt support (implementation tasks)<a href="#to-do-agent-prompt-support-implementation-tasks" class="hash-link" aria-label="Direct link to To-Do: Agent prompt support (implementation tasks)" title="Direct link to To-Do: Agent prompt support (implementation tasks)">​</a></h3>
+<ul>
+<li>Gateway: load YAML prompts, register as MCP prompts, tag metadata (source=&quot;prompt&quot;, provider, instance, tags).</li>
+<li>Gateway: hot-reload prompts and emit <code>notifications/prompts/list_changed</code>.</li>
+<li>Gateway: Plan IR JSON Schema + validator; simple compiler (resolve refs/tags → workflow/tool; enforce allow-lists; optional simulate/dry-run).</li>
+<li>Gateway: optional proxy endpoints to surface <code>prompts/list</code> and <code>prompts/get</code> to the UI (if not calling MCP directly).</li>
+<li>UI (Agent): add prompt picker and argument form; call <code>prompts/get</code>; set <code>systemPrompt</code>/<code>userInput</code>/<code>outputSchema</code> in WS/HTTP runners.</li>
+<li>UI (Agent): show Plan IR, validate against schema, collect approval, then invoke steps using CRUDService MCP tools/workflows.</li>
+<li>UI: add virtual-view selector so discovery/execution are tenant/provider-scoped.</li>
+<li>Observability: log <code>{prompt_id, version, tenant, plan_hash, outcome}</code> and link plan → workflow run receipts.</li>
+<li>Safety: per-prompt allow-list, parameter validation; surface simulate/dry-run by default for risky ops.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="example-compact-plan-ir-from-an-onboarding-prompt">Example: compact Plan IR from an onboarding prompt<a href="#example-compact-plan-ir-from-an-onboarding-prompt" class="hash-link" aria-label="Direct link to Example: compact Plan IR from an onboarding prompt" title="Direct link to Example: compact Plan IR from an onboarding prompt">​</a></h3>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;version&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;plan/v1&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;meta&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;prompt_id&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;idp.identity.onboard@1.0.0&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;tenant&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;cont-av&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token property">&quot;steps&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;kind&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;approve&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;id&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;gate&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;params&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;message&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Create account for Jane Doe?&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> </span><span class="token property">&quot;kind&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;workflow&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;ref&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;av_ad_addomain_create_user&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;version&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;1.0.0&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;params&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token property">&quot;FirstName&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Jane&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token property">&quot;LastName&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Doe&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token property">&quot;LogonName&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;jane.doe&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token property">&quot;UserPrincipalName&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;jane.doe@example.com&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token property">&quot;Name&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Jane Doe&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token property">&quot;DistinguishedName&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;CN=Jane Doe,OU=People,DC=example,DC=com&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token property">&quot;Password&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Temp$2025!&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token property">&quot;FriendlyName&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Jane Doe&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token property">&quot;DisplayName&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Jane Doe&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token property">&quot;Email&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;jane.doe@example.com&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token property">&quot;JobTitle&quot;</span><span class="token operator">:</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Engineer&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token property">&quot;allow_tags&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;account&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;create&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;ad&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token plain"> </span><span class="token property">&quot;dry_run&quot;</span><span class="token operator">:</span><span class="token plain"> </span><span class="token boolean">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="non-goals-to-keep-it-lean">Non-goals (to keep it lean)<a href="#non-goals-to-keep-it-lean" class="hash-link" aria-label="Direct link to Non-goals (to keep it lean)" title="Direct link to Non-goals (to keep it lean)">​</a></h3>
+<ul>
+<li>Prompts never invoke tools directly.</li>
+<li>No complex DSL in prompt templates; keep logic in compiler/workflows.</li>
+<li>No hidden system messages; prompts return only user/assistant messages.</li>
+</ul>
+<p>If you want this wired in, the minimal, pragmatic additions are:</p>
+<ul>
+<li>YAML prompt loader + MCP registration.</li>
+<li>Plan IR validator + simple compiler (resolve by tags → workflow tool, validate inputs, optional simulate, then run).</li>
+<li>One or two prompts (onboard, group.add_member) that emit Plan IR calling your existing workflows.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="engine-integration-code-level-blueprint">Engine integration (code-level blueprint)<a href="#engine-integration-code-level-blueprint" class="hash-link" aria-label="Direct link to Engine integration (code-level blueprint)" title="Direct link to Engine integration (code-level blueprint)">​</a></h2>
+<p>The following folds prompts into the graph engine as first-class planning/elicitation/approval/repair surfaces while keeping execution deterministic and auditable.</p>
+<ul>
+<li>
+<p>Core components (shared)</p>
+<ul>
+<li><code>src/engine/plan_ir.py</code>: typed Plan IR models and <code>validate_plan_or_raise</code>. Version: <code>plan/v1</code> with <code>steps[]</code> of kind <code>workflow|tool|approve|wait|note|simulate</code>.</li>
+<li><code>src/engine/plan_runtime.py</code>: <code>compile_and_execute_plan(executor, node, plan)</code> that iterates steps, delegates <code>workflow</code> to the workflow runner and <code>tool</code> to the command executor, and honors <code>approve/simulate/wait/note</code>.</li>
+<li><code>src/mcp/client.py</code>: tiny MCP prompt client (list/get) used by handlers to fetch prompt messages.</li>
+</ul>
+</li>
+<li>
+<p><code>src/engine/graph_executor/agent_handler.py</code> (planner/repair/explainer)</p>
+<ul>
+<li>New config keys: <code>prompt_name</code>, <code>prompt_args</code>, <code>prompt_view</code>, <code>output_schema</code> (e.g., <code>plan/v1</code>), <code>allow_tags</code>, <code>simulate_first</code>, <code>on_error_repair_prompt</code>.</li>
+<li>Flow: render prompt → run agent once to get Plan IR → validate → optionally insert a <code>simulate</code> step → call <code>compile_and_execute_plan</code> → complete node. Use <code>allow_tags</code> to constrain resolution.</li>
+</ul>
+</li>
+<li>
+<p><code>src/engine/graph_executor/llm_handler.py</code> (bounded LLM planning)</p>
+<ul>
+<li>Accept <code>llm_config.prompt_name/prompt_args/output_schema</code>.</li>
+<li>If <code>output_schema == &quot;plan/v1&quot;</code>: validate response JSON; store under <code>step_results</code> or <code>auto_execute</code> via <code>compile_and_execute_plan</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>src/engine/graph_executor/form_handler.py</code> (elicitation bridge)</p>
+<ul>
+<li>If a node references a <code>prompt_name</code> but lacks a <code>form_schema</code>, synthesize a form UI from the prompt’s <code>arguments</code> (name/description/required/enum).</li>
+<li>On submit, re-render the prompt with collected args and (optionally) re-plan to produce a Plan IR.</li>
+</ul>
+</li>
+<li>
+<p><code>src/engine/graph_executor/approval_handler.py</code> (justification + consent)</p>
+<ul>
+<li>Optional <code>decision_prompt</code>: summarize scope/diff/risks/rollback before creating the approval task; store summary in task metadata.</li>
+<li>Optional <code>post_approval_memo_prompt</code>: after approvals, generate a short memo (who/why) and store in <code>step_results</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>src/engine/graph_executor/action_handler.py</code> (deterministic executor)</p>
+<ul>
+<li>Add an internal action: <code>system: &quot;_internal&quot;</code>, <code>action: &quot;execute_plan&quot;|&quot;simulate_plan&quot;</code> that accepts <code>params.plan</code> and calls <code>compile_and_execute_plan</code>.</li>
+<li>Optional <code>assist_prompt</code> to normalize/complete <code>params</code> before execution (strict JSON only; no side-effects).</li>
+<li>Optional <code>on_error_repair_prompt</code>: on known, safe error classes (e.g., <code>entryAlreadyExists</code>), request a constrained repair micro-plan and execute it under <code>allow_tags</code>.</li>
+</ul>
+</li>
+<li>
+<p>Observability, safety, idempotency</p>
+<ul>
+<li>Persist <code>{prompt_id, version, args_hash, model, plan_hash}</code> in <code>node.metadata</code> and analytics.</li>
+<li>Enforce per-prompt/step <code>allow_tags</code> when resolving tools/workflows; reject out-of-scope steps and request re-plan.</li>
+<li>Use idempotency keys in create/update actions; prefer dry-run/simulate first for risky ops.</li>
+</ul>
+</li>
+<li>
+<p>Example nodes (prompt → plan → execute)</p>
+</li>
+</ul>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token comment" style="color:rgb(98, 114, 164)"># Planner node (LLM-backed) → produces Plan IR</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> plan_onboard</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> USER_INTERACTION</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">config</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">interaction_type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;llm&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">llm_config</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">prompt_name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;identity.onboard&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">prompt_args</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">email</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{ in.Email }}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">targets</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;entra&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;ad&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">dry_run</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">output_schema</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;plan/v1&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">auto_execute</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">false</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">response_mapping</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">target</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;var.plan&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">expression</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{ response.assistant_response }}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">edges</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">to</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> execute_plan</span><br></span></code></pre></div></div>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token comment" style="color:rgb(98, 114, 164)"># Deterministic execution node for the plan</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> execute_plan</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> ACTION</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token key atrule">config</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">system</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;_internal&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">object_type</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;plan&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">action</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;execute_plan&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token key atrule">params</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">plan</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{ var.plan }}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">allow_tags</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">[</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;account&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;create&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;entra&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">,</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;ad&quot;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">]</span><br></span></code></pre></div></div>
+<ul>
+<li>Hygiene notes (quick wins)<!-- -->
+<ul>
+<li>Deduplicate multiple <code>_log_event</code> helpers in handlers; adopt one structured JSON logger.</li>
+<li>Replace stringified JSON arrays in YAML with real lists (prevents quoting bugs).</li>
+<li>Add a per-iteration scope (<code>loop.*</code>) in FOREACH to avoid var leakage.</li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="to-do-engine-integration-tasks">To-Do: Engine integration tasks<a href="#to-do-engine-integration-tasks" class="hash-link" aria-label="Direct link to To-Do: Engine integration tasks" title="Direct link to To-Do: Engine integration tasks">​</a></h2>
+<ul>
+<li>Core<!-- -->
+<ul>
+<li>Add <code>plan_ir.py</code>, <code>plan_runtime.py</code>, and a minimal <code>mcp/client.py</code>.</li>
+</ul>
+</li>
+<li>Handlers<!-- -->
+<ul>
+<li><code>agent_handler.py</code>: support prompt-backed planning; validate Plan IR; simulate-first; call <code>compile_and_execute_plan</code>.</li>
+<li><code>llm_handler.py</code>: accept <code>prompt_name/prompt_args/output_schema</code>; handle <code>plan/v1</code> with optional <code>auto_execute</code>.</li>
+<li><code>form_handler.py</code>: synthesize forms from prompt <code>arguments</code>; re-plan on submit when configured.</li>
+<li><code>approval_handler.py</code>: integrate <code>decision_prompt</code> (pre-approval summary) and <code>post_approval_memo_prompt</code>.</li>
+<li><code>action_handler.py</code>: internal <code>execute_plan/simulate_plan</code>; optional <code>assist_prompt</code> and <code>on_error_repair_prompt</code> hooks.</li>
+</ul>
+</li>
+<li>Safety/observability<!-- -->
+<ul>
+<li>Enforce <code>allow_tags</code> per prompt/step; add idempotency keys on create/update; persist plan/prompt receipts.</li>
+</ul>
+</li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/source_content/mcp_prompts.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#executive-summary" class="table-of-contents__link toc-highlight">Executive summary</a></li><li><a href="#final-design-how-it-works-end-to-end" class="table-of-contents__link toc-highlight">Final design (how it works end-to-end)</a></li><li><a href="#what-it-offers-why-its-useful" class="table-of-contents__link toc-highlight">What it offers (why it’s useful)</a></li><li><a href="#real-world-scenarios-mapped-to-your-workflows" class="table-of-contents__link toc-highlight">Real-world scenarios mapped to your workflows</a></li><li><a href="#how-prompts-and-workflows-cooperate-simple-mental-model" class="table-of-contents__link toc-highlight">How prompts and workflows cooperate (simple mental model)</a></li><li><a href="#modes-you-can-enable-without-overengineering" class="table-of-contents__link toc-highlight">Modes you can enable without overengineering</a></li><li><a href="#authoring-parity-and-operations" class="table-of-contents__link toc-highlight">Authoring parity and operations</a></li><li><a href="#further-reading" class="table-of-contents__link toc-highlight">Further reading</a></li><li><a href="#virtual-servers--scoping" class="table-of-contents__link toc-highlight">Virtual servers &amp; scoping</a></li><li><a href="#agent-ui-integration-using-prompts" class="table-of-contents__link toc-highlight">Agent UI integration (using prompts)</a></li><li><a href="#to-do-agent-prompt-support-implementation-tasks" class="table-of-contents__link toc-highlight">To-Do: Agent prompt support (implementation tasks)</a></li><li><a href="#example-compact-plan-ir-from-an-onboarding-prompt" class="table-of-contents__link toc-highlight">Example: compact Plan IR from an onboarding prompt</a></li><li><a href="#non-goals-to-keep-it-lean" class="table-of-contents__link toc-highlight">Non-goals (to keep it lean)</a></li><li><a href="#engine-integration-code-level-blueprint" class="table-of-contents__link toc-highlight">Engine integration (code-level blueprint)</a></li><li><a href="#to-do-engine-integration-tasks" class="table-of-contents__link toc-highlight">To-Do: Engine integration tasks</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Getting Started</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Marketing</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/">Home</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/solutions">Solutions</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/pricing">Pricing</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/products">Products</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/trust">Trust</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/resources">Resources</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/company">Company</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 EmpowerNow. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

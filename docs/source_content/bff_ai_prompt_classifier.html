@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-source_content/bff_ai_prompt_classifier" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">bff_ai_prompt_classifier | EmpowerNow Docs</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.empowernow.ai/img/empowernow-logo.svg"><meta data-rh="true" name="twitter:image" content="https://docs.empowernow.ai/img/empowernow-logo.svg"><meta data-rh="true" property="og:url" content="https://docs.empowernow.ai/docs/source_content/bff_ai_prompt_classifier"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="bff_ai_prompt_classifier | EmpowerNow Docs"><meta data-rh="true" name="description" content="EmpowerNow BFF AI Prompt Classifier and Guard – Admin Guide"><meta data-rh="true" property="og:description" content="EmpowerNow BFF AI Prompt Classifier and Guard – Admin Guide"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.empowernow.ai/docs/source_content/bff_ai_prompt_classifier"><link data-rh="true" rel="alternate" href="https://docs.empowernow.ai/docs/source_content/bff_ai_prompt_classifier" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.empowernow.ai/docs/source_content/bff_ai_prompt_classifier" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.b212d4ba.css">
+<script src="/assets/js/runtime~main.e1f6effd.js" defer="defer"></script>
+<script src="/assets/js/main.c35b9ae4.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="dark";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/en-logo-light.png"><link rel="preload" as="image" href="/img/en-logo-dark.png"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/en-logo-light.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/en-logo-dark.png" alt="EmpowerNow Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate"></b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/">Home</a><a class="navbar__item navbar__link" href="/docs/website_copy/solutions">Solutions</a><a class="navbar__item navbar__link" href="/docs/website_copy/products">Products</a><a class="navbar__item navbar__link" href="/docs/website_copy/pricing">Pricing</a><a class="navbar__item navbar__link" href="/docs/website_copy/trust">Trust</a><a class="navbar__item navbar__link" href="/docs/website_copy/resources">Resources</a><a class="navbar__item navbar__link" href="/docs/website_copy/company">Company</a><a class="navbar__item navbar__link" href="/docs/intro">Docs</a><a class="navbar__item navbar__link" href="/docs/services/crud-service/explanation/secrets-executive-overview">Secrets Overview</a><a class="navbar__item navbar__link" href="/docs/services/bff/explanation/executive-overview">BFF Overview</a><a class="navbar__item navbar__link" href="/docs/services/bff/explanation/bff-visual-guide">BFF Visual Guide</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>bff_ai_prompt_classifier</h1></header><h3 class="anchor anchorWithStickyNavbar_LWe7" id="empowernow-bff-ai-prompt-classifier-and-guard--admin-guide">EmpowerNow BFF AI Prompt Classifier and Guard – Admin Guide<a href="#empowernow-bff-ai-prompt-classifier-and-guard--admin-guide" class="hash-link" aria-label="Direct link to EmpowerNow BFF AI Prompt Classifier and Guard – Admin Guide" title="Direct link to EmpowerNow BFF AI Prompt Classifier and Guard – Admin Guide">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="purpose">Purpose<a href="#purpose" class="hash-link" aria-label="Direct link to Purpose" title="Direct link to Purpose">​</a></h4>
+<ul>
+<li>Classify prompts first, export the result to the PDP, and let the PDP decide Allow/Deny based on policy.</li>
+<li>Centralize classifier tuning in <code>classifier.yaml</code>, and use PDP policies for authorization, budgets, and obligations.</li>
+<li>Keep a BFF guard as defense-in-depth (optional strict blocking), with auditable logs.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="where-configuration-lives">Where configuration lives<a href="#where-configuration-lives" class="hash-link" aria-label="Direct link to Where configuration lives" title="Direct link to Where configuration lives">​</a></h3>
+<ul>
+<li>Config file: <code>ServiceConfigs/BFF/config/classifier.yaml</code></li>
+<li>Optional layered overrides: <code>ServiceConfigs/BFF/config/classifier.d/*.yaml</code> (later files override keys)</li>
+<li>Applied at BFF startup (recreate container to apply changes)</li>
+</ul>
+<p>Example (current):</p>
+<div class="language-1:35:ServiceConfigs/BFF/config/classifier.yaml language-1:35:serviceconfigs/bff/config/classifier.yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-1:35:serviceconfigs/bff/config/classifier.yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">enabled: true</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">backend: hf_zero_shot</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">model: typeform/distilbert-base-uncased-mnli</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">labels:</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - salary</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - payroll</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - compensation</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - wages</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - pay</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - income</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - remuneration</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - earnings</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - bonus</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - dev</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - data</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - finance</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  - marketing</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">hypothesis_template: &quot;This request is about {}.&quot;</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">multi_label: true</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">guard:</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  enabled: true</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  block_labels:</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    - salary</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    - payroll</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    - compensation</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    - wages</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    - pay</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    - income</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    - remuneration</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    - earnings</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    - bonus</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  min_conf: 0.50</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  per_label_thresholds: {}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="classifieryaml-schema-and-meaning">classifier.yaml schema and meaning<a href="#classifieryaml-schema-and-meaning" class="hash-link" aria-label="Direct link to classifier.yaml schema and meaning" title="Direct link to classifier.yaml schema and meaning">​</a></h3>
+<ul>
+<li>Top-level<!-- -->
+<ul>
+<li>enabled (bool): turn classifier on/off (proposer + infra). Must be true for any ML behavior.</li>
+<li>backend (string): heuristic | hf | hf_zero_shot | onnx<!-- -->
+<ul>
+<li>heuristic: lightweight keyword heuristic (dev only)</li>
+<li>hf: supervised classifier (id2label) with optional label_map</li>
+<li>hf_zero_shot: zero-shot NLI classification against your candidate labels</li>
+<li>onnx: exported classifier with tokenizer + label list</li>
+</ul>
+</li>
+<li>model (string): HF model id; for zero-shot, e.g., facebook/bart-large-mnli or typeform/distilbert-base-uncased-mnli</li>
+<li>labels (string[]): candidate labels (used by zero-shot and ONNX)</li>
+<li>label_map (dict&lt;string,string&gt;): for hf id2label remapping (optional)</li>
+<li>hypothesis_template (string): zero-shot hypothesis, default “This text is about <!-- -->.”</li>
+<li>multi_label (bool): zero-shot multi-label scoring mode (higher recall)</li>
+<li>onnx_path (string): ONNX file path (if backend=onnx)</li>
+<li>tokenizer (string): tokenizer model id for ONNX</li>
+<li>min_confidence (float): minimum score to accept proposer’s label (advisory)</li>
+</ul>
+</li>
+<li>policy_export (object, optional): gate PDP export of ML category<!-- -->
+<ul>
+<li>enabled (bool, default true): export to PDP context when true</li>
+<li>min_conf (float, optional): minimum score required to export</li>
+<li>labels_allowlist (string[]): only export when label in this list (empty = all)</li>
+</ul>
+</li>
+<li>guard (enforcement)<!-- -->
+<ul>
+<li>enabled (bool): turn enforcement on/off (strict mode uses this)</li>
+<li>block_labels (string[]): labels that cause a block when score ≥ threshold</li>
+<li>min_conf (float): global minimum confidence to block</li>
+<li>per_label_thresholds (dict&lt;label,float&gt;): optional per-label minimums (overrides min_conf for that label)</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="strict-vs-lazy-modes">Strict vs Lazy modes<a href="#strict-vs-lazy-modes" class="hash-link" aria-label="Direct link to Strict vs Lazy modes" title="Direct link to Strict vs Lazy modes">​</a></h3>
+<ul>
+<li>Set by request header: <code>X-Category-Mode</code></li>
+<li>Strict (BFF guard on top of PDP)<!-- -->
+<ul>
+<li>Classifier runs; result is exported to PDP. PDP may Allow/Deny using policy.</li>
+<li>If PDP allows, BFF may still block when guard conditions match (defense-in-depth).</li>
+</ul>
+</li>
+<li>Lazy (advisory only)<!-- -->
+<ul>
+<li>Classifier runs and is exported to PDP for policy decisions, but the BFF guard does not block.</li>
+</ul>
+</li>
+</ul>
+<p>Admin rollout toggle</p>
+<ul>
+<li>Environment flag <code>CATEGORY_EXPORT_ENABLED=true|false</code> can override YAML to enable/disable early export for canary or rollback.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-send-strict-requests">How to send strict requests<a href="#how-to-send-strict-requests" class="hash-link" aria-label="Direct link to How to send strict requests" title="Direct link to How to send strict requests">​</a></h3>
+<ul>
+<li>Postman/cURL:</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-sS</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-X</span><span class="token plain"> POST https://api.ocg.labs.empowernow.ai/api/internal/llm/chat/completions </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Authorization: Bearer </span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$TOKEN</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Content-Type: application/json&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;X-Category-Mode: strict&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-d</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;{&quot;model&quot;:&quot;gpt-4o-mini&quot;,&quot;messages&quot;:[{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;show my coworker salary&quot;}],&quot;stream&quot;:false}&#x27;</span><br></span></code></pre></div></div>
+<ul>
+<li>CRUD Service “agent”:<!-- -->
+<ul>
+<li>Ensure calls to BFF include <code>X-Category-Mode: strict</code> header. If the agent doesn’t support custom headers today, add that header in the agent’s HTTP client. Alternatively, set a route-level default (future enhancement) to force strict for the LLM endpoint server-side.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="examples-postman-and-curl-openai-and-anthropic">Examples: Postman and cURL (OpenAI and Anthropic)<a href="#examples-postman-and-curl-openai-and-anthropic" class="hash-link" aria-label="Direct link to Examples: Postman and cURL (OpenAI and Anthropic)" title="Direct link to Examples: Postman and cURL (OpenAI and Anthropic)">​</a></h3>
+<ul>
+<li>OpenAI (non-stream) – cURL:</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-sS</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-X</span><span class="token plain"> POST </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$BFF_BASE</span><span class="token string" style="color:rgb(255, 121, 198)">/api/internal/llm/chat/completions&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Authorization: Bearer </span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$TOKEN</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Content-Type: application/json&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;X-Category-Mode: strict&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;X-End-User-ARN: auth:account:empowernow:test&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-d</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;{</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">        &quot;model&quot;: &quot;gpt-4o-mini&quot;,</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">        &quot;messages&quot;: [{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;Summarize our compensation policy.&quot;}],</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">        &quot;stream&quot;: false</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">      }&#x27;</span><br></span></code></pre></div></div>
+<ul>
+<li>OpenAI (stream) – cURL:</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-N</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-sS</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-X</span><span class="token plain"> POST </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$BFF_BASE</span><span class="token string" style="color:rgb(255, 121, 198)">/api/internal/llm/chat/completions&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Authorization: Bearer </span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$TOKEN</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Content-Type: application/json&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;X-Category-Mode: strict&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;X-End-User-ARN: auth:account:empowernow:test&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-d</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;{</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">        &quot;model&quot;: &quot;gpt-4o-mini&quot;,</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">        &quot;messages&quot;: [{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;List three HR FAQs.&quot;}],</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">        &quot;stream&quot;: true</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">      }&#x27;</span><br></span></code></pre></div></div>
+<ul>
+<li>Anthropic (non-stream) – cURL:</li>
+</ul>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token function" style="color:rgb(80, 250, 123)">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-sS</span><span class="token plain"> </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-X</span><span class="token plain"> POST </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$BFF_BASE</span><span class="token string" style="color:rgb(255, 121, 198)">/api/internal/llm/chat/completions&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Authorization: Bearer </span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$TOKEN</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Content-Type: application/json&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;X-Category-Mode: strict&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-H</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;X-End-User-ARN: auth:account:empowernow:test&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">\</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token parameter variable" style="color:rgb(189, 147, 249);font-style:italic">-d</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;{</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">        &quot;model&quot;: &quot;claude-3-5-sonnet-20240620&quot;,</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">        &quot;messages&quot;: [{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;Summarize our compensation policy.&quot;}],</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">        &quot;stream&quot;: false</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token string" style="color:rgb(255, 121, 198)">      }&#x27;</span><br></span></code></pre></div></div>
+<ul>
+<li>
+<p>Ensure PDP allows model and egress host, e.g. add <code>claude-3-5-sonnet-20240620</code> to <code>model_allow</code> and <code>api.anthropic.com:443</code> to <code>egress_allow</code> in your policy (see <code>ServiceConfigs/pdp/.../TestPolicy.yaml</code>).</p>
+</li>
+<li>
+<p>PowerShell (Windows) – Invoke-RestMethod (OpenAI example):</p>
+</li>
+</ul>
+<div class="language-powershell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-powershell codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token variable" style="color:rgb(189, 147, 249);font-style:italic">$Headers</span><span class="token plain"> = @</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  Authorization    = </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;Bearer </span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$TOKEN</span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;Content-Type&#x27;</span><span class="token plain">   = </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;application/json&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;X-Category-Mode&#x27;</span><span class="token plain">= </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;strict&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;X-End-User-ARN&#x27;</span><span class="token plain"> = </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;auth:account:empowernow:test&#x27;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token variable" style="color:rgb(189, 147, 249);font-style:italic">$Body</span><span class="token plain"> = @</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> model = </span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;gpt-4o-mini&#x27;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"> stream = </span><span class="token boolean">$false</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"> messages = @</span><span class="token punctuation" style="color:rgb(248, 248, 242)">(</span><span class="token plain">@</span><span class="token punctuation" style="color:rgb(248, 248, 242)">{</span><span class="token plain"> role=</span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;user&#x27;</span><span class="token punctuation" style="color:rgb(248, 248, 242)">;</span><span class="token plain"> content=</span><span class="token string" style="color:rgb(255, 121, 198)">&#x27;Show payroll overview&#x27;</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token punctuation" style="color:rgb(248, 248, 242)">)</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">}</span><span class="token plain"> </span><span class="token punctuation" style="color:rgb(248, 248, 242)">|</span><span class="token plain"> </span><span class="token function" style="color:rgb(80, 250, 123)">ConvertTo-Json</span><span class="token plain"> </span><span class="token operator">-</span><span class="token plain">Depth 5</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain"></span><span class="token function" style="color:rgb(80, 250, 123)">Invoke-RestMethod</span><span class="token plain"> </span><span class="token operator">-</span><span class="token plain">Method Post </span><span class="token operator">-</span><span class="token plain">Uri </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;</span><span class="token string variable" style="color:rgb(189, 147, 249);font-style:italic">$env</span><span class="token string" style="color:rgb(255, 121, 198)">:BFF_BASE/api/internal/llm/chat/completions&quot;</span><span class="token plain"> </span><span class="token operator">-</span><span class="token plain">Headers </span><span class="token variable" style="color:rgb(189, 147, 249);font-style:italic">$Headers</span><span class="token plain"> </span><span class="token operator">-</span><span class="token plain">Body </span><span class="token variable" style="color:rgb(189, 147, 249);font-style:italic">$Body</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="auth-and-required-scopes">Auth and required scopes<a href="#auth-and-required-scopes" class="hash-link" aria-label="Direct link to Auth and required scopes" title="Direct link to Auth and required scopes">​</a></h3>
+<ul>
+<li>Token must include at least one of:<!-- -->
+<ul>
+<li>bff.llm.invoke (configurable via <code>BFF_LLM_REQUIRED_SCOPE</code>), or</li>
+<li>application.all</li>
+</ul>
+</li>
+<li>If the token’s scopes are disjoint from that set, BFF returns 403.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="new-decision-flow-classification-first-pdp-is-source-of-truth">New decision flow (classification-first; PDP is source of truth)<a href="#new-decision-flow-classification-first-pdp-is-source-of-truth" class="hash-link" aria-label="Direct link to New decision flow (classification-first; PDP is source of truth)" title="Direct link to New decision flow (classification-first; PDP is source of truth)">​</a></h3>
+<!-- -->
+<p>Notes:</p>
+<ul>
+<li>Classification occurs before PDP so policy can reason on category fields:<!-- -->
+<ul>
+<li><code>context.category_label</code>, <code>context.category_confidence</code>, <code>context.category_source</code>, <code>context.category_mode</code>.</li>
+</ul>
+</li>
+<li>BFF guard remains optional for strict mode; PDP is the primary Allow/Deny authority.</li>
+</ul>
+<p>PDP policy examples (config)</p>
+<ul>
+<li>See <code>ServiceConfigs/pdp/config/policies/global/CategoryPayrollDeny.yaml</code> to deny payroll categories when role is missing.</li>
+<li>See <code>ServiceConfigs/pdp/config/policies/global/CategoryBudgetPerLabel.yaml</code> to attach per-category budgets.</li>
+</ul>
+<!-- -->
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="policy-driven-obligations-new">Policy-driven obligations (new)<a href="#policy-driven-obligations-new" class="hash-link" aria-label="Direct link to Policy-driven obligations (new)" title="Direct link to Policy-driven obligations (new)">​</a></h3>
+<ul>
+<li>PDP can attach obligations in <code>on_permit</code> that the BFF will fulfill:<!-- -->
+<ul>
+<li><code>audit_log</code>: publish a business audit event to Kafka.</li>
+<li><code>run_workflow</code>: start a CRUDService graph workflow via <code>POST /workflow/start</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Example (PDP policy snippet):</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token key atrule">rules</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">  </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> llm</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain">governance</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">resource</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;llm:*&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">action</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;invoke&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">allowIf</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;true&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">    </span><span class="token key atrule">on_permit</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">      </span><span class="token key atrule">obligations</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> audit_log</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">attributes</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">            </span><span class="token key atrule">event</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;bff.llm.allow&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">            </span><span class="token key atrule">level</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;info&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">            </span><span class="token key atrule">payload</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">              </span><span class="token key atrule">decision_id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{context.decision_id}}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">              </span><span class="token key atrule">model</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{context.model}}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">              </span><span class="token key atrule">subject</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{subject.id}}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">        </span><span class="token punctuation" style="color:rgb(248, 248, 242)">-</span><span class="token plain"> </span><span class="token key atrule">id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> run_workflow</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">          </span><span class="token key atrule">attributes</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">            </span><span class="token key atrule">workflow_name</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;risk_review&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">            </span><span class="token key atrule">data</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">              </span><span class="token key atrule">subject</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{subject.id}}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">              </span><span class="token key atrule">category</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{context.category_label}}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">              </span><span class="token key atrule">model</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{context.model}}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">              </span><span class="token key atrule">decision_id</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token string" style="color:rgb(255, 121, 198)">&quot;{{context.decision_id}}&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">            </span><span class="token key atrule">required</span><span class="token punctuation" style="color:rgb(248, 248, 242)">:</span><span class="token plain"> </span><span class="token boolean important">false</span><br></span></code></pre></div></div>
+<p>Headers passed by BFF when starting workflows:</p>
+<ul>
+<li><code>x-correlation-id</code>, <code>X-Principal-ARN</code>, <code>X-Actor-ARN</code> (when available).
+Response exposure:</li>
+<li>First started workflow id is returned as <code>x-crud-workflow-id</code> header (HTTP) or included in the final WS frame.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="where-things-are-logged">Where things are logged<a href="#where-things-are-logged" class="hash-link" aria-label="Direct link to Where things are logged" title="Direct link to Where things are logged">​</a></h3>
+<ul>
+<li>BFF structured logs (docker logs)<!-- -->
+<ul>
+<li>API_REQUEST, bff_request_start, classifier_decision, classifier_block/classifier_allow, API_ERROR (on 400), bff_request_success</li>
+<li>Provider call outcomes (httpx info)</li>
+</ul>
+</li>
+<li>Kafka<!-- -->
+<ul>
+<li>PDP produces authorization events/decisions to <code>authz.events</code> / <code>authz.decisions</code>.</li>
+<li>BFF can audit to <code>empowernow.bff.audit</code> (depending on integrations).</li>
+<li>Analytics consumes PDP topics and receives receipts from BFF via HTTP (<code>/api/v1/analytics/receipts:batch</code>).</li>
+</ul>
+</li>
+<li>Observability stack (compose)<!-- -->
+<ul>
+<li>Grafana/Prometheus, Loki, Vector configured; use them to centralize and visualize logs/metrics.</li>
+</ul>
+</li>
+<li>How to tail locally:<!-- -->
+<ul>
+<li><code>docker compose -f .../docker-compose-authzen4.yml logs --tail=200 bff</code></li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-pdp-policies-influence-enforcement">How PDP policies influence enforcement<a href="#how-pdp-policies-influence-enforcement" class="hash-link" aria-label="Direct link to How PDP policies influence enforcement" title="Direct link to How PDP policies influence enforcement">​</a></h3>
+<ul>
+<li>PDP is the primary Allow/Deny authority and may attach:<!-- -->
+<ul>
+<li>Constraints (e.g., prompt_rules, model allowlists, token caps, egress restrictions)</li>
+<li>Obligations (<code>audit_log</code>, <code>run_workflow</code>, <code>tee_analytics</code>, <code>emit_receipt</code>)</li>
+</ul>
+</li>
+<li>Enforcement order (strict):<!-- -->
+<ol>
+<li>Classifier runs → export category_* fields to PDP.</li>
+<li>PDP evaluates policy and returns decision + constraints + obligations.</li>
+<li>BFF processes obligations (best-effort unless <code>required=true</code>).</li>
+<li>Optional BFF guard blocks if configured (defense-in-depth).</li>
+</ol>
+</li>
+<li>Who gets blocked:<!-- -->
+<ul>
+<li>Any user may be allowed by PDP but still blocked by the classifier if their prompt matches blocked categories above threshold.</li>
+<li>You can use PDP constraints per application/user/role to narrow models, token caps, or log obligations independently of classifier outcomes.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="production-accuracy-how-to-truly-train-and-tune">Production accuracy: how to “truly train” and tune<a href="#production-accuracy-how-to-truly-train-and-tune" class="hash-link" aria-label="Direct link to Production accuracy: how to “truly train” and tune" title="Direct link to Production accuracy: how to “truly train” and tune">​</a></h3>
+<ul>
+<li>Data<!-- -->
+<ul>
+<li>Build a domain dataset covering exfiltration attempts, synonyms, obfuscation (leetspeak, code blocks, CSV), multi-lingual variants.</li>
+<li>Write labeling guidelines; dual-annotate for agreement (target κ≥0.7).</li>
+</ul>
+</li>
+<li>Model<!-- -->
+<ul>
+<li>Quick upgrade: switch zero‑shot to a stronger model like <code>facebook/bart-large-mnli</code> for better accuracy out-of-the-box.</li>
+<li>Best: fine‑tune a multi-label classifier (e.g., DeBERTa/BERT) on your dataset; export ONNX for low latency.</li>
+</ul>
+</li>
+<li>Calibration<!-- -->
+<ul>
+<li>Calibrate scores (Platt/temperature scaling) on a held-out set; compute PR curves per label.</li>
+<li>Choose <code>guard.per_label_thresholds</code> to achieve target recall (e.g., ≥0.9) on salary/payroll while controlling precision.</li>
+</ul>
+</li>
+<li>Evaluation<!-- -->
+<ul>
+<li>Maintain a nightly offline eval (ROC/PR per label, confusion matrix, slice analysis).</li>
+<li>Red-team tests: adversarial prompts, foreign languages, obfuscated tokens.</li>
+</ul>
+</li>
+<li>Iteration<!-- -->
+<ul>
+<li>Start with zero-shot + broader labels; collect telemetry (without PII) to learn misses; then fine-tune and raise thresholds.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-configure-bff-for-strict-by-default-options">How to configure BFF for strict by default (options)<a href="#how-to-configure-bff-for-strict-by-default-options" class="hash-link" aria-label="Direct link to How to configure BFF for strict by default (options)" title="Direct link to How to configure BFF for strict by default (options)">​</a></h3>
+<ul>
+<li>Client-driven (current): pass <code>X-Category-Mode: strict</code>.</li>
+<li>Server-driven (future enhancement): add a default to enforce strict for the LLM route; until then, set the header in all clients (CRUD agent, SPAs, backends).</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-configure-crud-service-agent-for-strict">How to configure CRUD Service “agent” for strict<a href="#how-to-configure-crud-service-agent-for-strict" class="hash-link" aria-label="Direct link to How to configure CRUD Service “agent” for strict" title="Direct link to How to configure CRUD Service “agent” for strict">​</a></h3>
+<ul>
+<li>Ensure its HTTP client to the BFF adds <code>X-Category-Mode: strict</code>.</li>
+<li>If that agent lacks a header injector, add one (recommended), or file a change to default strict on the BFF route.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="operational-runbook">Operational runbook<a href="#operational-runbook" class="hash-link" aria-label="Direct link to Operational runbook" title="Direct link to Operational runbook">​</a></h3>
+<ul>
+<li>Change config<!-- -->
+<ul>
+<li>Edit <code>ServiceConfigs/BFF/config/classifier.yaml</code> (or drop a file into <code>classifier.d/</code>).</li>
+<li>Recreate BFF: <code>docker compose -f ... up -d --no-deps --force-recreate bff</code></li>
+</ul>
+</li>
+<li>Quick test (Postman/cURL)<!-- -->
+<ul>
+<li>Send a known &quot;salary/payroll&quot; prompt with <code>X-Category-Mode: strict</code>; expect 400 with <code>classified_as_blocked:&amp;lt;label&amp;gt;</code>.</li>
+</ul>
+</li>
+<li>Rollback<!-- -->
+<ul>
+<li>Revert YAML to last known-good, recreate BFF.</li>
+<li>For immediate mitigation, set <code>CATEGORY_EXPORT_ENABLED=false</code> to stop exporting category to PDP.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rollout-and-canary-plan">Rollout and canary plan<a href="#rollout-and-canary-plan" class="hash-link" aria-label="Direct link to Rollout and canary plan" title="Direct link to Rollout and canary plan">​</a></h3>
+<ul>
+<li>Phase 0 – Prep<!-- -->
+<ul>
+<li>Land <code>classifier.yaml</code> with <code>enabled: true</code> and <code>policy_export.enabled: true</code> but keep guard disabled initially (<code>guard.enabled: false</code>).</li>
+<li>Deploy PDP policies that reference <code>context.category_label</code> (deny/allow/budgets) and verify in lower env.</li>
+</ul>
+</li>
+<li>Phase 1 – Canary export<!-- -->
+<ul>
+<li>Set <code>CATEGORY_EXPORT_ENABLED=true</code> on a small canary slice (single BFF pod or namespace). Monitor:<!-- -->
+<ul>
+<li><code>bff_llm_category_export_total{exported,mode}</code></li>
+<li><code>authz.decisions</code> volume/latency, 4xx from PDP/BFF</li>
+</ul>
+</li>
+<li>Verify PDP policies behave as expected using Postman examples above.</li>
+</ul>
+</li>
+<li>Phase 2 – Broad export<!-- -->
+<ul>
+<li>Remove canary scope; keep export on across fleet. Keep guard off (lazy mode) to avoid user-visible blocks.</li>
+</ul>
+</li>
+<li>Phase 3 – Guard canary (strict)<!-- -->
+<ul>
+<li>Enable <code>guard.enabled: true</code> with conservative thresholds (e.g., higher <code>min_conf</code>) on a subset.</li>
+<li>Watch <code>bff_llm_category_reuse_total{source}</code> and 400 <code>classified_as_blocked:*</code> rates.</li>
+</ul>
+</li>
+<li>Phase 4 – Ramp<!-- -->
+<ul>
+<li>Gradually widen guard coverage; tune <code>per_label_thresholds</code> based on precision/recall goals.</li>
+</ul>
+</li>
+<li>Rollback<!-- -->
+<ul>
+<li>Disable guard by YAML (<code>guard.enabled: false</code>) and/or disable export by env <code>CATEGORY_EXPORT_ENABLED=false</code>.</li>
+<li>Revert recent policy changes or model allowlist entries if needed.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="reference-yaml-quick-guide-for-admins">Reference: YAML quick guide for admins<a href="#reference-yaml-quick-guide-for-admins" class="hash-link" aria-label="Direct link to Reference: YAML quick guide for admins" title="Direct link to Reference: YAML quick guide for admins">​</a></h3>
+<ul>
+<li><strong>enabled</strong>: turn classifier stack on/off.</li>
+<li><strong>backend</strong>: heuristic | hf | hf_zero_shot | onnx.</li>
+<li><strong>model</strong>: HF model id (e.g., bart-large-mnli for zero-shot).</li>
+<li><strong>labels</strong>: candidate labels to score against (add synonyms: pay, compensation, wages, earnings, bonus…).</li>
+<li><strong>multi_label</strong>: true to improve recall on overlapping categories.</li>
+<li><strong>hypothesis_template</strong>: natural-language pattern used by zero-shot.</li>
+<li><strong>guard.enabled</strong>: enable blocking decisions.</li>
+<li><strong>guard.block_labels</strong>: which labels block when matched.</li>
+<li><strong>guard.min_conf</strong>: global threshold (0–1).</li>
+<li><strong>guard.per_label_thresholds</strong>: precise per-label override, e.g. <code>salary: 0.55</code>, <code>payroll: 0.50</code>.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="example-strict-request-and-expected-logs">Example strict request and expected logs<a href="#example-strict-request-and-expected-logs" class="hash-link" aria-label="Direct link to Example strict request and expected logs" title="Direct link to Example strict request and expected logs">​</a></h3>
+<ul>
+<li>Client header: <code>X-Category-Mode: strict</code></li>
+<li>BFF logs:<!-- -->
+<ul>
+<li>classifier_decision: label=&lt;category&gt;, confidence=&lt;score&gt;, min_conf=&lt;threshold&gt;</li>
+<li>classifier_block + HTTP 400 classified_as_blocked:&lt;label&gt;</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="scopes-and-access-matrix">Scopes and access matrix<a href="#scopes-and-access-matrix" class="hash-link" aria-label="Direct link to Scopes and access matrix" title="Direct link to Scopes and access matrix">​</a></h3>
+<ul>
+<li>Required scopes to call LLM endpoint:<!-- -->
+<ul>
+<li>bff.llm.invoke (recommended) OR application.all</li>
+</ul>
+</li>
+<li>PDP policies then decide “who can invoke” and attach constraints/obligations:<!-- -->
+<ul>
+<li>Constraints like <code>prompt_rules</code>, <code>model</code>, <code>tokens</code>, <code>egress</code> shape the request.</li>
+<li>Obligations like <code>audit_log</code>, <code>tee_analytics</code>, <code>emit_receipt</code> ensure auditability.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="monitoring-and-kafka">Monitoring and Kafka<a href="#monitoring-and-kafka" class="hash-link" aria-label="Direct link to Monitoring and Kafka" title="Direct link to Monitoring and Kafka">​</a></h3>
+<ul>
+<li><strong>BFF</strong>: structured logs; surface classifier_* events, policy decision, obligation processing, API_* events.</li>
+<li><strong>PDP</strong>: emits to Kafka (<code>authz.events</code>, <code>authz.decisions</code>); inspect with Kafdrop.</li>
+<li><strong>Analytics</strong>: receives receipts via HTTP and may also consume Kafka events; dashboards in Grafana/ClickHouse for downstream metrics.</li>
+</ul>
+<p>If you want, I can drop this guide into the repo as <code>ServiceConfigs/BFF/docs/classifier-admin-guide.md</code> and add mermaid renders to your Grafana or a README viewer.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/source_content/bff_ai_prompt_classifier.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#empowernow-bff-ai-prompt-classifier-and-guard--admin-guide" class="table-of-contents__link toc-highlight">EmpowerNow BFF AI Prompt Classifier and Guard – Admin Guide</a></li><li><a href="#where-configuration-lives" class="table-of-contents__link toc-highlight">Where configuration lives</a></li><li><a href="#classifieryaml-schema-and-meaning" class="table-of-contents__link toc-highlight">classifier.yaml schema and meaning</a></li><li><a href="#strict-vs-lazy-modes" class="table-of-contents__link toc-highlight">Strict vs Lazy modes</a></li><li><a href="#how-to-send-strict-requests" class="table-of-contents__link toc-highlight">How to send strict requests</a></li><li><a href="#examples-postman-and-curl-openai-and-anthropic" class="table-of-contents__link toc-highlight">Examples: Postman and cURL (OpenAI and Anthropic)</a></li><li><a href="#auth-and-required-scopes" class="table-of-contents__link toc-highlight">Auth and required scopes</a></li><li><a href="#new-decision-flow-classification-first-pdp-is-source-of-truth" class="table-of-contents__link toc-highlight">New decision flow (classification-first; PDP is source of truth)</a></li><li><a href="#policy-driven-obligations-new" class="table-of-contents__link toc-highlight">Policy-driven obligations (new)</a></li><li><a href="#where-things-are-logged" class="table-of-contents__link toc-highlight">Where things are logged</a></li><li><a href="#how-pdp-policies-influence-enforcement" class="table-of-contents__link toc-highlight">How PDP policies influence enforcement</a></li><li><a href="#production-accuracy-how-to-truly-train-and-tune" class="table-of-contents__link toc-highlight">Production accuracy: how to “truly train” and tune</a></li><li><a href="#how-to-configure-bff-for-strict-by-default-options" class="table-of-contents__link toc-highlight">How to configure BFF for strict by default (options)</a></li><li><a href="#how-to-configure-crud-service-agent-for-strict" class="table-of-contents__link toc-highlight">How to configure CRUD Service “agent” for strict</a></li><li><a href="#operational-runbook" class="table-of-contents__link toc-highlight">Operational runbook</a></li><li><a href="#rollout-and-canary-plan" class="table-of-contents__link toc-highlight">Rollout and canary plan</a></li><li><a href="#reference-yaml-quick-guide-for-admins" class="table-of-contents__link toc-highlight">Reference: YAML quick guide for admins</a></li><li><a href="#example-strict-request-and-expected-logs" class="table-of-contents__link toc-highlight">Example strict request and expected logs</a></li><li><a href="#scopes-and-access-matrix" class="table-of-contents__link toc-highlight">Scopes and access matrix</a></li><li><a href="#monitoring-and-kafka" class="table-of-contents__link toc-highlight">Monitoring and Kafka</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Getting Started</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Marketing</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/">Home</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/solutions">Solutions</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/pricing">Pricing</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/products">Products</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/trust">Trust</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/resources">Resources</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/website_copy/company">Company</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/empowerID/empowernow_docs" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 EmpowerNow. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
