@@ -1,4 +1,4 @@
-# FAQ — CRUD Service (Identity Operations)
+# FAQ — Orchestration Service (Identity Operations)
 
 ## How do you guarantee idempotency?
 We dedupe by durable event/correlation IDs across steps and persist workflow state so retries don’t re‑apply.

@@ -15,7 +15,7 @@
     {"type": "quote", "text": "Explore over 2700 apps.", "href": "https://www.make.com/en/integrations"}
   ],
   "gapsVsEmpowerNow": ["no_idempotent_workflows", "no_policy_linked_approvals", "no_receipt_chain"],
-  "traps_counters": {"trap": "Error handlers = transactional guarantees", "counter": "CRUD Service provides idempotency keys, approvals binding, and receipts across steps"},
+  "traps_counters": {"trap": "Error handlers = transactional guarantees", "counter": "Orchestration Service provides idempotency keys, approvals binding, and receipts across steps"},
   "lastFetched": "2025-09-26",
   "stalenessDays": 60,
   "notes": "Strong runtime controls; approvals/governance and receipts are not first-class"

@@ -1,10 +1,10 @@
 ---
 title: BFF → CRUD upstream TLS (HTTPS) and optional mTLS
-description: Configure the BFF to call CRUD Service over HTTPS via Traefik with zero code changes, and optionally enable mutual TLS (mTLS) when mandated by policy.
+description: Configure the BFF to call Orchestration Service over HTTPS via Traefik with zero code changes, and optionally enable mutual TLS (mTLS) when mandated by policy.
 sidebar_label: Upstream TLS/mTLS to CRUD
 keywords:
   - BFF
-  - CRUD Service
+  - Orchestration Service
   - TLS
   - mTLS
   - Traefik
@@ -16,7 +16,7 @@ Phase 1 switches the BFF→CRUD upstream hop to HTTPS (via Traefik) with no code
 
 ```mermaid
 flowchart LR
-  BFF[BFF] -- HTTPS --> TR[Traefik (CRUD router)] -- HTTP(S) --> CRUD[CRUD Service]
+  BFF[BFF] -- HTTPS --> TR[Traefik (CRUD router)] -- HTTP(S) --> CRUD[Orchestration Service]
   note right of BFF: httpx verifies TLS by default
 ```
 
@@ -162,6 +162,6 @@ Operational guardrails:
 
 ## See also
 
-- CRUD Service — mTLS (Design & Guide): ../../crud-service/reference/mtls_design.md
+- Orchestration Service — mTLS (Design & Guide): ../../crud-service/reference/mtls_design.md
 - BFF Security Model: ../explanation/security-model.md
 

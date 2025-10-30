@@ -24,7 +24,7 @@ Yes—what you have is a full implementation spec. To make it turnkey for your w
 ### Story S2 — Hero (Zone A)
 
 * **Copy:** “Create. Control. Prove. … 5 minutes … Enforce policy … Prove every action.”
-* **Design:** Full-width, **no container box**. Right column mini-diagram **API → CRUD Service → Platforms**.
+* **Design:** Full-width, **no container box**. Right column mini-diagram **API → Orchestration Service → Platforms**.
 * **CTAs:** Primary = **Start Quickstart**; Secondary = **Watch 90-sec demo**.
 * **Acceptance**
 
@@ -45,9 +45,9 @@ Yes—what you have is a full implementation spec. To make it turnkey for your w
 
 ---
 
-### Story S4 — Create: CRUD Service (Zone C.1) **(Hero section)**
+### Story S4 — Create: Orchestration Service (Zone C.1) **(Hero section)**
 
-* **Content:** Outcome, How it works, **comparison table** (Without vs With CRUD Service), Quickstart + Adapter Catalog.
+* **Content:** Outcome, How it works, **comparison table** (Without vs With Orchestration Service), Quickstart + Adapter Catalog.
 * **Comparison Table Rows:**
 
   * 6 weeks → **~5 minutes**
@@ -185,7 +185,7 @@ Yes—what you have is a full implementation spec. To make it turnkey for your w
 ## Acceptance Criteria (global)
 
 * No empty metrics; **Status/Velocity** in place.
-* CRUD Service section appears **immediately after hero** and includes the **comparison table**.
+* Orchestration Service section appears **immediately after hero** and includes the **comparison table**.
 * Control presented as **one stack**; badges visible; exactly **one cyan primary** CTA in the block.
 * Receipt JSON visible and legible (6–8 lines).
 * Color roles consistent; typographic scale respected; spacing rhythm applied.
@@ -195,7 +195,7 @@ Yes—what you have is a full implementation spec. To make it turnkey for your w
 
 ## Rollout Plan
 
-* **Day 1:** Implement Hero, Problems, Create (CRUD Service + comparison). Remove zeroed Proof.
+* **Day 1:** Implement Hero, Problems, Create (Orchestration Service + comparison). Remove zeroed Proof.
 * **Day 2:** Implement Control (single stack), Prove (receipt), Role Paths, Capabilities, Status.
 * **Half-day polish:** Analytics wiring, a11y checks, performance (lazy-load diagram), responsive QA.
 

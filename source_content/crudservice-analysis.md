@@ -22,7 +22,7 @@ CRUDService is a **comprehensive microservices-based workflow automation platfor
 ### 2. **Key Components**
 
 **Core Services:**
-- **CRUD Service**: Main REST API with workflow engine
+- **Orchestration Service**: Main REST API with workflow engine
 - **IdP (Identity Provider)**: Authentication and identity management
 - **PDP (Policy Decision Point)**: Authorization and policy enforcement
 - **Membership Service**: User/group relationship management via Neo4j

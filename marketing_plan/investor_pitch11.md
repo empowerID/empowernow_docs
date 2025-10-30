@@ -75,7 +75,7 @@ $500K average ARR = $50-100M addressable revenue
 
 ### **What We Built:**
 ```
-API/DB → CRUD Service → MCP Tool (5 min)
+API/DB → Orchestration Service → MCP Tool (5 min)
            ↓
     AuthZEN PDP (authorization)
            ↓
@@ -130,7 +130,7 @@ Same tool → MCP + OpenAI Functions + Copilot
 
 ---
 
-## Slide 6: CRUD Service Detail
+## Slide 6: Orchestration Service Detail
 
 # **The Innovation: 6 Weeks → 5 Minutes**
 
@@ -139,7 +139,7 @@ Every agent needs dozens of tools. Each integration takes weeks.
 
 ### **Our Solution:**
 
-| **Traditional** | **CRUD Service** |
+| **Traditional** | **Orchestration Service** |
 |-----------------|------------------|
 | 6 weeks per tool | 5 minutes |
 | Custom code required | YAML configuration |
@@ -296,7 +296,7 @@ Typical Enterprise:
 
 | **Capability** | **Status** | **Evidence** |
 |----------------|------------|--------------|
-| CRUD Service | **GA** | Live demos daily |
+| Orchestration Service | **GA** | Live demos daily |
 | MCP Gateway | **Beta** | Schema validation working |
 | AuthZEN PDP | **GA** | OpenID compliant |
 | ARIA Shield | **Beta** | Budget enforcement live |
@@ -423,7 +423,7 @@ Typical Enterprise:
 
 **Late 2022:** ChatGPT early access → $80 Azure app experiment → AI eureka moment
 
-**2023:** SAP PoC AI Connector Opportunity → Invented CRUD Service (YAML, no-code connectors)
+**2023:** SAP PoC AI Connector Opportunity → Invented Orchestration Service (YAML, no-code connectors)
 
 **Sept 2024:** Hurricane Helene → While evacuating, designed Phoenix engine
 
@@ -531,7 +531,7 @@ Typical Enterprise:
 - **Validation:** SAP selection, Fortune 500 customers
 
 ### **The Solution**
-- **CRUD Service:** Any API → MCP tool in 5 minutes
+- **Orchestration Service:** Any API → MCP tool in 5 minutes
 - **Governance Stack:** Gateway + PDP + Shield
 - **Proof:** Cryptographic receipts per action
 

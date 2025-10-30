@@ -1,7 +1,7 @@
 ### Real-world end-to-end: rotate a production DB password using MCP + graph workflows
 
 Context
-- Actors: SRE asks an MCP agent (e.g., Claude Desktop) connected to our CRUD Service MCP server.
+- Actors: SRE asks an MCP agent (e.g., Claude Desktop) connected to our Orchestration Service MCP server.
 - Capabilities exposed:
   - MCP Tools: `workflow.start`, `workflow.resume`, `secrets.catalog.search`, `secrets.catalog.normalize`, `secrets.catalog.mounts`.
   - Prompts: `secrets.create_or_update` (smart URI), internal “approval summary” prompt, optional plan prompts.

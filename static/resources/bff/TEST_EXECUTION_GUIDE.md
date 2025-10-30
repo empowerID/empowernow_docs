@@ -107,7 +107,7 @@ async def test_complete_user_workflow() -> bool  # 🔥 CRITICAL
 |--------------|----------------|--------------|---------|
 | **BFF API** | `bff_app` | `http://bff_app:8000` | Backend-for-Frontend service |
 | **IdP Service** | `idp-app` | `http://idp-app:8002` | Identity Provider API |
-| **CRUD Service** | `crud-service` | `http://crud-service:8000` | CRUD operations API |
+| **Orchestration Service** | `crud-service` | `http://crud-service:8000` | CRUD operations API |
 | **PDP Service** | `pdp_app` | `http://pdp_app:8001` | Policy Decision Point API |
 | **Redis Cache** | `shared_redis` | `redis://shared_redis:6379` | Session & caching store |
 | **Kafka** | `kafka` | `kafka:9092` | Event streaming |
@@ -161,7 +161,7 @@ graph TD
     B -->|"Host Header Routing"| C["🔧 BFF API<br/>bff_app:8000"]
     B -->|"Host Header Routing"| D["📱 SPA Static Files<br/>Served by Traefik"]
     C -->|"Docker Network<br/>Internal Only"| E["🔐 IdP Service<br/>idp-app:8002"]
-    C -->|"Docker Network<br/>Internal Only"| F["💾 CRUD Service<br/>crud-service:8000"]
+    C -->|"Docker Network<br/>Internal Only"| F["💾 Orchestration Service<br/>crud-service:8000"]
     C -->|"Docker Network<br/>Internal Only"| G["🛡️ PDP Service<br/>pdp_app:8001"]
     C -->|"Docker Network<br/>Internal Only"| H["⚡ Redis Cache<br/>shared_redis:6379"]
     

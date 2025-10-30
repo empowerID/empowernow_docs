@@ -85,7 +85,7 @@ Vibe Coding is our delivery discipline built around the Neon Flux design system 
 
 ## Primary use cases
 
-- Tasks & approvals (CRUD Service) with live counters via SSE
+- Tasks & approvals (Orchestration Service) with live counters via SSE
 - Workflow launch and monitoring with resume/cancel
 - Page runner for search, tables and actions grounded in YAML page configs
 - Announcements and PDP‑aware dashboard widgets (including plugin‑contributed)

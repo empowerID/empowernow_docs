@@ -6,7 +6,7 @@
   - Authorization (PDP): AuthZEN decisions with constraints/obligations, enriched by Membership graph (data scope, step‑up, chaining).
   - Enforcement (Gateways): MCP‑aware PEP + BFF spending control; schema/param/egress allowlists; plan+budget enforcement; cryptographic receipts.
   - Truth Graph (Membership): Delegations, capabilities, budgets/max_steps, SaaS eligibility; single source powering IdP and PDP.
-  - Orchestration (Automation Studio + CRUD Service): No‑code AI agent tool creation and Self‑Driving Workflows: zero‑shot LLM‑native path generation, node‑centric decisions, AI‑native Mermaid diagrams, enhanced responses (ai_context), resumable executions.
+  - Orchestration (Automation Studio + Orchestration Service): No‑code AI agent tool creation and Self‑Driving Workflows: zero‑shot LLM‑native path generation, node‑centric decisions, AI‑native Mermaid diagrams, enhanced responses (ai_context), resumable executions.
 
 ### Public site IA and content map (updated)
 - Homepage

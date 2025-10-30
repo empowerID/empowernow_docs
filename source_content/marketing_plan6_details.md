@@ -45,7 +45,7 @@
   - BFF Spending Control
   - Tool Registry
   - Receipt Vault
-  - Orchestration (Automation Studio + CRUD Service)
+  - Orchestration (Automation Studio + Orchestration Service)
   - Membership (Neo4j)
 - Comparison: ARIA vs “AI Gateways” vs “AuthZ engines” vs “Workflow tools”
 - CTAs: Book a demo | Read docs

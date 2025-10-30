@@ -123,7 +123,7 @@ curl -sS -X POST https://api.ocg.labs.empowernow.ai/api/internal/llm/chat/comple
   -H "X-Category-Mode: strict" \
   -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"show my coworker salary"}],"stream":false}'
 ```
-- CRUD Service “agent”:
+- Orchestration Service “agent”:
   - Ensure calls to BFF include `X-Category-Mode: strict` header. If the agent doesn’t support custom headers today, add that header in the agent’s HTTP client. Alternatively, set a route-level default (future enhancement) to force strict for the LLM endpoint server-side.
 
 ### Examples: Postman and cURL (OpenAI and Anthropic)
@@ -198,7 +198,7 @@ sequenceDiagram
   participant Classifier
   participant PDP
   participant Obligations as Obligation Dispatcher
-  participant CRUD as CRUD Service
+  participant CRUD as Orchestration Service
   participant Provider
 
   Client->>BFF: POST /api/internal/llm/chat/completions
@@ -336,7 +336,7 @@ Response exposure:
 - Client-driven (current): pass `X-Category-Mode: strict`.
 - Server-driven (future enhancement): add a default to enforce strict for the LLM route; until then, set the header in all clients (CRUD agent, SPAs, backends).
 
-### How to configure CRUD Service “agent” for strict
+### How to configure Orchestration Service “agent” for strict
 - Ensure its HTTP client to the BFF adds `X-Category-Mode: strict`.
 - If that agent lacks a header injector, add one (recommended), or file a change to default strict on the BFF route.
 

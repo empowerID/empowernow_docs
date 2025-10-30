@@ -41,14 +41,14 @@ Return a single, self‑describing “WAITING” response at each decision point
   - x‑compose/x‑decompose: build a complex parameter like a URI from parts.
   - x‑default, x‑elicit, x‑redact, x‑rbac‑scope: defaults, questions, masking, access hints.
 
-### Graph workflows (CRUD Service engine)
+### Graph workflows (Orchestration Service engine)
 - Execution runs as a graph of nodes:
   - ACTION nodes call commands via our executor.
   - USER_INTERACTION nodes handle approvals, forms, LLM interactions; engine sets WAITING and resumes after decision.
 - We already enrich responses with next paths and diagrams; execution remains deterministic and auditable.
  - Side‑effects (any mutation in external systems like Vault/AD/Auth0/DB/K8s) happen only inside ACTION nodes under concurrency (ETag/If‑Match), idempotency, retry, and audit controls.
 
-### CRUD Service MCP Server and agent
+### Orchestration Service MCP Server and agent
 - The MCP server exposes our tools/resources/prompts to any compatible agent (e.g., Claude Desktop).
 - Agents use our “self‑describing response” to decide and then either:
   - call our REST `/workflow/resume/{task_id}`, or
@@ -112,7 +112,7 @@ graph TD
     Agent[MCP Agent]
   end
 
-  subgraph "CRUD Service"
+  subgraph "Orchestration Service"
     API[Workflow API]
     EX[FinalGraphExecutor]
     AH[ACTION Handler]

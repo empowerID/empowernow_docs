@@ -30,7 +30,7 @@ See the full sample approval_config and options below in “Use the PDPSubjectSe
 
 ### Prerequisites
 
-- CRUD Service running with plugin discovery enabled
+- Orchestration Service running with plugin discovery enabled
 - Access to `plugins/approver_resolvers/`
 
 ### 1) Configure an approval node

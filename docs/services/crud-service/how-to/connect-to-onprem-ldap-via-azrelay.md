@@ -1,7 +1,7 @@
 ---
 id: connect-to-onprem-ldap-via-azrelay
-title: Connect CRUD Service to On‑Prem LDAP via Azure Relay Bridge
-description: How to configure CRUD Service to talk to on‑prem LDAP/AD using Azure Relay Bridge (azbridge) without opening inbound firewall ports.
+title: Connect Orchestration Service to On‑Prem LDAP via Azure Relay Bridge
+description: How to configure Orchestration Service to talk to on‑prem LDAP/AD using Azure Relay Bridge (azbridge) without opening inbound firewall ports.
 ---
 
 ## When to use this
@@ -40,6 +40,6 @@ ldapsearch -x -H "$LDAPS_URI" -s base -b "" "(objectclass=*)"
 ## See also
 
 - Azure Relay Bridge: `services/identity-fabric/azure-relay-bridge`
-- CRUD Service security: `services/crud-service/explanation/security`
+- Orchestration Service security: `services/crud-service/explanation/security`
 
 

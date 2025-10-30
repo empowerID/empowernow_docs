@@ -172,7 +172,7 @@ See also the integrated stack example in `CRUDService/docker-compose-authzen4.ym
 ## Related
 
 - Identity Fabric overview: `services/identity-fabric/index`
-- CRUD Service: `services/crud-service/index`
+- Orchestration Service: `services/crud-service/index`
 - BFF: `services/bff/index`
 
 ## References

@@ -26,7 +26,7 @@ The CRUDService’s `VaultService` acts as a PEP for secrets. It:
 - Honors provider semantics (KVv2 version pins; deleted/destroyed mapping; leases)
 - Emits non‑leaky audits and integrates with egress secret slots
 
-See CRUD Service → Secrets enforcement for architecture, flows, and error codes.
+See Orchestration Service → Secrets enforcement for architecture, flows, and error codes.
 
 ### Batch authorization example
 Request

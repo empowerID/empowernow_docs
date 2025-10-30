@@ -24,7 +24,7 @@ Standardize authorization decisions with OpenID AuthZEN. One PDP, interoperable 
 Ship automations that security approves. Every node is policy‑gated, with DPoP proofs and full audit.
 
 - Why it matters: Replace brittle scripts and shadow IT with governed workflows.
-- How it works: CRUD Service + PDP; NowConnect for on‑prem; OTEL traces for every run.
+- How it works: Orchestration Service + PDP; NowConnect for on‑prem; OTEL traces for every run.
 - Compare: /docs/marketing/automation-vs-zapier-make-n8n
 
 ## Hybrid Connectivity (NowConnect)

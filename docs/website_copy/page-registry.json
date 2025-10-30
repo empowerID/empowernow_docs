@@ -38,7 +38,7 @@
     },
     {
       "key": "crud",
-      "title": "EmpowerNow CRUD Service — Identity Operations",
+      "title": "EmpowerNow Orchestration Service — Identity Operations",
       "slug": "/product/crud-service",
       "file": "product_crud-service.md",
       "required_reference": [

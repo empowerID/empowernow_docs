@@ -1,8 +1,8 @@
 {
-  "label": "CRUD Service",
+  "label": "Orchestration Service",
   "position": 3,
   "collapsed": false,
-  "link": { "type": "generated-index", "title": "CRUD Service Docs" }
+  "link": { "type": "generated-index", "title": "Orchestration Service Docs" }
 }
 
 

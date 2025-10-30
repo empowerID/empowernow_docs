@@ -1,4 +1,4 @@
-# CRUD Service — Artifacts Pack
+# Orchestration Service — Artifacts Pack
 
 ## Ops Plane Diagram
 ```mermaid

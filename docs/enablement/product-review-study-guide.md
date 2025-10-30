@@ -186,7 +186,7 @@ Answer: OpenID Auth/PDP authorization; mTLS between BFF and CRUD service (and in
 - WCAG: Accessibility standard targeted by Experience UX.
 - OpenID Auth: Authorization framework used across the platform.
 - mTLS: Mutual TLS for strong, certificate‑based service auth.
-- CRUD Service: Workflow/CRUD execution backend.
+- Orchestration Service: Workflow/CRUD execution backend.
 - LDAP VDS: Virtual Directory Service that presents diverse data sources as LDAP.
 - System Definition: Automation Studio configuration for systems/commands.
 - Kafka / ClickHouse: Eventing and analytics backbone.

@@ -17,7 +17,7 @@
 `$20M+ Revenue • $8.8M ARR • 15 Years • Fortune 500 Trusted`
 
 **Presenter Script (15 seconds):**
-"Agents without tools are useless. Tools without governance are dangerous. CRUD Service solves both problems in 5 minutes. Watch us turn your Salesforce API into a secure agent tool that works across MCP, Copilot, and OpenAI Functions."
+"Agents without tools are useless. Tools without governance are dangerous. Orchestration Service solves both problems in 5 minutes. Watch us turn your Salesforce API into a secure agent tool that works across MCP, Copilot, and OpenAI Functions."
 
 ---
 
@@ -50,11 +50,11 @@
 ### **20 Years Building This:**
 - **Governance expertise:** Identity-grade controls & audit at scale
 - **Enterprise trust:** 50+ Fortune 500 relationships, procurement ready
-- **Technical depth:** 500+ connectors built, now productized as CRUD Service
+- **Technical depth:** 500+ connectors built, now productized as Orchestration Service
 - **Team stability:** Long-tenured, distributed leadership, no key-person risk
 
 ### **Innovation Breakthrough:**
-**CRUD Service** - 20 years of connector expertise, now an AI tool factory
+**Orchestration Service** - 20 years of connector expertise, now an AI tool factory
 
 **Not a pivot—expanding governance from humans to agents.**
 
@@ -65,7 +65,7 @@
 # **Create • Control • Prove**
 
 ```
-API/Database → [CRUD Service] → Agent Tool (5 min)
+API/Database → [Orchestration Service] → Agent Tool (5 min)
                     ↓
             Publish Everywhere
         (MCP • OpenAI • Copilot • Vertex)
@@ -75,7 +75,7 @@ API/Database → [CRUD Service] → Agent Tool (5 min)
            Cryptographic Receipt
 ```
 
-**Create:** CRUD Service → MCP-safe tool with schema pins + policy hooks  
+**Create:** Orchestration Service → MCP-safe tool with schema pins + policy hooks  
 **Control:** MCP Gateway (pre-exec) + AuthZEN PDP + ARIA Shield (runtime)  
 **Prove:** Receipt Vault with decision_id, policy_hash, tool_schema, cost
 
@@ -100,13 +100,13 @@ Publish once → MCP, Copilot, OpenAI Functions
 
 ---
 
-## Slide 6: CRUD Service - The Hero
+## Slide 6: Orchestration Service - The Hero
 
 # **The AI Tool Factory**
 
 ### **Transform Any API/DB → Agent-Safe Tool**
 
-| **Without CRUD Service** | **With CRUD Service** |
+| **Without Orchestration Service** | **With Orchestration Service** |
 |--------------------------|----------------------|
 | 6 weeks per integration | **5 minutes** |
 | Custom code required | **No code** |
@@ -292,7 +292,7 @@ MCP • Copilot • OpenAI Functions • Vertex • Bedrock • LangChain
 ### **Raise:** $15M Series A
 
 ### **Use of Funds:**
-- 40% Product (adapters, CRUD Service expansion)
+- 40% Product (adapters, Orchestration Service expansion)
 - 35% Go-to-market (sales, partnerships)
 - 25% Operations (certifications, infrastructure)
 
@@ -333,7 +333,7 @@ Security modeling & workflow orchestration
 
 ### **The No-Code Advantage**
 
-**Automation Studio → CRUD Service**  
+**Automation Studio → Orchestration Service**  
 Visual tool designer → API connectors → MCP tools
 
 **Authorization Studio → PDP**  
@@ -376,7 +376,7 @@ Identity lineage → Fresh context → Accurate policies
 ## **EmpowerID + EmpowerNow: The $20M IAM Leader Owning Agent Governance**
 
 ### **The Opportunity**
-Enterprises deploying thousands of AI agents need governance NOW. We're the only ones with enterprise-grade control shipping today. Our CRUD Service creates governed agent tools in 5 minutes (not 6 weeks).
+Enterprises deploying thousands of AI agents need governance NOW. We're the only ones with enterprise-grade control shipping today. Our Orchestration Service creates governed agent tools in 5 minutes (not 6 weeks).
 
 ### **Proven Foundation**
 - **EmpowerID:** $20M revenue, $8.8M ARR, profitable, 15 years
@@ -384,7 +384,7 @@ Enterprises deploying thousands of AI agents need governance NOW. We're the only
 - **Team:** Distributed leadership, 12+ year average tenure
 
 ### **Technical Breakthrough**
-**CRUD Service** turns any API into a governed agent tool instantly. Combined with our enforcement stack (Gateway + PDP + Shield) and cryptographic receipts, we deliver complete cross-platform agent governance.
+**Orchestration Service** turns any API into a governed agent tool instantly. Combined with our enforcement stack (Gateway + PDP + Shield) and cryptographic receipts, we deliver complete cross-platform agent governance.
 
 ### **Traction**
 - [If verifiable: 3 Fortune 500 POCs at 90% software model]
@@ -412,7 +412,7 @@ $15M Series A to accelerate from proven $20M business to $150M agent governance 
 
 ### **Addresses All Concerns:**
 - Shows $20M proven business (not hiding services)
-- Demonstrates AI innovation (CRUD Service magic)
+- Demonstrates AI innovation (Orchestration Service magic)
 - Clear transition plan (42% → 85% software)
 - Live proof over promises
 - Multiple distribution paths

@@ -673,7 +673,7 @@ graph TD
     end
     
     subgraph "Backend Services"
-        CRUD[CRUD Service]
+        CRUD[Orchestration Service]
         PDP[PDP Service]
         IdP[IdP Service]
     end

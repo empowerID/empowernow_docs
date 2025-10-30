@@ -295,7 +295,7 @@ Providers honor these semantics (translator enforces allowlist and normalization
 - For bind continuity, document an explicit active/standby source list in `connectors.yaml` (no offline cache for credentials).
 
 Terminology
-- We use “Connectors” in VDS to align with CRUD Service terminology (System Types/Definitions). The “Directory Aggregator” composes multiple connectors per directory to provide deterministic paging and a composite cursor.
+- We use “Connectors” in VDS to align with Orchestration Service terminology (System Types/Definitions). The “Directory Aggregator” composes multiple connectors per directory to provide deterministic paging and a composite cursor.
 
 ---
 

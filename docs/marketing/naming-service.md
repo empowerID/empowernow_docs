@@ -33,7 +33,7 @@ flowchart LR
   BFF --> NS
 
   subgraph DataPlane["Data Plane Services"]
-    CRUD["CRUD Service (workflows)"]
+    CRUD["Orchestration Service (workflows)"]
     DC["Data Collector (inventory)"]
   end
   BFF --> CRUD

@@ -26,7 +26,7 @@ flowchart LR
 ## What it isn’t
 
 - Not a full PAM suite (no mature session brokering/recording, endpoint privilege elevation, broad JIT for human admins)
-- Secrets is a built‑in capability of the CRUD Service. CRUD provides a full workflow/orchestration engine (graph workflows, `/execute`, plugins, connectors). We compete with n8n/Make/Zapier on workflow automation; our differentiator is policy‑first execution with PDP/PEP‑enforced secrets and enterprise observability.
+- Secrets is a built‑in capability of the Orchestration Service. CRUD provides a full workflow/orchestration engine (graph workflows, `/execute`, plugins, connectors). We compete with n8n/Make/Zapier on workflow automation; our differentiator is policy‑first execution with PDP/PEP‑enforced secrets and enterprise observability.
 
 ## Where we’re strong
 
@@ -50,7 +50,7 @@ flowchart LR
 ### Workflow automation platforms (n8n, Make, Zapier)
 
 - Strengths: massive connector catalogs and marketplaces, citizen low‑code builders, templates, very fast time‑to‑first‑flow
-- How EmpowerNow (CRUD Service) competes: full workflow/orchestration engine (graph YAML, `/execute`, plugin functions), first‑class secrets with PDP/PEP on each use, canonical URIs across providers, KVv2 lifecycle (rotate/undelete/destroy), uniform Kafka audits → Analytics, strong observability and governance
+- How EmpowerNow (Orchestration Service) competes: full workflow/orchestration engine (graph YAML, `/execute`, plugin functions), first‑class secrets with PDP/PEP on each use, canonical URIs across providers, KVv2 lifecycle (rotate/undelete/destroy), uniform Kafka audits → Analytics, strong observability and governance
 - Where they may still fit better: if the primary requirement is 500+ prebuilt connectors and a marketplace‑style citizen‑developer UX, their breadth is hard to match
 - Positioning: lead with governance and security at execution time, provider‑agnostic secrets, and enterprise ops (audits, traces, metrics); we can also front their automations as the secure secrets backbone when needed
 

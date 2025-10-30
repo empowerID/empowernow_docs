@@ -1,15 +1,15 @@
-# CRUD Service × MCP – External Overview
+# Orchestration Service × MCP – External Overview
 
-This short brief explains *what* the Model-Context-Protocol (MCP) integration delivers, not the low-level implementation.  Use it to understand the value-prop and deployment shape when you consume CRUD Service as a platform or plug your own MCP-compatible services into it.
+This short brief explains *what* the Model-Context-Protocol (MCP) integration delivers, not the low-level implementation.  Use it to understand the value-prop and deployment shape when you consume Orchestration Service as a platform or plug your own MCP-compatible services into it.
 
 ---
 
 ## 1  Why MCP?
 
-MCP is an open JSON-over-HTTP protocol that lets AI agents discover, describe and invoke tools in a structured way.  By supporting MCP, CRUD Service becomes a "universal hub":
+MCP is an open JSON-over-HTTP protocol that lets AI agents discover, describe and invoke tools in a structured way.  By supporting MCP, Orchestration Service becomes a "universal hub":
 
-* **Publish** – every command and workflow you already model in CRUD Service instantly shows up as an MCP tool.
-* **Consume** – CRUD Service can ingest any remote MCP server and treat its tools as if they were local connectors.
+* **Publish** – every command and workflow you already model in Orchestration Service instantly shows up as an MCP tool.
+* **Consume** – Orchestration Service can ingest any remote MCP server and treat its tools as if they were local connectors.
 
 The result is a single, policy-controlled interface for cross-system automation – no custom SDKs or bespoke adapters.
 
@@ -18,7 +18,7 @@ The result is a single, policy-controlled interface for cross-system automation 
 ## 2  What You Get Today
 
 1. **MCP Gateway**  
-   • Exposes CRUD Service commands & workflows as tools via HTTP or Server-Sent Events (streaming).  
+   • Exposes Orchestration Service commands & workflows as tools via HTTP or Server-Sent Events (streaming).  
    • Includes simple `GET /health`, `/tools`, `/discovery` endpoints for monitoring and service discovery.  
    • Supports "virtual views" – filtered catalogs on distinct paths: `GET /mcp/{view}/tools/list`, `POST /mcp/{view}/jsonrpc`.
 
@@ -28,7 +28,7 @@ The result is a single, policy-controlled interface for cross-system automation 
    • Optional Router surface (short names with `oneOf`) can be enabled separately for UX demos.
 
 3. **Unified Authorization & Observability**  
-   • Every MCP call flows through CRUD Service's existing token validation, PDP authorization and OpenTelemetry tracing layers.
+   • Every MCP call flows through Orchestration Service's existing token validation, PDP authorization and OpenTelemetry tracing layers.
 
 ---
 
@@ -37,8 +37,8 @@ The result is a single, policy-controlled interface for cross-system automation 
 ```mermaid
 sequenceDiagram
     participant Remote as Remote MCP Server
-    participant Connector as CRUD Service MCP Connector
-    participant Gateway as CRUD Service MCP Gateway
+    participant Connector as Orchestration Service MCP Connector
+    participant Gateway as Orchestration Service MCP Gateway
     participant Agent as External AI Agent
 
     Remote-->>Connector: metadata (tools, prompts, resources)
@@ -75,5 +75,5 @@ sequenceDiagram
 ---
 
 
-For deeper API or schema questions please contact the CRUD Service engineering team.
+For deeper API or schema questions please contact the Orchestration Service engineering team.
 

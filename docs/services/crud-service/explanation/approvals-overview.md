@@ -1,6 +1,6 @@
-## CRUD Service Approvals — Overview
+## Orchestration Service Approvals — Overview
 
-This page explains approvals in the CRUD Service: concepts, lifecycle, and where policy plugs in.
+This page explains approvals in the Orchestration Service: concepts, lifecycle, and where policy plugs in.
 
 ### Why approvals here?
 

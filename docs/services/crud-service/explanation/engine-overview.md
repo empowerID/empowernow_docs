@@ -1,6 +1,6 @@
-### CRUD Service workflow engine overview
+### Orchestration Service workflow engine overview
 
-The CRUD Service includes a node-based workflow engine that executes directed graphs of steps with conditional edges, concurrency, user-interaction pauses, and checkpoint-based recovery.
+The Orchestration Service includes a node-based workflow engine that executes directed graphs of steps with conditional edges, concurrency, user-interaction pauses, and checkpoint-based recovery.
 
 - **Key capabilities**
   - Dynamic branching via edge conditions

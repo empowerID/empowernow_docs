@@ -1,7 +1,7 @@
 ---
 id: kafka-events
-title: CRUD Service Kafka events (business and error)
-description: Topics, payload shapes, and emission points for CRUD Service business/error events, plus guidance on consuming them for troubleshooting.
+title: Orchestration Service Kafka events (business and error)
+description: Topics, payload shapes, and emission points for Orchestration Service business/error events, plus guidance on consuming them for troubleshooting.
 sidebar_label: Kafka events
 ---
 

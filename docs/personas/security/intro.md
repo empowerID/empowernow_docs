@@ -100,7 +100,7 @@ How to verify quickly
 - BFF → Observability: ../../services/bff/reference/observability.md
 - BFF → Logging & events: ../../services/bff/reference/logging-events.md
 - BFF → Health & metrics: ../../services/bff/reference/health-metrics.md
-- CRUD Service → mTLS (Design & Guide): ../../services/crud-service/reference/mtls_design.md
+- Orchestration Service → mTLS (Design & Guide): ../../services/crud-service/reference/mtls_design.md
 
 — For a visual walkthrough of the BFF, see: ../../services/bff/explanation/bff-visual-guide.md
 

@@ -1,11 +1,11 @@
 ---
 id: azure-connector-guide
 title: Azure (Microsoft Graph) connector – capabilities and configuration
-description: "Production‑grade Graph client in CRUD Service with retries, pagination, observability, flexible config, and standardized responses."
+description: "Production‑grade Graph client in Orchestration Service with retries, pagination, observability, flexible config, and standardized responses."
 sidebar_label: Azure connector guide
 ---
 
-The Azure connector in CRUD Service provides a production‑grade Microsoft Graph client with robust retries, pagination, observability, and flexible configuration. It’s implemented in `src/connectors/azure_connector.py`.
+The Azure connector in Orchestration Service provides a production‑grade Microsoft Graph client with robust retries, pagination, observability, and flexible configuration. It’s implemented in `src/connectors/azure_connector.py`.
 
 ## What it does
 

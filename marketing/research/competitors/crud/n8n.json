@@ -13,7 +13,7 @@
     {"type": "quote", "text": "We've built over 400 pre-configured integrations.", "href": "https://n8n.io/features/"}
   ],
   "gapsVsEmpowerNow": ["no_idempotent_workflows", "no_policy_linked_approvals", "no_receipt_chain"],
-  "traps_counters": {"trap": "Workflow retries ensure reliability", "counter": "CRUD Service adds idempotent operations, policy-linked approvals, and cryptographic receipts"},
+  "traps_counters": {"trap": "Workflow retries ensure reliability", "counter": "Orchestration Service adds idempotent operations, policy-linked approvals, and cryptographic receipts"},
   "lastFetched": "2025-09-26",
   "stalenessDays": 60,
   "notes": "Whole-run retry typical; build dedupe/checkpoints manually; strong OSS adoption"

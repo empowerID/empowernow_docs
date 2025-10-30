@@ -1,8 +1,8 @@
-# CRUD Service — Head-to-Head Matrix (Identity Operations)
+# Orchestration Service — Head-to-Head Matrix (Identity Operations)
 
 | Vendor                                | Idempotency                        | Approvals                              | Retries / SLOs                                   | Connectors (breadth)      | Eventing                 | Receipts / audit | Evidence |
 | ------------------------------------- | ---------------------------------- | -------------------------------------- | ------------------------------------------------ | ------------------------- | ------------------------ | --------------- | -------- |
-| **CRUD Service (target)**             | **Yes** — event/corr IDs, partials | **Yes** — policy-linked multi-step     | **Yes** — per-step retry, compensation, metrics  | 40+ deep enterprise ops   | Kafka/webhooks/SSE       | **Yes**         | — |
+| **Orchestration Service (target)**             | **Yes** — event/corr IDs, partials | **Yes** — policy-linked multi-step     | **Yes** — per-step retry, compensation, metrics  | 40+ deep enterprise ops   | Kafka/webhooks/SSE       | **Yes**         | — |
 | SailPoint Identity Security Cloud     | Connector-level                     | Yes — lifecycle approvals              | Connector-level                                   | Enterprise governance     | Platform events          | No (PDP chain)  | [Docs](https://www.sailpoint.com/solutions/identity-security/) |
 | Okta Workflows                        | Flow semantics                       | Yes — self-service owner approvals     | Platform-managed                                  | Okta + marketplace        | Okta events/logs         | No (PDP chain)  | [Flows](https://help.okta.com/wf/en-us/Content/Topics/Workflows/flows/flows.htm) |
 | Microsoft Entra ID Governance         | Lifecycle workflows                  | Yes — access reviews                   | Platform-dependent                                 | Microsoft ecosystem       | Platform telemetry       | No (PDP chain)  | [Overview](https://learn.microsoft.com/entra/id-governance/identity-governance-overview) |

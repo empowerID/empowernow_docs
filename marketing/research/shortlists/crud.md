@@ -1,4 +1,4 @@
-# CRUD Service — Competitor Shortlist and SERP Seed
+# Orchestration Service — Competitor Shortlist and SERP Seed
 
 Focus: idempotent workflows, policy‑linked approvals, retries/SLOs, connector breadth, and receipts/audit linkage. Includes IGA/IDaaS engines and iPaaS/no‑code automation.
 

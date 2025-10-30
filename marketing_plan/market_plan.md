@@ -1,4 +1,4 @@
-Perfect—here’s your **final, equal-weight plan** that is (1) heavy on **market research**, (2) produces **amazing, detailed briefs** for **each** product (IdP, PDP, CRUD Service, Data Collector, ARIA Shield, ARIA MCP Gateway), and (3) turns those briefs into the **single source of truth** for all website content.
+Perfect—here’s your **final, equal-weight plan** that is (1) heavy on **market research**, (2) produces **amazing, detailed briefs** for **each** product (IdP, PDP, Orchestration Service, Data Collector, ARIA Shield, ARIA MCP Gateway), and (3) turns those briefs into the **single source of truth** for all website content.
 
 ---
 
@@ -203,7 +203,7 @@ For **each** of the six:
 * **Claims:** reduced policy drift, incident reduction, explainable denies.
 * **SEO:** T1 *policy decision platform for AI*; T2 *AuthZEN implementation*; T3 *conservative merge model*.
 
-### CRUD Service
+### Orchestration Service
 
 * **Themes:** idempotent identity ops, approvals, retries/SLOs, connector/workflow surface.
 * **Competitors:** IGA provisioning engines, IDaaS workflows, iPaaS (identity ops).
@@ -330,7 +330,7 @@ For **each** of the six:
 
 ---
 
-If you want, I can immediately **draft the six Product Brief skeletons** (IdP, PDP, CRUD Service, Data Collector, ARIA Shield, ARIA MCP Gateway) plus **one Persona Journey Brief** for each, so your generator can produce the first pass of pages right away.
+If you want, I can immediately **draft the six Product Brief skeletons** (IdP, PDP, Orchestration Service, Data Collector, ARIA Shield, ARIA MCP Gateway) plus **one Persona Journey Brief** for each, so your generator can produce the first pass of pages right away.
 
 Awesome — here are the **12 drafts** you asked for: a **Product Brief** and a **Persona Journey Brief** for each of the six core products. They’re written to be **source-of-truth** inputs for your generators (front-matter first, then structured sections). All six follow the same schema for **parity**.
 
@@ -528,14 +528,14 @@ Soft: “AuthZEN quick explainer” → Medium: “Try decision explorer” → 
 
 ---
 
-# CRUD Service
+# Orchestration Service
 
-## Product Brief — CRUD Service
+## Product Brief — Orchestration Service
 
 ```markdown
 ---
 product: crud
-name: "EmpowerNow CRUD Service — Identity Operations"
+name: "EmpowerNow Orchestration Service — Identity Operations"
 status: draft
 owner: Product Marketing
 personas: [Platform Engineering, DevOps, App Teams, Security]
@@ -966,7 +966,7 @@ Got it — here’s a crisp, **equal-weight deep-research to-do list** for all s
   * `competitors/pdp/*.json` (caps: `authzen_contract`, `conservative_merge`, `obligations`, `ttl`, `pip_membership`)
   * Matrix: Contract fields | Merge rule | Explainability | Latency | Pricing
 
-## 3) CRUD Service (Identity Operations)
+## 3) Orchestration Service (Identity Operations)
 
 **Goal:** Establish pain around **idempotent provisioning**, approvals, retries, and clean audit linkage.
 

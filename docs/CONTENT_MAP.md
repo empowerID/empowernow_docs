@@ -45,7 +45,7 @@ Overlaps: loopback content cross-cuts `services/bff` and `services/crud-service`
 
 Overlaps: `bff_gateway.md` appears in both explanation and website product pages (gateway). Action: keep `services/bff/explanation/bff_gateway.md` as technical canonical; make website product pages link without copying tables.
 
-### CRUD Service (`services/crud-service/index.md`)
+### Orchestration Service (`services/crud-service/index.md`)
 - Explanation/how‑to/reference/tutorials present. Secrets folder contains internal docs and PDFs.
   - Approvals (new):
     - Explanation: `services/crud-service/explanation/approvals-overview.md`
@@ -53,7 +53,7 @@ Overlaps: `bff_gateway.md` appears in both explanation and website product pages
     - Reference: `services/crud-service/reference/approval-tasks-and-apis.md`
     - Operations: `services/crud-service/operations/approvals-operations.md`
 
-Overlaps: CRUD Service MCP docs vs Marketing loopback MCP. Action: retain technical depth in services; marketing links in/out. Approvals concepts also intersect with IdP/PDP (consent/obligations). Action: link CRUD approvals pages to IdP consent and PDP obligation docs; avoid restating their configuration tables.
+Overlaps: Orchestration Service MCP docs vs Marketing loopback MCP. Action: retain technical depth in services; marketing links in/out. Approvals concepts also intersect with IdP/PDP (consent/obligations). Action: link CRUD approvals pages to IdP consent and PDP obligation docs; avoid restating their configuration tables.
 
 ### PDP (`services/pdp/index.md`)
 - Explanation: 14 pages (architecture, policy, integrity, etc.).

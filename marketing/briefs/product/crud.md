@@ -1,6 +1,6 @@
 ---
 product: crud
-name: "EmpowerNow CRUD Service — Identity Operations"
+name: "EmpowerNow Orchestration Service — Identity Operations"
 status: draft
 owner: Product Marketing
 personas: [Platform Engineering, DevOps, App Teams, Security]

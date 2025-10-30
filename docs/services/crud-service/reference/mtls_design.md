@@ -1,7 +1,7 @@
 ---
 id: mtls
 title: "mTLS (Design & Guide)"
-description: "Production-grade inbound mTLS for CRUD Service: design, configuration, and end-to-end flow with optional PoP (sender-binding)."
+description: "Production-grade inbound mTLS for Orchestration Service: design, configuration, and end-to-end flow with optional PoP (sender-binding)."
 sidebar_label: "mTLS (Design & Guide)"
 keywords:
   - mTLS
@@ -10,12 +10,12 @@ keywords:
   - TLS
   - Traefik
   - Nginx
-  - CRUD Service
+  - Orchestration Service
 ---
 
 ## Quick links
 
-- How‑to: Enable mTLS → [Enable mTLS for CRUD Service APIs](../how-to/enable-mtls.md)
+- How‑to: Enable mTLS → [Enable mTLS for Orchestration Service APIs](../how-to/enable-mtls.md)
 - Jump to: [Flow: mode and PoP enforcement](#flow-mode-and-pop-enforcement)
 
 ### Mode selection (quick visual)
@@ -39,7 +39,7 @@ sequenceDiagram
   autonumber
   participant Client
   participant Proxy as Traefik/Nginx
-  participant App as CRUD Service
+  participant App as Orchestration Service
   participant MW as ClientCert Middleware
   participant AuthN as AuthN Service
 

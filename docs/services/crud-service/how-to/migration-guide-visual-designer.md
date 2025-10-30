@@ -190,7 +190,7 @@ Do: start small, document changes, involve stakeholders, keep backups, use versi
 
 Don’t: migrate everything at once, skip testing, ignore warnings, delete originals, or rush.
 
-## CRUD Service Workflows — YAML → SQL Runbook
+## Orchestration Service Workflows — YAML → SQL Runbook
 
 Concrete runbook to import YAMLs into `visual_workflow_definitions` via Docker Compose stack.
 

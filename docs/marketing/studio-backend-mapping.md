@@ -5,7 +5,7 @@ description: Clear mapping of Studios (frontends) to the backend services they p
 
 - Authentication Studio → IdP (OIDC/OAuth2) + BFF (session termination & proxy)
 - Authorization Studio → PDP (OpenID AuthZEN)
-- Automation Studio → CRUD Service (workflow/CRUD engine, Secrets Platform)
+- Automation Studio → Orchestration Service (workflow/CRUD engine, Secrets Platform)
 - Inventory Studio → DataCollector (connectors, diffing, PDP‑gated deltas)
 - Governance Studio (EA) → Campaigns/reviews service (roadmap)
 - Shared services → Analytics (Kafka→ClickHouse), Observability (OTEL/Prometheus/Loki/Grafana/Jaeger), NowConnect, Membership (Neo4j)
@@ -32,7 +32,7 @@ flowchart TB
   BFF --> PDP
 
   subgraph Data["Data Plane Services"]
-    CRUD["CRUD Service\n(YAML system definitions)"]
+    CRUD["Orchestration Service\n(YAML system definitions)"]
     DC["Data Collector\n(YAML system definitions)"]
     NAM["Naming Service"]
     ANA["Analytics API"]

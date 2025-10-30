@@ -24,7 +24,7 @@ function titleFor(key) {
   return {
     idp: 'EmpowerNow IdP — Agent Passports',
     pdp: 'EmpowerNow PDP — AuthZEN Decisions',
-    crud: 'EmpowerNow CRUD Service — Identity Operations',
+    crud: 'EmpowerNow Orchestration Service — Identity Operations',
     collector: 'EmpowerNow Data Collector — Inventory & Usage',
     shield: 'ARIA Shield — Zero-Token SPA & AI Gateway',
     mcp: 'ARIA MCP Gateway — Tool-Boundary Enforcement'

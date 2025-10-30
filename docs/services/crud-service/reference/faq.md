@@ -1,10 +1,10 @@
 ---
-title: CRUD Service — FAQ
+title: Orchestration Service — FAQ
 ---
 
 ## Why don't I see any workflows in Automation Studio (Visual Designer)?
 
-Most often the database catalog is empty in the current environment. Visual Designer lists workflows from the CRUD Service database table `visual_workflow_definitions`.
+Most often the database catalog is empty in the current environment. Visual Designer lists workflows from the Orchestration Service database table `visual_workflow_definitions`.
 
 Quick checks:
 
@@ -34,7 +34,7 @@ If the count is 0, run the migration script above and refresh Automation Studio.
 Also verify:
 
 - You are pointing Automation Studio to the correct environment (base URL) that has the populated DB
-- CRUD Service API is healthy and reachable from the UI
+- Orchestration Service API is healthy and reachable from the UI
 - Your user/role has permission to list workflows (if RBAC is enabled)
 
 For the full migration steps and troubleshooting, see the Migration Guide:
@@ -43,7 +43,7 @@ For the full migration steps and troubleshooting, see the Migration Guide:
 
 ## BFF fails at startup with DCR errors — what do I do?
 
-Issue a fresh DCR Initial Access Token (IAT), add it to the BFF environment in compose, and restart the BFF. A ready‑to‑use Postman request is in the CRUD Service repo. Full steps:
+Issue a fresh DCR Initial Access Token (IAT), add it to the BFF environment in compose, and restart the BFF. A ready‑to‑use Postman request is in the Orchestration Service repo. Full steps:
 
 - Follow: [How‑to: BFF startup — DCR IAT](../how-to/bff-startup-dcr-iat)
 

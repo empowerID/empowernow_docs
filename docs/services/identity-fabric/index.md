@@ -43,7 +43,7 @@ flowchart LR
 
   %% Data plane services
   subgraph data["Data Plane Services"]
-    CRUD["CRUD Service"]
+    CRUD["Orchestration Service"]
     NAMING["Naming Service"]
     MEMBERSHIP["Membership Service"]
   end
@@ -129,7 +129,7 @@ flowchart LR
 - BFF: Terminates SPA sessions; proxies to backends using audience‑bound access tokens minted by the IdP.
 - IdP: OIDC provider (tokens, introspection); emits CAEP/security events; exposes MCP.
 - PDP: Central authorization decisions; emits authz events/metrics.
-- CRUD Service: Executes workflow/CRUD commands; emits business/error events.
+- Orchestration Service: Executes workflow/CRUD commands; emits business/error events.
 - Membership: Graph of identities/relationships (Neo4j).
 - Analytics: Consumes Kafka events, persists to ClickHouse, serves analytics APIs.
 - Traefik: Ingress routing for SPAs and BFF.

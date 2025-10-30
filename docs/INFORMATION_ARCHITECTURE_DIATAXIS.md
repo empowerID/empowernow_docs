@@ -47,7 +47,7 @@ Canonical index: `services/bff/index.md`
 
 ---
 
-## Service: CRUD Service
+## Service: Orchestration Service
 Canonical index: `services/crud-service/index.md`
 
 - Explanation/How‑to/Reference/Tutorials present.

@@ -136,7 +136,7 @@ flowchart TB
 
   %% Data services
   subgraph Data["Data Plane Services"]
-    CRUD["CRUD Service\n(no‑code YAML system definitions)"]
+    CRUD["Orchestration Service\n(no‑code YAML system definitions)"]
     DC["Data Collector\n(no‑code YAML system definitions)"]
     NAM["Naming Service"]
     ANA["Analytics API"]
@@ -202,7 +202,7 @@ sequenceDiagram
   participant BFF as BFF
   participant IdP as IdP (OIDC)
   participant PDP as PDP (AuthZEN)
-  participant CRUD as CRUD Service
+  participant CRUD as Orchestration Service
   participant NCC as NowConnect Cloud
   participant NCP as Premise Agent
   participant SYS as On‑prem System
@@ -255,7 +255,7 @@ flowchart TB
   subgraph Svc["Backends (swap‑friendly)"]
     IDP["IdP (OIDC)"]:::comp
     PDP["PDP (AuthZEN)"]:::comp
-    CRUD["CRUD Service\n(YAML system definitions)"]:::comp
+    CRUD["Orchestration Service\n(YAML system definitions)"]:::comp
     DC["Data Collector\n(YAML system definitions)"]:::comp
   end
   BFF --> IDP
@@ -288,6 +288,6 @@ See also: Canonical plugin reference `../services/experience/experience_plugins`
 - BFF routes/settings and ForwardAuth: `/docs/services/bff/reference/routes-reference`, `/docs/services/bff/reference/settings-reference`, `/docs/services/bff/reference/traefik-forwardauth`
 - PDP flags and cache tuning: `/docs/services/pdp/reference/settings-flags`, `/docs/services/bff/how-to/pdp-cache-tuning`
 - Experience plugins and config: `/docs/services/experience/experience_plugins`, `/docs/services/experience/reference/plugins-config`
-- CRUD Service MCP API: `/docs/services/crud-service/reference/mcp_api_reference`
+- Orchestration Service MCP API: `/docs/services/crud-service/reference/mcp_api_reference`
 
 

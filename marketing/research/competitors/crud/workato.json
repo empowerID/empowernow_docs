@@ -12,7 +12,7 @@
     {"type": "quote", "text": "Stores the audit logs in a persistent cache for retry… exponential backoff…", "href": "https://docs.workato.com/features/activity-audit-log-streaming-retry.html"}
   ],
   "gapsVsEmpowerNow": ["no_idempotent_workflows", "no_policy_linked_approvals", "no_receipt_chain"],
-  "traps_counters": {"trap": "Backoff + retries = reliability", "counter": "CRUD Service couples idempotency with policy-linked approvals and provable receipts"},
+  "traps_counters": {"trap": "Backoff + retries = reliability", "counter": "Orchestration Service couples idempotency with policy-linked approvals and provable receipts"},
   "lastFetched": "2025-09-26",
   "stalenessDays": 60,
   "notes": "Enterprise-grade iPaaS; governance approvals and receipts are not first-class"

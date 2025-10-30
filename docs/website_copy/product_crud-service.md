@@ -7,7 +7,7 @@ claims:
   - { key: connectors, proof: { type: reference, ref: "/docs/services/crud-service/index.md" } }
   - { key: eventing, proof: { type: reference, ref: "/docs/services/crud-service/reference/approval-tasks-and-apis.md" } }
 ---
-# CRUD Service — Identity Operations Plane
+# Orchestration Service — Identity Operations Plane
 
 Make identity workflows reliable, auditable, and observable with idempotent operations, approvals, and connectors.
 

@@ -41,7 +41,7 @@
 * **Execution:** established enterprise business, shipping cadence
 * **Distribution:** enterprise relationships & procurement paths
 * **Team:** long-tenured, distributed leadership; no single key risk
-* **Innovation:** **CRUD Service** productizes 20 years of connector expertise
+* **Innovation:** **Orchestration Service** productizes 20 years of connector expertise
 
 *Not a pivot—**expanding governance from humans to agents**.*
 
@@ -49,7 +49,7 @@
 
 ### 4) What We Do (One Picture)
 
-**Create** — **CRUD Service** → MCP-safe tool (schema pins + policy hooks)
+**Create** — **Orchestration Service** → MCP-safe tool (schema pins + policy hooks)
 **Control** — **MCP Gateway** (pre-exec pins) + **AuthZEN PDP** (decisions) + **ARIA Shield** (budgets/egress/params)
 **Prove** — **Receipt Vault** (decision_id, policy_hash, tool_schema, cost, ttl_ms)
 
@@ -67,11 +67,11 @@
 
 ---
 
-### 6) Create — CRUD Service (Hero with Compare)
+### 6) Create — Orchestration Service (Hero with Compare)
 
 **Outcome:** Turn any API/DB into an **agent-safe tool**; publish once across platforms.
 
-**Without** → **With CRUD Service**
+**Without** → **With Orchestration Service**
 
 * ~6 weeks → **~5 minutes**
 * Custom code → **No code**
@@ -198,7 +198,7 @@
 * Strategy: neutral OEM + SI + marketplaces
 
 **Raise:** **$15M Series A** *(example)*
-**Use:** CRUD Service adapters/DX • Gateway/Shield hardening • Receipts/Verifier • design-partner rollout • OEM/SI enablement
+**Use:** Orchestration Service adapters/DX • Gateway/Shield hardening • Receipts/Verifier • design-partner rollout • OEM/SI enablement
 **KPIs:** endpoints governed • receipts/day • % spend blocked • time-to-first-tool • publish-to-3
 
 ---
@@ -219,7 +219,7 @@
 
 * **Agent platform name-checks** (MCP, Copilot, OpenAI Functions, Vertex/Bedrock) on Slides 2, 4, 5, 9.
 * **Convergence graphic** (Slide 2): Platforms launching × Enterprise needs = EmpowerNow.
-* **CRUD Service “factory”** metaphor (Slide 6) with the 5-minute compare.
+* **Orchestration Service “factory”** metaphor (Slide 6) with the 5-minute compare.
 * **Proof atoms** (Slides 5, 8, 13) instead of lofty adjectives.
 * **“Neutral OEM”** reach narrative (Slide 9) with an *illustrative* 10–30× statement.
 
@@ -231,7 +231,7 @@
 * **Ask/UoP** explicit; **unit economics** labeled *illustrative*.
 * **EmpowerID** framed as **advantage** and **distribution**, not “legacy.”
 * **Demo** rehearsed: tool in <10m; pre-exec block; 402; receipt.
-* “**CRUD Service**” spelled with a space everywhere.
+* “**Orchestration Service**” spelled with a space everywhere.
 
 ---
 

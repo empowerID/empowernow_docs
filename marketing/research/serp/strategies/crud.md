@@ -1,4 +1,4 @@
-# SERP Strategy — CRUD Service (Identity Operations)
+# SERP Strategy — Orchestration Service (Identity Operations)
 
 ## Keyword tiers
 
@@ -34,7 +34,7 @@
 
 ```mermaid
 flowchart LR
-  Hub[/Product Hub/] --> CRUD[/Product: CRUD Service/]
+  Hub[/Product Hub/] --> CRUD[/Product: Orchestration Service/]
   CRUD --> Primer[/Primer: Idempotent Workflows/]
   CRUD --> FAQ[/FAQ: CRUD/]
   CRUD --> Ref[/Docs: services/crud-service/*/]

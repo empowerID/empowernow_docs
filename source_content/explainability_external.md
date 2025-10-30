@@ -1,6 +1,6 @@
 # Self-Describing Workflow Responses – External Overview
 
-CRUD Service workflows return **agent-friendly JSON** so that human UIs *and* automated agents (LLMs, RPA bots, etc.) can drive a process without custom SDKs.  This document explains the principle and the response format—no deep code details required.
+Orchestration Service workflows return **agent-friendly JSON** so that human UIs *and* automated agents (LLMs, RPA bots, etc.) can drive a process without custom SDKs.  This document explains the principle and the response format—no deep code details required.
 
 ---
 
@@ -141,5 +141,5 @@ Need a new task type (e.g. signature, biometric auth)?
 
 ---
 
-For detailed API docs or schema definitions, contact the CRUD Service team.
+For detailed API docs or schema definitions, contact the Orchestration Service team.
 

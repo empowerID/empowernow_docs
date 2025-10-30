@@ -1,4 +1,4 @@
-This is great feedback—and easy to fold in without disrupting the page you just approved. Below are **drop-in upgrades** for the four items you flagged (stronger hero, CRUD Service comparison, simplified Control stack, pricing anchor + urgency), plus optional **tabbed layout** and **analytics** hooks. Everything keeps the Neon-Flux tone and your “no-FUD, mechanism-first” rules.
+This is great feedback—and easy to fold in without disrupting the page you just approved. Below are **drop-in upgrades** for the four items you flagged (stronger hero, Orchestration Service comparison, simplified Control stack, pricing anchor + urgency), plus optional **tabbed layout** and **analytics** hooks. Everything keeps the Neon-Flux tone and your “no-FUD, mechanism-first” rules.
 
 ---
 
@@ -27,12 +27,12 @@ Turn any API into a **secure agent tool** in **5 minutes**. Then **enforce** pol
 
 ---
 
-## 2) CRUD Service value comparison (visual block)
+## 2) Orchestration Service value comparison (visual block)
 
 ```md
-### Why CRUD Service (5-minute Tool Factory)
+### Why Orchestration Service (5-minute Tool Factory)
 
-| Without CRUD Service | With CRUD Service |
+| Without Orchestration Service | With Orchestration Service |
 |---|---|
 | ~6 weeks per API integration | **~5 minutes** from API to tool |
 | Custom code, per platform | **No code**, publish once |
@@ -42,7 +42,7 @@ Turn any API into a **secure agent tool** in **5 minutes**. Then **enforce** pol
 [Quickstart](/docs/crud-service/quickstart)  [Adapter catalog](/catalog)
 ```
 
-> Design: two equal cards, Pulse-Cyan tick marks on “With CRUD Service”; small footnote “Times are representative; shown live in demo.”
+> Design: two equal cards, Pulse-Cyan tick marks on “With Orchestration Service”; small footnote “Times are representative; shown live in demo.”
 
 ---
 
@@ -94,7 +94,7 @@ Turn any API into a **secure agent tool** in **5 minutes**. Then **enforce** pol
   <button>All Products</button>
 </div>
 <div class="tab-panel" id="tab-build">
-  <!-- CRUD Service hero + comparison + Quickstart -->
+  <!-- Orchestration Service hero + comparison + Quickstart -->
 </div>
 <div class="tab-panel" hidden id="tab-secure">
   <!-- Complete Control Stack content -->
@@ -117,13 +117,13 @@ Turn any API into a **secure agent tool** in **5 minutes**. Then **enforce** pol
 * `crud_compare_view` when the comparison table enters viewport
 * `tab_select` `{tab:"build"|"secure"|"audit"|"all"}`
 * `role_path_click` `{role:"build"|"control"|"audit"}` (already planned)
-* `section_time` for CRUD Service (time on section; IntersectionObserver)
+* `section_time` for Orchestration Service (time on section; IntersectionObserver)
 * `badge_info_open` when user hovers/clicks GA/Beta tooltip
 
 **North-star page KPIs (unchanged):**
 
 * % who start Quickstart from Products page
-* Time on CRUD Service section
+* Time on Orchestration Service section
 * Click-through to Security brief / Reference architecture
 * Receipt sample views
 

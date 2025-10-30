@@ -16,7 +16,7 @@
 
 **The Reality:** Enterprises need thousands of agent tools. **Custom builds take weeks per integration.**
 
-**Our Breakthrough:** **CRUD Service** creates governed tools **in minutes, not months**.
+**Our Breakthrough:** **Orchestration Service** creates governed tools **in minutes, not months**.
 
 **The Result:** Agents that actually work—**with authorization, budgets, and receipts built in**.
 
@@ -28,7 +28,7 @@
 
 ## Presenter Script (15 seconds)
 
-“Agents without tools are useless. Tools without governance are dangerous. **CRUD Service** solves both problems **in 5 minutes**. Watch us turn your Salesforce API into a secure agent tool that works across **MCP, Copilot, and OpenAI Functions**.”
+“Agents without tools are useless. Tools without governance are dangerous. **Orchestration Service** solves both problems **in 5 minutes**. Watch us turn your Salesforce API into a secure agent tool that works across **MCP, Copilot, and OpenAI Functions**.”
 
 
 ---
@@ -58,7 +58,7 @@
 ### 4) Live Demo (90s): **Author Once → Publish Many**
 
 * Build once in **Automation Studio** (YAML) → publish to **MCP**, **OpenAI Functions**, **Microsoft Copilot**.
-* **CRUD Service** turns any **API/DB** into **no-code MCP tools** (schema pins, policy hooks).
+* **Orchestration Service** turns any **API/DB** into **no-code MCP tools** (schema pins, policy hooks).
 * Invoke from each: **PDP** applies constraints; **Gateway/Shield** enforce; **Receipt** captured.
 * **Takeaway:** unified governance **without** forcing a single platform.
 
@@ -74,10 +74,10 @@
 
 ---
 
-### 6) **Agents ≠ Chat: Tools = Work** (CRUD Service = Tool Factory)
+### 6) **Agents ≠ Chat: Tools = Work** (Orchestration Service = Tool Factory)
 
 * **Agents create value only through tools.**
-* **CRUD Service** generates **no-code integrations** so any **API/DB** becomes an **agent-safe MCP tool** with schema, auth, and guardrails.
+* **Orchestration Service** generates **no-code integrations** so any **API/DB** becomes an **agent-safe MCP tool** with schema, auth, and guardrails.
 * **Author once → publish many:** packaged for MCP/Functions/Copilot with **policy hooks** baked in.
 * **Outcomes we’ll demo:** time-to-first-tool **<10 min**; safe expansion; consistent governance across platforms.
 
@@ -85,7 +85,7 @@
 
 ### 7) What We Are (Layer-2 Middleware)
 
-* **Create tools fast** — **Automation Studio** + **CRUD Service** → MCP Tools/Resources/Prompts; adapters for non-MCP.
+* **Create tools fast** — **Automation Studio** + **Orchestration Service** → MCP Tools/Resources/Prompts; adapters for non-MCP.
 * **Decide & constrain** — **EmpowerID PDP / Authorization Studio** → standardized decision (constraints/obligations/TTL).
 * **Enforce & prove** — **ARIA MCP Gateway** (pre-exec), **ARIA Shield** (inline), **Receipt Vault** (cryptographic audit chain).
 * **Stay accurate** — **Inventory Studio** keeps identity & entitlements fresh for PDP/PIP.
@@ -131,7 +131,7 @@
 
 ### 12) Studios Overview (No-Code; Demo-Ready)
 
-* **Automation Studio → CRUD Service (backend)**
+* **Automation Studio → Orchestration Service (backend)**
   *No-code MCP tool & workflow designer* — turn any API/DB into **agent-safe tools**; publish with policy hooks.
 * **Authorization Studio → PDP (backend)**
   *Policy UI (ABAC/constraints/obligations/TTL)* — **standardized decisions** for budgets/content/params.
@@ -161,7 +161,7 @@ flowchart LR
   G --> P["PDP (EmpowerID)"]
   P -->|Decision + Constraints| G
   G -->|Allowed + Obligations| S[ARIA Shield]
-  S -->|Enforced Call| T["CRUD Service Connector<br/>API/Database"]
+  S -->|Enforced Call| T["Orchestration Service Connector<br/>API/Database"]
   T --> S
   S --> R[Receipt Vault]
   R --> A
@@ -260,7 +260,7 @@ Coverage: MCP + two of OpenAI/Copilot/Vertex/Bedrock GA • Partners: 1 platform
 
 **What:** A neutral Layer-2 to **create tools once**, **enforce policy/budgets across platforms**, and **prove every action** with cryptographic receipts.
 
-**Tools = Work (CRUD Service):** turns any **API/DB** into an **agent-safe MCP tool**—no code, schema-pinned, auth-aware, **policy-ready**.
+**Tools = Work (Orchestration Service):** turns any **API/DB** into an **agent-safe MCP tool**—no code, schema-pinned, auth-aware, **policy-ready**.
 
 **Fine-Grained Control:** **ARIA MCP Gateway** (pre-exec), **ARIA Shield** (runtime), **EmpowerID PDP** (contextual decisions) → **audit-ready receipts**.
 
@@ -281,13 +281,13 @@ Coverage: MCP + two of OpenAI/Copilot/Vertex/Bedrock GA • Partners: 1 platform
 
 ## Presenter micro-script (20s)
 
-“Agents only create value through **tools**. **CRUD Service** is our **tool factory**, turning any API or database into an **MCP-ready tool** with policy hooks. **EmpowerID PDP** decides context; the **ARIA MCP Gateway** gates **before** the model runs; **ARIA Shield** enforces budgets, parameters, and egress **during** execution. Every action is **receipted**.”
+“Agents only create value through **tools**. **Orchestration Service** is our **tool factory**, turning any API or database into an **MCP-ready tool** with policy hooks. **EmpowerID PDP** decides context; the **ARIA MCP Gateway** gates **before** the model runs; **ARIA Shield** enforces budgets, parameters, and egress **during** execution. Every action is **receipted**.”
 
 ---
 
 ### Final checklist for this version
 
-* ✅ “CRUD Service” has a space everywhere (cards, bullets, diagram labels).
+* ✅ “Orchestration Service” has a space everywhere (cards, bullets, diagram labels).
 * ✅ Slide 13 duplicate bullet removed; identity anchored to **RFC 8693**.
 * ✅ “Switzerland” reframed to **Neutral OEM strategy**.
 * ✅ **Controls & Evidence** + **Design Partner** slides added to the core (not just appendix).

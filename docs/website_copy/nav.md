@@ -15,7 +15,7 @@ Product Dropdown
 - PDP — AuthZEN
 - ARIA MCP Gateway (MCP PEP)
 - ARIA Shield (formerly BFF)
-- CRUD Service
+- Orchestration Service
 - Data Collector
 - VDS (Virtual Directory Server) — Coming soon
 

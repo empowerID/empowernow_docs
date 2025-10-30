@@ -41,7 +41,7 @@
 ### 4) Live Demo (90s): **Author Once → Publish Many**
 
 * Build once in **Automation Studio** (YAML) → publish to **MCP**, **OpenAI Functions**, **Microsoft Copilot**.
-* **CRUD Service** turns any **API/DB** into **code-free connectors** that surface as **MCP agent tools**.
+* **Orchestration Service** turns any **API/DB** into **code-free connectors** that surface as **MCP agent tools**.
 * Invoke from each: **Authorization Studio** applies constraints; **Gateway/Shield** block off-plan/over-budget; **Receipt** captured.
 * **Takeaway:** unified governance **without** forcing a single platform.
 
@@ -56,10 +56,10 @@
 
 ---
 
-### 6) **Agents ≠ Chat: Tools = Work** (CRUD Service = Tool Factory)
+### 6) **Agents ≠ Chat: Tools = Work** (Orchestration Service = Tool Factory)
 
 * **Agents create value only through tools.**
-* **CRUD Service** generates **code-free integrations** so any system **API** or **database** becomes an **agent-safe MCP tool** with schema, auth, and guardrails.
+* **Orchestration Service** generates **code-free integrations** so any system **API** or **database** becomes an **agent-safe MCP tool** with schema, auth, and guardrails.
 * **Author once → publish many**: packaged for MCP/Functions/Copilot/etc. with **policy hooks** baked in.
 * **Outcomes:** time-to-first-tool **<10 min**; **safe expansion** of agent capability; **consistent governance** across platforms.
 
@@ -67,7 +67,7 @@
 
 ### 7) What We Are (Layer-2 Middleware)
 
-* **Create tools fast** — **Automation Studio** + **CRUD Service connectors** → MCP Tools/Resources/Prompts; adapters for non-MCP.
+* **Create tools fast** — **Automation Studio** + **Orchestration Service connectors** → MCP Tools/Resources/Prompts; adapters for non-MCP.
 * **Decide & constrain** — **EmpowerID PDP / Authorization Studio** → standardized decision (constraints/obligations/TTL).
 * **Enforce & prove** — **ARIA MCP Gateway** (pre-exec), **ARIA Shield** (inline), **Receipt Vault** (cryptographic audit chain).
 * **Stay accurate** — **Inventory Studio** keeps identity & entitlements fresh for PDP/PIP.
@@ -144,7 +144,7 @@ flowchart LR
   G --> P["PDP (EmpowerID)"]
   P -->|Decision + Constraints| G
   G -->|Allowed + Obligations| S[ARIA Shield]
-  S -->|Enforced Call| T["CRUD Service Connector<br/>API/Database"]
+  S -->|Enforced Call| T["Orchestration Service Connector<br/>API/Database"]
   T --> S
   S --> R[Receipt Vault]
   R --> A
@@ -219,8 +219,8 @@ Coverage: MCP + two of OpenAI/Copilot/Vertex/Bedrock GA • Partners: 1 platform
 **What:**
 A neutral Layer-2 that lets enterprises **create tools once**, **enforce policy/budgets across platforms**, and **prove every action** with cryptographic receipts.
 
-**Tools = Work (CRUD Service):**
-**CRUD Service** turns any **API/DB** into an **agent-safe MCP tool**—code-free, schema-pinned, auth-aware, and **policy-ready**.
+**Tools = Work (Orchestration Service):**
+**Orchestration Service** turns any **API/DB** into an **agent-safe MCP tool**—code-free, schema-pinned, auth-aware, and **policy-ready**.
 
 **Fine-Grained Control:**
 **ARIA MCP Gateway** (pre-execution gating), **ARIA Shield** (inline enforcement), and **EmpowerID PDP** deliver **who/what/for whom/under what constraints** with **crystal-clear auditability**.
@@ -254,6 +254,6 @@ Typical account: **20–50 endpoints × $500 = $10k–$25k / month** → **$120k
 
 ## Presenter micro-script (20s)
 
-“Agents only create value through **tools**. **CRUD Service** is our **tool factory**, making any API or database an **MCP-ready tool** with policy hooks. **EmpowerID PDP** decides context; the **ARIA MCP Gateway** gates **before** the model runs; **ARIA Shield** enforces budgets, parameters, and egress **during** execution. Every action is **receipted**.”
+“Agents only create value through **tools**. **Orchestration Service** is our **tool factory**, making any API or database an **MCP-ready tool** with policy hooks. **EmpowerID PDP** decides context; the **ARIA MCP Gateway** gates **before** the model runs; **ARIA Shield** enforces budgets, parameters, and egress **during** execution. Every action is **receipted**.”
 
 ---

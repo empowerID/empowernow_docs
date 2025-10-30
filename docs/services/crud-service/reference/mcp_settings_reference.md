@@ -1,8 +1,8 @@
 ---
-title: MCP Settings Reference (CRUD Service)
+title: MCP Settings Reference (Orchestration Service)
 ---
 
-Use this as the single source of truth for MCP settings in CRUD Service. Link here from how‑tos and marketing pages instead of repeating variables.
+Use this as the single source of truth for MCP settings in Orchestration Service. Link here from how‑tos and marketing pages instead of repeating variables.
 
 ## Contents
 - [MCP endpoints](#mcp-endpoints)

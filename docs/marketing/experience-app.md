@@ -31,7 +31,7 @@ flowchart TB
   subgraph Svc["Backends"]
     IdP["IdP"]
     PDP["PDP (AuthZEN)"]
-    CRUD["CRUD Service"]
+    CRUD["Orchestration Service"]
     WF["Workflow APIs"]
   end
   BFF --> IdP

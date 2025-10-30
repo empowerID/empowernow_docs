@@ -1,4 +1,4 @@
-Perfect—here’s your **final, equal-weight plan** that is (1) heavy on **market research**, (2) produces **amazing, detailed briefs** for **each** product (IdP, PDP, CRUD Service, Data Collector, ARIA Shield, ARIA MCP Gateway), and (3) turns those briefs into the **single source of truth** for all website content.
+Perfect—here’s your **final, equal-weight plan** that is (1) heavy on **market research**, (2) produces **amazing, detailed briefs** for **each** product (IdP, PDP, Orchestration Service, Data Collector, ARIA Shield, ARIA MCP Gateway), and (3) turns those briefs into the **single source of truth** for all website content.
 
 ---
 
@@ -203,7 +203,7 @@ For **each** of the six:
 * **Claims:** reduced policy drift, incident reduction, explainable denies.
 * **SEO:** T1 *policy decision platform for AI*; T2 *AuthZEN implementation*; T3 *conservative merge model*.
 
-### CRUD Service
+### Orchestration Service
 
 * **Themes:** idempotent identity ops, approvals, retries/SLOs, connector/workflow surface.
 * **Competitors:** IGA provisioning engines, IDaaS workflows, iPaaS (identity ops).
@@ -330,4 +330,4 @@ For **each** of the six:
 
 ---
 
-If you want, I can immediately **draft the six Product Brief skeletons** (IdP, PDP, CRUD Service, Data Collector, ARIA Shield, ARIA MCP Gateway) plus **one Persona Journey Brief** for each, so your generator can produce the first pass of pages right away.
+If you want, I can immediately **draft the six Product Brief skeletons** (IdP, PDP, Orchestration Service, Data Collector, ARIA Shield, ARIA MCP Gateway) plus **one Persona Journey Brief** for each, so your generator can produce the first pass of pages right away.

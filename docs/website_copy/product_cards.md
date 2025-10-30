@@ -17,7 +17,7 @@ ARIA Shield (formerly BFF)
 - Stream‑time token caps and leakage guards; 402 budget_exceeded behavior with receipts.
 - Provider‑compatible API surface for minimal app changes.
 
-CRUD Service
+Orchestration Service
 - Workflow execution and service layer; policy‑guarded automation; resume/approvals.
 
 Data Collector

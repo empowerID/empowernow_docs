@@ -4,7 +4,7 @@ title: Fix BFF startup errors with a DCR Initial Access Token (IAT)
 sidebar_label: "BFF startup: DCR IAT"
 ---
 
-If the BFF fails during startup and shuts down with Dynamic Client Registration (DCR) errors, issue a fresh DCR Initial Access Token (IAT), place it in the compose env, and restart. A ready‑to‑use Postman request is checked in under the CRUD Service repo.
+If the BFF fails during startup and shuts down with Dynamic Client Registration (DCR) errors, issue a fresh DCR Initial Access Token (IAT), place it in the compose env, and restart. A ready‑to‑use Postman request is checked in under the Orchestration Service repo.
 
 ## When to use this
 

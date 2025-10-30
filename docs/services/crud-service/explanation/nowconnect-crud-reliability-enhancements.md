@@ -1,13 +1,13 @@
 ---
 id: nowconnect-crud-reliability-enhancements
-title: NowConnect + CRUD Service reliability enhancements (LDAP/AD)
+title: NowConnect + Orchestration Service reliability enhancements (LDAP/AD)
 description: "Idempotent group membership operations, NowConnect routing validation, expanded metrics, and configurable knobs for bulk scale."
 sidebar_label: NowConnect + CRUD reliability
 ---
 
 ### Audience
 
-- CRUD Service admins and DC Ops/DevOps/SRE teams.
+- Orchestration Service admins and DC Ops/DevOps/SRE teams.
 
 ## High-level outcomes
 

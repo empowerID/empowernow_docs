@@ -23,7 +23,7 @@ Problem → brittle scripts; Failed attempts → more scripts; Resolution → id
 flowchart LR
   T[Trigger] --> P[Pain]
   P --> F[Failed attempts]
-  F --> R[CRUD Service]
+  F --> R[Orchestration Service]
   R --> N[Next step]
 ```
 

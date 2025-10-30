@@ -60,8 +60,8 @@ OpenID AuthZEN + governed OAuth; OIDC/SCIM/CAEP supported.
 - IdP (Identity Provider) and IdP UI (Authentication Studio)
 - PDP (Policy Decision Point) and PDP UI (Authorization Studio)
 - ARIA Shield for SPA APIs, provider streaming, and budgets
-- CRUD Service (workflow engine and service layer)
-- Visual Designer (Automation Studio) – frontend for CRUD Service
+- Orchestration Service (workflow engine and service layer)
+- Visual Designer (Automation Studio) – frontend for Orchestration Service
 - Analytics service (Kafka → ClickHouse → API layer for SPAs)
 - Membership Service (Neo4j PIP)
 - Naming Service (IGA naming and uniqueness)

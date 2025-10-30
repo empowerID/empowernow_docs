@@ -1,4 +1,4 @@
-# Battlecard — CRUD Service (Identity Operations)
+# Battlecard — Orchestration Service (Identity Operations)
 
 ## Positioning
 

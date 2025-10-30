@@ -52,7 +52,7 @@ PDP	The centralized "brain" for authorization. As a hot market item, externalizi
 Aria Shield (BFF)	A "Backend for Front End" proxy that serves as a "Super PEP." It intercepts all traffic from front-end applications and AI agents to back-end services and LLM providers. This model eliminates tokens from the browser, using secure, server-managed sessions (via Redis) and HTTP-only cookies, a pattern that decisively addresses browser token hackability. It is the key to enforcing policies on LLM traffic.
 MCP Gateway	A proxy that sits between AI agents and MCP (Machine-Readable Capability Protocol) servers/tools. It re-exposes tools to agents, performing authentication and authorization. It solves the "too many tools problem" where AIs are typically limited to 50-60 tools before performance degrades.
 Membership Service	A meta-directory built on a Neo4j graph database. It stores objects, identities, relationships, tools, and delegation concepts, serving as a Policy Information Point (PIP) for the PDP to understand complex relationships like "who can do what for whom."
-CRUD Service	Provides no-code connectors and graph-based workflows. It can expose any connector command (e.g., "get a user from Azure") or entire workflow as an MCP tool for AI agents to consume via the MCP Gateway.
+Orchestration Service	Provides no-code connectors and graph-based workflows. It can expose any connector command (e.g., "get a user from Azure") or entire workflow as an MCP tool for AI agents to consume via the MCP Gateway.
 Analytics Service	The central consumer for business-level logging. Services log events to Kafka, and the Analytics service processes these logs, transforms them, and stores them in final destinations like ClickHouse (for high-speed reporting) and PostgreSQL PG Vector (for AI analysis). It is the source for real-time budget state.
 Receipt Vault	A dedicated service that signs and hashes high-value logs and decisions, creating tamper-evident receipts. This ensures that records, such as spending logs, cannot be altered without detection.
 VDS	A Virtual Directory Service that combines LDAP and SCIM virtualization. It leverages CRUD service connectors to expose any connected system via LDAP or SCIM protocols, performing live schema transformations.
@@ -83,7 +83,7 @@ A key innovation is the extension of the PDP's role beyond a simple allow/deny d
   * Data Scopes: constraints.data_scope can inject server-side filters (e.g., row_filter_sql) to limit the data an agent can access.
 * Obligations: These are tasks that the PEP is expected to perform asynchronously after an action is permitted. They do not block the request but ensure follow-up processes are triggered.
   * Auditing: An audit_log obligation can instruct the PEP to log specific event details to Kafka.
-  * Workflow Triggering: A run_workflow obligation can instruct the PEP to execute a CRUD Service workflow, enabling actions like sending a manager an email or opening a Jira ticket.
+  * Workflow Triggering: A run_workflow obligation can instruct the PEP to execute a Orchestration Service workflow, enabling actions like sending a manager an email or opening a Jira ticket.
   * Consent: When a policy requires user approval for a high-risk action (e.g., booking an expensive flight), the PDP returns a consent obligation to the IdP, which then initiates a user consent flow before issuing the final token.
 
 4. Core Contracts and System Flows

@@ -24,7 +24,7 @@
   ],
   "traps_counters": {
     "trap": "RPA queues + retries solve reliability for identity ops",
-    "counter": "CRUD Service adds cross-system idempotency with policy-bound approvals and cryptographic receipts"
+    "counter": "Orchestration Service adds cross-system idempotency with policy-bound approvals and cryptographic receipts"
   },
   "lastFetched": "2025-09-26",
   "stalenessDays": 60,

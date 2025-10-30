@@ -92,7 +92,7 @@ sequenceDiagram
   participant Classifier
   participant PDP
   participant Oblig as Obligations
-  participant CRUD as CRUD Service
+  participant CRUD as Orchestration Service
   participant Backend as Backend Service
 
   Client->>Traefik: HTTP /api/... (session/bearer)

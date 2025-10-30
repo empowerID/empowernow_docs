@@ -112,7 +112,7 @@ const config: Config = {
             { label: 'PDP', to: '/docs/services/pdp/' },
             { label: 'ARIA MCP Gateway', to: '/docs/services/mcp-gateway/' },
             { label: 'ARIA Shield', to: '/docs/services/aria-shield/' },
-            { label: 'CRUD Service', to: '/docs/services/crud-service/' },
+            { label: 'Orchestration Service', to: '/docs/services/crud-service/' },
             { label: 'Data Collector', to: '/docs/services/data-collector/' },
             { label: 'VDS (Coming soon)', href: 'https://empowerid.github.io/empowernow_info/products/#vds' },
           ],

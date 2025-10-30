@@ -5,11 +5,11 @@ description: How to invoke the Secrets API from automation, CRUD /execute workfl
 
 ## Overview
 
-The Secrets Platform is callable over HTTP. This page shows how to wire the Secrets API for use in automation, CRUD Service `/execute` workflows, graph workflows, and AI agents. It reuses the same Canonical URIs and PDP enforcement as described elsewhere in this section.
+The Secrets Platform is callable over HTTP. This page shows how to wire the Secrets API for use in automation, Orchestration Service `/execute` workflows, graph workflows, and AI agents. It reuses the same Canonical URIs and PDP enforcement as described elsewhere in this section.
 
-## Use from CRUD Service workflows (/execute)
+## Use from Orchestration Service workflows (/execute)
 
-- Workflows and automation that can make HTTP requests to the CRUD Service can call the Secrets API endpoints directly.
+- Workflows and automation that can make HTTP requests to the Orchestration Service can call the Secrets API endpoints directly.
 - PDP enforcement occurs in the PEP (VaultService/Secrets API) before any provider access.
 - Enable or require auth on endpoints with deployment flags (see Security integration page):
   - `SECRETS_API_REQUIRE_AUTH` to require auth

@@ -1,5 +1,5 @@
 ---
-title: "Enable mTLS for CRUD Service APIs"
+title: "Enable mTLS for Orchestration Service APIs"
 description: "Step-by-step to enable mTLS at the edge (Traefik/Nginx), forward the verified client certificate, enforce PoP binding, and verify end-to-end."
 sidebar_label: "Enable mTLS (Dev & Prod)"
 keywords:
@@ -8,14 +8,14 @@ keywords:
   - Nginx
   - PoP
   - sender-binding
-  - CRUD Service
+  - Orchestration Service
   - EmpowerNow
 ---
 
 ### What you’ll enable
 
 - Inbound mTLS at the edge with CA verification.
-- Forward the verified client certificate as a trusted header to CRUD Service.
+- Forward the verified client certificate as a trusted header to Orchestration Service.
 - Optional/required sender-binding (PoP) between JWT `cnf.x5t#S256` and the client cert thumbprint.
 - Certificate-to-identity mapping into canonical ARNs.
 
@@ -23,7 +23,7 @@ See background and design details in Reference → mTLS (Design & Guide).
 
 ### Prerequisites
 
-- Traefik or Nginx ingress in front of CRUD Service.
+- Traefik or Nginx ingress in front of Orchestration Service.
 - A CA certificate to validate client certificates.
 - Ability to mount/update Traefik dynamic config or Nginx Ingress annotations.
 
@@ -81,7 +81,7 @@ TRUSTED_PROXY_CIDRS=172.16.0.0/12,10.0.0.0/8
 CERT_IDENTITY_MAPPINGS=/app/config/cert_identity_mappings.yaml
 ```
 
-4) Restart Traefik and CRUD Service; verify Traefik dashboard shows mTLS enabled for `crud` router.
+4) Restart Traefik and Orchestration Service; verify Traefik dashboard shows mTLS enabled for `crud` router.
 
 5) Verify with curl
 
@@ -140,7 +140,7 @@ App header name for Nginx: set `FORWARDED_CLIENT_CERT_HEADER=ssl-client-cert`.
 flowchart TD
   A["Client with cert + JWT"] --> B["Ingress (verify client cert)"]
   B --> C["Forward verified cert header"]
-  C --> D["CRUD Service: parse cert, compute x5t"]
+  C --> D["Orchestration Service: parse cert, compute x5t"]
   D --> E{ "PoP required?" }
   E -->|"yes"| F{ "JWT.cnf.x5t == cert x5t?" }
   F -->|"yes"| G["Allow"]

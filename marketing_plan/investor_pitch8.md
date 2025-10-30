@@ -48,7 +48,7 @@
 | **Trust** | 50+ Fortune 500s | Startups: 0-5 |
 | **Expertise** | 500+ connectors built | Others: <50 |
 | **Execution** | $20M profitable business | Others: Burning cash |
-| **Innovation** | CRUD Service patent pending | Others: Manual only |
+| **Innovation** | Orchestration Service patent pending | Others: Manual only |
 
 ### **Result:**
 - **3 Fortune 500 POCs** at 90% software model
@@ -62,14 +62,14 @@
 
 ## Slide 4: The Technical Revolution
 
-# **CRUD Service: The AI Tool Factory**
+# **Orchestration Service: The AI Tool Factory**
 
 ### **The Problem:**
 Enterprise needs 1000s of agent tools. Each takes 6 weeks to build.
 
 ### **Our Breakthrough:**
 ```
-Any API/Database → [CRUD Service] → Agent Tool (5 minutes)
+Any API/Database → [Orchestration Service] → Agent Tool (5 minutes)
                           ↓
                   Works Everywhere
             (MCP, OpenAI, Copilot, Vertex)
@@ -113,7 +113,7 @@ Any API/Database → [CRUD Service] → Agent Tool (5 minutes)
 # **Create • Control • Prove**
 
 ### **Create (GA)**
-- **CRUD Service** - API → Tool in 5 minutes
+- **Orchestration Service** - API → Tool in 5 minutes
 - **Automation Studio** - Visual workflow designer
 - **Multi-platform adapters** - Write once, run everywhere
 
@@ -265,7 +265,7 @@ Payback: 6 months
 |------------|------------------------------|
 | **Trust** | 15 years earning Fortune 500 confidence |
 | **Technical Depth** | 500+ connectors = 10,000 person-months |
-| **Patents** | Graph-Anchored ABAC, CRUD Service |
+| **Patents** | Graph-Anchored ABAC, Orchestration Service |
 | **Network Effects** | More tools → More value → More adoption |
 | **Switching Costs** | Governance embedded in operations |
 
@@ -311,7 +311,7 @@ Base Business: $20M growing 20%
 
 ### **Product Acceleration (40%)**
 - Complete adapter coverage (all platforms)
-- CRUD Service library (1000+ connectors)
+- Orchestration Service library (1000+ connectors)
 - Open-source receipt verifier
 
 ### **Market Capture (35%)**
@@ -402,11 +402,11 @@ The agent revolution is here. Enterprises are deploying thousands of AI agents t
 ### **Our Advantages**
 - **Proven:** $20M revenue, profitable, 15 years
 - **Trusted:** 50+ Fortune 500 relationships  
-- **Technical:** CRUD Service creates tools in 5 minutes (not 6 weeks)
+- **Technical:** Orchestration Service creates tools in 5 minutes (not 6 weeks)
 - **First Mover:** MCP adapter shipping, 3 Fortune 500 POCs
 
 ### **The Technology**
-**CRUD Service** (patent pending) turns any API into a governed agent tool instantly. Combined with our enforcement stack (Gateway + PDP + Shield) and cryptographic receipts, we deliver complete agent governance across all platforms.
+**Orchestration Service** (patent pending) turns any API into a governed agent tool instantly. Combined with our enforcement stack (Gateway + PDP + Shield) and cryptographic receipts, we deliver complete agent governance across all platforms.
 
 ### **The Business Model**
 - **Today:** $21M revenue, 65% margins, 42% recurring
@@ -438,7 +438,7 @@ $15M Series A at a valuation reflecting our proven base + transformational upsid
 ### **Perfect Balance Achieved:**
 1. **Proven business** (slides 3, 8, 13) - No startup risk
 2. **AI excitement** (slides 2, 4, 7) - Massive opportunity  
-3. **Technical innovation** (slides 4, 6) - CRUD Service magic
+3. **Technical innovation** (slides 4, 6) - Orchestration Service magic
 4. **Clear transition** (slide 8) - How we get from here to there
 5. **Market urgency** (slides 2, 7) - Why now matters
 
